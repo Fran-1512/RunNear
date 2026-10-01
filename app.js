@@ -428,7 +428,13 @@ function solicitarGeolocalizacionNavegador() {
     },
     (error) => {
       console.warn("Error de geolocalización:", error.message);
-      mostrarToast(`Permiso de GPS no concedido. Mostrando todo ${REGION.nombre}.`);
+      // Mensaje según el motivo, para que el usuario sepa cómo arreglarlo
+      const motivos = {
+        1: "Ubicación bloqueada. Pulsa el icono a la izquierda de la dirección web, permite la ubicación y recarga.",
+        2: "No se pudo determinar tu ubicación. Revisa que la ubicación del dispositivo esté activada.",
+        3: "La ubicación tardó demasiado. Pulsa ↻ para reintentar."
+      };
+      mostrarToast(motivos[error.code] || `No se pudo obtener tu ubicación. Mostrando todo ${REGION.nombre}.`, 7000);
       usarUbicacionPorDefecto();
     },
     { timeout: 10000, enableHighAccuracy: true }
