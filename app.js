@@ -795,7 +795,9 @@ function resaltarTarjetaEnLista(carreraId) {
 // ==========================================================================
 
 function abrirModalDetallePorId(carreraId) {
-  const carrera = AppState.races.find(c => c.id === carreraId);
+  // Preferir la versión filtrada, que ya trae la distancia al usuario calculada
+  const carrera = AppState.filteredRaces.find(c => c.id === carreraId)
+    || AppState.races.find(c => c.id === carreraId);
   if (carrera) abrirModalDetalleCarrera(carrera);
 }
 
@@ -816,7 +818,7 @@ function abrirModalDetalleCarrera(carrera) {
   document.getElementById("modal-dist-badge").textContent = textoDistancias(carrera);
   
   const userDistPill = document.getElementById("modal-user-dist-badge");
-  if (carrera.distancia_usuario_km !== null) {
+  if (carrera.distancia_usuario_km != null) {
     userDistPill.textContent = `A ${carrera.distancia_usuario_km} km de ti`;
     userDistPill.style.display = "inline-block";
   } else {
@@ -1093,6 +1095,17 @@ function configurarEventListeners() {
       clearSearchBtn.classList.add("hidden");
       AppState.filters.search = "";
       aplicarFiltrosYRenderizar();
+    });
+  }
+
+  // Mostrar/ocultar filtros en móvil
+  const btnFiltros = document.getElementById("btn-toggle-filtros");
+  const filtrosExtra = document.getElementById("filtros-extra");
+  if (btnFiltros && filtrosExtra) {
+    btnFiltros.addEventListener("click", () => {
+      const abierto = filtrosExtra.classList.toggle("abierto");
+      btnFiltros.setAttribute("aria-expanded", String(abierto));
+      btnFiltros.classList.toggle("activo", abierto);
     });
   }
 

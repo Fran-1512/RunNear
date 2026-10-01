@@ -57,7 +57,7 @@
       <div class="city-selector-wrap">
         <label for="select-preset-city" class="sr-only">Cambiar ciudad de referencia</label>
         <select id="select-preset-city" class="city-select" aria-label="Cambiar ciudad">
-          <option value="" disabled selected>Cambiar ciudad...</option>
+          <option value="" disabled selected>Ciudad…</option>
           <option value="38.9943,-1.8585">Albacete</option>
           <option value="38.9848,-3.9274">Ciudad Real</option>
           <option value="40.0704,-2.1374">Cuenca</option>
@@ -103,6 +103,19 @@
           <input type="text" id="filter-search-input" class="search-input" placeholder="Buscar por nombre, municipio o provincia..." autocomplete="off">
           <button class="btn-clear-search hidden" id="btn-clear-search" aria-label="Limpiar búsqueda">✕</button>
         </div>
+
+        <!-- Botón para mostrar/ocultar filtros (solo visible en móvil) -->
+        <button class="btn-toggle-filtros" id="btn-toggle-filtros" aria-expanded="false" aria-controls="filtros-extra">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="7" y1="12" x2="17" y2="12"></line>
+            <line x1="10" y1="18" x2="14" y2="18"></line>
+          </svg>
+          <span>Filtros</span>
+        </button>
+
+        <!-- Filtros plegables en móvil -->
+        <div class="filtros-extra" id="filtros-extra">
 
         <!-- Filtro por Tipo de Carrera (Segmented Control) -->
         <div class="filter-row">
@@ -165,6 +178,7 @@
             Restablecer
           </button>
         </div>
+        </div><!-- /filtros-extra -->
       </section>
 
       <!-- Contador de Resultados y Vista Resumen -->
