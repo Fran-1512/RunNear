@@ -1,0 +1,1992 @@
+[
+  {
+    "id": "clm-f087df24",
+    "nombre": "I Carrera Gala Joven-aguas Nuevas",
+    "tipo": "popular",
+    "fecha": "2026-10-02",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2125&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-ac51323c",
+    "nombre": "III Carrera Corre Con Tu Médic@",
+    "tipo": "popular",
+    "fecha": "2026-10-03",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2109&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-d5adc554",
+    "nombre": "IV Nocturna de Azuqueca",
+    "tipo": "popular",
+    "fecha": "2026-10-03",
+    "municipio": "Azuqueca",
+    "provincia": "Guadalajara",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      5.0,
+      10.0
+    ],
+    "url_oficial": "https://www.deporticket.com/web-evento/13265-iv-nocturna-de-azuqueca",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.56838,
+      "lng": -3.26271
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-a5ccfbf3",
+    "nombre": "7º Cross Popular 'Ana Lozano' Maranchón",
+    "tipo": "popular",
+    "fecha": "2026-10-03",
+    "municipio": "Maranchón",
+    "provincia": "Guadalajara",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      5.0,
+      10.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/7-cross-popular-ana-lozano-maranchon",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 41.0465,
+      "lng": -2.20399
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 12.0
+  },
+  {
+    "id": "clm-b934cc14",
+    "nombre": "Milla Solidaria Puertollano",
+    "tipo": "popular",
+    "fecha": "2026-10-03",
+    "municipio": "Puertollano",
+    "provincia": "Ciudad Real",
+    "distancia_km": 1.6,
+    "distancias_km": [
+      1.6
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/milla-solidaria-puertollano",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.68522,
+      "lng": -4.11117
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-f104049e",
+    "nombre": "XXIX Media Maratón Ciudad de Albacete",
+    "tipo": "popular",
+    "fecha": "2026-10-04",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 21.1,
+    "distancias_km": [
+      21.1
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2107&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-a02504b8",
+    "nombre": "II Carrera Popular Carpio de Tajo",
+    "tipo": "popular",
+    "fecha": "2026-10-04",
+    "municipio": "El Carpio de Tajo",
+    "provincia": "Toledo",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.88742,
+      "lng": -4.45428
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-5848c461",
+    "nombre": "Carrera Solidaria Contra la Ela - Fundación Eurocaja Rural - 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-04",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      5.0,
+      10.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/carrera-solidaria-contra-la-ela-fundacion-eurocaja-rural-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 12.0
+  },
+  {
+    "id": "clm-d65d32f4",
+    "nombre": "10K Ciudad de Tomelloso 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-04",
+    "municipio": "Tomelloso",
+    "provincia": "Ciudad Real",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026",
+    "circuito": "Circuito Carreras Populares Ciudad Real 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.15855,
+      "lng": -3.02149
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-2573189f",
+    "nombre": "CXM el Picón de Beamud",
+    "tipo": "trail",
+    "fecha": "2026-10-04",
+    "municipio": "Beamud",
+    "provincia": "Cuenca",
+    "distancia_km": 15.0,
+    "distancias_km": [
+      15.0
+    ],
+    "url_oficial": "https://dorsal1.com/producto/cxm-el-picon-de-beamud-x-circ-prov-cxm-dip-cuenca/",
+    "circuito": "Circuito Trail Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.18634,
+      "lng": -1.82934
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-6023d0b0",
+    "nombre": "VIII Carrera Popular Virgen del Pilar Memorial Antonio Puente",
+    "tipo": "popular",
+    "fecha": "2026-10-10",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 7.0,
+    "distancias_km": [
+      7.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2118&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-15a05e52",
+    "nombre": "X CP Tierra del Vítor",
+    "tipo": "popular",
+    "fecha": "2026-10-10",
+    "municipio": "Horcajo de Santiago",
+    "provincia": "Cuenca",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://www.timingsys.com/event/770",
+    "circuito": "Circuito Carreras Populares Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.84216,
+      "lng": -2.99737
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-695e366a",
+    "nombre": "V Carrera Popular Talavera la Nueva",
+    "tipo": "popular",
+    "fecha": "2026-10-10",
+    "municipio": "Talavera la Nueva",
+    "provincia": "Toledo",
+    "distancia_km": 5.6,
+    "distancias_km": [
+      5.6
+    ],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/v-carrera-popular-talavera-la-nueva",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.93528,
+      "lng": -4.89177
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-445f8e09",
+    "nombre": "I Carrera Popular y Marcha de Carmena",
+    "tipo": "popular",
+    "fecha": "2026-10-11",
+    "municipio": "Carmena",
+    "provincia": "Toledo",
+    "distancia_km": 6.6,
+    "distancias_km": [
+      6.6
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/i-carrera-popular-y-marcha-de-carmena",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.92976,
+      "lng": -4.40051
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-45deeb52",
+    "nombre": "XXV Cross Santa Teresa 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-11",
+    "municipio": "Malagón",
+    "provincia": "Ciudad Real",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/xxv-cross-santa-teresa-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.16891,
+      "lng": -3.85145
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-ea53dd71",
+    "nombre": "Carrera y Paseo Cruz Roja Toledo 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-11",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 6.0,
+    "distancias_km": [
+      3.0,
+      6.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/carrera-y-paseo-cruz-roja-toledo-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-6a9fc96c",
+    "nombre": "XVIII Carrera Popular de Yeste",
+    "tipo": "popular",
+    "fecha": "2026-10-11",
+    "municipio": "Yeste",
+    "provincia": "Albacete",
+    "distancia_km": 11.7,
+    "distancias_km": [
+      11.7
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1166",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.36693,
+      "lng": -2.31904
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 9.0
+  },
+  {
+    "id": "clm-c0e0f733",
+    "nombre": "Trail Montaña Pico del Fraile de Tejadillos",
+    "tipo": "trail",
+    "fecha": "2026-10-11",
+    "municipio": "Tejadillos",
+    "provincia": "Cuenca",
+    "distancia_km": 16.0,
+    "distancias_km": [
+      10.5,
+      16.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/trail-montatildea-pico-del-fraile-de-tejadillos",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.14014,
+      "lng": -1.63473
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 18.0
+  },
+  {
+    "id": "clm-ea31fca7",
+    "nombre": "XXV CP Villa de Honrubia",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "Honrubia",
+    "provincia": "Cuenca",
+    "distancia_km": 8.2,
+    "distancias_km": [
+      8.2
+    ],
+    "url_oficial": "https://www.timingsys.com/event/771",
+    "circuito": "Circuito Carreras Populares Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.61353,
+      "lng": -2.28075
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-a71f7ca6",
+    "nombre": "I Carrera Iniciación Memorial Samuel Andújar - Hoya Gonzalo",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "Hoya-gonzalo",
+    "provincia": "Albacete",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1310",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.95776,
+      "lng": -1.5561
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-da7bfda1",
+    "nombre": "XVII Memorial Samuel Andújar - Hoya Gonzalo",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "Hoya-gonzalo",
+    "provincia": "Albacete",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1179",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.95776,
+      "lng": -1.5561
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-0c7f9809",
+    "nombre": "IV Marcha Contra el Cáncer - La Puebla de Almoradiel 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "La Puebla de Almoradiel",
+    "provincia": "Toledo",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/iv-marcha-contra-el-cancer-la-puebla-de-almoradiel-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.59827,
+      "lng": -3.11861
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 5.0
+  },
+  {
+    "id": "clm-5bc24eb5",
+    "nombre": "Inforun VI Carrera Solidaria Ruidera 26",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "Ruidera",
+    "provincia": "Ciudad Real",
+    "distancia_km": 12.0,
+    "distancias_km": [
+      12.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.97739,
+      "lng": -2.88371
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 5.0
+  },
+  {
+    "id": "clm-c151680f",
+    "nombre": "XIV Carrera Popular de San Bartolomé de las Abiertas",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "San Bartolomé de las Abiertas",
+    "provincia": "Toledo",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/xiv-carrera-popular-de-san-bartolome-de-las-abiertas",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.8284,
+      "lng": -4.71871
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-a16ce7b4",
+    "nombre": "XIX Carrera Nocturna de Toledo Gran Premio Santander",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 8.5,
+    "distancias_km": [
+      5.5,
+      8.5
+    ],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/xix-carrera-nocturna-de-toledo-gran-premio-santander",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-fea49530",
+    "nombre": "XVIII Carrera Por la Salud de la Mujer",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2116&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-16888279",
+    "nombre": "10K de Alcazar de San Juan 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Alcázar de San Juan",
+    "provincia": "Ciudad Real",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://crono3.es/evento/10k-de-alcazar-de-san-juan-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.38998,
+      "lng": -3.21014
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-44ed03eb",
+    "nombre": "28ª Media Maratón de Alcázar de San Juan 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Alcázar de San Juan",
+    "provincia": "Ciudad Real",
+    "distancia_km": 21.1,
+    "distancias_km": [
+      21.1
+    ],
+    "url_oficial": "https://crono3.es/evento/28a-media-maraton-de-alcazar-de-san-juan-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.38998,
+      "lng": -3.21014
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-bc09dae5",
+    "nombre": "6K Solidarios de Alcazar de San Juan 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Alcázar de San Juan",
+    "provincia": "Ciudad Real",
+    "distancia_km": 6.0,
+    "distancias_km": [
+      6.0
+    ],
+    "url_oficial": "https://crono3.es/evento/6k-solidarios-de-alcazar-de-san-juan-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.38998,
+      "lng": -3.21014
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-1c6d3eac",
+    "nombre": "Media Maratón y 10K Alcazar de San Juan 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Alcázar de San Juan",
+    "provincia": "Ciudad Real",
+    "distancia_km": 21.1,
+    "distancias_km": [
+      21.1
+    ],
+    "url_oficial": "https://crono3.es/evento/media-maraton-alcazar-de-san-juan-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.38998,
+      "lng": -3.21014
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-c6693298",
+    "nombre": "Campo de Criptana en Marcha Contra el Cancer 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Campo de Criptana",
+    "provincia": "Ciudad Real",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/campo-de-criptana-en-marcha-contra-el-cancer-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.40525,
+      "lng": -3.12548
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-67485f08",
+    "nombre": "Quijote Maratón Ciudad Real 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Ciudad Real",
+    "provincia": "Ciudad Real",
+    "distancia_km": 42.0,
+    "distancias_km": [
+      10.0,
+      21.0,
+      42.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/quijote-maraton-ciudad-real-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.98542,
+      "lng": -3.92851
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 19.0
+  },
+  {
+    "id": "clm-444ea81a",
+    "nombre": "XIX Media Maratón Comarca de Jadraque y V Carrera Popular 10K",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Jadraque",
+    "provincia": "Guadalajara",
+    "distancia_km": 21.0,
+    "distancias_km": [
+      5.0,
+      10.0,
+      21.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/xix-media-maraton-comarca-jadraque",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.92638,
+      "lng": -2.92267
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-4a821232",
+    "nombre": "XX Carrera Solidaria Memorial Ismael Araujo Martin",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Talavera de la Reina",
+    "provincia": "Toledo",
+    "distancia_km": 6.0,
+    "distancias_km": [
+      6.0
+    ],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/xx-carrera-solidaria-memorial-ismael-araujo-martin",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.95224,
+      "lng": -4.89018
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-632be83b",
+    "nombre": "III Marcha Contra el Cáncer Torrijos 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-18",
+    "municipio": "Torrijos",
+    "provincia": "Toledo",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/iii-marcha-contra-el-cancer-torrijos-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.98086,
+      "lng": -4.28423
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 5.0
+  },
+  {
+    "id": "clm-d9680724",
+    "nombre": "II Trail de Almodovar del Pinar",
+    "tipo": "trail",
+    "fecha": "2026-10-18",
+    "municipio": "Almodóvar del Pinar",
+    "provincia": "Cuenca",
+    "distancia_km": 14.0,
+    "distancias_km": [
+      14.0
+    ],
+    "url_oficial": "https://dorsal1.com/producto/evento-dorsal-1-12/",
+    "circuito": "Circuito Trail Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.72563,
+      "lng": -1.90174
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-271439b2",
+    "nombre": "Desafio Cucon 2026",
+    "tipo": "trail",
+    "fecha": "2026-10-18",
+    "municipio": "Fuencaliente",
+    "provincia": "Ciudad Real",
+    "distancia_km": 29.0,
+    "distancias_km": [
+      13.0,
+      29.0
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/desafio-cucon-2026",
+    "circuito": "Trail Series Ciudad Real 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.40503,
+      "lng": -4.30496
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 18.0,
+    "desnivel_positivo_m": 1400
+  },
+  {
+    "id": "clm-d229af66",
+    "nombre": "XIII Carrera Trail Yeste",
+    "tipo": "trail",
+    "fecha": "2026-10-18",
+    "municipio": "Yeste",
+    "provincia": "Albacete",
+    "distancia_km": 21.1,
+    "distancias_km": [
+      21.1
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1207",
+    "circuito": "Circuito Trail Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.36693,
+      "lng": -2.31904
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 9.0
+  },
+  {
+    "id": "clm-233ac3c8",
+    "nombre": "II Carrera Solidaria Casas Viejas",
+    "tipo": "popular",
+    "fecha": "2026-10-24",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 4.2,
+    "distancias_km": [
+      4.2
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2108&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-fca53f59",
+    "nombre": "Media Maratón de Cuenca y 10K",
+    "tipo": "popular",
+    "fecha": "2026-10-24",
+    "municipio": "Cuenca",
+    "provincia": "Cuenca",
+    "distancia_km": 21.0,
+    "distancias_km": [
+      10.0,
+      21.0
+    ],
+    "url_oficial": "https://www.timingsys.com/event/772",
+    "circuito": "Circuito Carreras Populares Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.0661,
+      "lng": -2.13135
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-f7a0e1ec",
+    "nombre": "Viñedos del Rio Tajo",
+    "tipo": "popular",
+    "fecha": "2026-10-24",
+    "municipio": "Guadamur",
+    "provincia": "Toledo",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      5.0,
+      10.0
+    ],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/vinedos-del-rio-tajo",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.81137,
+      "lng": -4.14888
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-570d4c67",
+    "nombre": "13º Carrera Popular la Villa de Don Fadrique",
+    "tipo": "popular",
+    "fecha": "2026-10-24",
+    "municipio": "La Villa de Don Fadrique",
+    "provincia": "Toledo",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      5.0,
+      10.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/13ordm-carrera-popular-la-villa-de-don-fadrique-toledo",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.61803,
+      "lng": -3.21823
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-e03a79cc",
+    "nombre": "Trail Iniciacion Alcalá del Júcar",
+    "tipo": "trail",
+    "fecha": "2026-10-24",
+    "municipio": "Alcalá del Júcar",
+    "provincia": "Albacete",
+    "distancia_km": 11.0,
+    "distancias_km": [
+      11.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1190",
+    "circuito": "Circuito Trail Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.19289,
+      "lng": -1.42899
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-c8b0f1f5",
+    "nombre": "X Trail - Juan Miguel Soler - Alcalá del Júcar",
+    "tipo": "trail",
+    "fecha": "2026-10-24",
+    "municipio": "Alcalá del Júcar",
+    "provincia": "Albacete",
+    "distancia_km": 17.5,
+    "distancias_km": [
+      17.5
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1188",
+    "circuito": "Circuito Trail Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.19289,
+      "lng": -1.42899
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-789e5415",
+    "nombre": "XVIII Cross Memorial Miguel Salcedo",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 7.5,
+    "distancias_km": [
+      7.5
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2129&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-5b67d187",
+    "nombre": "I Marcha Solidaria Corre Con Tu Pana",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Cañada Juncosa",
+    "provincia": "Albacete",
+    "distancia_km": 3.0,
+    "distancias_km": [
+      3.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2126&arg_tipo=eventos&arg_year=2026&arg_month=10",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.77159,
+      "lng": -2.15889
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-9b9613c0",
+    "nombre": "XIII Carrera Popular de Socovos - Árboles Monumentales",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Socovos",
+    "provincia": "Albacete",
+    "distancia_km": 11.0,
+    "distancias_km": [
+      11.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1123",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.33364,
+      "lng": -1.98363
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-470c8837",
+    "nombre": "10K Socuellamos Carrera Urbana 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Socuéllamos",
+    "provincia": "Ciudad Real",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://carrerasciudadreal.es/evento/yugo-10k-socuellamos-carrera-urbana-2026",
+    "circuito": "Circuito Carreras Populares Ciudad Real 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.2834,
+      "lng": -2.79046
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-0f541d81",
+    "nombre": "Vinos Yugo 10K Socuellamos Carrera Urbana 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Socuéllamos",
+    "provincia": "Ciudad Real",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://carrerasciudadreal.es/evento/yugo-10k-socuellamos-carrera-urbana-2026/",
+    "circuito": "Circuito Carreras Populares Ciudad Real 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.2834,
+      "lng": -2.79046
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-24e044f4",
+    "nombre": "III Carrera & Marcha Solidaria del Hospital Nacional de Parapléjicos",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 6.0,
+    "distancias_km": [
+      4.0,
+      6.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/iii-carrera-amp-marcha-solidaria-del-hospital-nacional-de-parapljicos",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 5.0
+  },
+  {
+    "id": "clm-7a670bb3",
+    "nombre": "Trail Duende Martinico - Mondejar",
+    "tipo": "trail",
+    "fecha": "2026-10-25",
+    "municipio": "Mondéjar",
+    "provincia": "Guadalajara",
+    "distancia_km": 24.0,
+    "distancias_km": [
+      9.0,
+      14.0,
+      24.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/trail-duende-martinico-mondejar",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.32276,
+      "lng": -3.10962
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 12.0,
+    "desnivel_positivo_m": 850
+  },
+  {
+    "id": "clm-ceb67fad",
+    "nombre": "XVI Carrera Popular de Aguas Nuevas",
+    "tipo": "popular",
+    "fecha": "2026-10-31",
+    "municipio": "Aguas Nuevas",
+    "provincia": "Albacete",
+    "distancia_km": 8.0,
+    "distancias_km": [
+      8.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1307",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.92023,
+      "lng": -1.9197
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 9.0
+  },
+  {
+    "id": "clm-66f61b99",
+    "nombre": "I CP Záncara Canforrales",
+    "tipo": "popular",
+    "fecha": "2026-10-31",
+    "municipio": "El Provencio",
+    "provincia": "Cuenca",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://www.timingsys.com/event/773",
+    "circuito": "Circuito Carreras Populares Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.37591,
+      "lng": -2.57256
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-af48c349",
+    "nombre": "XIV Carrera Subida Al Cerro de la Degollá",
+    "tipo": "popular",
+    "fecha": "2026-11-01",
+    "municipio": "Priego",
+    "provincia": "Cuenca",
+    "distancia_km": 14.0,
+    "distancias_km": [
+      14.0
+    ],
+    "url_oficial": "https://dorsal1.com/producto/evento-dorsal-1-13/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.4492,
+      "lng": -2.31346
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-39a4c56f",
+    "nombre": "I Carrera Solidaria 5K Aralba Km de Libertad",
+    "tipo": "popular",
+    "fecha": "2026-11-07",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2123&arg_tipo=eventos&arg_year=2026&arg_month=11",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-c5823811",
+    "nombre": "VII Edición las 10 Mil Zancadas de Ledaña",
+    "tipo": "popular",
+    "fecha": "2026-11-07",
+    "municipio": "Ledaña",
+    "provincia": "Cuenca",
+    "distancia_km": 9.8,
+    "distancias_km": [
+      9.8
+    ],
+    "url_oficial": "https://www.timingsys.com/event/774",
+    "circuito": "Circuito Carreras Populares Cuenca 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.35619,
+      "lng": -1.71576
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-01eb29e9",
+    "nombre": "Zenagas Trail 2026",
+    "tipo": "trail",
+    "fecha": "2026-11-07",
+    "municipio": "Puertollano",
+    "provincia": "Ciudad Real",
+    "distancia_km": 28.0,
+    "distancias_km": [
+      7.0,
+      15.0,
+      28.0
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/zenagas-trail-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.68522,
+      "lng": -4.11117
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 8.0
+  },
+  {
+    "id": "clm-c4c96b56",
+    "nombre": "XIV Carrera Popular Benefica Desarrollo Running",
+    "tipo": "popular",
+    "fecha": "2026-11-08",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 5.2,
+    "distancias_km": [
+      5.2
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2130&arg_tipo=eventos&arg_year=2026&arg_month=11",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-1edb2f04",
+    "nombre": "VII Carrera 7K - Hellin Ciudad del Tambor",
+    "tipo": "popular",
+    "fecha": "2026-11-08",
+    "municipio": "Hellín",
+    "provincia": "Albacete",
+    "distancia_km": 7.0,
+    "distancias_km": [
+      7.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1186",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.51066,
+      "lng": -1.69951
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-aff89e9c",
+    "nombre": "Xxxviii Medio Maratón Ciudad de Hellín - Honorio Cifo Soria",
+    "tipo": "popular",
+    "fecha": "2026-11-08",
+    "municipio": "Hellín",
+    "provincia": "Albacete",
+    "distancia_km": 21.1,
+    "distancias_km": [
+      21.1
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1181",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.51066,
+      "lng": -1.69951
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 13.0
+  },
+  {
+    "id": "clm-b05aedd0",
+    "nombre": "V Carrera Solidaria Kilómetros Que Dan Vida",
+    "tipo": "popular",
+    "fecha": "2026-11-08",
+    "municipio": "Olías del Rey",
+    "provincia": "Toledo",
+    "distancia_km": 8.0,
+    "distancias_km": [
+      4.0,
+      8.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/v-carrera-solidaria-ldquokilmetros-que-dan-vidardquo",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.94474,
+      "lng": -3.98725
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 5.0
+  },
+  {
+    "id": "clm-153576b1",
+    "nombre": "XXXVII Media Maratón Ciudad de Talavera",
+    "tipo": "popular",
+    "fecha": "2026-11-08",
+    "municipio": "Talavera de la Reina",
+    "provincia": "Toledo",
+    "distancia_km": null,
+    "distancias_km": [],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/xxxviii-media-maraton-ciudad-de-talavera-memorial-anibal-arevalo",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.95224,
+      "lng": -4.89018
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-ab77191f",
+    "nombre": "Maratón Alcarria",
+    "tipo": "popular",
+    "fecha": "2026-11-14",
+    "municipio": "Alovera",
+    "provincia": "Guadalajara",
+    "distancia_km": 42.0,
+    "distancias_km": [
+      42.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/maraton-alcarria",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.59536,
+      "lng": -3.24878
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 40.0
+  },
+  {
+    "id": "clm-b6d16f28",
+    "nombre": "XII Carrera Popular Lietor",
+    "tipo": "popular",
+    "fecha": "2026-11-14",
+    "municipio": "Liétor",
+    "provincia": "Albacete",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1167",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.54228,
+      "lng": -1.95581
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-e6f77310",
+    "nombre": "III Alustante 'Trail de la Hojas Rojas'",
+    "tipo": "trail",
+    "fecha": "2026-11-14",
+    "municipio": "Alustante",
+    "provincia": "Guadalajara",
+    "distancia_km": 17.0,
+    "distancias_km": [
+      9.0,
+      17.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/iii-alustante-trail-hojas-rojas",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.61532,
+      "lng": -1.65872
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 14.0,
+    "desnivel_positivo_m": 517
+  },
+  {
+    "id": "clm-cedf2b46",
+    "nombre": "VIII Carrera Inclusiva Metasport CLM",
+    "tipo": "popular",
+    "fecha": "2026-11-15",
+    "municipio": "Albacete",
+    "provincia": "Albacete",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2121&arg_tipo=eventos&arg_year=2026&arg_month=11",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.99509,
+      "lng": -1.85592
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-52da046b",
+    "nombre": "Ruta 091 Ii Guadalajara",
+    "tipo": "popular",
+    "fecha": "2026-11-15",
+    "municipio": "Guadalajara",
+    "provincia": "Guadalajara",
+    "distancia_km": null,
+    "distancias_km": [],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.6327,
+      "lng": -3.16461
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-898c0848",
+    "nombre": "10K y 5K la Puebla de Almoradiel 2026",
+    "tipo": "popular",
+    "fecha": "2026-11-15",
+    "municipio": "La Puebla de Almoradiel",
+    "provincia": "Toledo",
+    "distancia_km": null,
+    "distancias_km": [],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/10k-y-5k-la-puebla-de-almoradiel-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.59827,
+      "lng": -3.11861
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-506bf5bf",
+    "nombre": "X Urban Trail - Moral Extreme 2026",
+    "tipo": "popular",
+    "fecha": "2026-11-15",
+    "municipio": "Mora",
+    "provincia": "Toledo",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://www.timingsys.com/event/793",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.68322,
+      "lng": -3.77278
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-0f6b093b",
+    "nombre": "Legua los Patos 2026",
+    "tipo": "popular",
+    "fecha": "2026-11-15",
+    "municipio": "Puertollano",
+    "provincia": "Ciudad Real",
+    "distancia_km": 5.6,
+    "distancias_km": [
+      5.6
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/legua-los-patos-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.68522,
+      "lng": -4.11117
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-b3e80cb0",
+    "nombre": "I Maratón Imperial de Toledo",
+    "tipo": "popular",
+    "fecha": "2026-11-15",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 42.0,
+    "distancias_km": [
+      42.0
+    ],
+    "url_oficial": "https://eventos.runrunsports.com/inscripcion/i-maraton-imperial-de-toledo/modalidades",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-fdb54097",
+    "nombre": "III Copa Trail Villaverde de Guadalimar 2026 - la Sarga Sky Race",
+    "tipo": "trail",
+    "fecha": "2026-11-15",
+    "municipio": "Villaverde de Guadalimar",
+    "provincia": "Albacete",
+    "distancia_km": 30.0,
+    "distancias_km": [
+      30.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1289",
+    "circuito": "Circuito Trail Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.45989,
+      "lng": -2.50976
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 16.0
+  },
+  {
+    "id": "clm-3070dc10",
+    "nombre": "El Privilegio 100 Millas 2026",
+    "tipo": "trail",
+    "fecha": "2026-11-20",
+    "municipio": "Ciudad Real",
+    "provincia": "Ciudad Real",
+    "distancia_km": 166.0,
+    "distancias_km": [
+      29.0,
+      86.0,
+      166.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/el-privilegio-100-millas-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.98542,
+      "lng": -3.92851
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 35.0
+  },
+  {
+    "id": "clm-e1918562",
+    "nombre": "III Carrera Vertical Subida a las Antenas",
+    "tipo": "trail",
+    "fecha": "2026-11-21",
+    "municipio": "Navamorcuende",
+    "provincia": "Toledo",
+    "distancia_km": 5.0,
+    "distancias_km": [
+      5.0
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/iii-carrera-vertical-subida-a-las-antenas",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.15754,
+      "lng": -4.78544
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-334f2b02",
+    "nombre": "X Carrera Popular Solidaria Por la Diabetes",
+    "tipo": "popular",
+    "fecha": "2026-11-22",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 7.4,
+    "distancias_km": [
+      7.4
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/x-carrera-popular-xi-marcha-solidaria-por-la-diabetes",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 10.0
+  },
+  {
+    "id": "clm-7f611c6f",
+    "nombre": "X Carrera Amafi Run de Yepes.",
+    "tipo": "popular",
+    "fecha": "2026-11-29",
+    "municipio": "Yepes",
+    "provincia": "Toledo",
+    "distancia_km": 7.5,
+    "distancias_km": [
+      6.0,
+      7.5
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/x-carrera-ldquoamafi-runrdquo-ix-ldquocanicross-amafirdquo-y-ldquov-marcha-senderista-amafirdquo-de-yepes",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.91774,
+      "lng": -3.6763
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 14.0
+  },
+  {
+    "id": "clm-3097975c",
+    "nombre": "Ultra Trail Anillo Minero 2026",
+    "tipo": "trail",
+    "fecha": "2026-12-05",
+    "municipio": "Puertollano",
+    "provincia": "Ciudad Real",
+    "distancia_km": 70.0,
+    "distancias_km": [
+      70.0
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/ultra-trail-anillo-minero-2026",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.68522,
+      "lng": -4.11117
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 15.0
+  },
+  {
+    "id": "clm-bff211f9",
+    "nombre": "XII Carrera Popular Sierra",
+    "tipo": "popular",
+    "fecha": "2026-12-06",
+    "municipio": "Sierra",
+    "provincia": "Albacete",
+    "distancia_km": 8.0,
+    "distancias_km": [
+      8.0
+    ],
+    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2124&arg_tipo=eventos&arg_year=2026&arg_month=12",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.56087,
+      "lng": -1.6593
+    },
+    "actualizado": "2026-09-29"
+  },
+  {
+    "id": "clm-64e07492",
+    "nombre": "V Malagón Trail Bisabor Energy 2027",
+    "tipo": "trail",
+    "fecha": "2027-01-17",
+    "municipio": "Malagón",
+    "provincia": "Ciudad Real",
+    "distancia_km": 65.0,
+    "distancias_km": [
+      14.0,
+      27.0,
+      44.0,
+      65.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/v-malagon-trail-bisabor-energy-2027",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.16891,
+      "lng": -3.85145
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 21.0
+  },
+  {
+    "id": "clm-dba25243",
+    "nombre": "10K Ciudad de Valdepeñas 2027",
+    "tipo": "popular",
+    "fecha": "2027-02-28",
+    "municipio": "Valdepeñas",
+    "provincia": "Ciudad Real",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://carrerasciudadreal.es/evento/10k-valdepenas-2027",
+    "circuito": "Circuito Carreras Populares Ciudad Real 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.75946,
+      "lng": -3.38474
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 18.0
+  },
+  {
+    "id": "clm-8a887760",
+    "nombre": "Muy Heroica Media Maratón Ciudad de Valdepeñas 2027",
+    "tipo": "popular",
+    "fecha": "2027-02-28",
+    "municipio": "Valdepeñas",
+    "provincia": "Ciudad Real",
+    "distancia_km": 21.0,
+    "distancias_km": [
+      21.0
+    ],
+    "url_oficial": "https://carrerasciudadreal.es/evento/media-valdepenas-2027",
+    "circuito": "Circuito Carreras Populares Ciudad Real 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 38.75946,
+      "lng": -3.38474
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 12.0
+  },
+  {
+    "id": "clm-3df52edd",
+    "nombre": "V Cross del Cordel de las Merinas",
+    "tipo": "trail",
+    "fecha": "2027-03-13",
+    "municipio": "Nuño Gómez",
+    "provincia": "Toledo",
+    "distancia_km": 15.7,
+    "distancias_km": [
+      15.7
+    ],
+    "url_oficial": "https://web.rockthesport.com/es/event/v-cross-del-cordel-de-las-merinas",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 40.11499,
+      "lng": -4.61807
+    },
+    "actualizado": "2026-09-29",
+    "precio_desde": 19.0
+  },
+  {
+    "id": "clm-c238e182",
+    "nombre": "Monttrail los Yebenes 2027",
+    "tipo": "trail",
+    "fecha": "2027-05-09",
+    "municipio": "Los Yébenes",
+    "provincia": "Toledo",
+    "distancia_km": 26.0,
+    "distancias_km": [
+      7.0,
+      15.0,
+      26.0
+    ],
+    "url_oficial": "https://sportmaniacs.com/es/races/monttrail-los-yebenes-2027",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "ubicacion": {
+      "lat": 39.58234,
+      "lng": -3.87024
+    },
+    "actualizado": "2026-09-29"
+  }
+]

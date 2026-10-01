@@ -1,0 +1,214 @@
+{
+  "Aguas Nuevas|Albacete": {
+    "lat": 38.92023,
+    "lng": -1.9197
+  },
+  "Albacete|Albacete": {
+    "lat": 38.99509,
+    "lng": -1.85592
+  },
+  "Alcalá del Júcar|Albacete": {
+    "lat": 39.19289,
+    "lng": -1.42899
+  },
+  "Alcázar de San Juan|Ciudad Real": {
+    "lat": 39.38998,
+    "lng": -3.21014
+  },
+  "Almodóvar del Pinar|Cuenca": {
+    "lat": 39.72563,
+    "lng": -1.90174
+  },
+  "Alovera|Guadalajara": {
+    "lat": 40.59536,
+    "lng": -3.24878
+  },
+  "Alustante|Guadalajara": {
+    "lat": 40.61532,
+    "lng": -1.65872
+  },
+  "Azuqueca|Guadalajara": {
+    "lat": 40.56838,
+    "lng": -3.26271
+  },
+  "Beamud|Cuenca": {
+    "lat": 40.18634,
+    "lng": -1.82934
+  },
+  "Campo de Criptana|Ciudad Real": {
+    "lat": 39.40525,
+    "lng": -3.12548
+  },
+  "Carmena|Toledo": {
+    "lat": 39.92976,
+    "lng": -4.40051
+  },
+  "Cañada Juncosa|Albacete": {
+    "lat": 38.77159,
+    "lng": -2.15889
+  },
+  "Ciudad Real|Ciudad Real": {
+    "lat": 38.98542,
+    "lng": -3.92851
+  },
+  "Cuenca|Cuenca": {
+    "lat": 40.0661,
+    "lng": -2.13135
+  },
+  "El Carpio de Tajo|Toledo": {
+    "lat": 39.88742,
+    "lng": -4.45428
+  },
+  "El Provencio|Cuenca": {
+    "lat": 39.37591,
+    "lng": -2.57256
+  },
+  "Fuencaliente|Ciudad Real": {
+    "lat": 38.40503,
+    "lng": -4.30496
+  },
+  "Guadalajara|Guadalajara": {
+    "lat": 40.6327,
+    "lng": -3.16461
+  },
+  "Guadamur|Toledo": {
+    "lat": 39.81137,
+    "lng": -4.14888
+  },
+  "Hellín|Albacete": {
+    "lat": 38.51066,
+    "lng": -1.69951
+  },
+  "Honrubia|Cuenca": {
+    "lat": 39.61353,
+    "lng": -2.28075
+  },
+  "Horcajo de Santiago|Cuenca": {
+    "lat": 39.84216,
+    "lng": -2.99737
+  },
+  "Hoya-gonzalo|Albacete": {
+    "lat": 38.95776,
+    "lng": -1.5561
+  },
+  "Jadraque|Guadalajara": {
+    "lat": 40.92638,
+    "lng": -2.92267
+  },
+  "La Puebla de Almoradiel|Toledo": {
+    "lat": 39.59827,
+    "lng": -3.11861
+  },
+  "La Villa de Don Fadrique|Toledo": {
+    "lat": 39.61803,
+    "lng": -3.21823
+  },
+  "Ledaña|Cuenca": {
+    "lat": 39.35619,
+    "lng": -1.71576
+  },
+  "Liétor|Albacete": {
+    "lat": 38.54228,
+    "lng": -1.95581
+  },
+  "Los Yébenes|Toledo": {
+    "lat": 39.58234,
+    "lng": -3.87024
+  },
+  "Malagón|Ciudad Real": {
+    "lat": 39.16891,
+    "lng": -3.85145
+  },
+  "Maranchón|Guadalajara": {
+    "lat": 41.0465,
+    "lng": -2.20399
+  },
+  "Mondéjar|Guadalajara": {
+    "lat": 40.32276,
+    "lng": -3.10962
+  },
+  "Mora|Toledo": {
+    "lat": 39.68322,
+    "lng": -3.77278
+  },
+  "Navamorcuende|Toledo": {
+    "lat": 40.15754,
+    "lng": -4.78544
+  },
+  "Nuño Gómez|Toledo": {
+    "lat": 40.11499,
+    "lng": -4.61807
+  },
+  "Olías del Rey|Toledo": {
+    "lat": 39.94474,
+    "lng": -3.98725
+  },
+  "Priego|Cuenca": {
+    "lat": 40.4492,
+    "lng": -2.31346
+  },
+  "Puertollano|Ciudad Real": {
+    "lat": 38.68522,
+    "lng": -4.11117
+  },
+  "Ruidera|Ciudad Real": {
+    "lat": 38.97739,
+    "lng": -2.88371
+  },
+  "San Bartolomé de las Abiertas|Toledo": {
+    "lat": 39.8284,
+    "lng": -4.71871
+  },
+  "Sierra|Albacete": {
+    "lat": 38.56087,
+    "lng": -1.6593
+  },
+  "Socovos|Albacete": {
+    "lat": 38.33364,
+    "lng": -1.98363
+  },
+  "Socuéllamos|Ciudad Real": {
+    "lat": 39.2834,
+    "lng": -2.79046
+  },
+  "Talavera de la Reina|Toledo": {
+    "lat": 39.95224,
+    "lng": -4.89018
+  },
+  "Talavera la Nueva|Toledo": {
+    "lat": 39.93528,
+    "lng": -4.89177
+  },
+  "Tejadillos|Cuenca": {
+    "lat": 40.14014,
+    "lng": -1.63473
+  },
+  "Toledo|Toledo": {
+    "lat": 39.85589,
+    "lng": -4.02426
+  },
+  "Tomelloso|Ciudad Real": {
+    "lat": 39.15855,
+    "lng": -3.02149
+  },
+  "Torrijos|Toledo": {
+    "lat": 39.98086,
+    "lng": -4.28423
+  },
+  "Valdepeñas|Ciudad Real": {
+    "lat": 38.75946,
+    "lng": -3.38474
+  },
+  "Villaverde de Guadalimar|Albacete": {
+    "lat": 38.45989,
+    "lng": -2.50976
+  },
+  "Yepes|Toledo": {
+    "lat": 39.91774,
+    "lng": -3.6763
+  },
+  "Yeste|Albacete": {
+    "lat": 38.36693,
+    "lng": -2.31904
+  }
+}

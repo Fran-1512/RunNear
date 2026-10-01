@@ -1,0 +1,140 @@
+{
+ "generado": "2026-09-29",
+ "atribucion": "© OpenStreetMap contributors (ODbL)",
+ "niveles_l": [
+  [
+   8,
+   9,
+   512
+  ],
+  [
+   10,
+   11,
+   512
+  ],
+  [
+   12,
+   13,
+   512
+  ],
+  [
+   14,
+   18,
+   4096
+  ]
+ ],
+ "niveles_p": [
+  [
+   8,
+   9,
+   512
+  ],
+  [
+   10,
+   11,
+   512
+  ],
+  [
+   12,
+   18,
+   8192
+  ]
+ ],
+ "clases_l": [
+  "limite_municipal",
+  "limite_provincial",
+  "acequia",
+  "arroyo",
+  "canal",
+  "rio",
+  "ferrocarril",
+  "escaleras",
+  "sendero",
+  "pista",
+  "servicio",
+  "peatonal",
+  "calle",
+  "sin_clasificar",
+  "terciaria",
+  "secundaria",
+  "primaria",
+  "enlace",
+  "nacional",
+  "autovia"
+ ],
+ "clases_p": [
+  "cantera",
+  "frutal",
+  "vinedo",
+  "matorral",
+  "bosque",
+  "parque",
+  "cementerio",
+  "industrial",
+  "urbano",
+  "humedal",
+  "agua"
+ ],
+ "clases_t": [
+  "ciudad",
+  "villa",
+  "pueblo",
+  "barrio",
+  "aldea",
+  "paraje",
+  "pico"
+ ],
+ "fuente_t": {
+  "ciudad": 15,
+  "villa": 13,
+  "pueblo": 12,
+  "barrio": 11,
+  "aldea": 11,
+  "paraje": 10,
+  "pico": 10
+ },
+ "rangos": {
+  "p8": [
+   124,
+   95,
+   127,
+   98
+  ],
+  "p10": [
+   496,
+   382,
+   509,
+   395
+  ],
+  "p12": [
+   1984,
+   1530,
+   2039,
+   1580
+  ],
+  "l8": [
+   124,
+   95,
+   127,
+   98
+  ],
+  "l10": [
+   496,
+   382,
+   510,
+   395
+  ],
+  "l12": [
+   1985,
+   1528,
+   2040,
+   1581
+  ],
+  "l14": [
+   7941,
+   6115,
+   8162,
+   6324
+  ]
+ }
+}
