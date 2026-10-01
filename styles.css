@@ -1657,42 +1657,67 @@ body.dark-theme {
     display: none;
   }
 
+  /* Pestañas Lista / Mapa ARRIBA, justo bajo la cabecera: abajo las tapaba la
+     barra de herramientas del navegador en iPhone (Chrome/Safari flotan sobre la web) */
+  .app-header {
+    order: 0;
+  }
+
   .pestanas-movil {
+    order: 1;
     flex: none;
     display: flex;
-    background: rgba(12, 18, 32, 0.98);
-    border-top: 1px solid var(--glass-border);
-    padding-bottom: env(safe-area-inset-bottom);
+    gap: 6px;
+    padding: 0 14px 10px;
+    background: rgba(12, 18, 32, 0.85);
+    border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
+  }
+
+  .main-layout {
+    order: 2;
   }
 
   .pestana {
     flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 3px;
-    padding: 9px 0 8px;
-    background: none;
-    border: none;
-    color: var(--text-dim);
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
   }
 
   .pestana.activa {
-    color: #38bdf8;
+    color: #ffffff;
+    background: rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.6);
   }
 
   .pestana-contador {
     opacity: 0.8;
   }
 
-  /* Los avisos, por encima de la barra de pestañas */
+  /* Zoom y créditos del mapa por encima de la barra del navegador */
+  .map-panel .leaflet-bottom {
+    bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  /* Margen final para que la última carrera no quede bajo la barra del navegador */
+  .races-list-scroll {
+    padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  }
+
+  /* Avisos por encima de la barra del navegador */
   .toast-container {
-    bottom: calc(76px + env(safe-area-inset-bottom));
+    bottom: calc(90px + env(safe-area-inset-bottom));
   }
 
   /* La leyenda tapaba los créditos del mapa */
@@ -1759,7 +1784,7 @@ body.dark-theme {
   }
 
   .races-list-scroll {
-    padding: 12px;
+    padding: 12px 12px calc(90px + env(safe-area-inset-bottom));
   }
 
   .race-card {
