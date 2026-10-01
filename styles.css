@@ -1524,8 +1524,46 @@ body.dark-theme {
 }
 
 /* Tablet y móvil: pantalla fija con dos vistas a pantalla completa (Lista / Mapa)
-   y una barra de pestañas abajo, como las apps de mapas */
-@media (max-width: 960px) {
+   y una barra de pestañas abajo, como las apps de mapas.
+   La segunda condición cubre móviles y tablets táctiles aunque el navegador
+   esté en modo "versión para ordenador" (que finge una pantalla de ~980 px). */
+@media (max-width: 960px), (pointer: coarse) and (max-width: 1200px) {
+  /* 16px evita que el móvil haga zoom al tocar el buscador */
+  .search-input {
+    font-size: 16px;
+  }
+
+  /* Filtros plegados por defecto detrás del botón "Filtros" */
+  .btn-toggle-filtros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-toggle-filtros.activo {
+    border-color: var(--color-accent);
+    background: rgba(99, 102, 241, 0.18);
+  }
+
+  .filtros-extra {
+    display: none;
+  }
+
+  .filtros-extra.abierto {
+    display: flex;
+  }
+
   body.dark-theme {
     height: 100vh;
     height: 100dvh;
@@ -1704,42 +1742,6 @@ body.dark-theme {
 
   .filters-card {
     padding: 12px 14px;
-  }
-
-  /* 16px evita que el móvil haga zoom al tocar el buscador */
-  .search-input {
-    font-size: 16px;
-  }
-
-  /* Filtros plegados por defecto detrás del botón "Filtros" */
-  .btn-toggle-filtros {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    padding: 9px 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-md);
-    color: var(--text-main);
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .btn-toggle-filtros.activo {
-    border-color: var(--color-accent);
-    background: rgba(99, 102, 241, 0.18);
-  }
-
-  .filtros-extra {
-    display: none;
-  }
-
-  .filtros-extra.abierto {
-    display: flex;
   }
 
   .results-header {

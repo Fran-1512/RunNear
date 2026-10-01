@@ -763,7 +763,8 @@ function renderizarMarcadoresEnMapa(carreras) {
 // Pestañas Lista / Mapa (móvil y tablet)
 // ==========================================================================
 
-const consultaPantallaPequena = window.matchMedia("(max-width: 960px)");
+// Misma condición que el CSS de móvil (incluye táctiles en modo "versión para ordenador")
+const consultaPantallaPequena = window.matchMedia("(max-width: 960px), (pointer: coarse) and (max-width: 1200px)");
 
 function esPantallaPequena() {
   return consultaPantallaPequena.matches;
