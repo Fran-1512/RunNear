@@ -780,7 +780,12 @@ function cambiarVista(vista) {
   });
   // El mapa estaba oculto: Leaflet tiene que recalcular su tamaño antes de usarlo
   // (manteniendo el centro: el mapa pasa de tamaño 0 a pantalla completa)
-  if (vista === "mapa" && AppState.map) AppState.map.invalidateSize({ animate: false });
+  if (vista === "mapa" && AppState.map) {
+    AppState.map.invalidateSize({ animate: false });
+    // Algunos navegadores móviles aplican el cambio de diseño un instante después
+    requestAnimationFrame(() => AppState.map.invalidateSize({ animate: false }));
+    setTimeout(() => AppState.map.invalidateSize({ animate: false }), 300);
+  }
 }
 
 function centrarEnCarrera(carreraId) {

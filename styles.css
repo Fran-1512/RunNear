@@ -1619,15 +1619,25 @@ body.dark-theme {
     display: block;
     height: auto;
     overflow: hidden;
+    position: relative;
   }
 
-  .map-panel {
-    height: 100%;
+  /* Cada vista se posiciona de forma absoluta sobre todo el hueco disponible.
+     (Con height: 100% Safari y algunos Android calculaban 0 px y el mapa no salía) */
+  .map-panel,
+  .sidebar-panel,
+  .map-view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
   }
 
   /* La lista (con filtros) se desliza dentro de su propia vista */
   .sidebar-panel {
-    height: 100%;
     min-width: 0;
     border-right: none;
     overflow-y: auto;
