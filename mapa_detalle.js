@@ -540,7 +540,8 @@ const MapaDetalle = (() => {
       bounds: limitesTeselas(meta.rangos["l" + n], n),
       updateWhenZooming: false,
       keepBuffer: 3,
-      attribution: `Calles y pueblos: ${meta.atribucion}`
+      // Obligatorio por la licencia ODbL de OpenStreetMap
+      attribution: meta.atribucion
     });
   }
 

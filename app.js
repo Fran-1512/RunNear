@@ -276,7 +276,7 @@ function zoomMinimoEtiqueta(p) {
 async function crearMapaPropio() {
   const resp = await fetch("mapa/mapa_base.json");
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-  const { capas, fuente } = await resp.json();
+  const { capas } = await resp.json();
 
   // Panel propio por debajo de marcadores y del círculo de radio
   if (!AppState.map.getPane("mapaBase")) {
@@ -288,7 +288,8 @@ async function crearMapaPropio() {
   const renderer = L.canvas({ pane: "mapaBase", padding: 0.5 });
   const opcionesBase = { pane: "mapaBase", renderer, interactive: false };
 
-  const grupo = L.layerGroup([], { attribution: `Mapa: ${fuente}` });
+  // Natural Earth es de dominio público: basta una mención corta
+  const grupo = L.layerGroup([], { attribution: "Natural Earth" });
 
   L.geoJSON(capas.paises, { ...opcionesBase, style: ESTILO_MAPA.pais }).addTo(grupo);
   L.geoJSON(capas.provincias, {
@@ -602,8 +603,6 @@ function renderizarListadoCarreras(carreras) {
   if (!container) return;
 
   if (countBadge) countBadge.textContent = carreras.length;
-  const contadorPestana = document.getElementById("pestana-contador");
-  if (contadorPestana) contadorPestana.textContent = `(${carreras.length})`;
 
   if (carreras.length === 0) {
     container.innerHTML = `
@@ -699,8 +698,7 @@ function renderizarListadoCarreras(carreras) {
       // Si hizo clic directamente en el enlace externo, no abrir modal
       if (e.target.closest(".btn-external")) return;
       abrirModalDetalleCarrera(c);
-      // En móvil no se cambia a la pestaña del mapa por detrás de la ficha
-      if (!esPantallaPequena()) centrarEnCarrera(c.id);
+      centrarEnCarrera(c.id);
     });
 
     // Hover sincronizado con marcador del mapa
@@ -796,10 +794,6 @@ function renderizarMarcadoresEnMapa(carreras) {
   });
 }
 
-// ==========================================================================
-// Pestañas Lista / Mapa (móvil y tablet)
-// ==========================================================================
-
 // Misma condición que el CSS de móvil (incluye táctiles en modo "versión para ordenador")
 const consultaPantallaPequena = window.matchMedia("(max-width: 960px), (pointer: coarse) and (max-width: 1200px)");
 
@@ -807,28 +801,9 @@ function esPantallaPequena() {
   return consultaPantallaPequena.matches;
 }
 
-function cambiarVista(vista) {
-  document.body.classList.toggle("vista-lista", vista === "lista");
-  document.body.classList.toggle("vista-mapa", vista === "mapa");
-  document.querySelectorAll(".pestana").forEach(boton => {
-    const activa = boton.dataset.vista === vista;
-    boton.classList.toggle("activa", activa);
-    boton.setAttribute("aria-pressed", String(activa));
-  });
-  // El mapa estaba oculto: Leaflet tiene que recalcular su tamaño antes de usarlo
-  // (manteniendo el centro: el mapa pasa de tamaño 0 a pantalla completa)
-  if (vista === "mapa" && AppState.map) {
-    AppState.map.invalidateSize({ animate: false });
-    // Algunos navegadores móviles aplican el cambio de diseño un instante después
-    requestAnimationFrame(() => AppState.map.invalidateSize({ animate: false }));
-    setTimeout(() => AppState.map.invalidateSize({ animate: false }), 300);
-  }
-}
-
 function centrarEnCarrera(carreraId) {
   const marker = AppState.mapMarkers[carreraId];
   if (!marker || !AppState.map) return;
-  if (esPantallaPequena()) cambiarVista("mapa");
 
   // Si el marcador está dentro de un cluster, hacer zoom hasta mostrarlo
   AppState.clusterGroup.zoomToShowLayer(marker, () => {
@@ -1167,11 +1142,6 @@ function configurarEventListeners() {
       aplicarFiltrosYRenderizar();
     });
   }
-
-  // Pestañas Lista / Mapa
-  document.querySelectorAll(".pestana").forEach(boton => {
-    boton.addEventListener("click", () => cambiarVista(boton.dataset.vista));
-  });
 
   // Mostrar/ocultar filtros en móvil
   const btnFiltros = document.getElementById("btn-toggle-filtros");

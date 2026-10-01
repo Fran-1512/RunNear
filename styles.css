@@ -1518,13 +1518,7 @@ body.dark-theme {
   display: none;
 }
 
-/* Pestañas Lista / Mapa: solo en pantallas pequeñas */
-.pestanas-movil {
-  display: none;
-}
-
-/* Tablet y móvil: pantalla fija con dos vistas a pantalla completa (Lista / Mapa)
-   y una barra de pestañas abajo, como las apps de mapas.
+/* Tablet y móvil: pantalla fija con el mapa arriba y la lista debajo.
    La segunda condición cubre móviles y tablets táctiles aunque el navegador
    esté en modo "versión para ordenador" (que finge una pantalla de ~980 px). */
 @media (max-width: 960px), (pointer: coarse) and (max-width: 1200px) {
@@ -1612,7 +1606,7 @@ body.dark-theme {
     max-width: 150px;
   }
 
-  /* El contenido ocupa todo el alto entre la cabecera y las pestañas */
+  /* El contenido ocupa todo el alto bajo la cabecera */
   .main-layout {
     flex: 1;
     min-height: 0;
@@ -1622,10 +1616,23 @@ body.dark-theme {
     position: relative;
   }
 
-  /* Cada vista se posiciona de forma absoluta sobre todo el hueco disponible.
-     (Con height: 100% Safari y algunos Android calculaban 0 px y el mapa no salía) */
+  /* Como en el ordenador, mapa y lista a la vez: mapa arriba (fijo) y lista debajo
+     con su propio desplazamiento, para que deslizar sobre la lista no mueva el mapa.
+     Posición absoluta: con height en % Safari y algunos Android calculaban 0 px. */
   .map-panel,
-  .sidebar-panel,
+  .sidebar-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+
+  .map-panel {
+    top: 0;
+    height: 42%;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
   .map-view {
     position: absolute;
     top: 0;
@@ -1636,8 +1643,11 @@ body.dark-theme {
     height: auto;
   }
 
-  /* La lista (con filtros) se desliza dentro de su propia vista */
+  /* La lista (con filtros) se desliza en su propia zona */
   .sidebar-panel {
+    top: 42%;
+    bottom: 0;
+    height: auto;
     min-width: 0;
     border-right: none;
     overflow-y: auto;
@@ -1649,65 +1659,6 @@ body.dark-theme {
   .races-list-scroll {
     flex: none;
     overflow: visible;
-  }
-
-  /* Solo se ve la vista de la pestaña activa */
-  body.vista-lista .map-panel,
-  body.vista-mapa .sidebar-panel {
-    display: none;
-  }
-
-  /* Pestañas Lista / Mapa ARRIBA, justo bajo la cabecera: abajo las tapaba la
-     barra de herramientas del navegador en iPhone (Chrome/Safari flotan sobre la web) */
-  .app-header {
-    order: 0;
-  }
-
-  .pestanas-movil {
-    order: 1;
-    flex: none;
-    display: flex;
-    gap: 6px;
-    padding: 0 14px 10px;
-    background: rgba(12, 18, 32, 0.85);
-    border-bottom: 1px solid var(--glass-border);
-    z-index: 1000;
-  }
-
-  .main-layout {
-    order: 2;
-  }
-
-  .pestana {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 9px 0;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-md);
-    color: var(--text-muted);
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .pestana.activa {
-    color: #ffffff;
-    background: rgba(99, 102, 241, 0.3);
-    border-color: rgba(99, 102, 241, 0.6);
-  }
-
-  .pestana-contador {
-    opacity: 0.8;
-  }
-
-  /* Zoom y créditos del mapa por encima de la barra del navegador */
-  .map-panel .leaflet-bottom {
-    bottom: calc(80px + env(safe-area-inset-bottom));
   }
 
   /* Margen final para que la última carrera no quede bajo la barra del navegador */
