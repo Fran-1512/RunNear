@@ -17,9 +17,10 @@
   <link rel="stylesheet" href="vendor/markercluster/MarkerCluster.Default.css" />
 
   <!-- Estilos de la aplicación -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
-<body class="dark-theme">
+<body class="dark-theme vista-lista">
   <!-- Cabecera Principal -->
   <header class="app-header" id="app-header">
     <div class="header-left">
@@ -409,6 +410,29 @@
   </div>
 
   <!-- Toast Notification Container -->
+  <!-- Pestañas Lista / Mapa (solo en móvil y tablet) -->
+  <nav class="pestanas-movil" id="pestanas-movil" aria-label="Cambiar entre lista y mapa">
+    <button class="pestana activa" data-vista="lista" aria-pressed="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+        <line x1="8" y1="6" x2="21" y2="6"></line>
+        <line x1="8" y1="12" x2="21" y2="12"></line>
+        <line x1="8" y1="18" x2="21" y2="18"></line>
+        <circle cx="4" cy="6" r="1"></circle>
+        <circle cx="4" cy="12" r="1"></circle>
+        <circle cx="4" cy="18" r="1"></circle>
+      </svg>
+      <span>Lista <span class="pestana-contador" id="pestana-contador"></span></span>
+    </button>
+    <button class="pestana" data-vista="mapa" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+        <line x1="8" y1="2" x2="8" y2="18"></line>
+        <line x1="16" y1="6" x2="16" y2="22"></line>
+      </svg>
+      <span>Mapa</span>
+    </button>
+  </nav>
+
   <div class="toast-container" id="toast-container" aria-live="polite"></div>
 
   <!-- Leaflet JS -->
@@ -416,8 +440,8 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js"></script>
+  <script src="mapa_detalle.js?v=4"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

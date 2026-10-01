@@ -155,7 +155,7 @@ function inicializarMapa() {
   // Si el contenedor cambia de tamaño después de crear el mapa (carga de fuentes, giro del
   // móvil, cambio de diseño...), Leaflet debe recalcularlo; si no, deja bandas sin dibujar
   if (window.ResizeObserver) {
-    new ResizeObserver(() => AppState.map.invalidateSize({ pan: false })).observe(mapElement);
+    new ResizeObserver(() => AppState.map.invalidateSize({ animate: false })).observe(mapElement);
   }
 
   // Mapa base propio: sin servidores de mapas externos
@@ -565,6 +565,8 @@ function renderizarListadoCarreras(carreras) {
   if (!container) return;
 
   if (countBadge) countBadge.textContent = carreras.length;
+  const contadorPestana = document.getElementById("pestana-contador");
+  if (contadorPestana) contadorPestana.textContent = `(${carreras.length})`;
 
   if (carreras.length === 0) {
     container.innerHTML = `
@@ -660,7 +662,8 @@ function renderizarListadoCarreras(carreras) {
       // Si hizo clic directamente en el enlace externo, no abrir modal
       if (e.target.closest(".btn-external")) return;
       abrirModalDetalleCarrera(c);
-      centrarEnCarrera(c.id);
+      // En móvil no se cambia a la pestaña del mapa por detrás de la ficha
+      if (!esPantallaPequena()) centrarEnCarrera(c.id);
     });
 
     // Hover sincronizado con marcador del mapa
@@ -756,9 +759,33 @@ function renderizarMarcadoresEnMapa(carreras) {
   });
 }
 
+// ==========================================================================
+// Pestañas Lista / Mapa (móvil y tablet)
+// ==========================================================================
+
+const consultaPantallaPequena = window.matchMedia("(max-width: 960px)");
+
+function esPantallaPequena() {
+  return consultaPantallaPequena.matches;
+}
+
+function cambiarVista(vista) {
+  document.body.classList.toggle("vista-lista", vista === "lista");
+  document.body.classList.toggle("vista-mapa", vista === "mapa");
+  document.querySelectorAll(".pestana").forEach(boton => {
+    const activa = boton.dataset.vista === vista;
+    boton.classList.toggle("activa", activa);
+    boton.setAttribute("aria-pressed", String(activa));
+  });
+  // El mapa estaba oculto: Leaflet tiene que recalcular su tamaño antes de usarlo
+  // (manteniendo el centro: el mapa pasa de tamaño 0 a pantalla completa)
+  if (vista === "mapa" && AppState.map) AppState.map.invalidateSize({ animate: false });
+}
+
 function centrarEnCarrera(carreraId) {
   const marker = AppState.mapMarkers[carreraId];
   if (!marker || !AppState.map) return;
+  if (esPantallaPequena()) cambiarVista("mapa");
 
   // Si el marcador está dentro de un cluster, hacer zoom hasta mostrarlo
   AppState.clusterGroup.zoomToShowLayer(marker, () => {
@@ -1097,6 +1124,11 @@ function configurarEventListeners() {
       aplicarFiltrosYRenderizar();
     });
   }
+
+  // Pestañas Lista / Mapa
+  document.querySelectorAll(".pestana").forEach(boton => {
+    boton.addEventListener("click", () => cambiarVista(boton.dataset.vista));
+  });
 
   // Mostrar/ocultar filtros en móvil
   const btnFiltros = document.getElementById("btn-toggle-filtros");

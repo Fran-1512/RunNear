@@ -1518,21 +1518,29 @@ body.dark-theme {
   display: none;
 }
 
-/* Tablet y móvil: la página se desplaza (mapa arriba, lista debajo) */
+/* Pestañas Lista / Mapa: solo en pantallas pequeñas */
+.pestanas-movil {
+  display: none;
+}
+
+/* Tablet y móvil: pantalla fija con dos vistas a pantalla completa (Lista / Mapa)
+   y una barra de pestañas abajo, como las apps de mapas */
 @media (max-width: 960px) {
   body.dark-theme {
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
   .app-header {
+    flex: none;
     height: auto;
     min-height: 0;
     flex-wrap: wrap;
     padding: 10px 14px;
     gap: 10px;
-    position: sticky;
-    top: 0;
   }
 
   .header-left {
@@ -1566,31 +1574,77 @@ body.dark-theme {
     max-width: 150px;
   }
 
+  /* El contenido ocupa todo el alto entre la cabecera y las pestañas */
   .main-layout {
-    display: flex;
-    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    display: block;
     height: auto;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .map-panel {
-    order: 1;
-    height: 55vh;
-    height: 55svh;
-    flex: none;
+    height: 100%;
   }
 
+  /* La lista (con filtros) se desliza dentro de su propia vista */
   .sidebar-panel {
-    order: 2;
-    height: auto;
+    height: 100%;
     min-width: 0;
-    overflow: visible;
     border-right: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .races-list-scroll {
     flex: none;
     overflow: visible;
+  }
+
+  /* Solo se ve la vista de la pestaña activa */
+  body.vista-lista .map-panel,
+  body.vista-mapa .sidebar-panel {
+    display: none;
+  }
+
+  .pestanas-movil {
+    flex: none;
+    display: flex;
+    background: rgba(12, 18, 32, 0.98);
+    border-top: 1px solid var(--glass-border);
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 1000;
+  }
+
+  .pestana {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 9px 0 8px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .pestana.activa {
+    color: #38bdf8;
+  }
+
+  .pestana-contador {
+    opacity: 0.8;
+  }
+
+  /* Los avisos, por encima de la barra de pestañas */
+  .toast-container {
+    bottom: calc(76px + env(safe-area-inset-bottom));
   }
 
   /* La leyenda tapaba los créditos del mapa */
