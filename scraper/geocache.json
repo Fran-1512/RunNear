@@ -11,6 +11,10 @@
     "lat": 39.19289,
     "lng": -1.42899
   },
+  "Alcaraz|Albacete": {
+    "lat": 38.66475,
+    "lng": -2.49108
+  },
   "Alcázar de San Juan|Ciudad Real": {
     "lat": 39.38998,
     "lng": -3.21014
@@ -98,6 +102,10 @@
   "La Puebla de Almoradiel|Toledo": {
     "lat": 39.59827,
     "lng": -3.11861
+  },
+  "La Solana|Ciudad Real": {
+    "lat": 38.94194,
+    "lng": -3.23653
   },
   "La Villa de Don Fadrique|Toledo": {
     "lat": 39.61803,

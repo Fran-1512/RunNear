@@ -4,5 +4,10 @@
     "_motivo": "Carreras CLM la sitúa en Cuenca (CU), pero es en Fuencaliente (Ciudad Real): pertenece a las Trail Series Ciudad Real y así la recoge carrerasdemontana.com",
     "municipio": "Fuencaliente",
     "provincia": "Ciudad Real"
+  },
+  "clm-506bf5bf": {
+    "_motivo": "Carreras CLM la sitúa en Mora (Toledo), pero el 'Moral Extreme' es en Moral de Calatrava (Ciudad Real), como indican su web de inscripción y Running.life",
+    "municipio": "Moral de Calatrava",
+    "provincia": "Ciudad Real"
   }
 }

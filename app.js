@@ -1014,8 +1014,11 @@ function abrirModalDetalleCarrera(carrera) {
   // Aviso de procedencia del dato
   const avisoTexto = document.getElementById("modal-notice-text");
   if (carrera.fuente && carrera.fuente.nombre) {
+    // Si la carrera aparece en varias webs, se nombran todas
+    const otras = (carrera.fuentes || []).filter(n => n !== carrera.fuente.nombre);
     avisoTexto.innerHTML = `<strong>Fuente:</strong> datos recopilados de
-      <a href="${escapeHtml(urlSegura(carrera.fuente.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(carrera.fuente.nombre)}</a>.
+      <a href="${escapeHtml(urlSegura(carrera.fuente.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(carrera.fuente.nombre)}</a>${otras.length
+        ? `, contrastados con ${escapeHtml(otras.join(", "))}` : ""}.
       Confirma fecha y detalles en la web oficial antes de inscribirte.`;
   } else {
     avisoTexto.innerHTML = `<strong>Dato de prueba:</strong> registro ficticio del prototipo.`;

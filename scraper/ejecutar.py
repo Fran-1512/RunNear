@@ -1,5 +1,6 @@
 """
-Ejecuta todos los adaptadores, geocodifica, deduplica y escribe carreras.json.
+Ejecuta todos los adaptadores, une las carreras sin duplicados, geocodifica,
+completa detalles (precio, desnivel, inscritos...) y escribe carreras.json.
 
 Uso (desde la carpeta del proyecto):
     py -m scraper.ejecutar
@@ -10,8 +11,8 @@ import os
 import sys
 from datetime import date
 
-from . import detalles, geocodificador
-from .fuentes import carrerasclm
+from . import detalles, fusion, geocodificador
+from .fuentes import carrerasclm, carrerasciudadreal, carreraspopulares, dipualba, mayayo, runnea, runninglife
 
 if sys.platform.startswith("win"):
     try:
@@ -22,6 +23,18 @@ if sys.platform.startswith("win"):
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SALIDA = os.path.join(RAIZ, "carreras.json")
 CORRECCIONES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "correcciones.json")
+
+# En orden de PRIORIDAD: ante una carrera repetida se conservan los datos de la primera
+# fuente y las demás solo completan lo que falte.
+ADAPTADORES = [
+    carrerasclm,          # calendario regional, el más completo
+    dipualba,             # circuitos de la Diputación de Albacete (fuente oficial)
+    carrerasciudadreal,   # circuito de Ciudad Real (aporta la hora de salida)
+    mayayo,               # calendario federativo de montaña (aporta desniveles)
+    carreraspopulares,    # calendario nacional
+    runnea,               # calendario nacional
+    runninglife,          # calendario regional amplio (aporta coordenadas exactas)
+]
 
 
 def aplicar_correcciones(carreras):
@@ -35,18 +48,10 @@ def aplicar_correcciones(carreras):
             if not campo.startswith("_"):
                 c[campo] = valor
 
-ADAPTADORES = [carrerasclm]
-
-
-def _clave_duplicado(c):
-    """Misma fecha + mismo municipio + nombre muy parecido = misma carrera."""
-    nombre = "".join(ch for ch in c["nombre"].lower() if ch.isalnum())
-    return (c["fecha"], c["municipio"].lower(), nombre[:25])
-
 
 def main():
     hoy = date.today().isoformat()
-    todas = []
+    listas = []
 
     for adaptador in ADAPTADORES:
         print(f"[{adaptador.NOMBRE}] descargando...")
@@ -55,36 +60,45 @@ def main():
         except Exception as e:
             print(f"[{adaptador.NOMBRE}] ERROR: {e}")
             continue
-        futuras = [c for c in carreras if c["fecha"] >= hoy]
-        print(f"[{adaptador.NOMBRE}] {len(carreras)} carreras a pie, {len(futuras)} futuras")
+        futuras = [c for c in carreras if c.get("fecha") and c["fecha"] >= hoy and c.get("municipio")]
+        print(f"[{adaptador.NOMBRE}] {len(carreras)} carreras, {len(futuras)} futuras")
         if not carreras:
             print(f"[{adaptador.NOMBRE}] AVISO: 0 resultados, revisar el adaptador")
-        todas.extend(futuras)
+        # Correcciones antes de unir, para que la detección de duplicados use datos buenos
+        aplicar_correcciones(futuras)
+        listas.append((adaptador.NOMBRE, futuras))
 
-    # Antes de deduplicar y geocodificar, para que usen los datos ya corregidos
-    aplicar_correcciones(todas)
+    # Unir fuentes sin duplicados
+    unicas, estadisticas = fusion.unir(listas)
+    print("Unión de fuentes:")
+    for nombre, e in estadisticas.items():
+        print(f"  {nombre}: {e['nuevas']} nuevas, {e['ya_existentes']} ya estaban (completadas)")
 
-    # Deduplicar entre fuentes (se queda la primera)
-    vistas = set()
-    unicas = []
-    for c in todas:
-        clave = _clave_duplicado(c)
-        if clave in vistas:
-            continue
-        vistas.add(clave)
-        unicas.append(c)
+    # Running.life no da la web oficial: se busca en su ficha (solo carreras nuevas)
+    pendientes = [c for c in unicas if c["id"].startswith("rl-") and fusion.es_agregador(c.get("url_oficial"))]
+    if pendientes:
+        print(f"Buscando la web oficial de {len(pendientes)} carreras de Running.life...")
+        for c in pendientes:
+            runninglife.completar_web_oficial(c)
+        # Con su web ya conocida, alguna resulta ser una carrera que ya teníamos
+        unicas, uniones = fusion.unir_por_web(unicas)
+        if uniones:
+            print(f"  {uniones} de ellas ya estaban con otro nombre (misma web oficial): unidas")
 
-    # Geocodificar por municipio (cacheado)
-    print(f"Geocodificando {len({(c['municipio'], c['provincia']) for c in unicas})} municipios...")
+    # Geocodificar por municipio (cacheado) las que no traen coordenadas
+    sin_ubicacion = [c for c in unicas if not c.get("ubicacion")]
+    print(f"Geocodificando {len({(c['municipio'], c['provincia']) for c in sin_ubicacion})} municipios...")
     sin_coords = []
     resultado = []
     for c in unicas:
-        coords = geocodificador.geocodificar(c["municipio"], c["provincia"])
-        if not coords:
-            sin_coords.append(f"{c['municipio']} ({c['provincia']}) - {c['nombre']}")
-            continue
-        c["ubicacion"] = coords
+        if not c.get("ubicacion"):
+            coords = geocodificador.geocodificar(c["municipio"], c["provincia"])
+            if not coords:
+                sin_coords.append(f"{c['municipio']} ({c['provincia']}) - {c['nombre']}")
+                continue
+            c["ubicacion"] = coords
         c["actualizado"] = hoy
+        c.pop("url_ficha_fuente", None)
         resultado.append(c)
     geocodificador.guardar_cache()
 
@@ -98,7 +112,7 @@ def main():
         print("AVISO: 0 carreras obtenidas; se conserva el carreras.json actual.")
         return False
 
-    # Precio y desnivel desde la web de inscripción de cada carrera (cacheado semanalmente)
+    # Precio, desnivel, inscritos... desde la web de inscripción de cada carrera (cacheado)
     print("Leyendo precio y desnivel de las webs de inscripción...")
     try:
         detalles.enriquecer(resultado)
@@ -106,7 +120,7 @@ def main():
         print(f"  [detalles] ERROR (se continúa sin precio/desnivel): {e}")
 
     # Escritura atómica: el servidor nunca lee un fichero a medio escribir
-    resultado.sort(key=lambda c: c["fecha"])
+    resultado.sort(key=lambda c: (c["fecha"], c["nombre"]))
     temporal = SALIDA + ".tmp"
     with open(temporal, "w", encoding="utf-8") as f:
         json.dump(resultado, f, ensure_ascii=False, indent=2)

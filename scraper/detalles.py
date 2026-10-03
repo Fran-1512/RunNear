@@ -12,12 +12,10 @@ import html as html_lib
 import json
 import os
 import re
-import urllib.error
 from datetime import date, timedelta
-from urllib import robotparser
-from urllib.parse import urlparse
 
-from .comun import USER_AGENT, descargar
+from .comun import descargar, permitido as _permitido, texto_visible as _texto_visible
+from .fusion import AGREGADORES
 
 CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "detalles_cache.json")
 # Los inscritos cambian a diario: cada página se revisa como mucho cada 2 días
@@ -29,35 +27,6 @@ VERSION_EXTRACCION = 4
 PRECIO_MIN, PRECIO_MAX = 5.0, 300.0
 DESNIVEL_MIN, DESNIVEL_MAX = 50, 8000
 INSCRITOS_MIN, INSCRITOS_MAX = 10, 30000
-
-_robots = {}
-
-
-def _permitido(url):
-    """Consulta (y cachea en memoria) el robots.txt del sitio."""
-    p = urlparse(url)
-    base = f"{p.scheme}://{p.netloc}"
-    if base not in _robots:
-        rp = robotparser.RobotFileParser()
-        try:
-            rp.parse(descargar(base + "/robots.txt", timeout=15).splitlines())
-        except urllib.error.HTTPError as e:
-            # Mismo criterio que la librería estándar: 401/403 = prohibido, otros (404) = permitido
-            if e.code in (401, 403):
-                rp.disallow_all = True
-            else:
-                rp.allow_all = True
-        except Exception:
-            rp.disallow_all = True  # ante la duda, no visitar
-        _robots[base] = rp
-    return _robots[base].can_fetch(USER_AGENT, url)
-
-
-def _texto_visible(h):
-    h = re.sub(r"<(script|style)\b.*?</\1>", " ", h, flags=re.S | re.I)
-    h = re.sub(r"<[^>]+>", " ", h)
-    return re.sub(r"\s+", " ", html_lib.unescape(h))
-
 
 def _numero_decimal(s):
     """'20.00' / '9,00' / '15' -> float"""
@@ -200,7 +169,8 @@ def enriquecer(carreras):
 
     for c in carreras:
         url = c.get("url_oficial")
-        if not url:
+        # Sin web propia o con la página de un agregador: no hay precio fiable que leer
+        if not url or any(a in url for a in AGREGADORES):
             continue
         entrada = cache.get(url)
 

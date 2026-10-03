@@ -1,4 +1,13 @@
 {
+  "https://albaceterunning.com/san-silvestre-2/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
+  },
   "https://carreras.dxtchiprun.es/carrera/10k-y-5k-la-puebla-de-almoradiel-2026": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
@@ -71,6 +80,15 @@
     "precio_desde": 10.0,
     "version": 4
   },
+  "https://carrerasciudadreal.es/evento/10k-la-solana-2026/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
+  },
   "https://carrerasciudadreal.es/evento/10k-valdepenas-2027": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
@@ -107,6 +125,15 @@
     "precio_desde": 10.0,
     "version": 4
   },
+  "https://crono3.es/evento/10k-2a-carrera-benefica-latue-2026/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
+  },
   "https://crono3.es/evento/10k-de-alcazar-de-san-juan-2026/": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
@@ -137,6 +164,15 @@
   "https://crono3.es/evento/media-maraton-alcazar-de-san-juan-2026/": {
     "bloqueado_robots": true,
     "consultado": "2026-10-03"
+  },
+  "https://deportes.dipualba.es/deportes/FichaPrueba/1121": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 500,
+    "precio_desde": 9.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1123": {
     "consultado": "2026-10-03",
@@ -201,6 +237,15 @@
     "precio_desde": 10.0,
     "version": 4
   },
+  "https://deportes.dipualba.es/deportes/FichaPrueba/1189": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 500,
+    "precio_desde": 9.0,
+    "version": 4
+  },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1190": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
@@ -246,6 +291,15 @@
     "precio_desde": 10.0,
     "version": 4
   },
+  "https://deportes.dipualba.es/deportes/FichaPrueba/1311": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 100,
+    "precio_desde": 9.0,
+    "version": 4
+  },
   "https://dorsal1.com/producto/cxm-el-picon-de-beamud-x-circ-prov-cxm-dip-cuenca/": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
@@ -271,6 +325,24 @@
     "inscritos": null,
     "plazas_max": null,
     "precio_desde": 8.0,
+    "version": 4
+  },
+  "https://dorsal1.com/producto/x-san-silvestre-paseo-de-zapateria-tarancon/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
+  },
+  "https://elprivilegio100millas.com/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
     "version": 4
   },
   "https://eventos.runrunsports.com/inscripcion/i-maraton-imperial-de-toledo/modalidades": {
@@ -301,9 +373,13 @@
     "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara": {
     "consultado": "2026-10-03",
@@ -366,6 +442,42 @@
     "inscritos": null,
     "plazas_max": null,
     "precio_desde": null,
+    "version": 4
+  },
+  "https://mediamaratonazuqueca.es/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
+  },
+  "https://multiesport.es/event/2026-iv-edicion-alacera-trail/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 18.0,
+    "version": 4
+  },
+  "https://multiesport.es/event/2026-ix-trail-puerta-del-infierno/": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
+  },
+  "https://sportmaniacs.com/en/races/x-carrera-popular-xi-marcha-solidaria-por-la-diabetes": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
     "version": 4
   },
   "https://sportmaniacs.com/es/races/13ordm-carrera-popular-la-villa-de-don-fadrique-toledo": {
@@ -593,6 +705,15 @@
     "precio_desde": 19.0,
     "version": 4
   },
+  "https://web.rockthesport.com/es/event/talavera-hybrid-race": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 110.0,
+    "version": 4
+  },
   "https://web.rockthesport.com/es/event/trail-duende-martinico-mondejar": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": 850,
@@ -687,10 +808,48 @@
     "consultado": "2026-10-03",
     "version": 4
   },
+  "https://www.circuitomontanadipucuenca.com/index.php/calendario/71-ii-trail-almodovar-del-pinar?date=2026-10-18-10-00": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
+  },
   "https://www.deporticket.com/web-evento/13265-iv-nocturna-de-azuqueca": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
     "precio_desde": null
+  },
+  "https://www.facebook.com/Los102delacomarca/": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-03",
+    "version": 4
+  },
+  "https://www.inscripcionesweb.es/es/evento/aralba.zhtm": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-03",
+    "version": 4
+  },
+  "https://www.inscripcionesweb.es/es/evento/corre-con-tu-medico.zhtm": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-03",
+    "version": 4
+  },
+  "https://www.inscripcionesweb.es/es/evento/domund.zhtm": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-03",
+    "version": 4
+  },
+  "https://www.runnink.com/evento/media-maraton-y-10k-rural-villanueva-de-la-torre/102": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://www.timingsys.com/event/770": {
     "consultado": "2026-10-03",
@@ -744,6 +903,24 @@
     "inscritos": null,
     "plazas_max": null,
     "precio_desde": 10.0,
+    "version": 4
+  },
+  "https://www.timingsys.com/event/799": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
+  },
+  "https://youevent.es/sport/Tabla_FichaEventoDeportivo.asp?id_competicion=8632": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 19.0,
     "version": 4
   }
 }

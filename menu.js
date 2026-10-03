@@ -537,7 +537,9 @@ function mostrarAcercaDe() {
       <p><strong>RunNear</strong> reúne las carreras populares y de trail de Castilla-La Mancha en un mapa, para que encuentres las que tienes cerca.</p>
       <h3>¿De dónde salen los datos?</h3>
       <ul>
-        <li>El calendario se actualiza cada día a partir de <a href="https://carrerasclm.es" target="_blank" rel="noopener noreferrer">Carreras CLM</a>.</li>
+        <li>El calendario se actualiza cada día uniendo varias fuentes y quitando las carreras repetidas:
+          Carreras CLM, Deportes Dipualba, Circuito de Carreras de Ciudad Real, el calendario de montaña de la FDMCM
+          (vía Carreras de Montaña por Mayayo), carreraspopulares.com, Runnea y Running.life.</li>
         <li>Precios, desniveles e inscritos se leen de la web de inscripción de cada carrera.</li>
         <li>Confirma siempre fecha y detalles en la web oficial antes de inscribirte.</li>
       </ul>
