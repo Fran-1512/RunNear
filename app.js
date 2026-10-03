@@ -586,24 +586,34 @@ function aplicarFiltrosYRenderizar() {
   const userLat = AppState.userLocation.lat;
   const userLng = AppState.userLocation.lng;
 
+  // Sección del menú elegida (menu.js): puede traer su propia lista, filtro y orden
+  const vista = typeof obtenerVista === "function" ? obtenerVista(AppState.vista || "todas") : {};
+  const origen = vista.origen ? vista.origen() : AppState.races;
+
   // 1. Calcular distancia para cada carrera y aplicar filtros
-  let resultados = AppState.races.map(c => {
+  let resultados = origen.map(c => {
     const distUsuario = (c.ubicacion && c.ubicacion.lat && c.ubicacion.lng)
       ? calcularDistanciaHaversine(userLat, userLng, c.ubicacion.lat, c.ubicacion.lng)
       : null;
     return { ...c, distancia_usuario_km: distUsuario };
   });
 
-  // Ocultar carreras ya celebradas
-  resultados = resultados.filter(c => {
-    const dias = calcularDiasRestantes(c.fecha);
-    return dias === null || dias >= 0;
-  });
+  // Ocultar carreras ya celebradas (salvo en "Ya corridas")
+  if (!vista.incluirPasadas) {
+    resultados = resultados.filter(c => {
+      const dias = calcularDiasRestantes(c.fecha);
+      return dias === null || dias >= 0;
+    });
+  }
 
-  // Filtro por radio de proximidad. Al buscar por texto se ignora: quien busca una
-  // carrera concreta quiere encontrarla esté donde esté
+  // Filtro de la sección del menú
+  if (vista.filtro) resultados = resultados.filter(vista.filtro);
+
+  // Filtro por radio de proximidad. Al buscar por texto se ignora (quien busca una
+  // carrera concreta quiere encontrarla esté donde esté), y también en las secciones
+  // del menú que abarcan toda la región (provincias, destacadas, calendario...)
   const buscando = palabrasBusqueda(search).length > 0;
-  if (radiusKm > 0 && !buscando) {
+  if (radiusKm > 0 && !buscando && !vista.ignorarRadio) {
     resultados = resultados.filter(c => c.distancia_usuario_km === null || c.distancia_usuario_km <= radiusKm);
   }
 
@@ -634,8 +644,10 @@ function aplicarFiltrosYRenderizar() {
     });
   }
 
-  // Ordenación
-  if (sort === "distancia") {
+  // Ordenación (las secciones del menú pueden imponer la suya)
+  if (vista.orden) {
+    resultados.sort(vista.orden);
+  } else if (sort === "distancia") {
     resultados.sort((a, b) => (a.distancia_usuario_km ?? 99999) - (b.distancia_usuario_km ?? 99999));
   } else if (sort === "fecha") {
     resultados.sort((a, b) => (a.fecha || "9999").localeCompare(b.fecha || "9999"));
@@ -647,21 +659,26 @@ function aplicarFiltrosYRenderizar() {
 
   AppState.filteredRaces = resultados;
 
-  // Actualizar círculo de radio en el mapa
+  // Actualizar círculo de radio en el mapa (oculto cuando el radio no se aplica)
   if (AppState.radiusCircle) {
     AppState.radiusCircle.setRadius(radiusKm * 1000);
+    const radioActivo = !buscando && !vista.ignorarRadio;
+    AppState.radiusCircle.setStyle({ opacity: radioActivo ? 1 : 0, fillOpacity: radioActivo ? 0.05 : 0 });
   }
 
   // Subtítulo de la lista: aclarar que la búsqueda es en toda la región
   const subtitulo = document.getElementById("results-sub-text");
   if (subtitulo) {
     const ordenes = { distancia: "por proximidad", fecha: "por fecha", km: "por longitud", desnivel: "por desnivel" };
-    subtitulo.textContent = buscando ? "Buscando en toda la región" : `Ordenadas ${ordenes[sort] || ""}`;
+    subtitulo.textContent = buscando ? "Buscando en toda la región"
+      : vista.ignorarRadio ? "En toda la región"
+      : `Ordenadas ${ordenes[sort] || ""}`;
   }
 
   // Renderizar componentes
-  renderizarListadoCarreras(resultados);
+  renderizarListadoCarreras(resultados, vista.vacio);
   actualizarSugerencias(resultados);
+  if (typeof alAplicarVista === "function") alAplicarVista(resultados);
   renderizarMarcadoresEnMapa(resultados);
 }
 
@@ -669,7 +686,7 @@ function aplicarFiltrosYRenderizar() {
 // Renderizado del Listado de Carreras (DOM)
 // ==========================================================================
 
-function renderizarListadoCarreras(carreras) {
+function renderizarListadoCarreras(carreras, mensajeVacio) {
   const container = document.getElementById("races-list-container");
   const countBadge = document.getElementById("results-count-number");
   if (!container) return;
@@ -686,10 +703,12 @@ function renderizarListadoCarreras(carreras) {
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="8" y1="12" x2="16" y2="12"></line>
         </svg>
-        <h3>${buscando ? "No encontramos esa carrera" : "No hay carreras con estos filtros"}</h3>
+        <h3>${buscando ? "No encontramos esa carrera" : mensajeVacio ? "Nada por aquí todavía" : "No hay carreras con estos filtros"}</h3>
         <p>${buscando
           ? "Revisa cómo está escrito, prueba con menos palabras (por ejemplo, solo el pueblo) o quita los filtros de modalidad y distancia."
-          : "Prueba a ampliar el radio de búsqueda o seleccionar \"Todas\" las modalidades."}</p>
+          : mensajeVacio
+            ? escapeHtml(mensajeVacio)
+            : "Prueba a ampliar el radio de búsqueda o seleccionar \"Todas\" las modalidades."}</p>
         <button class="btn-secondary" onclick="resetearFiltros()" style="margin-top: 8px;">
           Restablecer filtros
         </button>
@@ -723,6 +742,9 @@ function renderizarListadoCarreras(carreras) {
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-label", `${c.nombre}, ${c.municipio}`);
 
+    const favorita = typeof esFavorita === "function" && esFavorita(c.id);
+    const tamano = typeof textoTamano === "function" ? textoTamano(c) : "";
+
     card.innerHTML = `
       <div class="card-header-row">
         <div class="badge-row">
@@ -734,9 +756,11 @@ function renderizarListadoCarreras(carreras) {
         </span>
       </div>
 
+      ${c.estado ? `<div class="aviso-estado">⚠️ Carrera ${escapeHtml(c.estado)} según su web de inscripción</div>` : ""}
       <h3 class="card-title">${escapeHtml(c.nombre)}</h3>
       <div class="card-location">
         <span>📍 ${escapeHtml(c.municipio || "Municipio")}, ${escapeHtml(c.provincia || "Provincia")}</span>
+        ${tamano ? `<span class="card-tamano">👥 ${escapeHtml(tamano)}</span>` : ""}
       </div>
 
       <div class="card-stats-grid">
@@ -760,6 +784,10 @@ function renderizarListadoCarreras(carreras) {
           📅 ${formatearFechaLegible(c.fecha)} <small style="color:#64748b;">${diasStr}</small>
         </span>
         <div class="card-btn-group">
+          <button class="card-mini-btn btn-favorita ${favorita ? "activa" : ""}" aria-pressed="${favorita}"
+            title="${favorita ? "Quitar de favoritas" : "Añadir a favoritas"}" aria-label="${favorita ? "Quitar de favoritas" : "Añadir a favoritas"}">
+            ${favorita ? "♥" : "♡"}
+          </button>
           <button class="card-mini-btn btn-focus-map" data-id="${c.id}" title="Centrar en el mapa">
             📍 Mapa
           </button>
@@ -772,8 +800,8 @@ function renderizarListadoCarreras(carreras) {
 
     // Interacciones de la tarjeta
     card.addEventListener("click", (e) => {
-      // Si hizo clic directamente en el enlace externo, no abrir modal
-      if (e.target.closest(".btn-external")) return;
+      // Si hizo clic directamente en el enlace externo o en favorita, no abrir modal
+      if (e.target.closest(".btn-external") || e.target.closest(".btn-favorita")) return;
       abrirModalDetalleCarrera(c);
       centrarEnCarrera(c.id);
     });
@@ -781,6 +809,20 @@ function renderizarListadoCarreras(carreras) {
     // Hover sincronizado con marcador del mapa
     card.addEventListener("mouseenter", () => resaltarMarcador(c.id, true));
     card.addEventListener("mouseleave", () => resaltarMarcador(c.id, false));
+
+    const btnFav = card.querySelector(".btn-favorita");
+    if (btnFav && typeof alternarFavorita === "function") {
+      btnFav.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const ahora = alternarFavorita(c.id);
+        btnFav.classList.toggle("activa", ahora);
+        btnFav.setAttribute("aria-pressed", String(ahora));
+        btnFav.textContent = ahora ? "♥" : "♡";
+        mostrarToast(ahora ? "❤️ Añadida a tus favoritas" : "Quitada de tus favoritas");
+        // En la sección de favoritas, la que se quita desaparece de la lista
+        if (AppState.vista === "favoritas") aplicarFiltrosYRenderizar();
+      });
+    }
 
     const btnMap = card.querySelector(".btn-focus-map");
     if (btnMap) {
@@ -958,13 +1000,16 @@ function abrirModalDetalleCarrera(carrera) {
   document.getElementById("modal-race-elevation").textContent = tieneDesnivel ? `+${carrera.desnivel_positivo_m} m` : "No publicado";
   document.getElementById("modal-elevation-summary").textContent = tieneDesnivel ? `+${carrera.desnivel_positivo_m} m D+` : "";
   document.getElementById("modal-race-price").textContent = carrera.precio_desde != null ? `Desde ${formatearPrecio(carrera.precio_desde)}` : "Consultar";
-  document.getElementById("modal-race-slots").textContent = carrera.plazas_restantes
-    ? `${carrera.plazas_restantes} dorsales`
+  const tamano = typeof textoTamano === "function" ? textoTamano(carrera) : "";
+  document.getElementById("modal-race-slots").textContent = tamano ? `👥 ${tamano}`
+    : carrera.plazas_restantes ? `${carrera.plazas_restantes} dorsales`
     : (carrera.precio_desde != null ? "Según web de inscripción" : "En la web oficial");
 
-  document.getElementById("modal-race-description").textContent = carrera.descripcion
-    || (carrera.circuito ? `Prueba incluida en: ${carrera.circuito}. ` : "")
-    + "Consulta horarios, recorrido y reglamento en la web oficial.";
+  document.getElementById("modal-race-description").textContent =
+    (carrera.estado ? `⚠️ Según su web de inscripción, esta carrera está ${carrera.estado}. ` : "")
+    + (carrera.descripcion
+      || (carrera.circuito ? `Prueba incluida en: ${carrera.circuito}. ` : "")
+      + "Consulta horarios, recorrido y reglamento en la web oficial.");
 
   // Aviso de procedencia del dato
   const avisoTexto = document.getElementById("modal-notice-text");
@@ -995,6 +1040,10 @@ function abrirModalDetalleCarrera(carrera) {
   } else {
     seccionPerfil.style.display = "none";
   }
+
+  // Botones de favorita / calendario / corrida (menu.js)
+  AppState.carreraAbierta = carrera;
+  if (typeof actualizarAccionesFicha === "function") actualizarAccionesFicha(carrera);
 
   // Mostrar modal
   modal.classList.remove("hidden");
@@ -1156,11 +1205,13 @@ function mostrarToast(mensaje, duracionMs = 3200) {
 }
 
 function resetearFiltros() {
+  // Radio por defecto elegido en Ajustes (menu.js)
+  const radio = typeof radioPorDefecto === "function" ? radioPorDefecto() : 50;
   AppState.filters = {
     search: "",
     type: "todas",
     distance: "todas",
-    radiusKm: 50,
+    radiusKm: radio,
     sort: "distancia"
   };
 
@@ -1171,7 +1222,7 @@ function resetearFiltros() {
   const clearBtn = document.getElementById("btn-clear-search");
   if (clearBtn) clearBtn.classList.add("hidden");
 
-  document.querySelectorAll(".segment-btn").forEach(btn => {
+  document.querySelectorAll(".filters-card .segment-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.type === "todas");
   });
 
@@ -1180,10 +1231,10 @@ function resetearFiltros() {
   });
 
   const slider = document.getElementById("filter-radius-slider");
-  if (slider) slider.value = 50;
+  if (slider) slider.value = radio;
 
   const radiusDisplay = document.getElementById("radius-display-value");
-  if (radiusDisplay) radiusDisplay.textContent = "50 km";
+  if (radiusDisplay) radiusDisplay.textContent = `${radio} km`;
 
   const sortSelect = document.getElementById("filter-sort-select");
   if (sortSelect) sortSelect.value = "distancia";
@@ -1264,9 +1315,9 @@ function configurarEventListeners() {
   }
 
   // Filtro por Modalidad (Segmented Control)
-  document.querySelectorAll(".segment-btn").forEach(btn => {
+  document.querySelectorAll(".filters-card .segment-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".segment-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".filters-card .segment-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       AppState.filters.type = btn.dataset.type;
       aplicarFiltrosYRenderizar();
@@ -1387,20 +1438,44 @@ function registrarServiceWorker() {
   navigator.serviceWorker.register("sw.js").catch(err => console.warn("Service worker no registrado:", err));
 }
 
+// Aviso de instalación que ofrece el navegador (Android, Chrome/Edge de escritorio)
+let avisoInstalacion = null;
+
+function appYaInstalada() {
+  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+function esDispositivoIOS() {
+  return /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+}
+
+/** Botón "Instalar app" de la cabecera y opción del menú */
+async function lanzarInstalacion() {
+  const boton = document.getElementById("btn-instalar");
+  if (appYaInstalada()) {
+    mostrarToast("RunNear ya está instalada en este dispositivo");
+  } else if (avisoInstalacion) {
+    avisoInstalacion.prompt();
+    const { outcome } = await avisoInstalacion.userChoice;
+    if (outcome === "accepted" && boton) boton.classList.add("hidden");
+    avisoInstalacion = null;
+  } else if (esDispositivoIOS()) {
+    document.getElementById("instalar-modal").classList.remove("hidden");
+  } else {
+    mostrarToast("Abre el menú del navegador (⋮) y elige «Instalar aplicación» o «Añadir a pantalla de inicio»", 7000);
+  }
+}
+
 function configurarInstalacion() {
   const boton = document.getElementById("btn-instalar");
   const modal = document.getElementById("instalar-modal");
   if (!boton || !modal) return;
 
-  const yaInstalada = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
-  if (yaInstalada) return;
+  if (appYaInstalada()) return;
 
   // iPhone/iPad: no hay instalador automático, se explican los pasos
-  const esIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  let avisoInstalacion = null;
-
-  if (esIOS) boton.classList.remove("hidden");
+  if (esDispositivoIOS()) boton.classList.remove("hidden");
 
   // Android y Chrome/Edge de escritorio: el navegador ofrece su propio instalador
   window.addEventListener("beforeinstallprompt", e => {
@@ -1414,16 +1489,7 @@ function configurarInstalacion() {
     mostrarToast("✅ RunNear instalada en tu dispositivo");
   });
 
-  boton.addEventListener("click", async () => {
-    if (avisoInstalacion) {
-      avisoInstalacion.prompt();
-      const { outcome } = await avisoInstalacion.userChoice;
-      if (outcome === "accepted") boton.classList.add("hidden");
-      avisoInstalacion = null;
-    } else {
-      modal.classList.remove("hidden");
-    }
-  });
+  boton.addEventListener("click", lanzarInstalacion);
 
   const cerrar = () => modal.classList.add("hidden");
   document.getElementById("btn-cerrar-instalar").addEventListener("click", cerrar);

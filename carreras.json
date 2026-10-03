@@ -69,7 +69,8 @@
       "lng": -2.20399
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 12.0
+    "precio_desde": 12.0,
+    "plazas_max": 450
   },
   {
     "id": "clm-b934cc14",
@@ -93,7 +94,8 @@
       "lng": -4.11117
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 8.0
+    "precio_desde": 8.0,
+    "inscritos": 272
   },
   {
     "id": "clm-f104049e",
@@ -213,7 +215,7 @@
       "lng": -1.82934
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 8.0
+    "precio_desde": 18.0
   },
   {
     "id": "clm-6023d0b0",
@@ -260,7 +262,8 @@
       "lng": -2.99737
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 15.0
+    "precio_desde": 15.0,
+    "inscritos": 58
   },
   {
     "id": "clm-695e366a",
@@ -331,7 +334,8 @@
       "lng": -3.85145
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "inscritos": 51
   },
   {
     "id": "clm-ea53dd71",
@@ -379,7 +383,9 @@
       "lng": -2.31904
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 9.0
+    "precio_desde": 9.0,
+    "plazas_max": 750,
+    "estado": "cancelada"
   },
   {
     "id": "clm-c0e0f733",
@@ -452,7 +458,8 @@
       "lng": -1.5561
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 100
   },
   {
     "id": "clm-da7bfda1",
@@ -476,7 +483,8 @@
       "lng": -1.5561
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 500
   },
   {
     "id": "clm-0c7f9809",
@@ -524,7 +532,8 @@
       "lng": -2.88371
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 5.0
+    "precio_desde": 5.0,
+    "inscritos": 68
   },
   {
     "id": "clm-c151680f",
@@ -859,7 +868,8 @@
     },
     "actualizado": "2026-10-03",
     "precio_desde": 18.0,
-    "desnivel_positivo_m": 1400
+    "desnivel_positivo_m": 1400,
+    "inscritos": 203
   },
   {
     "id": "clm-d229af66",
@@ -883,7 +893,8 @@
       "lng": -2.31904
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 9.0
+    "precio_desde": 9.0,
+    "plazas_max": 350
   },
   {
     "id": "clm-233ac3c8",
@@ -931,7 +942,8 @@
       "lng": -2.13135
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 15.0
+    "precio_desde": 15.0,
+    "inscritos": 404
   },
   {
     "id": "clm-f7a0e1ec",
@@ -980,7 +992,8 @@
       "lng": -3.21823
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 8.0
+    "precio_desde": 8.0,
+    "inscritos": 32
   },
   {
     "id": "clm-e03a79cc",
@@ -1004,7 +1017,8 @@
       "lng": -1.42899
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 100
   },
   {
     "id": "clm-c8b0f1f5",
@@ -1028,7 +1042,8 @@
       "lng": -1.42899
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 350
   },
   {
     "id": "clm-789e5415",
@@ -1098,7 +1113,8 @@
       "lng": -1.98363
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 600
   },
   {
     "id": "clm-470c8837",
@@ -1170,8 +1186,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-03",
-    "precio_desde": 5.0
+    "actualizado": "2026-10-03"
   },
   {
     "id": "clm-7a670bb3",
@@ -1222,7 +1237,8 @@
       "lng": -1.9197
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 9.0
+    "precio_desde": 9.0,
+    "plazas_max": 850
   },
   {
     "id": "clm-66f61b99",
@@ -1317,7 +1333,8 @@
       "lng": -1.71576
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 15.0
+    "precio_desde": 13.0,
+    "inscritos": 32
   },
   {
     "id": "clm-01eb29e9",
@@ -1343,7 +1360,8 @@
       "lng": -4.11117
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 8.0
+    "precio_desde": 8.0,
+    "inscritos": 125
   },
   {
     "id": "clm-c4c96b56",
@@ -1390,7 +1408,8 @@
       "lng": -1.69951
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 350
   },
   {
     "id": "clm-aff89e9c",
@@ -1414,7 +1433,8 @@
       "lng": -1.69951
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 13.0
+    "precio_desde": 13.0,
+    "plazas_max": 650
   },
   {
     "id": "clm-b05aedd0",
@@ -1555,7 +1575,8 @@
       "lng": -1.95581
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "plazas_max": 500
   },
   {
     "id": "clm-e5020f9f",
@@ -1670,7 +1691,8 @@
       "lng": -3.11861
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 15.0
+    "precio_desde": 15.0,
+    "inscritos": 33
   },
   {
     "id": "clm-506bf5bf",
@@ -1718,7 +1740,8 @@
       "lng": -4.11117
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "inscritos": 12
   },
   {
     "id": "clm-b3e80cb0",
@@ -1765,7 +1788,8 @@
       "lng": -2.50976
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 16.0
+    "precio_desde": 16.0,
+    "plazas_max": 250
   },
   {
     "id": "clm-3070dc10",
@@ -1791,7 +1815,8 @@
       "lng": -3.92851
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 35.0
+    "precio_desde": 35.0,
+    "inscritos": 140
   },
   {
     "id": "clm-e1918562",
@@ -1888,7 +1913,8 @@
       "lng": -4.11117
     },
     "actualizado": "2026-10-03",
-    "precio_desde": 15.0
+    "precio_desde": 15.0,
+    "inscritos": 19
   },
   {
     "id": "clm-bff211f9",
@@ -1982,8 +2008,7 @@
       "lat": 39.16891,
       "lng": -3.85145
     },
-    "actualizado": "2026-10-03",
-    "precio_desde": 21.0
+    "actualizado": "2026-10-03"
   },
   {
     "id": "clm-dba25243",

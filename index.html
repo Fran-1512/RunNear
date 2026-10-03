@@ -30,12 +30,20 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
   <header class="app-header" id="app-header">
     <div class="header-left">
+      <!-- Abrir menú (solo móvil y tablet) -->
+      <button class="btn-menu" id="btn-menu" aria-label="Abrir menú" aria-controls="menu-lateral" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
       <div class="brand-logo" id="brand-logo">
         <div class="logo-icon-wrap">
           <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -108,9 +116,82 @@
     </div>
   </header>
 
-  <!-- Contenedor Principal (Panel Lateral + Mapa) -->
+  <!-- Contenedor Principal (Menú + Panel Lateral + Mapa) -->
   <main class="main-layout" id="main-content">
-    
+
+    <!-- Menú lateral: en escritorio es una columna fija; en móvil se despliega con ☰ -->
+    <nav class="menu-lateral" id="menu-lateral" aria-label="Menú principal">
+      <div class="menu-cabecera">
+        <span class="menu-titulo">Menú</span>
+        <button class="menu-cerrar" id="btn-cerrar-menu" aria-label="Cerrar menú">✕</button>
+      </div>
+
+      <div class="menu-seccion">
+        <p class="menu-seccion-titulo">Descubrir</p>
+        <button class="menu-item activo" data-vista="todas"><span class="menu-icono">🏁</span>Todas las carreras</button>
+        <button class="menu-item" data-vista="destacadas"><span class="menu-icono">🔥</span>Más destacadas</button>
+        <button class="menu-item" data-vista="cerca"><span class="menu-icono">📍</span>Cerca de mí</button>
+
+        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">📆</span>Próximas<span class="menu-flecha">›</span></button>
+        <div class="menu-subitems">
+          <button class="menu-item" data-vista="finde">Este fin de semana</button>
+          <button class="menu-item" data-vista="7dias">Próximos 7 días</button>
+          <button class="menu-item" data-vista="mes">Este mes</button>
+        </div>
+
+        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">🗺️</span>Por provincia<span class="menu-flecha">›</span></button>
+        <div class="menu-subitems">
+          <button class="menu-item" data-vista="prov:Albacete">Albacete</button>
+          <button class="menu-item" data-vista="prov:Ciudad Real">Ciudad Real</button>
+          <button class="menu-item" data-vista="prov:Cuenca">Cuenca</button>
+          <button class="menu-item" data-vista="prov:Guadalajara">Guadalajara</button>
+          <button class="menu-item" data-vista="prov:Toledo">Toledo</button>
+        </div>
+
+        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">📏</span>Por distancia<span class="menu-flecha">›</span></button>
+        <div class="menu-subitems">
+          <button class="menu-item" data-vista="dist:5k">5K</button>
+          <button class="menu-item" data-vista="dist:10k">10K</button>
+          <button class="menu-item" data-vista="dist:media">Media maratón</button>
+          <button class="menu-item" data-vista="dist:maraton">Maratón</button>
+          <button class="menu-item" data-vista="dist:ultra">Ultra (+42 km)</button>
+        </div>
+
+        <button class="menu-item" data-vista="trail"><span class="menu-icono">⛰️</span>Trail y montaña</button>
+
+        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">🏆</span>Circuitos<span class="menu-flecha">›</span></button>
+        <div class="menu-subitems" id="menu-circuitos"></div>
+
+        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">🎉</span>Temáticas<span class="menu-flecha">›</span></button>
+        <div class="menu-subitems">
+          <button class="menu-item" data-vista="tema:nocturnas">Nocturnas</button>
+          <button class="menu-item" data-vista="tema:solidarias">Solidarias</button>
+          <button class="menu-item" data-vista="tema:silvestre">San Silvestre</button>
+          <button class="menu-item" data-vista="tema:cross">Cross</button>
+        </div>
+
+        <button class="menu-item" data-vista="baratas"><span class="menu-icono">💶</span>Más baratas</button>
+        <button class="menu-item" data-vista="calendario"><span class="menu-icono">🗓️</span>Calendario</button>
+      </div>
+
+      <div class="menu-seccion">
+        <p class="menu-seccion-titulo">Para ti</p>
+        <button class="menu-item" data-vista="favoritas"><span class="menu-icono">❤️</span>Mis favoritas<span class="menu-contador" id="contador-favoritas"></span></button>
+        <button class="menu-item" data-vista="corridas"><span class="menu-icono">✅</span>Ya corridas<span class="menu-contador" id="contador-corridas"></span></button>
+        <button class="menu-item" data-accion="ics-favoritas"><span class="menu-icono">📲</span>Favoritas al calendario</button>
+      </div>
+
+      <div class="menu-seccion">
+        <p class="menu-seccion-titulo">RunNear</p>
+        <button class="menu-item" data-accion="publicar"><span class="menu-icono">➕</span>Publicar tu carrera<span class="menu-etiqueta">Pronto</span></button>
+        <button class="menu-item" data-accion="instalar" id="menu-instalar"><span class="menu-icono">⬇️</span>Instalar la app</button>
+        <button class="menu-item" data-accion="acerca"><span class="menu-icono">ℹ️</span>Acerca de RunNear</button>
+        <button class="menu-item" data-accion="ajustes"><span class="menu-icono">⚙️</span>Ajustes</button>
+      </div>
+    </nav>
+    <!-- Fondo oscuro tras el menú desplegado en móvil -->
+    <div class="menu-fondo" id="menu-fondo"></div>
+
     <!-- Panel Lateral Izquierdo: Búsqueda, Filtros y Lista -->
     <aside class="sidebar-panel" id="sidebar-panel">
       
@@ -204,6 +285,15 @@
         </div>
         </div><!-- /filtros-extra -->
       </section>
+
+      <!-- Sección del menú que se está viendo (con botón para volver a todas) -->
+      <div class="vista-activa hidden" id="vista-activa">
+        <span class="vista-activa-titulo" id="vista-activa-titulo"></span>
+        <button class="vista-activa-quitar" id="btn-quitar-vista" aria-label="Volver a todas las carreras">✕ Ver todas</button>
+      </div>
+
+      <!-- Calendario mensual (sección "Calendario" del menú) -->
+      <div class="calendario-panel hidden" id="calendario-panel"></div>
 
       <!-- Contador de Resultados y Vista Resumen -->
       <div class="results-header">
@@ -313,6 +403,19 @@
           <div class="elevation-svg-wrap" id="modal-elevation-chart-container">
             <!-- Renderizado dinámico de curva SVG -->
           </div>
+        </div>
+
+        <!-- Acciones personales: favorita, calendario, corrida -->
+        <div class="acciones-ficha">
+          <button class="accion-ficha" id="btn-ficha-favorita" aria-pressed="false">
+            <span class="accion-icono">♡</span><span class="accion-texto">Favorita</span>
+          </button>
+          <button class="accion-ficha" id="btn-ficha-calendario">
+            <span class="accion-icono">📅</span><span class="accion-texto">A mi calendario</span>
+          </button>
+          <button class="accion-ficha" id="btn-ficha-corrida" aria-pressed="false">
+            <span class="accion-icono">☐</span><span class="accion-texto">La he corrido</span>
+          </button>
         </div>
 
         <!-- Descripción detallada -->
@@ -453,6 +556,17 @@
     </div>
   </div>
 
+  <!-- Modal genérico de información (Acerca de, Ajustes, Publicar...) -->
+  <div class="modal-overlay hidden" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-titulo">
+    <div class="modal-card modal-info">
+      <button class="modal-close-btn" id="btn-cerrar-info" aria-label="Cerrar ventana">✕</button>
+      <div class="modal-header">
+        <h2 class="modal-race-title" id="info-titulo"></h2>
+      </div>
+      <div class="modal-body" id="info-cuerpo"></div>
+    </div>
+  </div>
+
   <div class="toast-container" id="toast-container" aria-live="polite"></div>
 
   <!-- Leaflet JS -->
@@ -460,8 +574,10 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=11"></script>
+  <script src="mapa_detalle.js?v=12"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=12"></script>
+  <!-- Menú lateral: secciones, favoritas, calendario, ajustes -->
+  <script src="menu.js?v=12"></script>
 </body>
 </html>

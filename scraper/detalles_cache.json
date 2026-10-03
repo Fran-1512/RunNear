@@ -1,172 +1,304 @@
 {
   "https://carreras.dxtchiprun.es/carrera/10k-y-5k-la-puebla-de-almoradiel-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": 33,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://carreras.dxtchiprun.es/carrera/desafio-cucon-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": 1400,
-    "precio_desde": 18.0
+    "estado": null,
+    "inscritos": 203,
+    "plazas_max": null,
+    "precio_desde": 18.0,
+    "version": 4
   },
   "https://carreras.dxtchiprun.es/carrera/legua-los-patos-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": 12,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://carreras.dxtchiprun.es/carrera/milla-solidaria-puertollano": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": 272,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://carreras.dxtchiprun.es/carrera/ultra-trail-anillo-minero-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": 19,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://carreras.dxtchiprun.es/carrera/xxv-cross-santa-teresa-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": 51,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://carreras.dxtchiprun.es/carrera/zenagas-trail-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": 125,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://carrerasciudadreal.es/evento/10k-valdepenas-2027": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 18.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 18.0,
+    "version": 4
   },
   "https://carrerasciudadreal.es/evento/media-valdepenas-2027": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 12.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 12.0,
+    "version": 4
   },
   "https://carrerasciudadreal.es/evento/yugo-10k-socuellamos-carrera-urbana-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://carrerasciudadreal.es/evento/yugo-10k-socuellamos-carrera-urbana-2026/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://crono3.es/evento/10k-de-alcazar-de-san-juan-2026/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://crono3.es/evento/28a-media-maraton-de-alcazar-de-san-juan-2026/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://crono3.es/evento/6k-solidarios-de-alcazar-de-san-juan-2026/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://crono3.es/evento/media-maraton-alcazar-de-san-juan-2026/": {
     "bloqueado_robots": true,
     "consultado": "2026-10-03"
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1123": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 600,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1166": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 9.0
+    "estado": "cancelada",
+    "inscritos": null,
+    "plazas_max": 750,
+    "precio_desde": 9.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1167": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 500,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1179": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 500,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1181": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 13.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 650,
+    "precio_desde": 13.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1186": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 350,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1188": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 350,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1190": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 100,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1207": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 9.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 350,
+    "precio_desde": 9.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1289": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 16.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 250,
+    "precio_desde": 16.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1307": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 9.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 850,
+    "precio_desde": 9.0,
+    "version": 4
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1310": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 100,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://dorsal1.com/producto/cxm-el-picon-de-beamud-x-circ-prov-cxm-dip-cuenca/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 18.0,
+    "version": 4
   },
   "https://dorsal1.com/producto/evento-dorsal-1-12/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://dorsal1.com/producto/evento-dorsal-1-13/": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://eventos.runrunsports.com/inscripcion/i-maraton-imperial-de-toledo/modalidades": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.cronomancha.com/es/evento/homenaje-jose-manuel-y-fernando-entrenamiento-solidario": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/13o-cross-corto-popular-espada-toledana": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
     "consultado": "2026-09-29",
@@ -174,208 +306,358 @@
     "precio_desde": null
   },
   "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/v-carrera-popular-talavera-la-nueva": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/vinedos-del-rio-tajo": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/xix-carrera-nocturna-de-toledo-gran-premio-santander": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/xliv-san-silvestre-toledana": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/xx-carrera-solidaria-memorial-ismael-araujo-martin": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://inscripciones.runrunsports.com/eventos/xxxviii-media-maraton-ciudad-de-talavera-memorial-anibal-arevalo": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/13ordm-carrera-popular-la-villa-de-don-fadrique-toledo": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": 32,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/carrera-y-paseo-cruz-roja-toledo-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/el-privilegio-100-millas-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 35.0
+    "estado": null,
+    "inscritos": 140,
+    "plazas_max": null,
+    "precio_desde": 35.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/ii-carrera-popular-carpio-de-tajo": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/ii-legua-urbana-de-yuncos": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/iii-carrera-amp-marcha-solidaria-del-hospital-nacional-de-parapljicos": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": 68,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/lillo-christmas-race": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/monttrail-los-yebenes-2027": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/trail-montatildea-pico-del-fraile-de-tejadillos": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 18.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 18.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/v-carrera-solidaria-ldquokilmetros-que-dan-vidardquo": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/v-malagon-trail-bisabor-energy-2027": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 21.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/x-carrera-ldquoamafi-runrdquo-ix-ldquocanicross-amafirdquo-y-ldquov-marcha-senderista-amafirdquo-de-yepes": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 14.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 14.0,
+    "version": 4
   },
   "https://sportmaniacs.com/es/races/x-carrera-popular-xi-marcha-solidaria-por-la-diabetes": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/7-cross-popular-ana-lozano-maranchon": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 12.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": 450,
+    "precio_desde": 12.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/campo-de-criptana-en-marcha-contra-el-cancer-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/carrera-solidaria-contra-la-ela-fundacion-eurocaja-rural-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 12.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 12.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/i-carrera-popular-y-marcha-de-carmena": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/iii-alustante-trail-hojas-rojas": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": 517,
-    "precio_desde": 14.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 14.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/iii-carrera-vertical-subida-a-las-antenas": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/iii-marcha-contra-el-cancer-torrijos-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/iv-marcha-contra-el-cancer-la-puebla-de-almoradiel-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 5.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/maraton-alcarria": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 40.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 40.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/piedrabuena-en-marcha-contra-el-cancer-2026": {
     "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": null
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/quijote-maraton-ciudad-real-2026": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 19.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 19.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/trail-duende-martinico-mondejar": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": 850,
-    "precio_desde": 12.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 12.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/v-cross-del-cordel-de-las-merinas": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 19.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 19.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/xiv-carrera-popular-de-san-bartolome-de-las-abiertas": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 8.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "version": 4
   },
   "https://web.rockthesport.com/es/event/xix-media-maraton-comarca-jadraque": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2107&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2108&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2109&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2116&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2118&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2121&arg_tipo=eventos&arg_year=2026&arg_month=11": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2123&arg_tipo=eventos&arg_year=2026&arg_month=11": {
     "bloqueado_robots": true,
@@ -383,7 +665,8 @@
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2124&arg_tipo=eventos&arg_year=2026&arg_month=12": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2125&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
@@ -391,44 +674,76 @@
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2126&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2129&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2130&arg_tipo=eventos&arg_year=2026&arg_month=11": {
     "bloqueado_robots": true,
-    "consultado": "2026-09-29"
+    "consultado": "2026-10-03",
+    "version": 4
+  },
+  "https://www.deporticket.com/web-evento/13265-iv-nocturna-de-azuqueca": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "precio_desde": null
   },
   "https://www.timingsys.com/event/770": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": 58,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://www.timingsys.com/event/771": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://www.timingsys.com/event/772": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": 404,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://www.timingsys.com/event/773": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 15.0,
+    "version": 4
   },
   "https://www.timingsys.com/event/774": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 15.0
+    "estado": null,
+    "inscritos": 32,
+    "plazas_max": null,
+    "precio_desde": 13.0,
+    "version": 4
   },
   "https://www.timingsys.com/event/793": {
-    "consultado": "2026-09-29",
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
-    "precio_desde": 10.0
+    "estado": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "version": 4
   }
 }
