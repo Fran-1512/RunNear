@@ -74,6 +74,10 @@
     "desnivel_positivo_m": null,
     "precio_desde": null
   },
+  "https://crono3.es/evento/media-maraton-alcazar-de-san-juan-2026/": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-03"
+  },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1123": {
     "consultado": "2026-09-29",
     "desnivel_positivo_m": null,
@@ -154,6 +158,16 @@
     "desnivel_positivo_m": null,
     "precio_desde": null
   },
+  "https://inscripciones.cronomancha.com/es/evento/homenaje-jose-manuel-y-fernando-entrenamiento-solidario": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "precio_desde": null
+  },
+  "https://inscripciones.runrunsports.com/eventos/13o-cross-corto-popular-espada-toledana": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "precio_desde": null
+  },
   "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
     "consultado": "2026-09-29",
     "desnivel_positivo_m": null,
@@ -176,6 +190,11 @@
   },
   "https://inscripciones.runrunsports.com/eventos/xix-carrera-nocturna-de-toledo-gran-premio-santander": {
     "consultado": "2026-09-29",
+    "desnivel_positivo_m": null,
+    "precio_desde": null
+  },
+  "https://inscripciones.runrunsports.com/eventos/xliv-san-silvestre-toledana": {
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
     "precio_desde": null
   },
@@ -204,6 +223,16 @@
     "desnivel_positivo_m": null,
     "precio_desde": 35.0
   },
+  "https://sportmaniacs.com/es/races/ii-carrera-popular-carpio-de-tajo": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "precio_desde": null
+  },
+  "https://sportmaniacs.com/es/races/ii-legua-urbana-de-yuncos": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "precio_desde": 5.0
+  },
   "https://sportmaniacs.com/es/races/iii-carrera-amp-marcha-solidaria-del-hospital-nacional-de-parapljicos": {
     "consultado": "2026-09-29",
     "desnivel_positivo_m": null,
@@ -211,6 +240,11 @@
   },
   "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26": {
     "consultado": "2026-09-29",
+    "desnivel_positivo_m": null,
+    "precio_desde": 5.0
+  },
+  "https://sportmaniacs.com/es/races/lillo-christmas-race": {
+    "consultado": "2026-10-03",
     "desnivel_positivo_m": null,
     "precio_desde": 5.0
   },
@@ -288,6 +322,11 @@
     "consultado": "2026-09-29",
     "desnivel_positivo_m": null,
     "precio_desde": 40.0
+  },
+  "https://web.rockthesport.com/es/event/piedrabuena-en-marcha-contra-el-cancer-2026": {
+    "consultado": "2026-10-03",
+    "desnivel_positivo_m": null,
+    "precio_desde": null
   },
   "https://web.rockthesport.com/es/event/quijote-maraton-ciudad-real-2026": {
     "consultado": "2026-09-29",

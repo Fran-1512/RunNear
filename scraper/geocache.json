@@ -107,6 +107,10 @@
     "lat": 39.35619,
     "lng": -1.71576
   },
+  "Lillo|Toledo": {
+    "lat": 39.72314,
+    "lng": -3.30491
+  },
   "Liétor|Albacete": {
     "lat": 38.54228,
     "lng": -1.95581
@@ -142,6 +146,10 @@
   "Olías del Rey|Toledo": {
     "lat": 39.94474,
     "lng": -3.98725
+  },
+  "Piedrabuena|Ciudad Real": {
+    "lat": 39.03446,
+    "lng": -4.17533
   },
   "Priego|Cuenca": {
     "lat": 40.4492,
@@ -210,5 +218,9 @@
   "Yeste|Albacete": {
     "lat": 38.36693,
     "lng": -2.31904
+  },
+  "Yuncos|Toledo": {
+    "lat": 40.08719,
+    "lng": -3.87352
   }
 }
