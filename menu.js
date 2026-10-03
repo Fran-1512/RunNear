@@ -549,15 +549,6 @@ function mostrarAcercaDe() {
   `);
 }
 
-function mostrarPublicar() {
-  abrirInfo("Publicar tu carrera", `
-    <div class="info-texto">
-      <p>¿Organizas una carrera en Castilla-La Mancha? <strong>Muy pronto</strong> podrás enviarla desde aquí.</p>
-      <p>Cada carrera enviada se revisará antes de publicarse, para que la información sea siempre fiable.</p>
-    </div>
-  `);
-}
-
 function mostrarAjustes() {
   const claro = document.body.classList.contains("tema-claro");
   const radio = radioPorDefecto();
@@ -641,7 +632,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const acciones = {
     "ics-favoritas": exportarFavoritasICS,
-    publicar: mostrarPublicar,
     instalar: lanzarInstalacion,
     acerca: mostrarAcercaDe,
     ajustes: mostrarAjustes
