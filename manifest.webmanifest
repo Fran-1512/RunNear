@@ -1,0 +1,17 @@
+{
+  "name": "RunNear · Carreras en Castilla-La Mancha",
+  "short_name": "RunNear",
+  "description": "Carreras populares y trail running cerca de ti en Castilla-La Mancha, con mapa propio.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070a13",
+  "theme_color": "#0c1220",
+  "icons": [
+    { "src": "iconos/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

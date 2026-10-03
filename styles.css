@@ -1507,6 +1507,60 @@ body.dark-theme {
 /* ==========================================================================
    Responsive / Adaptabilidad Móvil
    ========================================================================== */
+/* ==========================================================================
+   App instalable (PWA)
+   ========================================================================== */
+.btn-instalar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: var(--radius-md);
+  color: #38bdf8;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.btn-instalar:hover {
+  background: rgba(56, 189, 248, 0.22);
+}
+
+.btn-instalar.hidden {
+  display: none;
+}
+
+.modal-instalar {
+  max-width: 440px;
+}
+
+.pasos-instalar {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.pasos-instalar svg {
+  vertical-align: -3px;
+  color: #38bdf8;
+}
+
+/* App instalada: la cabecera respeta la zona de la cámara/hora del iPhone */
+.app-header {
+  padding-top: env(safe-area-inset-top);
+  height: calc(var(--header-height) + env(safe-area-inset-top));
+}
+
 /* Filtros plegables: en escritorio se ven siempre y el botón no aparece */
 .filtros-extra {
   display: flex;
@@ -1571,7 +1625,7 @@ body.dark-theme {
     height: auto;
     min-height: 0;
     flex-wrap: wrap;
-    padding: 10px 14px;
+    padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
     gap: 10px;
   }
 
@@ -1800,5 +1854,17 @@ body.dark-theme {
 
   .toast {
     border-radius: var(--radius-md);
+  }
+}
+
+/* App instalada (pantalla completa): no hay barra del navegador abajo, basta con
+   respetar la barra de inicio del iPhone */
+@media (display-mode: standalone) {
+  .races-list-scroll {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .toast-container {
+    bottom: calc(16px + env(safe-area-inset-bottom));
   }
 }

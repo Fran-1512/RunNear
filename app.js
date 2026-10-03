@@ -1268,8 +1268,63 @@ function configurarEventListeners() {
 // ==========================================================================
 // Arranque
 // ==========================================================================
+// ==========================================================================
+// App instalable (PWA): service worker y botón "Instalar app"
+// ==========================================================================
+
+function registrarServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+  // Ruta relativa: funciona igual en localhost y en GitHub Pages (/RunNear/)
+  navigator.serviceWorker.register("sw.js").catch(err => console.warn("Service worker no registrado:", err));
+}
+
+function configurarInstalacion() {
+  const boton = document.getElementById("btn-instalar");
+  const modal = document.getElementById("instalar-modal");
+  if (!boton || !modal) return;
+
+  const yaInstalada = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  if (yaInstalada) return;
+
+  // iPhone/iPad: no hay instalador automático, se explican los pasos
+  const esIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  let avisoInstalacion = null;
+
+  if (esIOS) boton.classList.remove("hidden");
+
+  // Android y Chrome/Edge de escritorio: el navegador ofrece su propio instalador
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    avisoInstalacion = e;
+    boton.classList.remove("hidden");
+  });
+
+  window.addEventListener("appinstalled", () => {
+    boton.classList.add("hidden");
+    mostrarToast("✅ RunNear instalada en tu dispositivo");
+  });
+
+  boton.addEventListener("click", async () => {
+    if (avisoInstalacion) {
+      avisoInstalacion.prompt();
+      const { outcome } = await avisoInstalacion.userChoice;
+      if (outcome === "accepted") boton.classList.add("hidden");
+      avisoInstalacion = null;
+    } else {
+      modal.classList.remove("hidden");
+    }
+  });
+
+  const cerrar = () => modal.classList.add("hidden");
+  document.getElementById("btn-cerrar-instalar").addEventListener("click", cerrar);
+  modal.addEventListener("click", e => { if (e.target === modal) cerrar(); });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   if (MODO_DIAGNOSTICO) setTimeout(iniciarDiagnostico, 500);
+  registrarServiceWorker();
+  configurarInstalacion();
   inicializarMapa();
   configurarEventListeners();
   solicitarGeolocalizacionNavegador();

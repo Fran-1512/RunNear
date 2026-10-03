@@ -2,10 +2,22 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- viewport-fit=cover: en iPhone la app instalada usa toda la pantalla (se respetan las zonas seguras en el CSS) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Descubre carreras de atletismo, carreras populares y trail running cerca de tu ubicación. Consulta fechas, distancias, perfiles de elevación y enlaces a webs oficiales de inscripción en un mapa interactivo.">
   <meta name="keywords" content="carreras populares, trail running, atletismo, maratón, media maratón, calendario carreras, carreras cerca de mi">
   <title>RunNear | Carreras Populares y Trail en Castilla-La Mancha</title>
+
+  <!-- App instalable (PWA) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0c1220">
+  <link rel="icon" type="image/png" sizes="32x32" href="iconos/favicon-32.png">
+  <!-- iPhone: icono, nombre y pantalla completa al añadir a la pantalla de inicio -->
+  <link rel="apple-touch-icon" href="iconos/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="RunNear">
 
   <!-- Tipografías locales: Outfit & Plus Jakarta Sans -->
   <link rel="stylesheet" href="vendor/fonts/fonts.css">
@@ -18,7 +30,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -77,6 +89,15 @@
         <span class="count-num" id="total-races-count">0</span>
         <span class="count-label">carreras activas</span>
       </div>
+      <!-- Instalar como app (se muestra solo si se puede y aún no está instalada) -->
+      <button class="btn-instalar hidden" id="btn-instalar" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <path d="M5 21h14"/>
+        </svg>
+        <span>Instalar app</span>
+      </button>
       <button class="btn-primary" id="btn-open-add-race" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
           <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -410,6 +431,26 @@
   </div>
 
   <!-- Toast Notification Container -->
+  <!-- Modal: cómo instalar la app en iPhone (Safari/Chrome de iOS no permiten instalar con un botón) -->
+  <div class="modal-overlay hidden" id="instalar-modal" role="dialog" aria-modal="true" aria-labelledby="instalar-titulo">
+    <div class="modal-card modal-instalar">
+      <button class="modal-close-btn" id="btn-cerrar-instalar" aria-label="Cerrar ventana">✕</button>
+      <div class="modal-header">
+        <h2 class="modal-race-title" id="instalar-titulo">Instalar RunNear</h2>
+        <p class="modal-race-location">Tendrás la app en tu pantalla de inicio, a pantalla completa.</p>
+      </div>
+      <div class="modal-body">
+        <ol class="pasos-instalar">
+          <li>Pulsa el botón <strong>Compartir</strong>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><polyline points="7 8 12 3 17 8"/><path d="M5 12v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8"/></svg>
+            (en Safari, abajo; en Chrome, junto a la dirección web).</li>
+          <li>Desliza y elige <strong>Añadir a pantalla de inicio</strong>.</li>
+          <li>Pulsa <strong>Añadir</strong>. El icono de RunNear aparecerá con tus apps.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
   <div class="toast-container" id="toast-container" aria-live="polite"></div>
 
   <!-- Leaflet JS -->
@@ -417,8 +458,8 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=9"></script>
+  <script src="mapa_detalle.js?v=10"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>
