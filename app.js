@@ -516,6 +516,71 @@ async function cargarCarrerasDesdeServidor() {
 // Lógica de Filtrado y Búsqueda
 // ==========================================================================
 
+// ==========================================================================
+// Búsqueda de carreras
+// ==========================================================================
+
+/**
+ * "Alcázar  de San Juan" -> "alcazar de san juan" (sin tildes, minúsculas, espacios simples)
+ */
+function normalizarTexto(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function palabrasBusqueda(busqueda) {
+  return normalizarTexto(busqueda).split(" ").filter(Boolean);
+}
+
+function textoBuscable(c) {
+  return normalizarTexto([c.nombre, c.municipio, c.provincia, c.circuito, c.descripcion,
+    c.tipo === "trail" ? "trail montaña" : "popular asfalto"].join(" "));
+}
+
+/**
+ * Lista desplegable bajo el buscador con las primeras coincidencias
+ */
+function actualizarSugerencias(resultados) {
+  const caja = document.getElementById("sugerencias-busqueda");
+  const input = document.getElementById("filter-search-input");
+  if (!caja || !input) return;
+
+  const hayBusqueda = palabrasBusqueda(AppState.filters.search).length > 0;
+  if (!hayBusqueda || document.activeElement !== input) {
+    caja.classList.add("hidden");
+    return;
+  }
+
+  if (resultados.length === 0) {
+    caja.innerHTML = `<div class="sugerencia-vacia">No hay carreras con "${escapeHtml(AppState.filters.search.trim())}"</div>`;
+  } else {
+    const MAX = 6;
+    caja.innerHTML = resultados.slice(0, MAX).map(c => `
+      <button type="button" class="sugerencia" data-id="${escapeHtml(c.id)}">
+        <span class="sugerencia-icono">${c.tipo === "trail" ? "⛰️" : "🏃"}</span>
+        <span class="sugerencia-texto">
+          <span class="sugerencia-nombre">${escapeHtml(c.nombre)}</span>
+          <span class="sugerencia-detalle">${escapeHtml(c.municipio || "")} · ${escapeHtml(formatearFechaLegible(c.fecha))}</span>
+        </span>
+      </button>
+    `).join("") + (resultados.length > MAX
+      ? `<div class="sugerencia-mas">y ${resultados.length - MAX} más en la lista</div>` : "");
+  }
+  caja.classList.remove("hidden");
+}
+
+function elegirSugerencia(carreraId) {
+  const caja = document.getElementById("sugerencias-busqueda");
+  if (caja) caja.classList.add("hidden");
+  document.getElementById("filter-search-input").blur();
+  abrirModalDetallePorId(carreraId);
+  centrarEnCarrera(carreraId);
+}
+
 function aplicarFiltrosYRenderizar() {
   const { search, type, distance, radiusKm, sort } = AppState.filters;
   const userLat = AppState.userLocation.lat;
@@ -535,8 +600,10 @@ function aplicarFiltrosYRenderizar() {
     return dias === null || dias >= 0;
   });
 
-  // Filtro por radio de proximidad
-  if (radiusKm > 0) {
+  // Filtro por radio de proximidad. Al buscar por texto se ignora: quien busca una
+  // carrera concreta quiere encontrarla esté donde esté
+  const buscando = palabrasBusqueda(search).length > 0;
+  if (radiusKm > 0 && !buscando) {
     resultados = resultados.filter(c => c.distancia_usuario_km === null || c.distancia_usuario_km <= radiusKm);
   }
 
@@ -557,16 +624,13 @@ function aplicarFiltrosYRenderizar() {
     }));
   }
 
-  // Búsqueda por texto (nombre, municipio, provincia, circuito)
-  if (search.trim()) {
-    const q = search.trim().toLowerCase();
+  // Búsqueda por texto: todas las palabras escritas deben aparecer (en cualquier orden)
+  // en el nombre, municipio, provincia, circuito o descripción; sin tildes ni mayúsculas
+  if (buscando) {
+    const palabras = palabrasBusqueda(search);
     resultados = resultados.filter(c => {
-      const nombre = (c.nombre || "").toLowerCase();
-      const muni = (c.municipio || "").toLowerCase();
-      const prov = (c.provincia || "").toLowerCase();
-      const desc = (c.descripcion || "").toLowerCase();
-      const circuito = (c.circuito || "").toLowerCase();
-      return nombre.includes(q) || muni.includes(q) || prov.includes(q) || desc.includes(q) || circuito.includes(q);
+      const texto = textoBuscable(c);
+      return palabras.every(p => texto.includes(p));
     });
   }
 
@@ -588,8 +652,16 @@ function aplicarFiltrosYRenderizar() {
     AppState.radiusCircle.setRadius(radiusKm * 1000);
   }
 
+  // Subtítulo de la lista: aclarar que la búsqueda es en toda la región
+  const subtitulo = document.getElementById("results-sub-text");
+  if (subtitulo) {
+    const ordenes = { distancia: "por proximidad", fecha: "por fecha", km: "por longitud", desnivel: "por desnivel" };
+    subtitulo.textContent = buscando ? "Buscando en toda la región" : `Ordenadas ${ordenes[sort] || ""}`;
+  }
+
   // Renderizar componentes
   renderizarListadoCarreras(resultados);
+  actualizarSugerencias(resultados);
   renderizarMarcadoresEnMapa(resultados);
 }
 
@@ -603,16 +675,21 @@ function renderizarListadoCarreras(carreras) {
   if (!container) return;
 
   if (countBadge) countBadge.textContent = carreras.length;
+  const etiquetaContador = document.getElementById("results-count-label");
+  if (etiquetaContador) etiquetaContador.textContent = carreras.length === 1 ? "carrera encontrada" : "carreras encontradas";
 
   if (carreras.length === 0) {
+    const buscando = palabrasBusqueda(AppState.filters.search).length > 0;
     container.innerHTML = `
       <div class="empty-state">
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="color: #64748b;">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="8" y1="12" x2="16" y2="12"></line>
         </svg>
-        <h3>No hay carreras con estos filtros</h3>
-        <p>Prueba a ampliar el radio de búsqueda o seleccionar "Todas" las modalidades.</p>
+        <h3>${buscando ? "No encontramos esa carrera" : "No hay carreras con estos filtros"}</h3>
+        <p>${buscando
+          ? "Revisa cómo está escrito, prueba con menos palabras (por ejemplo, solo el pueblo) o quita los filtros de modalidad y distancia."
+          : "Prueba a ampliar el radio de búsqueda o seleccionar \"Todas\" las modalidades."}</p>
         <button class="btn-secondary" onclick="resetearFiltros()" style="margin-top: 8px;">
           Restablecer filtros
         </button>
@@ -1124,6 +1201,8 @@ function configurarEventListeners() {
   const searchInput = document.getElementById("filter-search-input");
   const clearSearchBtn = document.getElementById("btn-clear-search");
   
+  const cajaSugerencias = document.getElementById("sugerencias-busqueda");
+
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       AppState.filters.search = e.target.value;
@@ -1132,6 +1211,35 @@ function configurarEventListeners() {
       }
       aplicarFiltrosYRenderizar();
     });
+
+    // Al volver al buscador con texto, mostrar otra vez las sugerencias
+    searchInput.addEventListener("focus", () => actualizarSugerencias(AppState.filteredRaces));
+
+    // Ocultar al salir (con un pequeño margen para que el toque en una sugerencia llegue)
+    searchInput.addEventListener("blur", () => {
+      setTimeout(() => cajaSugerencias && cajaSugerencias.classList.add("hidden"), 150);
+    });
+
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const primera = AppState.filteredRaces[0];
+        if (primera && palabrasBusqueda(AppState.filters.search).length) elegirSugerencia(primera.id);
+      } else if (e.key === "Escape" && cajaSugerencias) {
+        cajaSugerencias.classList.add("hidden");
+      }
+    });
+  }
+
+  if (cajaSugerencias) {
+    // pointerdown + preventDefault: el buscador no pierde el foco antes de registrar la elección
+    cajaSugerencias.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".sugerencia")) e.preventDefault();
+    });
+    cajaSugerencias.addEventListener("click", (e) => {
+      const opcion = e.target.closest(".sugerencia");
+      if (opcion) elegirSugerencia(opcion.dataset.id);
+    });
   }
 
   if (clearSearchBtn) {
@@ -1139,6 +1247,7 @@ function configurarEventListeners() {
       searchInput.value = "";
       clearSearchBtn.classList.add("hidden");
       AppState.filters.search = "";
+      if (cajaSugerencias) cajaSugerencias.classList.add("hidden");
       aplicarFiltrosYRenderizar();
     });
   }

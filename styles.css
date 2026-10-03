@@ -374,6 +374,91 @@ body.dark-theme {
   display: none;
 }
 
+/* type="search": quitar la ✕ y el estilo propios del navegador (ya hay botón para limpiar) */
+.search-input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+
+/* Sugerencias bajo el buscador */
+.sugerencias-busqueda {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--bg-dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.sugerencias-busqueda.hidden {
+  display: none;
+}
+
+.sugerencia {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sugerencia:hover,
+.sugerencia:focus-visible {
+  background: rgba(99, 102, 241, 0.2);
+  outline: none;
+}
+
+.sugerencia-icono {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.sugerencia-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sugerencia-nombre {
+  font-size: 0.86rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sugerencia-detalle {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.sugerencia-vacia,
+.sugerencia-mas {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 .filter-row {
   display: flex;
   flex-direction: column;

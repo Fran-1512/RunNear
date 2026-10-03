@@ -30,7 +30,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -122,8 +122,10 @@
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" id="filter-search-input" class="search-input" placeholder="Buscar por nombre, municipio o provincia..." autocomplete="off">
+          <input type="search" id="filter-search-input" class="search-input" placeholder="Buscar carrera, pueblo o circuito..." autocomplete="off" enterkeyhint="search" aria-controls="sugerencias-busqueda">
           <button class="btn-clear-search hidden" id="btn-clear-search" aria-label="Limpiar búsqueda">✕</button>
+          <!-- Sugerencias mientras se escribe -->
+          <div class="sugerencias-busqueda hidden" id="sugerencias-busqueda" role="listbox" aria-label="Carreras encontradas"></div>
         </div>
 
         <!-- Botón para mostrar/ocultar filtros (solo visible en móvil) -->
@@ -206,7 +208,7 @@
       <!-- Contador de Resultados y Vista Resumen -->
       <div class="results-header">
         <h2 class="results-title">
-          <span id="results-count-number">0</span> carreras encontradas
+          <span id="results-count-number">0</span> <span id="results-count-label">carreras encontradas</span>
         </h2>
         <span class="results-sub" id="results-sub-text">Ordenadas por proximidad</span>
       </div>
@@ -458,8 +460,8 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=10"></script>
+  <script src="mapa_detalle.js?v=11"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>
