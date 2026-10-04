@@ -9,7 +9,7 @@ Uso (desde la carpeta del proyecto):
 import json
 import os
 import sys
-from datetime import date
+from datetime import date, timedelta
 
 from . import detalles, fusion, geocodificador
 from .fuentes import carrerasclm, carrerasciudadreal, carreraspopulares, dipualba, mayayo, runnea, runninglife
@@ -23,6 +23,8 @@ if sys.platform.startswith("win"):
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SALIDA = os.path.join(RAIZ, "carreras.json")
 CORRECCIONES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "correcciones.json")
+# Días que se conservan las carreras ya celebradas (sección "Resultados")
+DIAS_RESULTADOS = 14
 
 # En orden de PRIORIDAD: ante una carrera repetida se conservan los datos de la primera
 # fuente y las demás solo completan lo que falte.
@@ -51,6 +53,8 @@ def aplicar_correcciones(carreras):
 
 def main():
     hoy = date.today().isoformat()
+    # Se conservan también las carreras recién celebradas, para la sección "Resultados"
+    desde = (date.today() - timedelta(days=DIAS_RESULTADOS)).isoformat()
     listas = []
 
     for adaptador in ADAPTADORES:
@@ -60,8 +64,8 @@ def main():
         except Exception as e:
             print(f"[{adaptador.NOMBRE}] ERROR: {e}")
             continue
-        futuras = [c for c in carreras if c.get("fecha") and c["fecha"] >= hoy and c.get("municipio")]
-        print(f"[{adaptador.NOMBRE}] {len(carreras)} carreras, {len(futuras)} futuras")
+        futuras = [c for c in carreras if c.get("fecha") and c["fecha"] >= desde and c.get("municipio")]
+        print(f"[{adaptador.NOMBRE}] {len(carreras)} carreras, {len(futuras)} próximas o de los últimos {DIAS_RESULTADOS} días")
         if not carreras:
             print(f"[{adaptador.NOMBRE}] AVISO: 0 resultados, revisar el adaptador")
         # Correcciones antes de unir, para que la detección de duplicados use datos buenos

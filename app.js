@@ -133,6 +133,25 @@ function textoDistancias(c) {
 }
 
 /**
+ * Dónde ver los resultados de una carrera ya celebrada:
+ * enlace propio de la carrera > página de resultados de la plataforma > web de la carrera
+ */
+function enlacesResultados(c) {
+  if (Array.isArray(c.resultados) && c.resultados.length) {
+    return { tipo: "propios", enlaces: c.resultados };
+  }
+  if (c.resultados_web) {
+    return { tipo: "general", enlaces: [{ texto: "Resultados en la web de inscripción", url: c.resultados_web }] };
+  }
+  return { tipo: "web", enlaces: [{ texto: "Web de la carrera", url: c.url_oficial }] };
+}
+
+function estaCelebrada(c) {
+  const dias = calcularDiasRestantes(c.fecha);
+  return dias !== null && dias < 0;
+}
+
+/**
  * 9 -> "9 €", 17.5 -> "17,50 €"
  */
 function formatearPrecio(valor) {
@@ -507,7 +526,8 @@ async function cargarCarrerasDesdeServidor() {
 
   // Actualizar contador total en el header
   const totalBadge = document.getElementById("total-races-count");
-  if (totalBadge) totalBadge.textContent = AppState.races.length;
+  // Solo las próximas: las celebradas en las últimas semanas están para "Resultados"
+  if (totalBadge) totalBadge.textContent = AppState.races.filter(c => !estaCelebrada(c)).length;
 
   aplicarFiltrosYRenderizar();
 }
@@ -731,10 +751,21 @@ function renderizarListadoCarreras(carreras, mensajeVacio) {
     const dias = calcularDiasRestantes(c.fecha);
     let diasStr = "";
     if (dias !== null) {
-      if (dias > 0) diasStr = `• Faltan ${dias} días`;
+      if (dias > 1) diasStr = `• Faltan ${dias} días`;
+      else if (dias === 1) diasStr = `• ¡Mañana!`;
       else if (dias === 0) diasStr = `• ¡Hoy!`;
-      else diasStr = `• Pasada`;
+      else if (dias === -1) diasStr = `• Ayer`;
+      else diasStr = `• Hace ${-dias} días`;
     }
+
+    // Carrera ya celebrada: el botón lleva a los resultados en vez de a la inscripción
+    const celebrada = dias !== null && dias < 0;
+    const resultados = celebrada ? enlacesResultados(c) : null;
+    const botonExterno = celebrada
+      ? `<a href="${escapeHtml(urlSegura(resultados.enlaces[0].url))}" target="_blank" rel="noopener noreferrer"
+           class="card-mini-btn btn-external btn-resultados" title="${escapeHtml(resultados.enlaces[0].texto)}">🏅 Resultados ↗</a>`
+      : `<a href="${escapeHtml(urlSegura(c.url_oficial))}" target="_blank" rel="noopener noreferrer"
+           class="card-mini-btn btn-external" title="Ir a la web de inscripción oficial">Web Oficial ↗</a>`;
 
     const card = document.createElement("article");
     card.className = `race-card ${cardClass}`;
@@ -791,9 +822,7 @@ function renderizarListadoCarreras(carreras, mensajeVacio) {
           <button class="card-mini-btn btn-focus-map" data-id="${c.id}" title="Centrar en el mapa">
             📍 Mapa
           </button>
-          <a href="${escapeHtml(urlSegura(c.url_oficial))}" target="_blank" rel="noopener noreferrer" class="card-mini-btn btn-external" title="Ir a la web de inscripción oficial">
-            Web Oficial ↗
-          </a>
+          ${botonExterno}
         </div>
       </div>
     `;
@@ -1024,9 +1053,34 @@ function abrirModalDetalleCarrera(carrera) {
     avisoTexto.innerHTML = `<strong>Dato de prueba:</strong> registro ficticio del prototipo.`;
   }
 
-  // Configurar enlace oficial
+  // Botón principal: inscripción o, si ya se ha celebrado, resultados
   const officialLink = document.getElementById("modal-btn-official-web");
-  officialLink.href = urlSegura(carrera.url_oficial);
+  const celebrada = estaCelebrada(carrera);
+  const bloqueResultados = document.getElementById("modal-resultados");
+  const btnCalendario = document.getElementById("btn-ficha-calendario");
+  if (btnCalendario) btnCalendario.style.display = celebrada ? "none" : "";
+  if (celebrada) {
+    const r = enlacesResultados(carrera);
+    officialLink.href = urlSegura(r.enlaces[0].url);
+    document.getElementById("modal-cta-texto").textContent = "Ver resultados";
+    const nota = r.tipo === "propios"
+      ? "Clasificaciones publicadas por la organización:"
+      : r.tipo === "general"
+        ? "Esta carrera no tiene un enlace propio a sus resultados; están en la sección de resultados de su web de inscripción."
+        : "Aún no hemos encontrado sus resultados. Suelen publicarse en la web de la carrera unos días después.";
+    bloqueResultados.innerHTML = `
+      <h3 class="section-title">🏅 Resultados</h3>
+      <p class="resultados-nota">${escapeHtml(nota)}</p>
+      <div class="resultados-enlaces">
+        ${r.enlaces.map(e => `<a class="enlace-resultado" href="${escapeHtml(urlSegura(e.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(e.texto)} ↗</a>`).join("")}
+      </div>`;
+    bloqueResultados.classList.remove("hidden");
+  } else {
+    officialLink.href = urlSegura(carrera.url_oficial);
+    document.getElementById("modal-cta-texto").textContent = "Inscripción en Web Oficial";
+    bloqueResultados.classList.add("hidden");
+    bloqueResultados.innerHTML = "";
+  }
 
   // Botón "Ver en mapa" desde dentro del modal
   const btnViewOnMap = document.getElementById("btn-modal-view-on-map");

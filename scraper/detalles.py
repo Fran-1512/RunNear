@@ -13,6 +13,7 @@ import json
 import os
 import re
 from datetime import date, timedelta
+from urllib.parse import urljoin, urlparse
 
 from .comun import descargar, permitido as _permitido, texto_visible as _texto_visible
 from .fusion import AGREGADORES
@@ -21,7 +22,7 @@ CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "detalles_
 # Los inscritos cambian a diario: cada página se revisa como mucho cada 2 días
 DIAS_VALIDEZ = 2
 # Si cambia lo que se extrae de cada página, subir este número para volver a leerlas
-VERSION_EXTRACCION = 4
+VERSION_EXTRACCION = 5
 
 # Rangos plausibles: descartan "cambio de modalidad 3 €", "ludoteca 0,00 €", etc.
 PRECIO_MIN, PRECIO_MAX = 5.0, 300.0
@@ -147,6 +148,49 @@ def extraer_estado(h):
     return {"cancelad": "cancelada", "suspendid": "suspendida", "aplazad": "aplazada"}[m.group(1).lower()] if m else None
 
 
+PALABRAS_RESULTADOS = re.compile(r"clasific|resultad|results?\b|resultdata|classif|ranking", re.I)
+DOCUMENTO = re.compile(r"\.(pdf|xlsx?|csv)(\?|$)|drive\.google|docs\.google|descargar_adjunto", re.I)
+
+
+def extraer_resultados(h, url_carrera):
+    """
+    Enlaces a los resultados de la carrera en su página de inscripción.
+    Devuelve (especificos, general):
+      especificos: [{"texto", "url"}] propios de esta carrera (clasificación de la
+                   prueba, PDFs de resultados por distancia...)
+      general:     página de resultados de la plataforma (si no hay específicos)
+    """
+    p = urlparse(url_carrera)
+    # Lo que identifica a la carrera en sus URLs: números de id y trozos del slug
+    identificadores = set(re.findall(r"\d{3,}", url_carrera))
+    slug = p.path.rstrip("/").rsplit("/", 1)[-1]
+    if len(slug) >= 8 and not slug.isdigit():
+        identificadores.add(slug.lower())
+
+    # Zonas del HTML que hablan de clasificaciones/resultados (para enlaces tipo "General")
+    zonas = [m.start() for m in PALABRAS_RESULTADOS.finditer(h)]
+
+    especificos, generales = [], []
+    vistos = set()
+    for m in re.finditer(r'<a\b[^>]*href="([^"#]+)"[^>]*>(.*?)</a>', h, flags=re.S | re.I):
+        enlace = urljoin(url_carrera, html_lib.unescape(m.group(1)).strip())
+        texto = re.sub(r"\s+", " ", _texto_visible(m.group(2))).strip()
+        if enlace in vistos or not enlace.startswith("http"):
+            continue
+        habla_de_resultados = bool(PALABRAS_RESULTADOS.search(enlace + " " + texto))
+        cerca_de_resultados = any(0 < m.start() - z < 400 for z in zonas)
+        es_documento = bool(DOCUMENTO.search(enlace))
+        propio = any(i in enlace.lower() for i in identificadores)
+
+        if (habla_de_resultados and (propio or es_documento)) or (es_documento and cerca_de_resultados):
+            vistos.add(enlace)
+            especificos.append({"texto": texto[:60] or "Resultados", "url": enlace})
+        elif habla_de_resultados and urlparse(enlace).netloc == p.netloc:
+            vistos.add(enlace)
+            generales.append(enlace)
+    return especificos[:6], (generales[0] if generales else None)
+
+
 def _cargar_cache():
     if os.path.exists(CACHE_FILE):
         with open(CACHE_FILE, "r", encoding="utf-8") as f:
@@ -193,6 +237,9 @@ def enriquecer(carreras):
                         "plazas_max": extraer_plazas(h),
                         "estado": extraer_estado(h),
                     }
+                    especificos, general = extraer_resultados(h, url)
+                    entrada["resultados"] = especificos
+                    entrada["resultados_web"] = general
                     consultadas += 1
                 except Exception as e:
                     print(f"  [detalles] No se pudo leer {url}: {e}")
@@ -212,6 +259,11 @@ def enriquecer(carreras):
         # Cancelada / suspendida / aplazada según la web de inscripción
         if entrada.get("estado"):
             c["estado"] = entrada["estado"]
+        # Enlaces de resultados (sección "Resultados" del menú, para carreras ya celebradas)
+        if entrada.get("resultados"):
+            c["resultados"] = entrada["resultados"]
+        if entrada.get("resultados_web"):
+            c["resultados_web"] = entrada["resultados_web"]
 
     _guardar_cache(cache)
     con_precio = sum(1 for c in carreras if c.get("precio_desde") is not None)

@@ -165,6 +165,18 @@ function obtenerVista(id) {
   const hoy = hoyISO();
 
   switch (tipo) {
+    case "resultados": {
+      const desde = sumarDias(hoy, -14);
+      return {
+        titulo: "🏅 Resultados de las últimas 2 semanas",
+        // Solo ya celebradas (las de hoy aún no tienen resultados)
+        filtro: c => c.fecha >= desde && c.fecha < hoy,
+        incluirPasadas: true,
+        orden: (a, b) => (b.fecha || "").localeCompare(a.fecha || ""),
+        ignorarRadio: true,
+        vacio: "No hay carreras celebradas en las últimas dos semanas."
+      };
+    }
     case "destacadas":
       return {
         titulo: "🔥 Más destacadas (por inscritos o plazas)",

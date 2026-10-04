@@ -14,7 +14,7 @@ import os
 import sys
 import threading
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 # Asegurar compatibilidad de salida UTF-8 en consola de Windows
 if sys.platform.startswith("win"):
@@ -194,11 +194,12 @@ class CarrerasRequestHandler(http.server.SimpleHTTPRequestHandler):
         # Ordenación ('distancia', 'fecha', 'km')
         orden = query.get("orden", ["distancia"])[0].lower()
 
-        hoy = date.today().isoformat()
+        hace_14_dias = (date.today() - timedelta(days=14)).isoformat()
         resultados = []
         for c in carreras:
-            # Ocultar carreras ya celebradas aunque el scraper aún no haya pasado
-            if c.get("fecha") and c["fecha"] < hoy:
+            # Quitar las celebradas hace más de 14 días (las recientes se usan en "Resultados";
+            # la página ya oculta las pasadas en el resto de secciones)
+            if c.get("fecha") and c["fecha"] < hace_14_dias:
                 continue
 
             # Cálculo de distancia al usuario

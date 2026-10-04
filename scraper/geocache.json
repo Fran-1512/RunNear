@@ -51,6 +51,7 @@
     "lat": 38.77159,
     "lng": -2.15889
   },
+  "Chinchilla de Monte-aragón|Albacete": null,
   "Ciudad Real|Ciudad Real": {
     "lat": 38.98542,
     "lng": -3.92851
@@ -62,6 +63,10 @@
   "El Carpio de Tajo|Toledo": {
     "lat": 39.88742,
     "lng": -4.45428
+  },
+  "El Casar|Guadalajara": {
+    "lat": 40.7041,
+    "lng": -3.42964
   },
   "El Provencio|Cuenca": {
     "lat": 39.37591,
@@ -107,6 +112,10 @@
     "lat": 38.94194,
     "lng": -3.23653
   },
+  "La Torre de Esteban Hambrán|Toledo": {
+    "lat": 40.16941,
+    "lng": -4.21591
+  },
   "La Villa de Don Fadrique|Toledo": {
     "lat": 39.61803,
     "lng": -3.21823
@@ -127,6 +136,10 @@
     "lat": 39.58234,
     "lng": -3.87024
   },
+  "Luciana|Ciudad Real": {
+    "lat": 38.98444,
+    "lng": -4.29257
+  },
   "Malagón|Ciudad Real": {
     "lat": 39.16891,
     "lng": -3.85145
@@ -134,6 +147,14 @@
   "Maranchón|Guadalajara": {
     "lat": 41.0465,
     "lng": -2.20399
+  },
+  "Membrilla|Ciudad Real": {
+    "lat": 38.97248,
+    "lng": -3.3465
+  },
+  "Molina de Aragón|Guadalajara": {
+    "lat": 40.84408,
+    "lng": -1.88887
   },
   "Mondéjar|Guadalajara": {
     "lat": 40.32276,
@@ -151,13 +172,33 @@
     "lat": 40.11499,
     "lng": -4.61807
   },
+  "Olmedilla de Alarcón|Cuenca": {
+    "lat": 39.614,
+    "lng": -2.10379
+  },
   "Olías del Rey|Toledo": {
     "lat": 39.94474,
     "lng": -3.98725
   },
+  "Oropesa|Toledo": {
+    "lat": 39.91723,
+    "lng": -5.17475
+  },
+  "Pareja|Guadalajara": {
+    "lat": 40.55624,
+    "lng": -2.64971
+  },
+  "Paterna del Madera|Albacete": {
+    "lat": 38.59737,
+    "lng": -2.34585
+  },
   "Piedrabuena|Ciudad Real": {
     "lat": 39.03446,
     "lng": -4.17533
+  },
+  "Pozo Cañada|Albacete": {
+    "lat": 38.8029,
+    "lng": -1.73469
   },
   "Priego|Cuenca": {
     "lat": 40.4492,

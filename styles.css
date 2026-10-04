@@ -2623,3 +2623,55 @@ body.tema-claro .count-label {
 .card-mini-btn {
   white-space: nowrap;
 }
+/* Resultados de carreras ya celebradas */
+.bloque-resultados {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bloque-resultados.hidden {
+  display: none;
+}
+
+.resultados-nota {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.resultados-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.enlace-resultado {
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fbbf24;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace-resultado:hover {
+  background: rgba(245, 158, 11, 0.26);
+}
+
+.card-mini-btn.btn-resultados {
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+body.tema-claro .enlace-resultado,
+body.tema-claro .card-mini-btn.btn-resultados {
+  color: #b45309;
+}
