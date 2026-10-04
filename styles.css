@@ -2281,12 +2281,13 @@ body.dark-theme {
 }
 
 .acciones-ficha {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 8px;
 }
 
 .accion-ficha {
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2674,4 +2675,243 @@ body.tema-claro .count-label {
 body.tema-claro .enlace-resultado,
 body.tema-claro .card-mini-btn.btn-resultados {
   color: #b45309;
+}
+/* Tu tiempo en una carrera corrida (ficha) */
+.bloque-marca {
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bloque-marca.hidden,
+.bloque-tiempo.hidden,
+.panel-marcas.hidden {
+  display: none;
+}
+
+.marca-resumen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.marca-etiqueta,
+.marca-titulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.marca-titulo {
+  width: 100%;
+}
+
+.marca-tiempo {
+  font-size: 1.35rem;
+  color: #34d399;
+  font-variant-numeric: tabular-nums;
+}
+
+.marca-detalle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.marca-botones {
+  display: flex;
+  gap: 6px;
+}
+
+.marca-botones .btn-secondary {
+  padding: 6px 12px;
+}
+
+.marca-form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.marca-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.marca-form input,
+.marca-form select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 16px; /* evita el zoom automático de iOS */
+  padding: 7px 8px;
+}
+
+#marca-km {
+  width: 96px;
+}
+
+.marca-tiempo-inputs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.marca-tiempo-inputs input {
+  width: 64px;
+  text-align: center;
+}
+
+.marca-guardar {
+  padding: 8px 16px;
+}
+
+body.tema-claro .marca-form input,
+body.tema-claro .marca-form select {
+  background: #ffffff;
+}
+
+body.tema-claro .marca-tiempo {
+  color: #047857;
+}
+
+/* Tiempo en la tarjeta (sección "Ya corridas") */
+.card-marca {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #34d399;
+  margin-top: -4px;
+}
+
+body.tema-claro .card-marca {
+  color: #047857;
+}
+
+/* Tus mejores marcas (sección "Ya corridas") */
+.panel-marcas {
+  padding: 12px 16px 14px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.marcas-titulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.marcas-ayuda {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.marcas-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.marca-pb {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.marca-pb-distancia {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.marca-pb-tiempo {
+  font-size: 1.15rem;
+  color: #34d399;
+  font-variant-numeric: tabular-nums;
+}
+
+.marca-pb-ritmo {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.marca-pb-carrera {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.tema-claro .marca-pb-tiempo {
+  color: #047857;
+}
+
+/* Tiempo previsto (ficha) */
+.bloque-tiempo {
+  background: rgba(56, 189, 248, 0.07);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tiempo-resumen {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tiempo-icono {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tiempo-texto {
+  font-weight: 700;
+}
+
+.tiempo-datos,
+.tiempo-salida {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tiempo-salida strong {
+  color: var(--text-main);
+}
+
+.tiempo-nota {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.tiempo-nota a {
+  color: inherit;
 }

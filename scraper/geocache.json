@@ -51,7 +51,10 @@
     "lat": 38.77159,
     "lng": -2.15889
   },
-  "Chinchilla de Monte-aragón|Albacete": null,
+  "Chinchilla de Monte-aragón|Albacete": {
+    "lat": 38.88049,
+    "lng": -1.58911
+  },
   "Ciudad Real|Ciudad Real": {
     "lat": 38.98542,
     "lng": -3.92851

@@ -25,6 +25,7 @@
     },
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "General",
@@ -81,6 +82,78 @@
     ]
   },
   {
+    "id": "clm-23ccab38",
+    "nombre": "XII Carrera Trail Ciudad de Chinchilla",
+    "tipo": "trail",
+    "fecha": "2026-09-20",
+    "municipio": "Chinchilla de Monte-aragón",
+    "provincia": "Albacete",
+    "distancia_km": 16.7,
+    "distancias_km": [
+      16.7
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1218",
+    "circuito": "Circuito Trail Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM"
+    ],
+    "ubicacion": {
+      "lat": 38.88049,
+      "lng": -1.58911
+    },
+    "actualizado": "2026-10-04",
+    "precio_desde": 10.0,
+    "plazas_max": 409,
+    "hora": "09:15",
+    "resultados": [
+      {
+        "texto": "Clasificación",
+        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=49&PruebaId=1218"
+      }
+    ],
+    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
+  },
+  {
+    "id": "clm-1b339e24",
+    "nombre": "XVIII Carrera Popular Ciudad de Chinchilla",
+    "tipo": "popular",
+    "fecha": "2026-09-20",
+    "municipio": "Chinchilla de Monte-aragón",
+    "provincia": "Albacete",
+    "distancia_km": 13.2,
+    "distancias_km": [
+      13.2
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1170",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM"
+    ],
+    "ubicacion": {
+      "lat": 38.88049,
+      "lng": -1.58911
+    },
+    "actualizado": "2026-10-04",
+    "precio_desde": 10.0,
+    "plazas_max": 643,
+    "hora": "10:00",
+    "resultados": [
+      {
+        "texto": "Clasificación",
+        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=48&PruebaId=1170"
+      }
+    ],
+    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
+  },
+  {
     "id": "clm-88b963da",
     "nombre": "XVIII Carrera Villa de Torrijos",
     "tipo": "popular",
@@ -106,6 +179,7 @@
       "lng": -4.28423
     },
     "actualizado": "2026-10-04",
+    "hora": "10:31",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
   {
@@ -134,7 +208,8 @@
       "lng": -3.42964
     },
     "actualizado": "2026-10-04",
-    "precio_desde": 12.0
+    "precio_desde": 12.0,
+    "hora": "10:00"
   },
   {
     "id": "clm-d428ee42",
@@ -216,7 +291,8 @@
     },
     "actualizado": "2026-10-04",
     "precio_desde": 5.0,
-    "desnivel_positivo_m": 900
+    "desnivel_positivo_m": 900,
+    "hora": "10:00"
   },
   {
     "id": "clm-25f71e4d",
@@ -302,7 +378,8 @@
       "lat": 40.6327,
       "lng": -3.16461
     },
-    "actualizado": "2026-10-04"
+    "actualizado": "2026-10-04",
+    "hora": "11:00"
   },
   {
     "id": "clm-ce38272a",
@@ -390,6 +467,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 500,
+    "hora": "18:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -478,6 +556,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 100,
+    "hora": "09:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -515,6 +594,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 23.0,
     "plazas_max": 250,
+    "hora": "08:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -549,6 +629,7 @@
     },
     "actualizado": "2026-10-04",
     "precio_desde": 11.0,
+    "hora": "09:30",
     "resultados": [
       {
         "texto": "General",
@@ -619,6 +700,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 200,
+    "hora": "09:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -653,7 +735,8 @@
       "lng": -2.64971
     },
     "actualizado": "2026-10-04",
-    "precio_desde": 17.0
+    "precio_desde": 17.0,
+    "hora": "11:00"
   },
   {
     "id": "clm-7c06ca6a",
@@ -679,7 +762,8 @@
       "lat": 40.0661,
       "lng": -2.13135
     },
-    "actualizado": "2026-10-04"
+    "actualizado": "2026-10-04",
+    "hora": "11:00"
   },
   {
     "id": "clm-f087df24",
@@ -734,7 +818,8 @@
     },
     "actualizado": "2026-10-04",
     "precio_desde": 12.0,
-    "plazas_max": 450
+    "plazas_max": 450,
+    "hora": "10:00"
   },
   {
     "id": "clm-ac51323c",
@@ -913,7 +998,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 12.0
+    "precio_desde": 12.0,
+    "hora": "10:00"
   },
   {
     "id": "clm-97a4ec74",
@@ -1076,7 +1162,7 @@
     },
     "actualizado": "2026-10-04",
     "precio_desde": 15.0,
-    "inscritos": 75
+    "inscritos": 79
   },
   {
     "id": "clm-ea53dd71",
@@ -1135,7 +1221,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 8.0
+    "precio_desde": 8.0,
+    "hora": "10:30"
   },
   {
     "id": "clm-c0e0f733",
@@ -1168,6 +1255,7 @@
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
     "precio_desde": 18.0,
+    "hora": "09:30",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
   {
@@ -1227,6 +1315,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 750,
+    "hora": "11:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -1293,6 +1382,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 100,
+    "hora": "16:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -1326,7 +1416,8 @@
       "lng": -3.11861
     },
     "actualizado": "2026-10-04",
-    "precio_desde": 5.0
+    "precio_desde": 5.0,
+    "hora": "10:00"
   },
   {
     "id": "clm-5bc24eb5",
@@ -1386,7 +1477,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 8.0
+    "precio_desde": 8.0,
+    "hora": "10:00"
   },
   {
     "id": "clm-a16ce7b4",
@@ -1447,6 +1539,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 500,
+    "hora": "16:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -1627,7 +1720,8 @@
       "lng": -3.12528
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-04"
+    "actualizado": "2026-10-04",
+    "hora": "10:00"
   },
   {
     "id": "rl-carrera-solidaria-por-el-domund-la-roda",
@@ -1714,6 +1808,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 100,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -1776,7 +1871,8 @@
       "lng": -4.28423
     },
     "actualizado": "2026-10-04",
-    "precio_desde": 5.0
+    "precio_desde": 5.0,
+    "hora": "10:30"
   },
   {
     "id": "clm-67485f08",
@@ -1807,7 +1903,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 19.0
+    "precio_desde": 19.0,
+    "hora": "08:30"
   },
   {
     "id": "clm-d229af66",
@@ -1839,6 +1936,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 350,
+    "hora": "09:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -1876,7 +1974,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 10.0
+    "precio_desde": 10.0,
+    "hora": "10:30"
   },
   {
     "id": "clm-fea49530",
@@ -1964,6 +2063,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 8.0,
     "inscritos": 34,
+    "hora": "18:30",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
   {
@@ -2052,6 +2152,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 100,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -2117,6 +2218,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 350,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -2236,9 +2338,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-04",
-    "precio_desde": 5.0,
-    "resultados_web": "https://sportmaniacs.com/es/results"
+    "actualizado": "2026-10-04"
   },
   {
     "id": "rl-media-maraton-rural-villanueva-de-la-torre",
@@ -2297,7 +2397,8 @@
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
     "precio_desde": 12.0,
-    "desnivel_positivo_m": 850
+    "desnivel_positivo_m": 850,
+    "hora": "09:30"
   },
   {
     "id": "clm-9b9613c0",
@@ -2329,6 +2430,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 600,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -2449,6 +2551,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 850,
+    "hora": "16:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -2715,9 +2818,7 @@
       "lng": -3.98657
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-04",
-    "precio_desde": 5.0,
-    "resultados_web": "https://sportmaniacs.com/es/results"
+    "actualizado": "2026-10-04"
   },
   {
     "id": "clm-1edb2f04",
@@ -2747,6 +2848,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 350,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -2837,6 +2939,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 13.0,
     "plazas_max": 650,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -2874,7 +2977,8 @@
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
     "precio_desde": 14.0,
-    "desnivel_positivo_m": 517
+    "desnivel_positivo_m": 517,
+    "hora": "09:00"
   },
   {
     "id": "clm-ab77191f",
@@ -2903,7 +3007,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 40.0
+    "precio_desde": 40.0,
+    "hora": "08:30"
   },
   {
     "id": "clm-e5020f9f",
@@ -2929,7 +3034,8 @@
       "lat": 39.03446,
       "lng": -4.17533
     },
-    "actualizado": "2026-10-04"
+    "actualizado": "2026-10-04",
+    "hora": "17:00"
   },
   {
     "id": "clm-b6d16f28",
@@ -2959,6 +3065,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "plazas_max": 500,
+    "hora": "16:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -3056,6 +3163,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 16.0,
     "plazas_max": 250,
+    "hora": "08:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -3238,7 +3346,8 @@
       "lng": -4.78544
     },
     "actualizado": "2026-10-04",
-    "precio_desde": 15.0
+    "precio_desde": 15.0,
+    "hora": "16:00"
   },
   {
     "id": "clm-334f2b02",
@@ -3266,9 +3375,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-04",
-    "precio_desde": 10.0,
-    "resultados_web": "https://sportmaniacs.com/es/results"
+    "actualizado": "2026-10-04"
   },
   {
     "id": "dip-1189",
@@ -3296,6 +3403,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 500,
+    "hora": "09:30",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -3330,6 +3438,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 500,
+    "hora": "10:00",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -3505,7 +3614,8 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-04"
+    "actualizado": "2026-10-04",
+    "hora": "17:00"
   },
   {
     "id": "rl-san-silvestre-paseo-de-zapateria-tarancon",
@@ -3589,7 +3699,9 @@
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
     "precio_desde": 21.0,
-    "resultados_web": "https://sportmaniacs.com/es/results"
+    "hora": "06:30",
+    "resultados_web": "https://sportmaniacs.com/es/results",
+    "desnivel_positivo_m": 3174
   },
   {
     "id": "clm-dba25243",
@@ -3680,7 +3792,8 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
-    "precio_desde": 19.0
+    "precio_desde": 19.0,
+    "hora": "10:00"
   },
   {
     "id": "rl-los-102-de-la-comarca-soliss",
@@ -3762,6 +3875,7 @@
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-04",
+    "hora": "09:00",
     "resultados_web": "https://sportmaniacs.com/es/results"
   }
 ]

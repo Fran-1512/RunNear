@@ -8,6 +8,7 @@ en geocache.json.
 
 import json
 import os
+import re
 import time
 import urllib.parse
 import urllib.request
@@ -72,6 +73,27 @@ def geocodificar(municipio, provincia):
         # Segundo intento más laxo (p. ej. pedanías o nombres compuestos)
         params = urllib.parse.urlencode({
             "q": f"{municipio}, {provincia}, España",
+            "format": "json",
+            "limit": 1,
+        })
+        time.sleep(1.1)
+        req = urllib.request.Request(f"{NOMINATIM_URL}?{params}", headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                resultados = json.loads(resp.read().decode("utf-8"))
+        except Exception as e:
+            print(f"  [geo] Error consultando '{clave}': {e}")
+            return None
+        finally:
+            _ultima_peticion = time.time()
+
+    if not resultados and "-" in municipio:
+        # Tercer intento: algunas fuentes separan con guion nombres que OSM escribe juntos
+        # ("Chinchilla de Monte-Aragón" -> "Chinchilla de Montearagón")
+        params = urllib.parse.urlencode({
+            "city": re.sub(r"-(\w)", lambda m: m.group(1).lower(), municipio),
+            "county": provincia,
+            "country": "España",
             "format": "json",
             "limit": 1,
         })

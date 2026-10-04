@@ -530,6 +530,8 @@ async function cargarCarrerasDesdeServidor() {
   if (totalBadge) totalBadge.textContent = AppState.races.filter(c => !estaCelebrada(c)).length;
 
   aplicarFiltrosYRenderizar();
+  // Enlace compartido (?carrera=<id>): abrir su ficha
+  if (typeof abrirCarreraCompartida === "function") abrirCarreraCompartida();
 }
 
 // ==========================================================================
@@ -793,6 +795,7 @@ function renderizarListadoCarreras(carreras, mensajeVacio) {
         <span>📍 ${escapeHtml(c.municipio || "Municipio")}, ${escapeHtml(c.provincia || "Provincia")}</span>
         ${tamano ? `<span class="card-tamano">👥 ${escapeHtml(tamano)}</span>` : ""}
       </div>
+      ${c.marca && typeof textoMarca === "function" ? `<div class="card-marca">⏱️ Tu tiempo: ${escapeHtml(textoMarca(c.marca))}</div>` : ""}
 
       <div class="card-stats-grid">
         <div class="stat-item">
@@ -1101,6 +1104,7 @@ function abrirModalDetalleCarrera(carrera) {
   // Botones de favorita / calendario / corrida (menu.js)
   AppState.carreraAbierta = carrera;
   if (typeof actualizarAccionesFicha === "function") actualizarAccionesFicha(carrera);
+  if (typeof mostrarTiempoPrevisto === "function") mostrarTiempoPrevisto(carrera);
 
   // Mostrar modal
   modal.classList.remove("hidden");

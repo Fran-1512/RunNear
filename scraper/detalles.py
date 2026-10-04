@@ -16,13 +16,14 @@ from datetime import date, timedelta
 from urllib.parse import urljoin, urlparse
 
 from .comun import descargar, permitido as _permitido, texto_visible as _texto_visible
+from . import desnivel_fdmcm
 from .fusion import AGREGADORES
 
 CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "detalles_cache.json")
 # Los inscritos cambian a diario: cada página se revisa como mucho cada 2 días
 DIAS_VALIDEZ = 2
 # Si cambia lo que se extrae de cada página, subir este número para volver a leerlas
-VERSION_EXTRACCION = 5
+VERSION_EXTRACCION = 6
 
 # Rangos plausibles: descartan "cambio de modalidad 3 €", "ludoteca 0,00 €", etc.
 PRECIO_MIN, PRECIO_MAX = 5.0, 300.0
@@ -148,6 +149,42 @@ def extraer_estado(h):
     return {"cancelad": "cancelada", "suspendid": "suspendida", "aplazad": "aplazada"}[m.group(1).lower()] if m else None
 
 
+def _hora_valida(h, m):
+    h, m = int(h), int(m)
+    return f"{h:02d}:{m:02d}" if 6 <= h <= 23 and 0 <= m < 60 and not (h == 0 and m == 0) else None
+
+
+def extraer_hora(h):
+    """
+    Hora de salida de la carrera, sin confundirla con la de inscripción, recogida de
+    dorsales, cierre de meta o entrega de trofeos. Por orden de fiabilidad:
+      1. Datos estructurados: "startDate": "2026-09-20T10:00:00"
+      2. Dipualba: "Celebración: 26/09/2026 a las 18:00"
+      3. "Hora de salida: 10:00", "Salida a las 9:30", "Inicio de la prueba: 10.00 h"
+      4. "Fecha: Domingo, 20 de septiembre de 2026 a las 10:00 h" (Rock The Sport)
+      5. Sportmaniacs: "10 K 20/09/2026 10:31" (hora de la primera distancia)
+    """
+    for valor in re.findall(r'"startDate"\s*:\s*"\d{4}-\d{2}-\d{2}T(\d{2}):(\d{2})', h):
+        hora = _hora_valida(*valor)
+        if hora:
+            return hora
+    texto = _texto_visible(h)
+    patrones = [
+        r"celebraci[oó]n\s*:?\s*\d{1,2}/\d{1,2}/\d{4}\s*a las\s*(\d{1,2})[:.](\d{2})",
+        r"(?:hora de (?:la )?salida|salida de la (?:prueba|carrera)|salida a las|hora de inicio|inicio de la (?:prueba|carrera))"
+        r"\s*[:\-]?\s*(?:a las\s*)?(\d{1,2})[:.h](\d{2})",
+        r"\bfecha\s*:?\s*(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)?,?\s*\d{1,2} de \w+ de \d{4}\s*a las\s*(\d{1,2})[:.](\d{2})",
+        r"\b\d{1,2}(?:[.,]\d+)?\s?K\s+\d{2}/\d{2}/\d{4}\s+(\d{2}):(\d{2})",
+    ]
+    for patron in patrones:
+        m = re.search(patron, texto, flags=re.I)
+        if m:
+            hora = _hora_valida(*m.groups())
+            if hora:
+                return hora
+    return None
+
+
 PALABRAS_RESULTADOS = re.compile(r"clasific|resultad|results?\b|resultdata|classif|ranking", re.I)
 DOCUMENTO = re.compile(r"\.(pdf|xlsx?|csv)(\?|$)|drive\.google|docs\.google|descargar_adjunto", re.I)
 
@@ -236,6 +273,7 @@ def enriquecer(carreras):
                         "inscritos": extraer_inscritos(h),
                         "plazas_max": extraer_plazas(h),
                         "estado": extraer_estado(h),
+                        "hora": extraer_hora(h),
                     }
                     especificos, general = extraer_resultados(h, url)
                     entrada["resultados"] = especificos
@@ -259,11 +297,20 @@ def enriquecer(carreras):
         # Cancelada / suspendida / aplazada según la web de inscripción
         if entrada.get("estado"):
             c["estado"] = entrada["estado"]
+        # Hora de salida (si ninguna fuente la daba ya)
+        if entrada.get("hora") and not c.get("hora"):
+            c["hora"] = entrada["hora"]
         # Enlaces de resultados (sección "Resultados" del menú, para carreras ya celebradas)
         if entrada.get("resultados"):
             c["resultados"] = entrada["resultados"]
         if entrada.get("resultados_web"):
             c["resultados_web"] = entrada["resultados_web"]
+
+    # Trail sin desnivel en su web: buscarlo en las noticias de la federación
+    try:
+        desnivel_fdmcm.completar(carreras, cache)
+    except Exception as e:
+        print(f"  [fdmcm] ERROR (se continúa sin esos desniveles): {e}")
 
     _guardar_cache(cache)
     con_precio = sum(1 for c in carreras if c.get("precio_desde") is not None)
@@ -274,3 +321,4 @@ def enriquecer(carreras):
     print(f"  [detalles] {consultadas} páginas consultadas, {bloqueadas} bloqueadas por robots.txt")
     print(f"  [detalles] con precio: {con_precio}/{len(carreras)} | trail con desnivel: {con_desnivel}/{len(trails)}")
     print(f"  [detalles] con inscritos: {con_inscritos} | con plazas máximas: {con_plazas}")
+    print(f"  [detalles] con hora de salida: {sum(1 for c in carreras if c.get('hora'))}/{len(carreras)}")

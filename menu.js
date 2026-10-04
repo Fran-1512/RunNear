@@ -74,6 +74,53 @@ function alternarCorrida(carrera) {
   return ahora;
 }
 
+function marcaDe(id) {
+  const g = listaCorridas().find(c => c.id === id);
+  return g ? g.marca || null : null;
+}
+
+/** Guarda (o borra, con marca = null) el tiempo hecho en una carrera corrida */
+function guardarMarca(id, marca) {
+  const lista = listaCorridas();
+  const g = lista.find(c => c.id === id);
+  if (!g) return;
+  if (marca) g.marca = marca; else delete g.marca;
+  ALMACEN.guardar("corridas", lista);
+}
+
+// ==========================================================================
+// Tiempos y ritmos
+// ==========================================================================
+
+function formatearTiempo(seg) {
+  const h = Math.floor(seg / 3600);
+  const m = Math.floor((seg % 3600) / 60);
+  const s = Math.round(seg % 60);
+  const mm = String(m).padStart(h ? 2 : 1, "0");
+  return `${h ? h + ":" : ""}${mm}:${String(s).padStart(2, "0")}`;
+}
+
+function ritmoPorKm(marca) {
+  const seg = marca.tiempo_seg / marca.distancia_km;
+  return `${Math.floor(seg / 60)}:${String(Math.round(seg % 60)).padStart(2, "0")} /km`;
+}
+
+function textoKm(km) {
+  return `${String(km).replace(".", ",")} km`;
+}
+
+function textoMarca(marca) {
+  return `${formatearTiempo(marca.tiempo_seg)} en ${textoKm(marca.distancia_km)} · ${ritmoPorKm(marca)}`;
+}
+
+// Para las mejores marcas solo se comparan distancias prácticamente iguales
+const DISTANCIAS_MARCA = [
+  { titulo: "5K", min: 4.8, max: 5.3 },
+  { titulo: "10K", min: 9.6, max: 10.5 },
+  { titulo: "Media", min: 20.8, max: 21.5 },
+  { titulo: "Maratón", min: 41.8, max: 42.6 }
+];
+
 function radioPorDefecto() {
   return ALMACEN.leer("radio", 50);
 }
@@ -246,7 +293,10 @@ function obtenerVista(id) {
       return {
         titulo: "✅ Carreras que has corrido",
         // Lista propia: incluye carreras ya celebradas que ya no están en el calendario
-        origen: () => listaCorridas().map(g => AppState.races.find(c => c.id === g.id) || g),
+        origen: () => listaCorridas().map(g => {
+          const enCalendario = AppState.races.find(c => c.id === g.id);
+          return enCalendario ? { ...enCalendario, marca: g.marca } : g;
+        }),
         incluirPasadas: true,
         orden: (a, b) => (b.fecha || "").localeCompare(a.fecha || ""),
         ignorarRadio: true,
@@ -303,6 +353,7 @@ function alAplicarVista(resultados) {
   }
 
   renderizarCalendario();
+  renderizarPanelMarcas();
   construirMenuCircuitos();
   actualizarContadoresMenu();
 
@@ -502,6 +553,265 @@ function actualizarAccionesFicha(carrera) {
   corr.classList.toggle("activa", esCorr);
   corr.setAttribute("aria-pressed", String(esCorr));
   corr.querySelector(".accion-icono").textContent = esCorr ? "✅" : "☐";
+
+  renderizarMarcaFicha(carrera);
+}
+
+// ==========================================================================
+// Tu tiempo en una carrera corrida (ficha) y tus mejores marcas
+// ==========================================================================
+
+function renderizarMarcaFicha(carrera, editando = false) {
+  const caja = document.getElementById("modal-marca");
+  if (!caja) return;
+  if (!esCorrida(carrera.id)) {
+    caja.classList.add("hidden");
+    caja.innerHTML = "";
+    return;
+  }
+  caja.classList.remove("hidden");
+  const marca = marcaDe(carrera.id);
+
+  if (marca && !editando) {
+    caja.innerHTML = `
+      <div class="marca-resumen">
+        <span class="marca-etiqueta">⏱️ Tu tiempo</span>
+        <strong class="marca-tiempo">${escapeHtml(formatearTiempo(marca.tiempo_seg))}</strong>
+        <span class="marca-detalle">${escapeHtml(textoKm(marca.distancia_km))} · ${escapeHtml(ritmoPorKm(marca))}</span>
+      </div>
+      <div class="marca-botones">
+        <button class="btn-secondary" id="marca-editar">Editar</button>
+        <button class="btn-secondary" id="marca-quitar">Quitar</button>
+      </div>`;
+    caja.querySelector("#marca-editar").addEventListener("click", () => renderizarMarcaFicha(carrera, true));
+    caja.querySelector("#marca-quitar").addEventListener("click", () => {
+      guardarMarca(carrera.id, null);
+      renderizarMarcaFicha(carrera);
+      if (AppState.vista === "corridas") aplicarFiltrosYRenderizar();
+    });
+    return;
+  }
+
+  // Formulario: distancia (de las que tiene la carrera) y tiempo en h / min / s
+  const distancias = listaDistancias(carrera);
+  const elegida = marca ? marca.distancia_km : distancias[0];
+  const campoDistancia = distancias.length > 1
+    ? `<select id="marca-km" class="sort-select">${distancias.map(km =>
+        `<option value="${km}" ${km === elegida ? "selected" : ""}>${escapeHtml(textoKm(km))}</option>`).join("")}</select>`
+    : `<input id="marca-km" type="number" inputmode="decimal" min="0.1" step="0.1" value="${elegida ?? ""}" placeholder="km" aria-label="Kilómetros">`;
+  const t = marca ? marca.tiempo_seg : null;
+  const valor = n => (t != null ? n : "");
+
+  caja.innerHTML = `
+    <p class="marca-titulo">⏱️ Apunta tu tiempo</p>
+    <div class="marca-form">
+      <label class="marca-campo">Distancia ${campoDistancia}</label>
+      <div class="marca-campo">Tiempo
+        <div class="marca-tiempo-inputs">
+          <input id="marca-h" type="number" inputmode="numeric" min="0" max="99" placeholder="h" aria-label="Horas" value="${valor(Math.floor(t / 3600))}">
+          <span>:</span>
+          <input id="marca-m" type="number" inputmode="numeric" min="0" max="59" placeholder="min" aria-label="Minutos" value="${valor(Math.floor((t % 3600) / 60))}">
+          <span>:</span>
+          <input id="marca-s" type="number" inputmode="numeric" min="0" max="59" placeholder="s" aria-label="Segundos" value="${valor(t % 60)}">
+        </div>
+      </div>
+      <button class="btn-primary marca-guardar" id="marca-guardar">Guardar</button>
+    </div>`;
+
+  caja.querySelector("#marca-guardar").addEventListener("click", () => {
+    const km = Number(String(caja.querySelector("#marca-km").value).replace(",", "."));
+    const h = Number(caja.querySelector("#marca-h").value || 0);
+    const m = Number(caja.querySelector("#marca-m").value || 0);
+    const s = Number(caja.querySelector("#marca-s").value || 0);
+    const seg = h * 3600 + m * 60 + s;
+    if (!(km > 0) || !(seg > 0) || m > 59 || s > 59 || [h, m, s].some(v => v < 0 || !Number.isInteger(v))) {
+      mostrarToast("Revisa la distancia y el tiempo (minutos y segundos de 0 a 59)");
+      return;
+    }
+    guardarMarca(carrera.id, { tiempo_seg: seg, distancia_km: km });
+    renderizarMarcaFicha(carrera);
+    mostrarToast("⏱️ Tiempo guardado");
+    if (AppState.vista === "corridas") aplicarFiltrosYRenderizar();
+  });
+}
+
+function renderizarPanelMarcas() {
+  const panel = document.getElementById("panel-marcas");
+  if (!panel) return;
+  const corridas = listaCorridas();
+  if (AppState.vista !== "corridas" || !corridas.length) {
+    panel.classList.add("hidden");
+    return;
+  }
+  panel.classList.remove("hidden");
+
+  const conMarca = corridas.filter(g => g.marca);
+  const mejores = DISTANCIAS_MARCA.map(d => {
+    const candidatas = conMarca.filter(g => g.marca.distancia_km >= d.min && g.marca.distancia_km <= d.max);
+    const mejor = candidatas.sort((a, b) => a.marca.tiempo_seg - b.marca.tiempo_seg)[0];
+    return { ...d, mejor };
+  }).filter(d => d.mejor);
+
+  if (!mejores.length) {
+    panel.innerHTML = `
+      <p class="marcas-titulo">🏆 Tus mejores marcas</p>
+      <p class="marcas-ayuda">Abre una carrera que hayas corrido y apunta tu tiempo: aquí verás tus mejores marcas en 5K, 10K, media y maratón.</p>`;
+    return;
+  }
+
+  panel.innerHTML = `
+    <p class="marcas-titulo">🏆 Tus mejores marcas</p>
+    <div class="marcas-rejilla">
+      ${mejores.map(d => `
+        <button class="marca-pb" data-id="${escapeHtml(d.mejor.id)}" title="${escapeHtml(d.mejor.nombre)}">
+          <span class="marca-pb-distancia">${d.titulo}</span>
+          <strong class="marca-pb-tiempo">${escapeHtml(formatearTiempo(d.mejor.marca.tiempo_seg))}</strong>
+          <span class="marca-pb-ritmo">${escapeHtml(ritmoPorKm(d.mejor.marca))}</span>
+          <span class="marca-pb-carrera">${escapeHtml(d.mejor.nombre)}</span>
+        </button>`).join("")}
+    </div>`;
+  panel.querySelectorAll(".marca-pb").forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.id;
+    const enCalendario = AppState.races.find(c => c.id === id);
+    const guardada = listaCorridas().find(c => c.id === id);
+    if (enCalendario || guardada) abrirModalDetalleCarrera(enCalendario || guardada);
+  }));
+}
+
+// ==========================================================================
+// Compartir una carrera
+// ==========================================================================
+
+function enlaceCarrera(c) {
+  return `${location.origin}${location.pathname}?carrera=${encodeURIComponent(c.id)}`;
+}
+
+async function compartirCarrera(c) {
+  const url = enlaceCarrera(c);
+  const texto = `🏃 ${c.nombre} · ${fechaCorta(c.fecha)} en ${c.municipio}`;
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: c.nombre, text: texto, url });
+    } catch (e) {
+      // El usuario ha cerrado el menú de compartir: no es un error
+    }
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(`${texto}\n${url}`);
+    mostrarToast("🔗 Enlace copiado: pégalo donde quieras");
+  } catch (e) {
+    window.prompt("Copia este enlace:", url);
+  }
+}
+
+/** Al abrir un enlace compartido (?carrera=<id>) se abre directamente su ficha */
+function abrirCarreraCompartida() {
+  const parametros = new URLSearchParams(location.search);
+  const id = parametros.get("carrera");
+  if (!id) return;
+  const carrera = AppState.races.find(c => c.id === id);
+  if (carrera) {
+    abrirModalDetallePorId(id);
+  } else {
+    mostrarToast("Esa carrera ya no está en el calendario");
+  }
+  // Quitar el parámetro para que al recargar no se vuelva a abrir
+  parametros.delete("carrera");
+  const resto = parametros.toString();
+  history.replaceState(null, "", location.pathname + (resto ? "?" + resto : "") + location.hash);
+}
+
+// ==========================================================================
+// Tiempo previsto para el día de la carrera (Open-Meteo, gratuito y sin clave)
+// ==========================================================================
+
+const DIAS_PREVISION = 15; // Open-Meteo da previsión hasta 16 días
+const PREVISIONES = new Map();
+
+function estadoCielo(codigo) {
+  if (codigo === 0) return ["☀️", "Despejado"];
+  if (codigo === 1) return ["🌤️", "Casi despejado"];
+  if (codigo === 2) return ["⛅", "Intervalos de nubes"];
+  if (codigo === 3) return ["☁️", "Nublado"];
+  if (codigo === 45 || codigo === 48) return ["🌫️", "Niebla"];
+  if (codigo >= 51 && codigo <= 57) return ["🌦️", "Llovizna"];
+  if (codigo >= 61 && codigo <= 67) return ["🌧️", "Lluvia"];
+  if (codigo >= 71 && codigo <= 77) return ["🌨️", "Nieve"];
+  if (codigo >= 80 && codigo <= 82) return ["🌦️", "Chubascos"];
+  if (codigo === 85 || codigo === 86) return ["🌨️", "Chubascos de nieve"];
+  if (codigo >= 95) return ["⛈️", "Tormenta"];
+  return ["🌡️", "—"];
+}
+
+async function obtenerPrevision(c) {
+  const { lat, lng } = c.ubicacion;
+  const clave = `${lat.toFixed(2)},${lng.toFixed(2)},${c.fecha}`;
+  if (PREVISIONES.has(clave)) return PREVISIONES.get(clave);
+  const parametros = new URLSearchParams({
+    latitude: lat.toFixed(3),
+    longitude: lng.toFixed(3),
+    daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max",
+    hourly: "temperature_2m,weather_code,precipitation_probability",
+    timezone: "Europe/Madrid",
+    start_date: c.fecha,
+    end_date: c.fecha
+  });
+  const respuesta = await fetch(`https://api.open-meteo.com/v1/forecast?${parametros}`);
+  if (!respuesta.ok) throw new Error(`Open-Meteo ${respuesta.status}`);
+  const datos = await respuesta.json();
+  PREVISIONES.set(clave, datos);
+  return datos;
+}
+
+async function mostrarTiempoPrevisto(carrera) {
+  const caja = document.getElementById("modal-tiempo");
+  if (!caja) return;
+  caja.classList.add("hidden");
+  caja.innerHTML = "";
+
+  const dias = calcularDiasRestantes(carrera.fecha);
+  if (dias === null || dias < 0 || dias > DIAS_PREVISION || !carrera.ubicacion) return;
+
+  let datos;
+  try {
+    datos = await obtenerPrevision(carrera);
+  } catch (e) {
+    return; // Sin conexión o servicio caído: simplemente no se muestra
+  }
+  // Mientras llegaba la previsión se pudo abrir otra carrera
+  if (!AppState.carreraAbierta || AppState.carreraAbierta.id !== carrera.id) return;
+
+  const d = datos.daily;
+  if (!d || !d.time || !d.time.length || d.temperature_2m_max[0] == null) return;
+  const [icono, texto] = estadoCielo(d.weather_code[0]);
+
+  // A la hora de salida, si se conoce
+  let salida = "";
+  if (carrera.hora && datos.hourly) {
+    const i = datos.hourly.time.indexOf(`${carrera.fecha}T${carrera.hora.slice(0, 2)}:00`);
+    if (i >= 0 && datos.hourly.temperature_2m[i] != null) {
+      const [iconoH, textoH] = estadoCielo(datos.hourly.weather_code[i]);
+      const lluviaH = datos.hourly.precipitation_probability[i];
+      salida = `<p class="tiempo-salida">A la salida (${escapeHtml(carrera.hora)}): <strong>${Math.round(datos.hourly.temperature_2m[i])} °C</strong>
+        ${iconoH} ${escapeHtml(textoH)}${lluviaH != null ? ` · lluvia ${lluviaH} %` : ""}</p>`;
+    }
+  }
+
+  const lluvia = d.precipitation_probability_max[0];
+  caja.innerHTML = `
+    <h3 class="section-title">🌤️ Tiempo previsto</h3>
+    <div class="tiempo-resumen">
+      <span class="tiempo-icono">${icono}</span>
+      <div>
+        <p class="tiempo-texto">${escapeHtml(texto)}</p>
+        <p class="tiempo-datos">${Math.round(d.temperature_2m_min[0])}° / ${Math.round(d.temperature_2m_max[0])}°
+          ${lluvia != null ? ` · 💧 ${lluvia} %` : ""} · 💨 ${Math.round(d.wind_speed_10m_max[0])} km/h</p>
+      </div>
+    </div>
+    ${salida}
+    <p class="tiempo-nota">${dias > 7 ? "Previsión a más de una semana: puede cambiar bastante. " : ""}Datos: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a></p>`;
+  caja.classList.remove("hidden");
 }
 
 function configurarAccionesFicha() {
@@ -522,10 +832,15 @@ function configurarAccionesFicha() {
   document.getElementById("btn-ficha-corrida").addEventListener("click", () => {
     const c = AppState.carreraAbierta;
     if (!c) return;
+    if (marcaDe(c.id) && !confirm("Se borrará también el tiempo que apuntaste. ¿Seguir?")) return;
     const ahora = alternarCorrida(c);
     actualizarAccionesFicha(c);
     mostrarToast(ahora ? "✅ Guardada en «Ya corridas»" : "Quitada de «Ya corridas»");
     if (AppState.vista === "corridas") aplicarFiltrosYRenderizar();
+  });
+  document.getElementById("btn-ficha-compartir").addEventListener("click", () => {
+    const c = AppState.carreraAbierta;
+    if (c) compartirCarrera(c);
   });
 }
 
@@ -552,7 +867,8 @@ function mostrarAcercaDe() {
         <li>El calendario se actualiza cada día uniendo varias fuentes y quitando las carreras repetidas:
           Carreras CLM, Deportes Dipualba, Circuito de Carreras de Ciudad Real, el calendario de montaña de la FDMCM
           (vía Carreras de Montaña por Mayayo), carreraspopulares.com, Runnea y Running.life.</li>
-        <li>Precios, desniveles e inscritos se leen de la web de inscripción de cada carrera.</li>
+        <li>Precios, desniveles e inscritos se leen de la web de inscripción de cada carrera. Algunos desniveles de trail salen de las noticias de la FDMCM.</li>
+        <li>El tiempo previsto (cuando faltan 15 días o menos) es de Open-Meteo.com: solo se le envía la ubicación de la carrera, nunca la tuya.</li>
         <li>Confirma siempre fecha y detalles en la web oficial antes de inscribirte.</li>
       </ul>
       <h3>Mapa</h3>
