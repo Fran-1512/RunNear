@@ -1216,10 +1216,8 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Dipualba"
+      "Carreras CLM"
     ],
-    "estado": "cancelada",
     "ubicacion": {
       "lat": 38.36693,
       "lng": -2.31904
@@ -1227,6 +1225,7 @@
     "actualizado": "2026-10-04",
     "precio_desde": 9.0,
     "plazas_max": 750,
+    "estado": "cancelada",
     "resultados": [
       {
         "texto": "Clasificación",
@@ -1283,8 +1282,7 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Dipualba"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 38.95776,
@@ -1436,7 +1434,6 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -1689,40 +1686,6 @@
     "inscritos": 206
   },
   {
-    "id": "dip-1311",
-    "nombre": "I Carrera Iniciación Trail Yeste",
-    "tipo": "trail",
-    "fecha": "2026-10-18",
-    "municipio": "Yeste",
-    "provincia": "Albacete",
-    "distancia_km": 10.0,
-    "distancias_km": [
-      10.0
-    ],
-    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1311",
-    "fuente": {
-      "nombre": "Dipualba",
-      "url": "https://deportes.dipualba.es"
-    },
-    "fuentes": [
-      "Dipualba"
-    ],
-    "ubicacion": {
-      "lat": 38.36693,
-      "lng": -2.31904
-    },
-    "actualizado": "2026-10-04",
-    "precio_desde": 9.0,
-    "plazas_max": 100,
-    "resultados": [
-      {
-        "texto": "Clasificación",
-        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=49&PruebaId=1311"
-      }
-    ],
-    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
-  },
-  {
     "id": "clm-d9680724",
     "nombre": "II Trail de Almodovar del Pinar",
     "tipo": "trail",
@@ -1828,7 +1791,6 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2042,8 +2004,7 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Dipualba"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 39.19289,
@@ -2106,7 +2067,6 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2318,7 +2278,6 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2438,7 +2397,6 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2737,8 +2695,7 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Dipualba"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 38.51066,
@@ -2827,8 +2784,7 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Dipualba"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 38.51066,
@@ -2949,8 +2905,7 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Dipualba"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 38.54228,
@@ -3045,7 +3000,6 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -3269,74 +3223,6 @@
     "actualizado": "2026-10-04",
     "precio_desde": 10.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
-  },
-  {
-    "id": "dip-1189",
-    "nombre": "X Carrera Trail Alcaraz",
-    "tipo": "trail",
-    "fecha": "2026-11-22",
-    "municipio": "Alcaraz",
-    "provincia": "Albacete",
-    "distancia_km": 16.7,
-    "distancias_km": [
-      16.7
-    ],
-    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1189",
-    "fuente": {
-      "nombre": "Dipualba",
-      "url": "https://deportes.dipualba.es"
-    },
-    "fuentes": [
-      "Dipualba"
-    ],
-    "ubicacion": {
-      "lat": 38.66475,
-      "lng": -2.49108
-    },
-    "actualizado": "2026-10-04",
-    "precio_desde": 9.0,
-    "plazas_max": 500,
-    "resultados": [
-      {
-        "texto": "Clasificación",
-        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=49&PruebaId=1189"
-      }
-    ],
-    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
-  },
-  {
-    "id": "dip-1121",
-    "nombre": "XX Carrera Popular Alcaraz-Cortes-Alcaraz",
-    "tipo": "popular",
-    "fecha": "2026-11-22",
-    "municipio": "Alcaraz",
-    "provincia": "Albacete",
-    "distancia_km": 14.4,
-    "distancias_km": [
-      14.4
-    ],
-    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1121",
-    "fuente": {
-      "nombre": "Dipualba",
-      "url": "https://deportes.dipualba.es"
-    },
-    "fuentes": [
-      "Dipualba"
-    ],
-    "ubicacion": {
-      "lat": 38.66475,
-      "lng": -2.49108
-    },
-    "actualizado": "2026-10-04",
-    "precio_desde": 9.0,
-    "plazas_max": 500,
-    "resultados": [
-      {
-        "texto": "Clasificación",
-        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=48&PruebaId=1121"
-      }
-    ],
-    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
   },
   {
     "id": "rl-media-maraton-de-guadalajara",
