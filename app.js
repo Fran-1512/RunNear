@@ -453,48 +453,118 @@ function establecerUbicacionUsuario(lat, lng, label, isGps = false) {
   aplicarFiltrosYRenderizar();
 }
 
+function ponerRadio(km) {
+  AppState.filters.radiusKm = km;
+  const slider = document.getElementById("filter-radius-slider");
+  if (slider) slider.value = km;
+  const radiusDisplay = document.getElementById("radius-display-value");
+  if (radiusDisplay) radiusDisplay.textContent = `${km} km`;
+}
+
+/** Última ciudad elegida en el selector (se recuerda en el dispositivo) */
+function ciudadGuardada() {
+  try {
+    const c = JSON.parse(localStorage.getItem("runnear_ciudad"));
+    return c && Number.isFinite(c.lat) && Number.isFinite(c.lng) && c.nombre ? c : null;
+  } catch (e) {
+    return null;
+  }
+}
+
 /**
- * Sin GPS: centro de la región con un radio que la cubre entera
+ * Ubicación de referencia sin GPS: la última ciudad elegida o, si no hay, el centro de
+ * la región con un radio que la cubre entera. Se pone al arrancar, para que la web
+ * funcione mientras el navegador pregunta (o si el usuario dice que no).
  */
 function usarUbicacionPorDefecto() {
-  AppState.filters.radiusKm = REGION.radioCompletoKm;
-  const slider = document.getElementById("filter-radius-slider");
-  if (slider) slider.value = REGION.radioCompletoKm;
-  const radiusDisplay = document.getElementById("radius-display-value");
-  if (radiusDisplay) radiusDisplay.textContent = `${REGION.radioCompletoKm} km`;
-
+  const ciudad = ciudadGuardada();
+  if (ciudad) {
+    ponerRadio(typeof radioPorDefecto === "function" ? radioPorDefecto() : 50);
+    const select = document.getElementById("select-preset-city");
+    if (select) select.value = `${ciudad.lat},${ciudad.lng}`;
+    establecerUbicacionUsuario(ciudad.lat, ciudad.lng, ciudad.nombre);
+    return;
+  }
+  ponerRadio(REGION.radioCompletoKm);
   establecerUbicacionUsuario(REGION.centro.lat, REGION.centro.lng, `${REGION.nombre} (centro)`);
 }
 
-function solicitarGeolocalizacionNavegador() {
-  const labelEl = document.getElementById("user-location-label");
-  if (labelEl) labelEl.textContent = "Obteniendo GPS...";
+// Cada petición de GPS lleva un número: elegir una ciudad o pedir otra vez el GPS deja
+// sin efecto las respuestas que lleguen tarde de peticiones anteriores
+let peticionUbicacion = 0;
+const ESPERA_MAXIMA_GPS_MS = 12000;
+
+/**
+ * Pide la ubicación al navegador. Si se rechaza, falla o no hay respuesta (algunos
+ * navegadores no responden nunca si se cierra el aviso sin contestar), se usa la
+ * ciudad de referencia y la web funciona igual.
+ * manual = el usuario lo ha pedido (botón ↻ o "Cerca de mí"): se explica cómo activarla.
+ */
+async function solicitarGeolocalizacionNavegador(manual = false) {
+  const id = ++peticionUbicacion;
+  const vigente = () => id === peticionUbicacion;
+  let referenciaPuesta = false;
+
+  // Sin GPS se sigue con la ubicación que ya había (la de referencia o el último GPS)
+  const usarReferencia = (motivo) => {
+    if (!vigente() || referenciaPuesta) return;
+    referenciaPuesta = true;
+    const labelEl = document.getElementById("user-location-label");
+    if (labelEl) labelEl.textContent = AppState.userLocation.label;
+    const desde = AppState.userLocation.isGps ? "tu última ubicación" : AppState.userLocation.label;
+    if (motivo) mostrarToast(`${motivo} Mostrando carreras desde ${desde}; puedes elegir tu ciudad arriba.`, manual ? 8000 : 5000);
+  };
 
   if (!navigator.geolocation) {
-    mostrarToast("Geolocalización no soportada en este navegador");
-    usarUbicacionPorDefecto();
+    usarReferencia("Este navegador no permite obtener la ubicación.");
     return;
   }
 
+  // Permiso ya denegado antes: no se insiste ni se avisa en cada visita
+  try {
+    if (navigator.permissions) {
+      const permiso = await navigator.permissions.query({ name: "geolocation" });
+      if (permiso.state === "denied") {
+        usarReferencia(manual ? "La ubicación está bloqueada: actívala en el candado junto a la dirección web y pulsa ↻." : "");
+        return;
+      }
+    }
+  } catch (e) {
+    // Navegadores sin la API de permisos: se pregunta directamente
+  }
+  if (!vigente()) return;
+
+  const labelEl = document.getElementById("user-location-label");
+  if (labelEl) labelEl.textContent = "Obteniendo GPS...";
+
+  // Si el navegador no responde a tiempo, se sigue con la referencia (si luego llega
+  // la ubicación, se usa igualmente)
+  const vigilante = setTimeout(() => usarReferencia(manual ? "No ha llegado tu ubicación." : ""), ESPERA_MAXIMA_GPS_MS);
+
   navigator.geolocation.getCurrentPosition(
     (position) => {
+      clearTimeout(vigilante);
+      if (!vigente()) return;
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
+      // Con GPS ya no hace falta el radio que cubre toda la región: el de Ajustes
+      if (!AppState.userLocation.isGps && AppState.filters.radiusKm === REGION.radioCompletoKm && !ciudadGuardada()) {
+        ponerRadio(typeof radioPorDefecto === "function" ? radioPorDefecto() : 50);
+      }
       establecerUbicacionUsuario(lat, lng, `Tu ubicación GPS (${lat.toFixed(2)}, ${lng.toFixed(2)})`, true);
       mostrarToast("📍 Ubicación GPS obtenida correctamente");
     },
     (error) => {
+      clearTimeout(vigilante);
       console.warn("Error de geolocalización:", error.message);
-      // Mensaje según el motivo, para que el usuario sepa cómo arreglarlo
       const motivos = {
-        1: "Ubicación bloqueada. Pulsa el icono a la izquierda de la dirección web, permite la ubicación y recarga.",
-        2: "No se pudo determinar tu ubicación. Revisa que la ubicación del dispositivo esté activada.",
-        3: "La ubicación tardó demasiado. Pulsa ↻ para reintentar."
+        1: manual ? "Ubicación bloqueada: actívala en el candado junto a la dirección web y pulsa ↻." : "Sin permiso de ubicación.",
+        2: "No se pudo determinar tu ubicación (¿está activada en el dispositivo?).",
+        3: "La ubicación tardó demasiado (pulsa ↻ para reintentar)."
       };
-      mostrarToast(motivos[error.code] || `No se pudo obtener tu ubicación. Mostrando todo ${REGION.nombre}.`, 7000);
-      usarUbicacionPorDefecto();
+      usarReferencia(motivos[error.code] || "No se pudo obtener tu ubicación.");
     },
-    { timeout: 10000, enableHighAccuracy: true }
+    { timeout: 10000, enableHighAccuracy: true, maximumAge: 300000 }
   );
 }
 
@@ -1470,6 +1540,12 @@ function configurarEventListeners() {
     citySelect.addEventListener("change", (e) => {
       const [lat, lng] = e.target.value.split(",").map(Number);
       const text = e.target.options[e.target.selectedIndex].text;
+      peticionUbicacion++; // una respuesta tardía del GPS ya no cambia la ciudad elegida
+      try {
+        localStorage.setItem("runnear_ciudad", JSON.stringify({ lat, lng, nombre: text }));
+      } catch (err) {
+        // Sin almacenamiento: se usa la ciudad solo en esta visita
+      }
       establecerUbicacionUsuario(lat, lng, text);
       mostrarToast(`📍 Ubicación cambiada a: ${text}`);
     });
@@ -1477,7 +1553,7 @@ function configurarEventListeners() {
 
   // Botón Refrescar GPS
   const refreshGeoBtn = document.getElementById("btn-refresh-geo");
-  if (refreshGeoBtn) refreshGeoBtn.addEventListener("click", solicitarGeolocalizacionNavegador);
+  if (refreshGeoBtn) refreshGeoBtn.addEventListener("click", () => solicitarGeolocalizacionNavegador(true));
 
   // Botones de Mapa Flotantes
   const btnRecenter = document.getElementById("btn-map-recenter");
@@ -1607,6 +1683,7 @@ document.addEventListener("DOMContentLoaded", () => {
   configurarInstalacion();
   inicializarMapa();
   configurarEventListeners();
+  usarUbicacionPorDefecto();
   solicitarGeolocalizacionNavegador();
   cargarCarrerasDesdeServidor();
 });

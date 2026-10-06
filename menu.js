@@ -334,7 +334,7 @@ function aplicarVista(id) {
   const grupo = activo && activo.closest(".menu-subitems");
   if (grupo) abrirGrupo(grupo.previousElementSibling, true);
 
-  if (id === "cerca" && !AppState.userLocation.isGps) solicitarGeolocalizacionNavegador();
+  if (id === "cerca" && !AppState.userLocation.isGps) solicitarGeolocalizacionNavegador(true);
 
   cerrarMenuMovil();
   aplicarFiltrosYRenderizar();
@@ -950,14 +950,7 @@ aplicarTema(ALMACEN.leer("tema", "oscuro"));
 
 document.addEventListener("DOMContentLoaded", () => {
   AppState.vista = "todas";
-
-  // Radio por defecto guardado en ajustes
-  const radio = radioPorDefecto();
-  AppState.filters.radiusKm = radio;
-  const slider = document.getElementById("filter-radius-slider");
-  if (slider) slider.value = radio;
-  const etiqueta = document.getElementById("radius-display-value");
-  if (etiqueta) etiqueta.textContent = `${radio} km`;
+  // El radio inicial lo pone app.js según la ubicación de referencia (usarUbicacionPorDefecto)
 
   document.querySelectorAll(".menu-item[data-vista]").forEach(b => b.addEventListener("click", () => aplicarVista(b.dataset.vista)));
   document.querySelectorAll(".menu-grupo").forEach(b => b.addEventListener("click", () => abrirGrupo(b)));
