@@ -687,7 +687,9 @@ function enlaceCarrera(c) {
 }
 
 async function compartirCarrera(c) {
-  const url = enlaceCarrera(c);
+  // Se comparte la web oficial de la carrera; solo si no tiene, la ficha de RunNear
+  const oficial = urlSegura(c.url_oficial);
+  const url = oficial !== "#" ? oficial : enlaceCarrera(c);
   const texto = `🏃 ${c.nombre} · ${fechaCorta(c.fecha)} en ${c.municipio}`;
   if (navigator.share) {
     try {
