@@ -2915,3 +2915,12 @@ body.tema-claro .marca-pb-tiempo {
 .tiempo-nota a {
   color: inherit;
 }
+
+/* Botones del mensaje de lista vacía */
+.empty-state-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}

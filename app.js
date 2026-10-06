@@ -631,13 +631,7 @@ function aplicarFiltrosYRenderizar() {
   // Filtro de la sección del menú
   if (vista.filtro) resultados = resultados.filter(vista.filtro);
 
-  // Filtro por radio de proximidad. Al buscar por texto se ignora (quien busca una
-  // carrera concreta quiere encontrarla esté donde esté), y también en las secciones
-  // del menú que abarcan toda la región (provincias, destacadas, calendario...)
   const buscando = palabrasBusqueda(search).length > 0;
-  if (radiusKm > 0 && !buscando && !vista.ignorarRadio) {
-    resultados = resultados.filter(c => c.distancia_usuario_km === null || c.distancia_usuario_km <= radiusKm);
-  }
 
   // Filtro por modalidad (todas, popular, trail)
   if (type !== "todas") {
@@ -666,6 +660,16 @@ function aplicarFiltrosYRenderizar() {
     });
   }
 
+  // Filtro por radio de proximidad (el último, para saber qué habría fuera del radio).
+  // Al buscar por texto se ignora (quien busca una carrera concreta quiere encontrarla
+  // esté donde esté), y también en las secciones del menú que abarcan toda la región
+  const radioActivo = radiusKm > 0 && !buscando && !vista.ignorarRadio;
+  let fueraDelRadio = [];
+  if (radioActivo) {
+    fueraDelRadio = resultados.filter(c => c.distancia_usuario_km !== null && c.distancia_usuario_km > radiusKm);
+    resultados = resultados.filter(c => c.distancia_usuario_km === null || c.distancia_usuario_km <= radiusKm);
+  }
+
   // Ordenación (las secciones del menú pueden imponer la suya)
   if (vista.orden) {
     resultados.sort(vista.orden);
@@ -684,7 +688,6 @@ function aplicarFiltrosYRenderizar() {
   // Actualizar círculo de radio en el mapa (oculto cuando el radio no se aplica)
   if (AppState.radiusCircle) {
     AppState.radiusCircle.setRadius(radiusKm * 1000);
-    const radioActivo = !buscando && !vista.ignorarRadio;
     AppState.radiusCircle.setStyle({ opacity: radioActivo ? 1 : 0, fillOpacity: radioActivo ? 0.05 : 0 });
   }
 
@@ -698,7 +701,12 @@ function aplicarFiltrosYRenderizar() {
   }
 
   // Renderizar componentes
-  renderizarListadoCarreras(resultados, vista.vacio);
+  renderizarListadoCarreras(resultados, vista.vacio, {
+    filtrosActivos: type !== "todas" || distance !== "todas",
+    radioActivo,
+    // Carrera más cercana que cumple los demás filtros pero queda fuera del radio
+    masCercanaKm: fueraDelRadio.length ? Math.min(...fueraDelRadio.map(c => c.distancia_usuario_km)) : null
+  });
   actualizarSugerencias(resultados);
   if (typeof alAplicarVista === "function") alAplicarVista(resultados);
   renderizarMarcadoresEnMapa(resultados);
@@ -708,7 +716,60 @@ function aplicarFiltrosYRenderizar() {
 // Renderizado del Listado de Carreras (DOM)
 // ==========================================================================
 
-function renderizarListadoCarreras(carreras, mensajeVacio) {
+const RADIO_MAXIMO_KM = 300; // el máximo del deslizador
+
+function ampliarRadio(km) {
+  AppState.filters.radiusKm = km;
+  const slider = document.getElementById("filter-radius-slider");
+  if (slider) slider.value = km;
+  const etiqueta = document.getElementById("radius-display-value");
+  if (etiqueta) etiqueta.textContent = `${km} km`;
+  aplicarFiltrosYRenderizar();
+}
+
+/** Mensaje y botones cuando no hay ninguna carrera que mostrar */
+function htmlListaVacia(mensajeVacio, contexto) {
+  const { filtrosActivos, radioActivo, masCercanaKm } = contexto;
+  const buscando = palabrasBusqueda(AppState.filters.search).length > 0;
+  let titulo, texto;
+  const botones = [];
+
+  if (buscando) {
+    titulo = "No encontramos esa carrera";
+    texto = "Revisa cómo está escrito, prueba con menos palabras (por ejemplo, solo el pueblo) o quita los filtros de modalidad y distancia.";
+    botones.push(`<button class="btn-secondary" onclick="resetearFiltros()">Restablecer filtros</button>`);
+  } else if (filtrosActivos || radioActivo || !mensajeVacio) {
+    titulo = "No hay carreras con estos filtros";
+    if (radioActivo && masCercanaKm !== null) {
+      const sugerido = Math.ceil(masCercanaKm / 5) * 5;
+      texto = `Prueba a ampliar el radio de búsqueda: la carrera más cercana que cumple tus filtros está a ${String(masCercanaKm).replace(".", ",")} km.`;
+      if (sugerido <= RADIO_MAXIMO_KM) {
+        botones.push(`<button class="btn-primary" onclick="ampliarRadio(${sugerido})">Ampliar a ${sugerido} km</button>`);
+      }
+    } else if (radioActivo) {
+      texto = "Ni ampliando el radio hay carreras con esta modalidad y distancia. Prueba a quitar algún filtro.";
+    } else {
+      texto = "Prueba a quitar el filtro de modalidad o de distancia.";
+    }
+    if (filtrosActivos) botones.push(`<button class="btn-secondary" onclick="resetearFiltros()">Quitar filtros</button>`);
+  } else {
+    titulo = "Nada por aquí todavía";
+    texto = mensajeVacio;
+  }
+
+  return `
+    <div class="empty-state">
+      <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="color: #64748b;">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="8" y1="12" x2="16" y2="12"></line>
+      </svg>
+      <h3>${escapeHtml(titulo)}</h3>
+      <p>${escapeHtml(texto)}</p>
+      ${botones.length ? `<div class="empty-state-botones">${botones.join("")}</div>` : ""}
+    </div>`;
+}
+
+function renderizarListadoCarreras(carreras, mensajeVacio, contexto = {}) {
   const container = document.getElementById("races-list-container");
   const countBadge = document.getElementById("results-count-number");
   if (!container) return;
@@ -718,24 +779,7 @@ function renderizarListadoCarreras(carreras, mensajeVacio) {
   if (etiquetaContador) etiquetaContador.textContent = carreras.length === 1 ? "carrera encontrada" : "carreras encontradas";
 
   if (carreras.length === 0) {
-    const buscando = palabrasBusqueda(AppState.filters.search).length > 0;
-    container.innerHTML = `
-      <div class="empty-state">
-        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="color: #64748b;">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg>
-        <h3>${buscando ? "No encontramos esa carrera" : mensajeVacio ? "Nada por aquí todavía" : "No hay carreras con estos filtros"}</h3>
-        <p>${buscando
-          ? "Revisa cómo está escrito, prueba con menos palabras (por ejemplo, solo el pueblo) o quita los filtros de modalidad y distancia."
-          : mensajeVacio
-            ? escapeHtml(mensajeVacio)
-            : "Prueba a ampliar el radio de búsqueda o seleccionar \"Todas\" las modalidades."}</p>
-        <button class="btn-secondary" onclick="resetearFiltros()" style="margin-top: 8px;">
-          Restablecer filtros
-        </button>
-      </div>
-    `;
+    container.innerHTML = htmlListaVacia(mensajeVacio, { filtrosActivos: false, radioActivo: false, masCercanaKm: null, ...contexto });
     return;
   }
 
