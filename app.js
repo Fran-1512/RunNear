@@ -60,6 +60,7 @@ const AppState = {
     search: "",
     type: "todas",
     distance: "todas",
+    fecha: "todas",
     radiusKm: 50,
     sort: "distancia"
   },
@@ -674,7 +675,7 @@ function elegirSugerencia(carreraId) {
 }
 
 function aplicarFiltrosYRenderizar() {
-  const { search, type, distance, radiusKm, sort } = AppState.filters;
+  const { search, type, distance, fecha, radiusKm, sort } = AppState.filters;
   const userLat = AppState.userLocation.lat;
   const userLng = AppState.userLocation.lng;
 
@@ -700,6 +701,10 @@ function aplicarFiltrosYRenderizar() {
 
   // Filtro de la sección del menú
   if (vista.filtro) resultados = resultados.filter(vista.filtro);
+
+  // Filtro por fecha (botones "Este finde", "7 días", "Este mes")
+  const rango = typeof rangoFecha === "function" ? rangoFecha(fecha) : null;
+  if (rango) resultados = resultados.filter(c => c.fecha && c.fecha >= rango[0] && c.fecha <= rango[1]);
 
   const buscando = palabrasBusqueda(search).length > 0;
 
@@ -765,14 +770,16 @@ function aplicarFiltrosYRenderizar() {
   const subtitulo = document.getElementById("results-sub-text");
   if (subtitulo) {
     const ordenes = { distancia: "por proximidad", fecha: "por fecha", km: "por longitud", desnivel: "por desnivel" };
-    subtitulo.textContent = buscando ? "Buscando en toda la región"
+    const base = buscando ? "Buscando en toda la región"
       : vista.ignorarRadio ? "En toda la región"
       : `Ordenadas ${ordenes[sort] || ""}`;
+    // Con un filtro de fecha se indican los días exactos ("sáb, 10 oct – dom, 11 oct")
+    subtitulo.textContent = rango ? `${textoRangoFecha(rango)} · ${base.charAt(0).toLowerCase()}${base.slice(1)}` : base;
   }
 
   // Renderizar componentes
   renderizarListadoCarreras(resultados, vista.vacio, {
-    filtrosActivos: type !== "todas" || distance !== "todas",
+    filtrosActivos: type !== "todas" || distance !== "todas" || fecha !== "todas",
     radioActivo,
     // Carrera más cercana que cumple los demás filtros pero queda fuera del radio
     masCercanaKm: fueraDelRadio.length ? Math.min(...fueraDelRadio.map(c => c.distancia_usuario_km)) : null
@@ -785,6 +792,17 @@ function aplicarFiltrosYRenderizar() {
 // ==========================================================================
 // Renderizado del Listado de Carreras (DOM)
 // ==========================================================================
+
+/** Marca un botón de fecha ("finde", "7dias", "mes" o "todas") y, si se pide, filtra */
+function seleccionarFecha(id, filtrar = true) {
+  AppState.filters.fecha = id;
+  document.querySelectorAll(".chip-fecha").forEach(b => {
+    const activo = b.dataset.fecha === id;
+    b.classList.toggle("active", activo);
+    b.setAttribute("aria-checked", String(activo));
+  });
+  if (filtrar) aplicarFiltrosYRenderizar();
+}
 
 const RADIO_MAXIMO_KM = 300; // el máximo del deslizador
 
@@ -817,9 +835,9 @@ function htmlListaVacia(mensajeVacio, contexto) {
         botones.push(`<button class="btn-primary" onclick="ampliarRadio(${sugerido})">Ampliar a ${sugerido} km</button>`);
       }
     } else if (radioActivo) {
-      texto = "Ni ampliando el radio hay carreras con esta modalidad y distancia. Prueba a quitar algún filtro.";
+      texto = "Ni ampliando el radio hay carreras con estos filtros. Prueba a quitar alguno (fecha, modalidad o distancia).";
     } else {
-      texto = "Prueba a quitar el filtro de modalidad o de distancia.";
+      texto = "Prueba a quitar algún filtro (fecha, modalidad o distancia).";
     }
     if (filtrosActivos) botones.push(`<button class="btn-secondary" onclick="resetearFiltros()">Quitar filtros</button>`);
   } else {
@@ -1382,10 +1400,12 @@ function mostrarToast(mensaje, duracionMs = 3200) {
 function resetearFiltros() {
   // Radio por defecto elegido en Ajustes (menu.js)
   const radio = typeof radioPorDefecto === "function" ? radioPorDefecto() : 50;
+  seleccionarFecha("todas", false);
   AppState.filters = {
     search: "",
     type: "todas",
     distance: "todas",
+    fecha: "todas",
     radiusKm: radio,
     sort: "distancia"
   };
@@ -1529,6 +1549,9 @@ function configurarEventListeners() {
       aplicarFiltrosYRenderizar();
     });
   }
+
+  // Botones de fecha: Este finde / 7 días / Este mes / Todas
+  document.querySelectorAll(".chip-fecha").forEach(b => b.addEventListener("click", () => seleccionarFecha(b.dataset.fecha)));
 
   // Botón Restablecer
   const resetBtn = document.getElementById("btn-reset-filters");

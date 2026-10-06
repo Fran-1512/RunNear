@@ -2924,3 +2924,45 @@ body.tema-claro .marca-pb-tiempo {
   gap: 8px;
   margin-top: 8px;
 }
+
+/* Botones de fecha, siempre a la vista bajo el buscador */
+.chips-fecha {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.chip-fecha {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 4px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.chip-fecha:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chip-fecha.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+body.tema-claro .chip-fecha {
+  background: #ffffff;
+  color: var(--text-main);
+}
+
+body.tema-claro .chip-fecha.active {
+  background: var(--color-accent);
+  color: #fff;
+}

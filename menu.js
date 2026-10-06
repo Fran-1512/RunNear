@@ -165,6 +165,22 @@ function fechaCorta(iso) {
   return new Date(y, m - 1, d).toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" });
 }
 
+// Botones de fecha encima de la lista ("Este finde", "7 días", "Este mes")
+const FILTROS_FECHA = {
+  finde: () => finDeSemana(),
+  "7dias": () => [hoyISO(), sumarDias(hoyISO(), 7)],
+  mes: () => [hoyISO(), finDeMes()]
+};
+
+/** [inicio, fin] en ISO del filtro de fecha, o null para "todas" */
+function rangoFecha(id) {
+  return FILTROS_FECHA[id] ? FILTROS_FECHA[id]() : null;
+}
+
+function textoRangoFecha([ini, fin]) {
+  return ini === fin ? fechaCorta(ini) : `${fechaCorta(ini)} – ${fechaCorta(fin)}`;
+}
+
 // ==========================================================================
 // Tamaño de una carrera (para "Más destacadas")
 // ==========================================================================
@@ -234,24 +250,6 @@ function obtenerVista(id) {
       };
     case "cerca":
       return { titulo: "📍 Cerca de ti", orden: (a, b) => (a.distancia_usuario_km ?? 1e9) - (b.distancia_usuario_km ?? 1e9) };
-    case "finde": {
-      const [ini, fin] = finDeSemana();
-      return {
-        titulo: `📆 Este fin de semana (${fechaCorta(ini)}${fin !== ini ? " – " + fechaCorta(fin) : ""})`,
-        filtro: c => c.fecha >= ini && c.fecha <= fin, orden: porFecha, ignorarRadio: true,
-        vacio: "No hay carreras este fin de semana en la región."
-      };
-    }
-    case "7dias": {
-      const fin = sumarDias(hoy, 7);
-      return { titulo: "📆 Próximos 7 días", filtro: c => c.fecha <= fin, orden: porFecha, ignorarRadio: true,
-        vacio: "No hay carreras en los próximos 7 días." };
-    }
-    case "mes": {
-      const fin = finDeMes();
-      return { titulo: "📆 Lo que queda de mes", filtro: c => c.fecha <= fin, orden: porFecha, ignorarRadio: true,
-        vacio: "No quedan carreras este mes." };
-    }
     case "prov":
       return { titulo: `🗺️ Provincia de ${valor}`, filtro: c => c.provincia === valor, orden: porFecha, ignorarRadio: true };
     case "dist": {
@@ -311,6 +309,7 @@ function limpiarFiltrosSinAviso() {
   AppState.filters.search = "";
   AppState.filters.type = "todas";
   AppState.filters.distance = "todas";
+  seleccionarFecha("todas", false);
   const buscador = document.getElementById("filter-search-input");
   if (buscador) buscador.value = "";
   const limpiar = document.getElementById("btn-clear-search");
@@ -320,6 +319,12 @@ function limpiarFiltrosSinAviso() {
 }
 
 function aplicarVista(id) {
+  // "Próximas" del menú: son los mismos botones de fecha que hay encima de la lista
+  if (FILTROS_FECHA[id]) {
+    aplicarVista("todas");
+    seleccionarFecha(id);
+    return;
+  }
   AppState.vista = id;
   AppState.encuadrarTrasVista = id !== "todas";
   if (id === "calendario" && !AppState.calendarioMes) {
