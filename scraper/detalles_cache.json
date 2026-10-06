@@ -3,12 +3,20 @@
     "consultado": "2026-10-04",
     "desnivel_positivo_m": null
   },
+  "fdmcm:clm-29edfceb": {
+    "consultado": "2026-10-06",
+    "desnivel_positivo_m": 1750
+  },
   "fdmcm:clm-3070dc10": {
     "consultado": "2026-10-04",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-3097975c": {
     "consultado": "2026-10-04",
+    "desnivel_positivo_m": null
+  },
+  "fdmcm:clm-3be78268": {
+    "consultado": "2026-10-06",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-3df52edd": {
@@ -33,6 +41,10 @@
   },
   "fdmcm:clm-d9680724": {
     "consultado": "2026-10-04",
+    "desnivel_positivo_m": null
+  },
+  "fdmcm:clm-db92fb31": {
+    "consultado": "2026-10-06",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-e03a79cc": {
@@ -152,6 +164,18 @@
     "resultados_web": null,
     "version": 6
   },
+  "https://carreras.dxtchiprun.es/carrera/trail-puerta-del-rey-2027": {
+    "consultado": "2026-10-06",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
   "https://carreras.dxtchiprun.es/carrera/ultra-trail-anillo-minero-2026": {
     "consultado": "2026-10-04",
     "desnivel_positivo_m": null,
@@ -197,6 +221,31 @@
     "plazas_max": null,
     "precio_desde": 10.0,
     "resultados": [],
+    "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
+    "version": 6
+  },
+  "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026/": {
+    "consultado": "2026-10-06",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": "11:30",
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 10.0,
+    "resultados": [
+      {
+        "texto": "General",
+        "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Tomelloso-2026-General.pdf"
+      },
+      {
+        "texto": "Clubes",
+        "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Tomelloso-2026-Clubes.pdf"
+      },
+      {
+        "texto": "Categorías",
+        "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Tomelloso-2026-Categorias.pdf"
+      }
+    ],
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
     "version": 6
   },
@@ -249,6 +298,18 @@
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
     "version": 6
   },
+  "https://carrerasciudadreal.es/evento/10k-valdepenas-2027/": {
+    "consultado": "2026-10-06",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": "10:30",
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 18.0,
+    "resultados": [],
+    "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
+    "version": 6
+  },
   "https://carrerasciudadreal.es/evento/media-maraton-ciudad-de-puertollano-2026": {
     "consultado": "2026-10-04",
     "desnivel_positivo_m": null,
@@ -276,6 +337,18 @@
   },
   "https://carrerasciudadreal.es/evento/media-valdepenas-2027": {
     "consultado": "2026-10-04",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": "10:30",
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 12.0,
+    "resultados": [],
+    "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
+    "version": 6
+  },
+  "https://carrerasciudadreal.es/evento/media-valdepenas-2027/": {
+    "consultado": "2026-10-06",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -345,6 +418,30 @@
   },
   "https://crono3.es/evento/6k-solidarios-de-alcazar-de-san-juan-2026/": {
     "consultado": "2026-10-04",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": "https://crono3.es/resultados/",
+    "version": 6
+  },
+  "https://crono3.es/evento/carrera-mini-media-maraton-alcazar-s-juan-2026/": {
+    "consultado": "2026-10-06",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": "https://crono3.es/resultados/",
+    "version": 6
+  },
+  "https://crono3.es/evento/carrera-por-la-diabetes-los-cortijos-2026/": {
+    "consultado": "2026-10-06",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -843,14 +940,29 @@
     "resultados_web": null,
     "version": 6
   },
-  "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
-    "consultado": "2026-10-03",
+  "https://inscripciones.runrunsports.com/eventos/equitrail": {
+    "consultado": "2026-10-06",
     "desnivel_positivo_m": null,
     "estado": null,
+    "hora": null,
     "inscritos": null,
     "plazas_max": null,
     "precio_desde": null,
-    "version": 4
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
+    "consultado": "2026-10-06",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara": {
     "consultado": "2026-10-04",

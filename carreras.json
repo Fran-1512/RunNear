@@ -23,7 +23,7 @@
       "lat": 40.16941,
       "lng": -4.21591
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-89311b86",
@@ -50,7 +50,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-ecf2ac29",
@@ -77,7 +77,7 @@
       "lat": 40.84408,
       "lng": -1.88887
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 5.0,
     "desnivel_positivo_m": 900,
     "hora": "10:00"
@@ -106,7 +106,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-1fcf0864",
@@ -132,7 +132,7 @@
       "lat": 40.0661,
       "lng": -2.13135
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 18.0,
     "resultados": [
       {
@@ -166,7 +166,7 @@
       "lat": 40.6327,
       "lng": -3.16461
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "hora": "11:00"
   },
   {
@@ -193,7 +193,7 @@
       "lat": 39.614,
       "lng": -2.10379
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "inscritos": 178,
     "resultados": [
       {
@@ -226,7 +226,7 @@
       "lat": 39.91723,
       "lng": -5.17475
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-52194049",
@@ -252,7 +252,7 @@
       "lat": 38.8029,
       "lng": -1.73469
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 500,
     "hora": "18:00",
@@ -289,7 +289,7 @@
       "lat": 39.94474,
       "lng": -3.98725
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-74786d5d",
@@ -315,7 +315,7 @@
       "lat": 38.98542,
       "lng": -3.92851
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-16a5b86c",
@@ -341,7 +341,7 @@
       "lat": 38.59737,
       "lng": -2.34585
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 100,
     "hora": "09:30",
@@ -379,7 +379,7 @@
       "lat": 38.59737,
       "lng": -2.34585
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 23.0,
     "plazas_max": 250,
     "hora": "08:00",
@@ -415,7 +415,7 @@
       "lat": 38.68522,
       "lng": -4.11117
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 11.0,
     "hora": "09:30",
     "resultados": [
@@ -459,7 +459,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-fde10859",
@@ -485,7 +485,7 @@
       "lat": 38.59737,
       "lng": -2.34585
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 200,
     "hora": "09:00",
@@ -522,7 +522,7 @@
       "lat": 40.55624,
       "lng": -2.64971
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 17.0,
     "hora": "11:00"
   },
@@ -550,7 +550,7 @@
       "lat": 40.0661,
       "lng": -2.13135
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "hora": "11:00"
   },
   {
@@ -577,7 +577,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-a5ccfbf3",
@@ -604,7 +604,7 @@
       "lat": 41.0465,
       "lng": -2.20399
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 12.0,
     "plazas_max": 450,
     "hora": "10:00"
@@ -633,7 +633,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-d5adc554",
@@ -660,7 +660,7 @@
       "lat": 40.56838,
       "lng": -3.26271
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-b934cc14",
@@ -686,12 +686,12 @@
       "lat": 38.68522,
       "lng": -4.11117
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "inscritos": 276
   },
   {
-    "id": "clm-d65d32f4",
+    "id": "clm-8d8606a2",
     "nombre": "10K Ciudad de Tomelloso 2026",
     "tipo": "popular",
     "fecha": "2026-10-04",
@@ -701,7 +701,7 @@
     "distancias_km": [
       10.0
     ],
-    "url_oficial": "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026",
+    "url_oficial": "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026/",
     "circuito": "Circuito Carreras Populares Ciudad Real 2026",
     "fuente": {
       "nombre": "Carreras CLM",
@@ -714,9 +714,23 @@
       "lat": 39.15855,
       "lng": -3.02149
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "hora": "11:30",
+    "resultados": [
+      {
+        "texto": "General",
+        "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Tomelloso-2026-General.pdf"
+      },
+      {
+        "texto": "Clubes",
+        "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Tomelloso-2026-Clubes.pdf"
+      },
+      {
+        "texto": "Categorías",
+        "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Tomelloso-2026-Categorias.pdf"
+      }
+    ],
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
   {
@@ -743,7 +757,7 @@
       "lat": 40.18634,
       "lng": -1.82934
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados": [
       {
         "texto": "Descargar resultados - CXM EL PICON - BEAMUD",
@@ -777,24 +791,22 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 12.0,
     "hora": "10:00"
   },
   {
-    "id": "clm-97a4ec74",
+    "id": "clm-a02504b8",
     "nombre": "II Carrera Popular Carpio de Tajo",
     "tipo": "popular",
     "fecha": "2026-10-04",
     "municipio": "El Carpio de Tajo",
     "provincia": "Toledo",
-    "distancia_km": 6.8,
+    "distancia_km": 5.0,
     "distancias_km": [
-      3.4,
-      5.0,
-      6.8
+      5.0
     ],
-    "url_oficial": "https://sportmaniacs.com/es/races/ii-carrera-popular-carpio-de-tajo",
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo",
     "circuito": null,
     "fuente": {
       "nombre": "Carreras CLM",
@@ -807,7 +819,7 @@
       "lat": 39.88742,
       "lng": -4.45428
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-f104049e",
@@ -833,7 +845,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "rl-yuncler-toledo",
@@ -857,7 +869,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-695e366a",
@@ -883,7 +895,7 @@
       "lat": 39.93528,
       "lng": -4.89177
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-6023d0b0",
@@ -910,7 +922,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-15a05e52",
@@ -937,7 +949,7 @@
       "lat": 39.84216,
       "lng": -2.99737
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0,
     "inscritos": 79
   },
@@ -968,7 +980,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
   {
@@ -997,7 +1009,7 @@
       "lng": -4.40149
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "hora": "10:30"
   },
@@ -1030,7 +1042,7 @@
       "lng": -1.63418
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 18.0,
     "hora": "09:30",
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -1059,7 +1071,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0,
     "resultados_web": "https://multiesport.es/resultados/"
   },
@@ -1081,16 +1093,17 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Dipualba"
     ],
+    "estado": "cancelada",
     "ubicacion": {
       "lat": 38.36693,
       "lng": -2.31904
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 9.0,
     "plazas_max": 750,
-    "estado": "cancelada",
     "hora": "11:00",
     "resultados": [
       {
@@ -1126,9 +1139,34 @@
       "lng": -3.85323
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "inscritos": 59
+  },
+  {
+    "id": "clm-a5679ab4",
+    "nombre": "Carrera Mini – Alcazar S. Juan 2026",
+    "tipo": "popular",
+    "fecha": "2026-10-17",
+    "municipio": "Alcázar de San Juan",
+    "provincia": "Ciudad Real",
+    "distancia_km": null,
+    "distancias_km": [],
+    "url_oficial": "https://crono3.es/evento/carrera-mini-media-maraton-alcazar-s-juan-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM"
+    ],
+    "ubicacion": {
+      "lat": 39.38998,
+      "lng": -3.21014
+    },
+    "actualizado": "2026-10-06",
+    "resultados_web": "https://crono3.es/resultados/"
   },
   {
     "id": "clm-a71f7ca6",
@@ -1148,13 +1186,14 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Dipualba"
     ],
     "ubicacion": {
       "lat": 38.95776,
       "lng": -1.5561
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 100,
     "hora": "16:30",
@@ -1190,7 +1229,7 @@
       "lat": 39.59827,
       "lng": -3.11861
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 5.0,
     "hora": "10:00"
   },
@@ -1220,7 +1259,7 @@
       "lng": -2.88452
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 5.0,
     "inscritos": 69,
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -1251,7 +1290,7 @@
       "lng": -4.7187
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "hora": "10:00"
   },
@@ -1283,7 +1322,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-da7bfda1",
@@ -1304,6 +1343,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -1311,7 +1351,7 @@
       "lng": -1.55658
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 500,
     "hora": "16:30",
@@ -1349,7 +1389,7 @@
       "lng": -2.28151
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0
   },
   {
@@ -1376,7 +1416,7 @@
       "lat": 39.38998,
       "lng": -3.21014
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1405,7 +1445,7 @@
       "lng": -3.2101
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1432,7 +1472,7 @@
       "lat": 39.38998,
       "lng": -3.21014
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1459,7 +1499,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 18.0,
     "resultados": [
       {
@@ -1495,7 +1535,7 @@
       "lng": -3.12528
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "hora": "10:00"
   },
   {
@@ -1522,7 +1562,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-271439b2",
@@ -1553,9 +1593,44 @@
       "lng": -4.30387
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 18.0,
     "inscritos": 206
+  },
+  {
+    "id": "dip-1311",
+    "nombre": "I Carrera Iniciación Trail Yeste",
+    "tipo": "trail",
+    "fecha": "2026-10-18",
+    "municipio": "Yeste",
+    "provincia": "Albacete",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1311",
+    "fuente": {
+      "nombre": "Dipualba",
+      "url": "https://deportes.dipualba.es"
+    },
+    "fuentes": [
+      "Dipualba"
+    ],
+    "ubicacion": {
+      "lat": 38.36693,
+      "lng": -2.31904
+    },
+    "actualizado": "2026-10-06",
+    "precio_desde": 9.0,
+    "plazas_max": 100,
+    "hora": "10:00",
+    "resultados": [
+      {
+        "texto": "Clasificación",
+        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=49&PruebaId=1311"
+      }
+    ],
+    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
   },
   {
     "id": "clm-d9680724",
@@ -1582,7 +1657,7 @@
       "lat": 39.72563,
       "lng": -1.90174
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "resultados_web": "https://dorsal1.com/resultados/"
   },
@@ -1610,7 +1685,7 @@
       "lat": 39.98086,
       "lng": -4.28423
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 5.0,
     "hora": "10:30"
   },
@@ -1643,7 +1718,7 @@
       "lng": -3.92738
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 19.0,
     "hora": "08:30"
   },
@@ -1666,6 +1741,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -1673,7 +1749,7 @@
       "lng": -2.32155
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 9.0,
     "plazas_max": 350,
     "hora": "09:30",
@@ -1713,7 +1789,7 @@
       "lng": -2.92633
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "hora": "10:30"
   },
@@ -1743,7 +1819,7 @@
       "lng": -1.86017
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-4a821232",
@@ -1772,7 +1848,7 @@
       "lng": -4.83045
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-570d4c67",
@@ -1801,7 +1877,7 @@
       "lng": -3.21696
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "inscritos": 34,
     "hora": "18:30",
@@ -1832,7 +1908,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-fca53f59",
@@ -1861,7 +1937,7 @@
       "lng": -2.13742
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0,
     "inscritos": 418
   },
@@ -1883,13 +1959,14 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Dipualba"
     ],
     "ubicacion": {
       "lat": 39.19289,
       "lng": -1.42899
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 100,
     "hora": "10:00",
@@ -1926,7 +2003,7 @@
       "lat": 39.81137,
       "lng": -4.14888
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-c8b0f1f5",
@@ -1947,6 +2024,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -1954,7 +2032,7 @@
       "lng": -1.42958
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 350,
     "hora": "10:00",
@@ -1994,35 +2072,9 @@
       "lng": -2.79043
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
-  },
-  {
-    "id": "rl-carrera-popular-ruta-de-las-ermitas",
-    "nombre": "Carrera Popular Ruta de las Ermitas",
-    "tipo": "popular",
-    "fecha": "2026-10-25",
-    "municipio": "Yunquera de Henares",
-    "provincia": "Guadalajara",
-    "ubicacion": {
-      "lat": 40.75235,
-      "lng": -3.16667
-    },
-    "ubicacion_exacta": true,
-    "distancia_km": 10.0,
-    "distancias_km": [
-      10.0
-    ],
-    "url_oficial": "https://www.deporticket.com/web-evento/13960-xvi-carrera-popular-ruta-de-las-ermitas",
-    "fuente": {
-      "nombre": "Running.life",
-      "url": "https://running.life"
-    },
-    "fuentes": [
-      "Running.life"
-    ],
-    "actualizado": "2026-10-05"
   },
   {
     "id": "clm-5b67d187",
@@ -2048,7 +2100,7 @@
       "lat": 38.77159,
       "lng": -2.15889
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-24e044f4",
@@ -2077,7 +2129,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "rl-media-maraton-rural-villanueva-de-la-torre",
@@ -2103,7 +2155,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://www.runnink.com/clasificaciones/"
   },
   {
@@ -2134,7 +2186,7 @@
       "lng": -3.10847
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 12.0,
     "desnivel_positivo_m": 850,
     "hora": "09:30"
@@ -2158,6 +2210,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2165,7 +2218,7 @@
       "lng": -1.98448
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 600,
     "hora": "10:00",
@@ -2176,6 +2229,34 @@
       }
     ],
     "resultados_web": "https://deportes.dipualba.es/clasificaciones"
+  },
+  {
+    "id": "clm-9a1a204d",
+    "nombre": "XVI Carrera Popular Ruta de las Ermitas",
+    "tipo": "popular",
+    "fecha": "2026-10-25",
+    "municipio": "Yunquera de Henares",
+    "provincia": "Guadalajara",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
+    "url_oficial": "https://www.deporticket.com/web-evento/13960-xvi-carrera-popular-ruta-de-las-ermitas",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM",
+      "Running.life"
+    ],
+    "ubicacion": {
+      "lat": 40.75235,
+      "lng": -3.16667
+    },
+    "ubicacion_exacta": true,
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-789e5415",
@@ -2201,33 +2282,37 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
-    "id": "rl-10k-i-carrera-bodegas-latue",
-    "nombre": "Carrera Benéfica Latúe 10K",
+    "id": "clm-8bd6c541",
+    "nombre": "2ª Carrera Benefica Latue 2026",
     "tipo": "popular",
     "fecha": "2026-10-31",
-    "municipio": "Villanueva de Alcardete",
+    "municipio": "Villanueva De Alcardete",
     "provincia": "Toledo",
+    "distancia_km": 10.0,
+    "distancias_km": [
+      2.0,
+      5.0,
+      10.0
+    ],
+    "url_oficial": "https://crono3.es/evento/10k-2a-carrera-benefica-latue-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM",
+      "Running.life"
+    ],
     "ubicacion": {
       "lat": 39.67214,
       "lng": -3.01507
     },
     "ubicacion_exacta": true,
-    "distancia_km": 10.0,
-    "distancias_km": [
-      10.0
-    ],
-    "url_oficial": "https://crono3.es/evento/10k-2a-carrera-benefica-latue-2026/",
-    "fuente": {
-      "nombre": "Running.life",
-      "url": "https://running.life"
-    },
-    "fuentes": [
-      "Running.life"
-    ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -2256,7 +2341,7 @@
       "lng": -2.57134
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0
   },
   {
@@ -2278,6 +2363,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2285,7 +2371,7 @@
       "lng": -1.92092
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 9.0,
     "plazas_max": 850,
     "hora": "16:00",
@@ -2296,6 +2382,33 @@
       }
     ],
     "resultados_web": "https://deportes.dipualba.es/clasificaciones"
+  },
+  {
+    "id": "clm-aacd218b",
+    "nombre": "Carrera Por la Diabetes – los Cortijos 2026",
+    "tipo": "popular",
+    "fecha": "2026-11-01",
+    "municipio": "Los Cortijos",
+    "provincia": "Ciudad Real",
+    "distancia_km": 8.0,
+    "distancias_km": [
+      8.0
+    ],
+    "url_oficial": "https://crono3.es/evento/carrera-por-la-diabetes-los-cortijos-2026/",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM"
+    ],
+    "ubicacion": {
+      "lat": 39.31421,
+      "lng": -4.05194
+    },
+    "actualizado": "2026-10-06",
+    "resultados_web": "https://crono3.es/resultados/"
   },
   {
     "id": "clm-af48c349",
@@ -2323,7 +2436,7 @@
       "lng": -2.31415
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "resultados_web": "https://dorsal1.com/resultados/"
   },
@@ -2351,33 +2464,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05"
-  },
-  {
-    "id": "clm-73027503",
-    "nombre": "Homenaje Jose Manuel y Fernando - Entrenamiento Solidario",
-    "tipo": "popular",
-    "fecha": "2026-11-07",
-    "municipio": "Albacete",
-    "provincia": "Albacete",
-    "distancia_km": 5.0,
-    "distancias_km": [
-      5.0
-    ],
-    "url_oficial": "https://inscripciones.cronomancha.com/es/evento/homenaje-jose-manuel-y-fernando-entrenamiento-solidario",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 38.99509,
-      "lng": -1.85592
-    },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-c5823811",
@@ -2405,7 +2492,7 @@
       "lng": -1.71861
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 13.0,
     "inscritos": 35
   },
@@ -2439,13 +2526,13 @@
       "lng": -4.10789
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 8.0,
     "inscritos": 129
   },
   {
-    "id": "ccr-21333",
-    "nombre": "10K Antonio Serrano La Solana 2026",
+    "id": "clm-8dfd582b",
+    "nombre": "10K Antonio Serrano la Solana 2026",
     "tipo": "popular",
     "fecha": "2026-11-08",
     "municipio": "La Solana",
@@ -2457,20 +2544,21 @@
     "url_oficial": "https://carrerasciudadreal.es/evento/10k-la-solana-2026/",
     "circuito": "Circuito Carreras Populares Ciudad Real 2026",
     "fuente": {
-      "nombre": "Circuito Carreras Ciudad Real",
-      "url": "https://carrerasciudadreal.es"
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
     },
-    "hora": "11:00",
     "fuentes": [
+      "Carreras CLM",
       "Circuito Carreras Ciudad Real",
       "Running.life"
     ],
+    "hora": "11:00",
     "ubicacion": {
       "lat": 38.9416,
       "lng": -3.2392
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -2498,7 +2586,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-aa3d5b43",
@@ -2524,7 +2612,7 @@
       "lat": 40.08719,
       "lng": -3.87352
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 5.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -2555,7 +2643,7 @@
       "lng": -3.98657
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-1edb2f04",
@@ -2575,13 +2663,14 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Dipualba"
     ],
     "ubicacion": {
       "lat": 38.51066,
       "lng": -1.69951
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 350,
     "hora": "10:00",
@@ -2617,7 +2706,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-153576b1",
@@ -2645,7 +2734,7 @@
       "lng": -4.83045
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-aff89e9c",
@@ -2665,13 +2754,14 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Dipualba"
     ],
     "ubicacion": {
       "lat": 38.51066,
       "lng": -1.69951
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 13.0,
     "plazas_max": 650,
     "hora": "10:00",
@@ -2710,7 +2800,7 @@
       "lng": -1.66028
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 14.0,
     "desnivel_positivo_m": 517,
     "hora": "09:00"
@@ -2741,7 +2831,7 @@
       "lng": -3.24773
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 40.0,
     "hora": "08:30"
   },
@@ -2769,7 +2859,7 @@
       "lat": 39.03446,
       "lng": -4.17533
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "hora": "17:00"
   },
   {
@@ -2790,13 +2880,14 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Dipualba"
     ],
     "ubicacion": {
       "lat": 38.54228,
       "lng": -1.95581
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "plazas_max": 500,
     "hora": "16:30",
@@ -2815,8 +2906,10 @@
     "fecha": "2026-11-15",
     "municipio": "La Puebla de Almoradiel",
     "provincia": "Toledo",
-    "distancia_km": null,
-    "distancias_km": [],
+    "distancia_km": 10.0,
+    "distancias_km": [
+      10.0
+    ],
     "url_oficial": "https://carreras.dxtchiprun.es/carrera/10k-y-5k-la-puebla-de-almoradiel-2026",
     "circuito": null,
     "fuente": {
@@ -2824,13 +2917,15 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Running.life"
     ],
     "ubicacion": {
-      "lat": 39.59827,
-      "lng": -3.11861
+      "lat": 39.59716,
+      "lng": -3.12026
     },
-    "actualizado": "2026-10-05",
+    "ubicacion_exacta": true,
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0,
     "inscritos": 36
   },
@@ -2861,7 +2956,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-fdb54097",
@@ -2882,6 +2977,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "Dipualba",
       "Running.life"
     ],
     "ubicacion": {
@@ -2889,7 +2985,7 @@
       "lng": -2.51836
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 16.0,
     "plazas_max": 250,
     "hora": "08:30",
@@ -2927,7 +3023,7 @@
       "lng": -4.10789
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0,
     "inscritos": 12
   },
@@ -2938,8 +3034,10 @@
     "fecha": "2026-11-15",
     "municipio": "Guadalajara",
     "provincia": "Guadalajara",
-    "distancia_km": null,
-    "distancias_km": [],
+    "distancia_km": 6.0,
+    "distancias_km": [
+      6.0
+    ],
     "url_oficial": "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara",
     "circuito": null,
     "fuente": {
@@ -2947,13 +3045,15 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Running.life"
     ],
     "ubicacion": {
-      "lat": 40.6327,
-      "lng": -3.16461
+      "lat": 40.63249,
+      "lng": -3.16017
     },
-    "actualizado": "2026-10-05"
+    "ubicacion_exacta": true,
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-cedf2b46",
@@ -2981,7 +3081,7 @@
       "lng": -1.86017
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-506bf5bf",
@@ -3009,7 +3109,7 @@
       "lng": -3.57747
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 10.0
   },
   {
@@ -3032,13 +3132,14 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Running.life"
     ],
     "ubicacion": {
       "lat": 38.98542,
       "lng": -3.92851
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 35.0,
     "inscritos": 140,
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -3069,7 +3170,7 @@
       "lat": 40.15754,
       "lng": -4.78544
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0,
     "hora": "16:00"
   },
@@ -3091,13 +3192,89 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM"
+      "Carreras CLM",
+      "Running.life"
     ],
     "ubicacion": {
-      "lat": 39.85589,
-      "lng": -4.02426
+      "lat": 39.86539,
+      "lng": -4.02843
     },
-    "actualizado": "2026-10-05"
+    "ubicacion_exacta": true,
+    "actualizado": "2026-10-06"
+  },
+  {
+    "id": "clm-db92fb31",
+    "nombre": "X Carrera Trail Alcaraz",
+    "tipo": "trail",
+    "fecha": "2026-11-22",
+    "municipio": "Alcaraz",
+    "provincia": "Albacete",
+    "distancia_km": 16.7,
+    "distancias_km": [
+      16.7
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1189",
+    "circuito": "Circuito Trail Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM",
+      "Dipualba"
+    ],
+    "ubicacion": {
+      "lat": 38.66475,
+      "lng": -2.49108
+    },
+    "actualizado": "2026-10-06",
+    "precio_desde": 9.0,
+    "plazas_max": 500,
+    "hora": "09:30",
+    "resultados": [
+      {
+        "texto": "Clasificación",
+        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=49&PruebaId=1189"
+      }
+    ],
+    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
+  },
+  {
+    "id": "clm-27cc2c3c",
+    "nombre": "XX Carrera Popular Alcaraz-cortes-alcaraz",
+    "tipo": "popular",
+    "fecha": "2026-11-22",
+    "municipio": "Alcaraz",
+    "provincia": "Albacete",
+    "distancia_km": 14.4,
+    "distancias_km": [
+      14.4
+    ],
+    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1121",
+    "circuito": "Circuito Carreras Populares Albacete 2026",
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM",
+      "Dipualba"
+    ],
+    "ubicacion": {
+      "lat": 38.66475,
+      "lng": -2.49108
+    },
+    "actualizado": "2026-10-06",
+    "precio_desde": 9.0,
+    "plazas_max": 500,
+    "hora": "10:00",
+    "resultados": [
+      {
+        "texto": "Clasificación",
+        "url": "https://deportes.dipualba.es/Clasificaciones/Individualpruebas?CircuitoId=48&PruebaId=1121"
+      }
+    ],
+    "resultados_web": "https://deportes.dipualba.es/clasificaciones"
   },
   {
     "id": "rl-media-maraton-de-guadalajara",
@@ -3123,7 +3300,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 19.0,
     "resultados_web": "https://youevent.es/sport/Clasificaciones.asp"
   },
@@ -3154,7 +3331,7 @@
       "lng": -3.62558
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 14.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -3184,7 +3361,7 @@
       "lng": -4.10789
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 15.0,
     "inscritos": 19
   },
@@ -3212,7 +3389,58 @@
       "lat": 38.56087,
       "lng": -1.6593
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
+  },
+  {
+    "id": "clm-3be78268",
+    "nombre": "Equitrail",
+    "tipo": "trail",
+    "fecha": "2026-12-13",
+    "municipio": "Toledo",
+    "provincia": "Toledo",
+    "distancia_km": 14.0,
+    "distancias_km": [
+      6.0,
+      14.0
+    ],
+    "url_oficial": "https://inscripciones.runrunsports.com/eventos/equitrail",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM"
+    ],
+    "ubicacion": {
+      "lat": 39.85589,
+      "lng": -4.02426
+    },
+    "actualizado": "2026-10-06"
+  },
+  {
+    "id": "clm-c77be931",
+    "nombre": "X Maratón Clandestino",
+    "tipo": "popular",
+    "fecha": "2026-12-20",
+    "municipio": "Campo de Criptana",
+    "provincia": "Ciudad Real",
+    "distancia_km": null,
+    "distancias_km": [],
+    "url_oficial": "https://www.deporticket.com/web-evento/14089-x-maraton-clandestino",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM"
+    ],
+    "ubicacion": {
+      "lat": 39.40525,
+      "lng": -3.12548
+    },
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-9e3c807a",
@@ -3238,7 +3466,7 @@
       "lat": 39.72314,
       "lng": -3.30491
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 5.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -3266,7 +3494,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "hora": "17:00"
   },
   {
@@ -3293,7 +3521,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://dorsal1.com/resultados/"
   },
   {
@@ -3303,8 +3531,10 @@
     "fecha": "2026-12-31",
     "municipio": "Toledo",
     "provincia": "Toledo",
-    "distancia_km": null,
-    "distancias_km": [],
+    "distancia_km": 8.0,
+    "distancias_km": [
+      8.0
+    ],
     "url_oficial": "https://inscripciones.runrunsports.com/eventos/xliv-san-silvestre-toledana",
     "circuito": null,
     "fuente": {
@@ -3318,7 +3548,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "clm-64e07492",
@@ -3349,14 +3579,45 @@
       "lng": -3.85323
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 21.0,
     "hora": "06:30",
     "resultados_web": "https://sportmaniacs.com/es/results",
     "desnivel_positivo_m": 3174
   },
   {
-    "id": "clm-dba25243",
+    "id": "clm-29edfceb",
+    "nombre": "Trail Puerta del Rey 2027",
+    "tipo": "trail",
+    "fecha": "2027-01-31",
+    "municipio": "Cañete",
+    "provincia": "Cuenca",
+    "distancia_km": 29.0,
+    "distancias_km": [
+      6.0,
+      13.0,
+      29.0
+    ],
+    "url_oficial": "https://carreras.dxtchiprun.es/carrera/trail-puerta-del-rey-2027",
+    "circuito": null,
+    "fuente": {
+      "nombre": "Carreras CLM",
+      "url": "https://carrerasclm.es"
+    },
+    "fuentes": [
+      "Carreras CLM",
+      "Running.life"
+    ],
+    "ubicacion": {
+      "lat": 40.04266,
+      "lng": -1.64814
+    },
+    "ubicacion_exacta": true,
+    "actualizado": "2026-10-06",
+    "desnivel_positivo_m": 1750
+  },
+  {
+    "id": "clm-4410e18d",
     "nombre": "10K Ciudad de Valdepeñas 2027",
     "tipo": "popular",
     "fecha": "2027-02-28",
@@ -3366,7 +3627,7 @@
     "distancias_km": [
       10.0
     ],
-    "url_oficial": "https://carrerasciudadreal.es/evento/10k-valdepenas-2027",
+    "url_oficial": "https://carrerasciudadreal.es/evento/10k-valdepenas-2027/",
     "circuito": "Circuito Carreras Populares Ciudad Real 2026",
     "fuente": {
       "nombre": "Carreras CLM",
@@ -3383,12 +3644,12 @@
       "lng": -3.38761
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 18.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
   {
-    "id": "clm-8a887760",
+    "id": "clm-7ad28680",
     "nombre": "Muy Heroica Media Maratón Ciudad de Valdepeñas 2027",
     "tipo": "popular",
     "fecha": "2027-02-28",
@@ -3398,7 +3659,7 @@
     "distancias_km": [
       21.0
     ],
-    "url_oficial": "https://carrerasciudadreal.es/evento/media-valdepenas-2027",
+    "url_oficial": "https://carrerasciudadreal.es/evento/media-valdepenas-2027/",
     "circuito": "Circuito Carreras Populares Ciudad Real 2026",
     "fuente": {
       "nombre": "Carreras CLM",
@@ -3413,7 +3674,7 @@
       "lat": 38.75946,
       "lng": -3.38474
     },
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 12.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -3443,7 +3704,7 @@
       "lng": -4.61986
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "precio_desde": 19.0,
     "hora": "10:00"
   },
@@ -3469,7 +3730,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-06"
   },
   {
     "id": "rl-media-maraton-azuqueca",
@@ -3495,7 +3756,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "resultados_web": "https://mediamaratonazuqueca.es/clasificaciones-2026/"
   },
   {
@@ -3526,7 +3787,7 @@
       "lng": -3.86935
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-05",
+    "actualizado": "2026-10-06",
     "hora": "09:00",
     "resultados_web": "https://sportmaniacs.com/es/results"
   }
