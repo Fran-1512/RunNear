@@ -496,15 +496,25 @@ function generarICS(carreras) {
   const ahora = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
   const lineas = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//RunNear//Carreras CLM//ES", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
   carreras.forEach(c => {
-    const inicio = c.fecha.replace(/-/g, "");
-    const fin = sumarDias(c.fecha, 1).replace(/-/g, "");
-    const descripcion = `${textoDistancias(c)}${c.circuito ? " · " + c.circuito : ""}\nInscripción: ${c.url_oficial || ""}`;
+    const dia = c.fecha.replace(/-/g, "");
+    // Con hora de salida: evento a esa hora (hora local, 2 h de duración orientativa).
+    // Sin hora: evento de todo el día
+    const hora = /^\d{2}:\d{2}$/.test(c.hora || "") ? c.hora : null;
+    let fechas;
+    if (hora) {
+      const [h, m] = hora.split(":").map(Number);
+      const finH = Math.min(h + 2, 23);
+      fechas = [`DTSTART:${dia}T${String(h).padStart(2, "0")}${String(m).padStart(2, "0")}00`,
+                `DTEND:${dia}T${String(finH).padStart(2, "0")}${String(finH === 23 ? 59 : m).padStart(2, "0")}00`];
+    } else {
+      fechas = [`DTSTART;VALUE=DATE:${dia}`, `DTEND;VALUE=DATE:${sumarDias(c.fecha, 1).replace(/-/g, "")}`];
+    }
+    const descripcion = `${hora ? "Salida: " + hora + " · " : ""}${textoDistancias(c)}${c.circuito ? " · " + c.circuito : ""}\nInscripción: ${c.url_oficial || ""}`;
     lineas.push(
       "BEGIN:VEVENT",
       `UID:${c.id}@runnear`,
       `DTSTAMP:${ahora}`,
-      `DTSTART;VALUE=DATE:${inicio}`,
-      `DTEND;VALUE=DATE:${fin}`,
+      ...fechas,
       `SUMMARY:${escaparICS("🏃 " + c.nombre)}`,
       `LOCATION:${escaparICS([c.municipio, c.provincia].filter(Boolean).join(", "))}`,
       `DESCRIPTION:${escaparICS(descripcion)}`,

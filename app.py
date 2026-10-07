@@ -66,15 +66,6 @@ def cargar_carreras():
         print(f"[ERROR] Error al leer {DATA_FILE}: {e}")
         return []
 
-def guardar_carreras(carreras):
-    try:
-        with open(DATA_FILE, "w", encoding="utf-8") as f:
-            json.dump(carreras, f, ensure_ascii=False, indent=2)
-        return True
-    except Exception as e:
-        print(f"[ERROR] Error al guardar {DATA_FILE}: {e}")
-        return False
-
 class CarrerasRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=STATIC_DIR, **kwargs)
@@ -98,7 +89,7 @@ class CarrerasRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Cache-Control", "no-cache")
         self.end_headers()
@@ -107,7 +98,7 @@ class CarrerasRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
 
@@ -132,13 +123,6 @@ class CarrerasRequestHandler(http.server.SimpleHTTPRequestHandler):
         if path == "/":
             self.path = "/index.html"
         return super().do_GET()
-
-    def do_POST(self):
-        parsed = urllib.parse.urlparse(self.path)
-        if parsed.path == "/api/carreras":
-            self.handle_post_carrera()
-            return
-        self.send_error(404, "Endpoint no encontrado")
 
     def handle_get_stats(self):
         carreras = cargar_carreras()
@@ -272,39 +256,6 @@ class CarrerasRequestHandler(http.server.SimpleHTTPRequestHandler):
             "carreras": resultados
         })
 
-    def handle_post_carrera(self):
-        content_length = int(self.headers.get("Content-Length", 0))
-        post_data = self.rfile.read(content_length)
-        try:
-            nueva = json.loads(post_data.decode("utf-8"))
-        except Exception:
-            self._send_json({"error": "JSON no válido"}, status=400)
-            return
-
-        # Validaciones mínimas
-        nombre = nueva.get("nombre", "").strip()
-        tipo = nueva.get("tipo", "popular")
-        fecha = nueva.get("fecha", "")
-        ubicacion = nueva.get("ubicacion", {})
-
-        if not nombre or not fecha or "lat" not in ubicacion or "lng" not in ubicacion:
-            self._send_json({"error": "Faltan campos obligatorios: nombre, fecha, latitud, longitud"}, status=400)
-            return
-
-        carreras = cargar_carreras()
-        nueva_id = f"car-{len(carreras) + 1:03d}"
-        nueva["id"] = nueva_id
-
-        # Asegurar formato estándar
-        if not nueva.get("url_oficial"):
-            nueva["url_oficial"] = "https://ejemplo-ficticio-registro.com"
-
-        carreras.append(nueva)
-        if guardar_carreras(carreras):
-            self._send_json({"mensaje": "Carrera creada con éxito", "carrera": nueva}, status=201)
-        else:
-            self._send_json({"error": "No se pudo guardar la carrera"}, status=500)
-
 def run():
     # Hilo daemon: se detiene solo al cerrar el servidor
     threading.Thread(target=actualizar_carreras_periodicamente, daemon=True).start()
@@ -314,7 +265,7 @@ def run():
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", PORT), handler) as httpd:
         print("=" * 65)
-        print(f"  🏃 RUNMAP - Servidor de Carreras & Geolocalización Activo")
+        print(f"  🏃 RunNear - Servidor local")
         print(f"  URL Local: http://localhost:{PORT}")
         print(f"  API:       http://localhost:{PORT}/api/carreras")
         print("=" * 65)

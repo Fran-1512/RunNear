@@ -4,9 +4,22 @@
   <meta charset="UTF-8">
   <!-- viewport-fit=cover: en iPhone la app instalada usa toda la pantalla (se respetan las zonas seguras en el CSS) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Descubre carreras de atletismo, carreras populares y trail running cerca de tu ubicación. Consulta fechas, distancias, perfiles de elevación y enlaces a webs oficiales de inscripción en un mapa interactivo.">
-  <meta name="keywords" content="carreras populares, trail running, atletismo, maratón, media maratón, calendario carreras, carreras cerca de mi">
-  <title>RunNear | Carreras Populares y Trail en Castilla-La Mancha</title>
+  <meta name="description" content="Calendario y mapa de carreras populares y de trail en Castilla-La Mancha (Albacete, Ciudad Real, Cuenca, Guadalajara y Toledo). Encuentra las que tienes cerca, con fecha, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
+  <title>RunNear | Carreras populares y trail en Castilla-La Mancha</title>
+  <link rel="canonical" href="https://fran-1512.github.io/RunNear/">
+
+  <!-- Vista previa al compartir el enlace (WhatsApp, Telegram, redes sociales) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RunNear">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://fran-1512.github.io/RunNear/">
+  <meta property="og:title" content="RunNear · Carreras populares y trail en Castilla-La Mancha">
+  <meta property="og:description" content="Encuentra las carreras que tienes cerca: fechas, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
+  <meta property="og:image" content="https://fran-1512.github.io/RunNear/iconos/compartir.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="RunNear: carreras populares y trail en Castilla-La Mancha">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- App instalable (PWA) -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -30,7 +43,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -76,18 +89,10 @@
 
       <!-- Selector Rápido de Ciudades -->
       <div class="city-selector-wrap">
-        <label for="select-preset-city" class="sr-only">Cambiar ciudad de referencia</label>
-        <select id="select-preset-city" class="city-select" aria-label="Cambiar ciudad">
-          <option value="" disabled selected>Ciudad…</option>
-          <option value="38.9943,-1.8585">Albacete</option>
-          <option value="38.9848,-3.9274">Ciudad Real</option>
-          <option value="40.0704,-2.1374">Cuenca</option>
-          <option value="40.6329,-3.1664">Guadalajara</option>
-          <option value="39.8628,-4.0273">Toledo</option>
-          <option value="39.9636,-4.8307">Talavera de la Reina</option>
-          <option value="38.6871,-4.1073">Puertollano</option>
-          <option value="38.5100,-1.7010">Hellín</option>
-        </select>
+        <label for="input-ciudad" class="sr-only">Cambiar ciudad o pueblo de referencia</label>
+        <input type="search" id="input-ciudad" class="city-select" placeholder="Ciudad o pueblo…" autocomplete="off"
+          enterkeyhint="go" role="combobox" aria-expanded="false" aria-controls="lista-ciudades" aria-autocomplete="list">
+        <ul class="lista-ciudades hidden" id="lista-ciudades" role="listbox" aria-label="Ciudades y pueblos"></ul>
       </div>
     </div>
 
@@ -399,17 +404,6 @@
           </div>
         </div>
 
-        <!-- Perfil altimétrico SVG interactivo -->
-        <div class="elevation-profile-section" id="modal-elevation-section">
-          <div class="section-title-wrap">
-            <h3 class="section-title">Perfil Altimétrico Estimado</h3>
-            <span class="elevation-badge" id="modal-elevation-summary">+0 m D+</span>
-          </div>
-          <div class="elevation-svg-wrap" id="modal-elevation-chart-container">
-            <!-- Renderizado dinámico de curva SVG -->
-          </div>
-        </div>
-
         <!-- Tiempo previsto (cuando faltan 15 días o menos) -->
         <div class="bloque-tiempo hidden" id="modal-tiempo"></div>
 
@@ -443,12 +437,10 @@
           </p>
         </div>
 
-        <!-- Aviso legal y de ejemplo -->
+        <!-- Procedencia de los datos -->
         <div class="sample-notice-box">
           <span class="notice-icon">ℹ️</span>
-          <p class="notice-text" id="modal-notice-text">
-            <strong>Dato de prueba:</strong> registro ficticio del prototipo.
-          </p>
+          <p class="notice-text" id="modal-notice-text"></p>
         </div>
       </div>
 
@@ -466,89 +458,6 @@
           </svg>
         </a>
       </div>
-    </div>
-  </div>
-
-  <!-- Modal: Publicar Nueva Carrera (Para organizadores) -->
-  <div class="modal-overlay hidden" id="add-race-modal" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
-    <div class="modal-card">
-      <button class="modal-close-btn" id="btn-close-add-modal" aria-label="Cerrar ventana">✕</button>
-
-      <div class="modal-header">
-        <h2 class="modal-race-title" id="add-modal-title">Publicar Nuevo Evento</h2>
-        <p class="modal-race-location">Añade una carrera popular o trail al catálogo geolocalizado</p>
-      </div>
-
-      <form id="form-add-race" class="modal-form">
-        <div class="form-group">
-          <label for="form-input-nombre">Nombre de la Carrera *</label>
-          <input type="text" id="form-input-nombre" required placeholder="Ej: [Ejemplo Ficticio] 10K Ribera" class="form-input">
-        </div>
-
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="form-select-tipo">Modalidad *</label>
-            <select id="form-select-tipo" required class="form-input">
-              <option value="popular">🏃 Carrera Popular / Asfalto</option>
-              <option value="trail">⛰️ Trail Running / Montaña</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="form-input-fecha">Fecha del Evento *</label>
-            <input type="date" id="form-input-fecha" required class="form-input">
-          </div>
-        </div>
-
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="form-input-distancia">Distancia (km) *</label>
-            <input type="number" id="form-input-distancia" step="0.1" min="1" max="250" required placeholder="10.0" class="form-input">
-          </div>
-          <div class="form-group">
-            <label for="form-input-desnivel">Desnivel +D (metros)</label>
-            <input type="number" id="form-input-desnivel" min="0" max="8000" placeholder="Ej: 450" class="form-input">
-          </div>
-        </div>
-
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="form-input-municipio">Municipio *</label>
-            <input type="text" id="form-input-municipio" required placeholder="Ej: Sigüenza" class="form-input">
-          </div>
-          <div class="form-group">
-            <label for="form-input-provincia">Provincia *</label>
-            <input type="text" id="form-input-provincia" required placeholder="Ej: Guadalajara" class="form-input">
-          </div>
-        </div>
-
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="form-input-lat">Latitud *</label>
-            <input type="number" id="form-input-lat" step="0.0001" required placeholder="39.8628" class="form-input">
-          </div>
-          <div class="form-group">
-            <label for="form-input-lng">Longitud *</label>
-            <input type="number" id="form-input-lng" step="0.0001" required placeholder="-4.0273" class="form-input">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="form-input-url">Enlace a Web Oficial de Inscripción *</label>
-          <input type="url" id="form-input-url" required placeholder="https://ejemplo-ficticio-inscripcion.com" class="form-input">
-        </div>
-
-        <div class="form-group">
-          <label for="form-input-desc">Descripción Breve</label>
-          <textarea id="form-input-desc" rows="3" placeholder="Detalles del recorrido, avituallamientos y reglamento..." class="form-input"></textarea>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn-secondary" id="btn-cancel-add">Cancelar</button>
-          <button type="submit" class="btn-primary" id="btn-submit-race">
-            <span>Guardar y Geolocalizar</span>
-          </button>
-        </div>
-      </form>
     </div>
   </div>
 
@@ -591,10 +500,10 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=21"></script>
+  <script src="mapa_detalle.js?v=22"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=21"></script>
+  <script src="app.js?v=22"></script>
   <!-- Menú lateral: secciones, favoritas, calendario, ajustes -->
-  <script src="menu.js?v=21"></script>
+  <script src="menu.js?v=22"></script>
 </body>
 </html>

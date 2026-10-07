@@ -98,7 +98,8 @@ body.dark-theme {
   justify-content: space-between;
   padding: 0 24px;
   position: relative;
-  z-index: 1000;
+  /* Por encima de los botones del mapa, para que la lista de pueblos no quede tapada */
+  z-index: 1500;
   gap: 16px;
 }
 
@@ -1393,14 +1394,6 @@ body.dark-theme {
   color: #f43f5e;
 }
 
-/* Gráfico de Altimetría SVG */
-.elevation-profile-section {
-  background: rgba(12, 18, 32, 0.7);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  padding: 16px;
-}
-
 .section-title-wrap {
   display: flex;
   justify-content: space-between;
@@ -1413,27 +1406,6 @@ body.dark-theme {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-main);
-}
-
-.elevation-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #f43f5e;
-  background: rgba(244, 63, 94, 0.12);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-}
-
-.elevation-svg-wrap {
-  width: 100%;
-  height: 120px;
-  position: relative;
-}
-
-.elevation-svg-wrap svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
 }
 
 .description-text {
@@ -1479,51 +1451,6 @@ body.dark-theme {
 .btn-cta-register {
   font-size: 0.95rem;
   padding: 12px 22px;
-}
-
-/* ==========================================================================
-   Formulario de Añadir Carrera
-   ========================================================================== */
-.modal-form {
-  padding: 20px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-row-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.form-group label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.form-input {
-  background: rgba(12, 18, 32, 0.8);
-  border: 1px solid var(--glass-border);
-  color: var(--text-main);
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-family: inherit;
-  outline: none;
-  transition: var(--transition-fast);
-}
-
-.form-input:focus {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 /* ==========================================================================
@@ -1902,7 +1829,6 @@ body.dark-theme {
 
   .modal-header,
   .modal-body,
-  .modal-form,
   .modal-footer {
     padding-left: 18px;
     padding-right: 18px;
@@ -1928,10 +1854,6 @@ body.dark-theme {
   .modal-footer > * {
     width: 100%;
     justify-content: center;
-  }
-
-  .form-row-2 {
-    grid-template-columns: 1fr;
   }
 
   .toast-container {
@@ -2529,7 +2451,6 @@ body.tema-claro .chip-btn,
 body.tema-claro .sort-select,
 body.tema-claro .city-select,
 body.tema-claro .location-badge,
-body.tema-claro .form-input,
 body.tema-claro .btn-toggle-filtros {
   background: #ffffff;
   color: var(--text-main);
@@ -2556,8 +2477,7 @@ body.tema-claro .popup-title {
 }
 
 body.tema-claro .card-stats-grid,
-body.tema-claro .metric-box,
-body.tema-claro .elevation-profile-section {
+body.tema-claro .metric-box {
   background: #f3f5f9;
 }
 
@@ -2978,4 +2898,106 @@ body.tema-claro .chip-fecha.active {
 body.tema-claro .info-texto a,
 body.tema-claro .ajuste-ayuda a {
   color: #4f46e5;
+}
+
+/* Dato que la carrera no publica: en gris, sin parecer un error */
+.stat-val.sin-dato,
+.metric-value.sin-dato {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* Cabecera de la lista: "N carreras encontradas" en una línea y, debajo, fechas u orden */
+.results-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.results-title {
+  white-space: nowrap;
+}
+
+/* Buscador de ciudad o pueblo (cabecera) */
+.city-selector-wrap {
+  position: relative;
+}
+
+input.city-select {
+  width: 170px;
+  cursor: text;
+  font-family: inherit;
+}
+
+input.city-select::placeholder {
+  color: var(--text-muted);
+}
+
+.lista-ciudades {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--bg-dark-800);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 3000;
+}
+
+.lista-ciudades.hidden {
+  display: none;
+}
+
+.opcion-ciudad {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.opcion-ciudad:hover,
+.opcion-ciudad.marcada {
+  background: rgba(99, 102, 241, 0.18);
+}
+
+.opcion-nombre {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.opcion-provincia {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.opcion-vacia {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 960px), (pointer: coarse) and (max-width: 1200px) {
+  input.city-select {
+    width: 150px;
+    font-size: 16px; /* evita el zoom automático de iOS */
+  }
+}
+
+@media (max-width: 480px) {
+  input.city-select {
+    width: 128px;
+  }
 }

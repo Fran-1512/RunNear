@@ -481,13 +481,143 @@ function usarUbicacionPorDefecto() {
   const ciudad = ciudadGuardada();
   if (ciudad) {
     ponerRadio(typeof radioPorDefecto === "function" ? radioPorDefecto() : 50);
-    const select = document.getElementById("select-preset-city");
-    if (select) select.value = `${ciudad.lat},${ciudad.lng}`;
+    const input = document.getElementById("input-ciudad");
+    if (input) input.value = ciudad.nombre;
     establecerUbicacionUsuario(ciudad.lat, ciudad.lng, ciudad.nombre);
     return;
   }
   ponerRadio(REGION.radioCompletoKm);
   establecerUbicacionUsuario(REGION.centro.lat, REGION.centro.lng, `${REGION.nombre} (centro)`);
+}
+
+// ==========================================================================
+// Ciudad o pueblo de referencia (buscador de la cabecera)
+// ==========================================================================
+
+// Siempre disponibles, aunque no tengan carreras próximas
+const CIUDADES_PRINCIPALES = [
+  { nombre: "Albacete", provincia: "Albacete", lat: 38.9943, lng: -1.8585 },
+  { nombre: "Ciudad Real", provincia: "Ciudad Real", lat: 38.9848, lng: -3.9274 },
+  { nombre: "Cuenca", provincia: "Cuenca", lat: 40.0704, lng: -2.1374 },
+  { nombre: "Guadalajara", provincia: "Guadalajara", lat: 40.6329, lng: -3.1664 },
+  { nombre: "Toledo", provincia: "Toledo", lat: 39.8628, lng: -4.0273 },
+  { nombre: "Talavera de la Reina", provincia: "Toledo", lat: 39.9636, lng: -4.8307 },
+  { nombre: "Puertollano", provincia: "Ciudad Real", lat: 38.6871, lng: -4.1073 },
+  { nombre: "Hellín", provincia: "Albacete", lat: 38.5100, lng: -1.7010 }
+];
+
+/** Ciudades principales + todos los pueblos que tienen alguna carrera (sin repetir) */
+function lugaresDisponibles() {
+  const vistos = new Set(CIUDADES_PRINCIPALES.map(c => normalizarTexto(c.nombre)));
+  const pueblos = [];
+  AppState.races.forEach(c => {
+    if (!c.municipio || !c.ubicacion || !Number.isFinite(c.ubicacion.lat)) return;
+    const clave = normalizarTexto(c.municipio);
+    if (vistos.has(clave)) return;
+    vistos.add(clave);
+    pueblos.push({ nombre: c.municipio, provincia: c.provincia || "", lat: c.ubicacion.lat, lng: c.ubicacion.lng });
+  });
+  pueblos.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  return [...CIUDADES_PRINCIPALES, ...pueblos];
+}
+
+function elegirCiudad(lugar) {
+  peticionUbicacion++; // una respuesta tardía del GPS ya no cambia la ciudad elegida
+  const ciudad = { lat: lugar.lat, lng: lugar.lng, nombre: lugar.nombre };
+  try {
+    localStorage.setItem("runnear_ciudad", JSON.stringify(ciudad));
+  } catch (err) {
+    // Sin almacenamiento: se usa la ciudad solo en esta visita
+  }
+  const input = document.getElementById("input-ciudad");
+  if (input) {
+    input.value = lugar.nombre;
+    input.blur();
+  }
+  establecerUbicacionUsuario(lugar.lat, lugar.lng, lugar.nombre);
+  mostrarToast(`📍 Ubicación cambiada a: ${lugar.nombre}`);
+}
+
+function configurarSelectorCiudad() {
+  const input = document.getElementById("input-ciudad");
+  const lista = document.getElementById("lista-ciudades");
+  if (!input || !lista) return;
+  let opciones = [];
+  let marcada = -1;
+
+  const cerrar = () => {
+    lista.classList.add("hidden");
+    input.setAttribute("aria-expanded", "false");
+    marcada = -1;
+  };
+
+  const marcar = (i) => {
+    marcada = i;
+    lista.querySelectorAll(".opcion-ciudad").forEach((li, k) => li.classList.toggle("marcada", k === i));
+  };
+
+  const mostrar = () => {
+    const texto = normalizarTexto(input.value);
+    const todos = lugaresDisponibles();
+    // Sin texto (o con el nombre ya elegido): las ciudades principales
+    const actual = AppState.userLocation && normalizarTexto(AppState.userLocation.label) === texto;
+    opciones = !texto || actual
+      ? CIUDADES_PRINCIPALES
+      : todos.filter(l => normalizarTexto(l.nombre).split(/[\s-]+/).some(p => p.startsWith(texto))
+          || normalizarTexto(l.nombre).startsWith(texto)).slice(0, 8);
+    if (!opciones.length && texto) {
+      opciones = todos.filter(l => normalizarTexto(l.nombre).includes(texto)).slice(0, 8);
+    }
+    lista.innerHTML = opciones.length
+      ? opciones.map((l, i) => `<li class="opcion-ciudad" role="option" data-i="${i}">
+          <span class="opcion-nombre">${escapeHtml(l.nombre)}</span>
+          <span class="opcion-provincia">${escapeHtml(l.provincia)}</span></li>`).join("")
+      : `<li class="opcion-vacia">No hay ningún pueblo con ese nombre. Prueba con otro cercano.</li>`;
+    lista.classList.remove("hidden");
+    input.setAttribute("aria-expanded", "true");
+    marcada = -1;
+  };
+
+  input.addEventListener("focus", () => {
+    input.select();
+    mostrar();
+  });
+  input.addEventListener("input", mostrar);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" && opciones.length) {
+      e.preventDefault();
+      marcar((marcada + 1) % opciones.length);
+    } else if (e.key === "ArrowUp" && opciones.length) {
+      e.preventDefault();
+      marcar((marcada - 1 + opciones.length) % opciones.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      const elegida = opciones[marcada >= 0 ? marcada : 0];
+      if (elegida && input.value.trim()) {
+        cerrar();
+        elegirCiudad(elegida);
+      }
+    } else if (e.key === "Escape") {
+      cerrar();
+      input.blur();
+    }
+  });
+  // mousedown (antes del blur) para que el toque en una opción llegue siempre
+  lista.addEventListener("mousedown", (e) => {
+    const li = e.target.closest(".opcion-ciudad");
+    if (!li) return;
+    e.preventDefault();
+    cerrar();
+    elegirCiudad(opciones[Number(li.dataset.i)]);
+  });
+  input.addEventListener("blur", () => {
+    setTimeout(() => {
+      cerrar();
+      // Si se escribió algo sin elegir, se vuelve a mostrar la ciudad actual
+      const ciudad = ciudadGuardada();
+      input.value = AppState.userLocation.isGps ? "" : (ciudad ? ciudad.nombre : "");
+    }, 150);
+  });
 }
 
 // Cada petición de GPS lleva un número: elegir una ciudad o pedir otra vez el GPS deja
@@ -552,6 +682,8 @@ async function solicitarGeolocalizacionNavegador(manual = false) {
       if (!AppState.userLocation.isGps && AppState.filters.radiusKm === REGION.radioCompletoKm && !ciudadGuardada()) {
         ponerRadio(typeof radioPorDefecto === "function" ? radioPorDefecto() : 50);
       }
+      const inputCiudad = document.getElementById("input-ciudad");
+      if (inputCiudad && document.activeElement !== inputCiudad) inputCiudad.value = "";
       establecerUbicacionUsuario(lat, lng, `Tu ubicación GPS (${lat.toFixed(2)}, ${lng.toFixed(2)})`, true);
       mostrarToast("📍 Ubicación GPS obtenida correctamente");
     },
@@ -582,9 +714,7 @@ async function cargarCarrerasDesdeServidor() {
     const data = await response.json();
     AppState.races = data.carreras || [];
   } catch (err) {
-    // Web estática (GitHub Pages): no hay servidor que guarde carreras nuevas
-    const btnPublicar = document.getElementById("btn-open-add-race");
-    if (btnPublicar) btnPublicar.style.display = "none";
+    // Web estática (GitHub Pages): sin servidor, se lee el archivo publicado
     try {
       const localResp = await fetch("carreras.json");
       AppState.races = await localResp.json();
@@ -937,11 +1067,15 @@ function renderizarListadoCarreras(carreras, mensajeVacio, contexto = {}) {
         ${isTrail ? `
         <div class="stat-item">
           <span class="stat-label">Desnivel +D</span>
-          <span class="stat-val elevation">${c.desnivel_positivo_m != null ? `+${escapeHtml(c.desnivel_positivo_m)} m` : "No publicado"}</span>
+          ${c.desnivel_positivo_m != null
+            ? `<span class="stat-val elevation">+${escapeHtml(c.desnivel_positivo_m)} m</span>`
+            : `<span class="stat-val sin-dato">Sin publicar</span>`}
         </div>` : ""}
         <div class="stat-item">
           <span class="stat-label">Inscripción</span>
-          <span class="stat-val">${c.precio_desde != null ? `Desde ${escapeHtml(formatearPrecio(c.precio_desde))}` : "Consultar"}</span>
+          ${c.precio_desde != null
+            ? `<span class="stat-val">Desde ${escapeHtml(formatearPrecio(c.precio_desde))}</span>`
+            : `<span class="stat-val sin-dato">Consultar</span>`}
         </div>
       </div>
 
@@ -1158,15 +1292,17 @@ function abrirModalDetalleCarrera(carrera) {
   const tieneDesnivel = carrera.desnivel_positivo_m !== null && carrera.desnivel_positivo_m !== undefined;
   document.getElementById("modal-race-time").textContent = carrera.hora ? `Hora: ${carrera.hora}` : "Hora por confirmar";
   document.getElementById("modal-race-distance").textContent = textoDistancias(carrera);
-  document.getElementById("modal-race-surface").textContent = carrera.superficie || (carrera.circuito ? carrera.circuito : "");
-  // El desnivel solo se muestra en carreras de trail
+  document.getElementById("modal-race-surface").textContent = carrera.circuito || "";
+  // El desnivel solo se muestra en carreras de trail; si no se conoce, en gris (no es un error)
   document.getElementById("modal-metric-elevation").style.display = isTrail ? "" : "none";
-  document.getElementById("modal-race-elevation").textContent = tieneDesnivel ? `+${carrera.desnivel_positivo_m} m` : "No publicado";
-  document.getElementById("modal-elevation-summary").textContent = tieneDesnivel ? `+${carrera.desnivel_positivo_m} m D+` : "";
-  document.getElementById("modal-race-price").textContent = carrera.precio_desde != null ? `Desde ${formatearPrecio(carrera.precio_desde)}` : "Consultar";
+  const valorDesnivel = document.getElementById("modal-race-elevation");
+  valorDesnivel.textContent = tieneDesnivel ? `+${carrera.desnivel_positivo_m} m` : "Sin publicar";
+  valorDesnivel.classList.toggle("sin-dato", !tieneDesnivel);
+  const valorPrecio = document.getElementById("modal-race-price");
+  valorPrecio.textContent = carrera.precio_desde != null ? `Desde ${formatearPrecio(carrera.precio_desde)}` : "Consultar";
+  valorPrecio.classList.toggle("sin-dato", carrera.precio_desde == null);
   const tamano = typeof textoTamano === "function" ? textoTamano(carrera) : "";
   document.getElementById("modal-race-slots").textContent = tamano ? `👥 ${tamano}`
-    : carrera.plazas_restantes ? `${carrera.plazas_restantes} dorsales`
     : (carrera.precio_desde != null ? "Según web de inscripción" : "En la web oficial");
 
   document.getElementById("modal-race-description").textContent =
@@ -1185,7 +1321,7 @@ function abrirModalDetalleCarrera(carrera) {
         ? `, contrastados con ${escapeHtml(otras.join(", "))}` : ""}.
       Confirma fecha y detalles en la web oficial antes de inscribirte.`;
   } else {
-    avisoTexto.innerHTML = `<strong>Dato de prueba:</strong> registro ficticio del prototipo.`;
+    avisoTexto.textContent = "Confirma fecha y detalles en la web oficial antes de inscribirte.";
   }
 
   // Botón principal: inscripción o, si ya se ha celebrado, resultados
@@ -1224,15 +1360,6 @@ function abrirModalDetalleCarrera(carrera) {
     centrarEnCarrera(carrera.id);
   };
 
-  // Perfil altimétrico solo si la carrera lo trae (no se inventa uno genérico)
-  const seccionPerfil = document.getElementById("modal-elevation-section");
-  if (Array.isArray(carrera.perfil_elevacion) && carrera.perfil_elevacion.length > 1) {
-    seccionPerfil.style.display = "";
-    generarPerfilAltimetricoSVG(carrera);
-  } else {
-    seccionPerfil.style.display = "none";
-  }
-
   // Botones de favorita / calendario / corrida (menu.js)
   AppState.carreraAbierta = carrera;
   if (typeof actualizarAccionesFicha === "function") actualizarAccionesFicha(carrera);
@@ -1245,132 +1372,6 @@ function abrirModalDetalleCarrera(carrera) {
 function cerrarModalDetalle() {
   const modal = document.getElementById("race-detail-modal");
   if (modal) modal.classList.add("hidden");
-}
-
-/**
- * Dibuja un gráfico SVG continuo y suave con el perfil altimétrico del evento
- */
-function generarPerfilAltimetricoSVG(carrera) {
-  const container = document.getElementById("modal-elevation-chart-container");
-  if (!container) return;
-
-  const puntos = carrera.perfil_elevacion || [100, 150, 220, 310, 280, 180, 110];
-  const width = 560;
-  const height = 120;
-  const paddingX = 30;
-  const paddingY = 20;
-
-  const minAlt = Math.min(...puntos);
-  const maxAlt = Math.max(...puntos);
-  const altRange = Math.max(maxAlt - minAlt, 20);
-
-  const getX = (idx) => paddingX + (idx / (puntos.length - 1)) * (width - 2 * paddingX);
-  const getY = (val) => height - paddingY - ((val - minAlt) / altRange) * (height - 2 * paddingY);
-
-  // Construir puntos para la curva SVG
-  const pathCoords = puntos.map((p, i) => `${getX(i).toFixed(1)},${getY(p).toFixed(1)}`);
-  const linePath = `M ${pathCoords.join(" L ")}`;
-  const areaPath = `${linePath} L ${getX(puntos.length - 1)},${height - paddingY} L ${getX(0)},${height - paddingY} Z`;
-
-  const isTrail = carrera.tipo === "trail";
-  const strokeColor = isTrail ? "#10b981" : "#06b6d4";
-  const gradientId = `elev-grad-${carrera.id || 'default'}`;
-
-  container.innerHTML = `
-    <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="${gradientId}" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="${strokeColor}" stop-opacity="0.45" />
-          <stop offset="100%" stop-color="${strokeColor}" stop-opacity="0.0" />
-        </linearGradient>
-      </defs>
-
-      <!-- Línea base horizontal -->
-      <line x1="${paddingX}" y1="${height - paddingY}" x2="${width - paddingX}" y2="${height - paddingY}" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
-
-      <!-- Área degradada bajo la curva -->
-      <path d="${areaPath}" fill="url(#${gradientId})" />
-
-      <!-- Línea de altitud -->
-      <path d="${linePath}" fill="none" stroke="${strokeColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-
-      <!-- Marcadores de cota mínima y máxima -->
-      <text x="${paddingX}" y="${height - 4}" fill="#64748b" font-size="11" font-weight="600">Salida: ${puntos[0]}m</text>
-      <text x="${width - paddingX - 60}" y="${height - 4}" fill="#64748b" font-size="11" font-weight="600">Meta: ${puntos[puntos.length - 1]}m</text>
-      <text x="${getX(puntos.indexOf(maxAlt)) - 20}" y="${Math.max(getY(maxAlt) - 6, 12)}" fill="${strokeColor}" font-size="11" font-weight="700">Cota Máx: ${maxAlt}m</text>
-    </svg>
-  `;
-}
-
-// ==========================================================================
-// Modal: Publicar Nueva Carrera (Para organizadores)
-// ==========================================================================
-
-function abrirModalAñadirCarrera() {
-  const modal = document.getElementById("add-race-modal");
-  if (!modal) return;
-
-  // Pre-rellenar coordenadas según la posición actual del mapa
-  const center = AppState.map ? AppState.map.getCenter() : AppState.userLocation;
-  document.getElementById("form-input-lat").value = center.lat.toFixed(4);
-  document.getElementById("form-input-lng").value = center.lng.toFixed(4);
-
-  modal.classList.remove("hidden");
-}
-
-function cerrarModalAñadirCarrera() {
-  const modal = document.getElementById("add-race-modal");
-  if (modal) modal.classList.add("hidden");
-}
-
-async function manejarEnvioNuevaCarrera(e) {
-  e.preventDefault();
-
-  const nuevaCarrera = {
-    nombre: document.getElementById("form-input-nombre").value.trim(),
-    tipo: document.getElementById("form-select-tipo").value,
-    fecha: document.getElementById("form-input-fecha").value,
-    distancia_km: parseFloat(document.getElementById("form-input-distancia").value),
-    desnivel_positivo_m: parseInt(document.getElementById("form-input-desnivel").value || "0", 10),
-    municipio: document.getElementById("form-input-municipio").value.trim(),
-    provincia: document.getElementById("form-input-provincia").value.trim(),
-    ubicacion: {
-      lat: parseFloat(document.getElementById("form-input-lat").value),
-      lng: parseFloat(document.getElementById("form-input-lng").value)
-    },
-    url_oficial: document.getElementById("form-input-url").value.trim(),
-    descripcion: document.getElementById("form-input-desc").value.trim(),
-  };
-
-  try {
-    const res = await fetch("/api/carreras", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(nuevaCarrera)
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      AppState.races.unshift(data.carrera);
-      mostrarToast(`✅ Carrera "${nuevaCarrera.nombre}" publicada con éxito`);
-    } else {
-      // Guardado local de respaldo
-      nuevaCarrera.id = `car-${Date.now()}`;
-      AppState.races.unshift(nuevaCarrera);
-      mostrarToast(`✅ Carrera guardada localmente`);
-    }
-  } catch (err) {
-    nuevaCarrera.id = `car-${Date.now()}`;
-    AppState.races.unshift(nuevaCarrera);
-    mostrarToast(`✅ Carrera guardada localmente`);
-  }
-
-  cerrarModalAñadirCarrera();
-  document.getElementById("form-add-race").reset();
-  
-  // Actualizar mapa y lista
-  aplicarFiltrosYRenderizar();
-  centrarEnCarrera(nuevaCarrera.id);
 }
 
 // ==========================================================================
@@ -1557,22 +1558,8 @@ function configurarEventListeners() {
   const resetBtn = document.getElementById("btn-reset-filters");
   if (resetBtn) resetBtn.addEventListener("click", resetearFiltros);
 
-  // Selector Rápido de Ciudades
-  const citySelect = document.getElementById("select-preset-city");
-  if (citySelect) {
-    citySelect.addEventListener("change", (e) => {
-      const [lat, lng] = e.target.value.split(",").map(Number);
-      const text = e.target.options[e.target.selectedIndex].text;
-      peticionUbicacion++; // una respuesta tardía del GPS ya no cambia la ciudad elegida
-      try {
-        localStorage.setItem("runnear_ciudad", JSON.stringify({ lat, lng, nombre: text }));
-      } catch (err) {
-        // Sin almacenamiento: se usa la ciudad solo en esta visita
-      }
-      establecerUbicacionUsuario(lat, lng, text);
-      mostrarToast(`📍 Ubicación cambiada a: ${text}`);
-    });
-  }
+  // Buscador de ciudad o pueblo de referencia
+  configurarSelectorCiudad();
 
   // Botón Refrescar GPS
   const refreshGeoBtn = document.getElementById("btn-refresh-geo");
@@ -1607,25 +1594,9 @@ function configurarEventListeners() {
     });
   }
 
-  // Modal Añadir Carrera
-  const btnOpenAdd = document.getElementById("btn-open-add-race");
-  if (btnOpenAdd) btnOpenAdd.addEventListener("click", abrirModalAñadirCarrera);
-
-  const btnCloseAdd = document.getElementById("btn-close-add-modal");
-  if (btnCloseAdd) btnCloseAdd.addEventListener("click", cerrarModalAñadirCarrera);
-
-  const btnCancelAdd = document.getElementById("btn-cancel-add");
-  if (btnCancelAdd) btnCancelAdd.addEventListener("click", cerrarModalAñadirCarrera);
-
-  const addForm = document.getElementById("form-add-race");
-  if (addForm) addForm.addEventListener("submit", manejarEnvioNuevaCarrera);
-
-  // Tecla ESC para cerrar modales
+  // Tecla ESC para cerrar la ficha
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      cerrarModalDetalle();
-      cerrarModalAñadirCarrera();
-    }
+    if (e.key === "Escape") cerrarModalDetalle();
   });
 }
 
