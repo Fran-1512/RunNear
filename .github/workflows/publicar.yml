@@ -51,6 +51,17 @@ jobs:
             git push
           fi
 
+      # El plan gratuito de Supabase pausa el proyecto tras 7 días sin uso: un "toque"
+      # diario lo mantiene activo. Si falla, no detiene la publicación de la web.
+      - name: Mantener activo Supabase (cuentas de usuario)
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: |
+          curl --fail --silent --show-error -X POST \
+            "https://fndytkkukhmijrrikjyw.supabase.co/rest/v1/rpc/ping" \
+            -H "apikey: sb_publishable_MKC7ayO7IWHaAqPMtzFOBw_TP0pCSdT" \
+            -H "Content-Type: application/json" -d '{}'
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
