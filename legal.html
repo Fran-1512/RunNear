@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Política de privacidad y aviso legal de RunNear, el mapa de carreras populares y de trail de Castilla-La Mancha.">
+  <title>Privacidad y aviso legal | RunNear</title>
+  <meta name="theme-color" content="#0c1220">
+  <link rel="icon" type="image/png" sizes="32x32" href="iconos/favicon-32.png">
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <script>
+    // Mismo tema (claro u oscuro) que el elegido en Ajustes de la web
+    try {
+      if (JSON.parse(localStorage.getItem("runnear_tema")) === "claro") document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+  <style>
+    :root {
+      --fondo: #070a13;
+      --tarjeta: #0c1220;
+      --borde: rgba(255, 255, 255, 0.08);
+      --texto: #f8fafc;
+      --suave: #94a3b8;
+      --acento: #818cf8;
+    }
+    :root[data-theme="light"] {
+      --fondo: #eef1f6;
+      --tarjeta: #ffffff;
+      --borde: rgba(15, 23, 42, 0.1);
+      --texto: #1b2233;
+      --suave: #4a5468;
+      --acento: #4f46e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    .pagina {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: max(20px, env(safe-area-inset-top)) 16px 48px;
+    }
+    .volver {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--acento);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 0;
+    }
+    h1, h2, h3 { font-family: 'Outfit', sans-serif; line-height: 1.25; }
+    h1 { font-size: 1.9rem; margin: 12px 0 4px; }
+    .fecha { color: var(--suave); font-size: 0.9rem; margin: 0 0 20px; }
+    .indice { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .indice a {
+      padding: 6px 14px;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      background: var(--tarjeta);
+      color: var(--texto);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    section {
+      background: var(--tarjeta);
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 8px 20px 16px;
+      margin-bottom: 20px;
+      scroll-margin-top: 16px;
+    }
+    h2 { font-size: 1.4rem; margin: 16px 0 8px; }
+    h3 { font-size: 1.05rem; margin: 20px 0 6px; }
+    p, li { color: var(--texto); }
+    ul { padding-left: 22px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--acento); overflow-wrap: anywhere; }
+    .resumen {
+      border-left: 3px solid var(--acento);
+      padding: 4px 0 4px 14px;
+      color: var(--suave);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 8px 0; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 6px; border-bottom: 1px solid var(--borde); }
+    th { color: var(--suave); font-weight: 600; }
+    @media (max-width: 560px) {
+      table, thead, tbody, tr, th, td { display: block; }
+      thead { display: none; }
+      tr { padding: 8px 0; border-bottom: 1px solid var(--borde); }
+      td { border: none; padding: 2px 0; }
+      td:first-child { font-weight: 700; }
+    }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <a class="volver" href="./">← Volver a RunNear</a>
+    <h1>Privacidad y aviso legal</h1>
+    <p class="fecha">Última actualización: 7 de octubre de 2026</p>
+
+    <nav class="indice" aria-label="Apartados">
+      <a href="#privacidad">Privacidad</a>
+      <a href="#aviso-legal">Aviso legal</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section id="privacidad">
+      <h2>Política de privacidad</h2>
+      <p class="resumen">En resumen: RunNear no tiene cuentas de usuario, no usa cookies y no guarda ningún dato tuyo en sus servidores. Lo que guardas (favoritas, carreras corridas, tus tiempos, ajustes) se queda en tu dispositivo.</p>
+
+      <h3>Responsable</h3>
+      <p>RunNear, proyecto personal y sin ánimo de lucro. Puedes escribirnos por los medios indicados en <a href="#contacto">Contacto</a>.</p>
+
+      <h3>Qué datos se usan y para qué</h3>
+      <table>
+        <thead><tr><th>Dato</th><th>Para qué</th><th>Dónde se guarda</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Tu ubicación (si das permiso)</td>
+            <td>Calcular a cuántos km tienes cada carrera y mostrar las cercanas.</td>
+            <td>Solo se usa en tu dispositivo, mientras tienes la web abierta. No se envía a ningún sitio ni se guarda.</td>
+          </tr>
+          <tr>
+            <td>Favoritas, carreras corridas y tus tiempos</td>
+            <td>Que puedas consultarlas cuando vuelvas.</td>
+            <td>En el almacenamiento local de tu navegador. Nadie más tiene acceso.</td>
+          </tr>
+          <tr>
+            <td>Ajustes (tema, radio de búsqueda, ciudad elegida)</td>
+            <td>Recordar tus preferencias.</td>
+            <td>En el almacenamiento local de tu navegador.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Si no das permiso de ubicación, la web funciona igual usando la ciudad que elijas o el centro de Castilla-La Mancha.</p>
+
+      <h3>Cookies</h3>
+      <p>RunNear no usa cookies, ni de análisis ni de publicidad. El almacenamiento local que guarda tus favoritas y ajustes solo sirve para que funcionen las opciones que tú usas, y no se usa para seguirte. Por eso no hace falta aviso de cookies.</p>
+
+      <h3>Servicios de terceros</h3>
+      <p>Al usar la web, tu navegador se conecta a estos servicios, que pueden registrar datos técnicos de la conexión (como la dirección IP) según sus propias políticas:</p>
+      <ul>
+        <li><strong>GitHub Pages</strong> (GitHub, Inc.), que aloja la web. <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Declaración de privacidad de GitHub</a>.</li>
+        <li><strong>Open-Meteo</strong>, solo al abrir la ficha de una carrera que se celebra en los próximos 15 días, para mostrar el tiempo previsto. Se le envía la ubicación de la carrera, nunca la tuya. <a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener noreferrer">Condiciones de Open-Meteo</a>.</li>
+      </ul>
+      <p>El mapa, las tipografías y el resto de la web se sirven desde el propio RunNear, sin pasar por otros servicios. Los enlaces a las webs oficiales de las carreras te llevan a sitios externos con sus propias políticas.</p>
+
+      <h3>Tus derechos y cómo borrar tus datos</h3>
+      <p>Como RunNear no guarda datos tuyos en ningún servidor, tienes el control total desde tu dispositivo:</p>
+      <ul>
+        <li>En <strong>Ajustes → Borrar todos mis datos</strong> se eliminan tus favoritas, carreras corridas, tiempos y ajustes.</li>
+        <li>También puedes borrar los datos del sitio desde la configuración de tu navegador.</li>
+        <li>Puedes retirar el permiso de ubicación en cualquier momento desde el candado junto a la dirección web.</li>
+      </ul>
+      <p>Para cualquier duda sobre privacidad, escríbenos (ver <a href="#contacto">Contacto</a>). También puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos</a>.</p>
+
+      <h3>Cambios</h3>
+      <p>Si en el futuro RunNear ofrece cuentas de usuario u otros servicios que traten datos personales, esta política se actualizará antes de ponerlos en marcha y lo indicaremos en la web.</p>
+    </section>
+
+    <section id="aviso-legal">
+      <h2>Aviso legal</h2>
+
+      <h3>Qué es RunNear</h3>
+      <p>RunNear es un proyecto personal, gratuito y sin ánimo de lucro que reúne en un mapa las carreras populares y de trail de Castilla-La Mancha. No vende inscripciones ni cobra por ningún servicio.</p>
+
+      <h3>Origen y exactitud de la información</h3>
+      <p>Los datos de las carreras (fecha, lugar, distancias, precio, desnivel, inscritos y enlaces) se recopilan automáticamente cada día de calendarios y webs públicas: Carreras CLM, Deportes Dipualba, Circuito de Carreras de Ciudad Real, el calendario de la FDMCM (vía Carreras de Montaña por Mayayo), carreraspopulares.com, Runnea y Running.life, además de las webs de inscripción de cada carrera.</p>
+      <p>Aunque se revisan para evitar errores y duplicados, pueden contener fallos o estar desactualizados. <strong>Confirma siempre fecha, horario y condiciones en la web oficial de la carrera antes de inscribirte o desplazarte.</strong> RunNear no se hace responsable de cambios, cancelaciones ni errores en esa información.</p>
+      <p>Si organizas una carrera y quieres corregir sus datos o que no aparezca, escríbenos y lo atenderemos lo antes posible.</p>
+
+      <h3>Enlaces externos</h3>
+      <p>RunNear enlaza a webs de terceros (inscripciones, resultados, organizadores). No controlamos su contenido ni respondemos de él.</p>
+
+      <h3>Propiedad intelectual y créditos</h3>
+      <ul>
+        <li>Los nombres, logotipos y marcas de cada carrera pertenecen a sus organizadores.</li>
+        <li>Calles, pueblos y caminos del mapa: © colaboradores de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>, con licencia ODbL.</li>
+        <li>Mapa general: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a> (dominio público).</li>
+        <li>Datos meteorológicos: <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a> (CC BY 4.0).</li>
+        <li>Mapa interactivo hecho con <a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer">Leaflet</a>.</li>
+      </ul>
+
+      <h3>Legislación aplicable</h3>
+      <p>Este aviso se rige por la legislación española.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Para dudas, correcciones de carreras o cualquier consulta sobre privacidad, abre una incidencia en el repositorio del proyecto:</p>
+      <p><a href="https://github.com/Fran-1512/RunNear/issues" target="_blank" rel="noopener noreferrer">github.com/Fran-1512/RunNear/issues</a></p>
+    </section>
+
+    <a class="volver" href="./">← Volver a RunNear</a>
+  </main>
+</body>
+</html>

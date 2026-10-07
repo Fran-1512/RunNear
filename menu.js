@@ -882,6 +882,7 @@ function mostrarAcercaDe() {
       <p>Calles, pueblos y caminos: © colaboradores de OpenStreetMap (licencia ODbL). Mapa general: Natural Earth (dominio público).</p>
       <h3>Privacidad</h3>
       <p>Tu ubicación solo se usa en tu dispositivo para calcular distancias: no se envía ni se guarda en ningún servidor. Tus favoritas, carreras corridas y ajustes se guardan únicamente en este dispositivo.</p>
+      <p><a href="legal.html">Política de privacidad y aviso legal</a></p>
     </div>
   `);
 }
@@ -907,7 +908,8 @@ function mostrarAjustes() {
       <div class="ajuste">
         <span class="ajuste-nombre">Mis datos</span>
         <p class="ajuste-ayuda">${idsFavoritas().size} favoritas y ${listaCorridas().length} carreras corridas guardadas en este dispositivo.</p>
-        <button class="btn-secondary" id="ajuste-borrar">Borrar mis favoritas y corridas</button>
+        <button class="btn-secondary" id="ajuste-borrar">Borrar todos mis datos</button>
+        <p class="ajuste-ayuda"><a href="legal.html#privacidad">Cómo tratamos tus datos</a></p>
       </div>
     </div>
   `);
@@ -928,9 +930,13 @@ function mostrarAjustes() {
     mostrarToast(`Radio por defecto: ${r} km`);
   });
   document.getElementById("ajuste-borrar").addEventListener("click", () => {
-    if (!confirm("¿Borrar tus favoritas y carreras corridas de este dispositivo?")) return;
-    ALMACEN.guardar("favoritas", []);
-    ALMACEN.guardar("corridas", []);
+    if (!confirm("¿Borrar de este dispositivo tus favoritas, carreras corridas, tiempos y ajustes?")) return;
+    try {
+      Object.keys(localStorage).filter(k => k.startsWith("runnear_")).forEach(k => localStorage.removeItem(k));
+    } catch (e) {
+      // Sin acceso al almacenamiento: no hay nada guardado que borrar
+    }
+    aplicarTema("oscuro");
     actualizarContadoresMenu();
     aplicarFiltrosYRenderizar();
     mostrarAjustes();

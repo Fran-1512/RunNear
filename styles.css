@@ -2008,6 +2008,7 @@ body.dark-theme {
   font-size: 0.84rem;
   font-weight: 600;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   transition: var(--transition-fast);
 }
@@ -2965,4 +2966,16 @@ body.tema-claro .chip-fecha {
 body.tema-claro .chip-fecha.active {
   background: var(--color-accent);
   color: #fff;
+}
+
+/* Enlaces dentro de las ventanas informativas (Acerca de, Ajustes) */
+.info-texto a,
+.ajuste-ayuda a {
+  color: #818cf8;
+  font-weight: 600;
+}
+
+body.tema-claro .info-texto a,
+body.tema-claro .ajuste-ayuda a {
+  color: #4f46e5;
 }
