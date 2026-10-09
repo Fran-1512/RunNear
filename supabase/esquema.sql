@@ -73,3 +73,22 @@ as $$ select now() $$;
 
 revoke all on function public.ping() from public;
 grant execute on function public.ping() to anon, authenticated;
+
+-- "Borrar mi cuenta": el usuario con sesión borra su propia cuenta. Al borrarla se
+-- borran solas sus favoritas, corridas y ajustes (on delete cascade).
+create or replace function public.borrar_mi_cuenta()
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if auth.uid() is null then
+    raise exception 'Hay que iniciar sesión';
+  end if;
+  delete from auth.users where id = auth.uid();
+end;
+$$;
+
+revoke all on function public.borrar_mi_cuenta() from public, anon;
+grant execute on function public.borrar_mi_cuenta() to authenticated;

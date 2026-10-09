@@ -529,6 +529,7 @@ function elegirCiudad(lugar) {
   } catch (err) {
     // Sin almacenamiento: se usa la ciudad solo en esta visita
   }
+  if (typeof alCambiarDatoLocal === "function") alCambiarDatoLocal("ciudad");
   const input = document.getElementById("input-ciudad");
   if (input) {
     input.value = lugar.nombre;

@@ -27,6 +27,8 @@ const ALMACEN = {
     } catch (e) {
       // Navegación privada o almacenamiento lleno: se sigue funcionando sin guardar
     }
+    // Con sesión iniciada, el cambio se copia también a la cuenta (cuenta.js)
+    if (typeof alCambiarDatoLocal === "function") alCambiarDatoLocal(clave);
   }
 };
 
@@ -917,8 +919,11 @@ function mostrarAjustes() {
       </div>
       <div class="ajuste">
         <span class="ajuste-nombre">Mis datos</span>
-        <p class="ajuste-ayuda">${idsFavoritas().size} favoritas y ${listaCorridas().length} carreras corridas guardadas en este dispositivo.</p>
-        <button class="btn-secondary" id="ajuste-borrar">Borrar todos mis datos</button>
+        ${typeof Cuenta !== "undefined" && Cuenta.usuario
+          ? `<p class="ajuste-ayuda">${idsFavoritas().size} favoritas y ${listaCorridas().length} carreras corridas guardadas en tu cuenta (${escapeHtml(Cuenta.usuario.email)}).</p>
+             <button class="btn-secondary" id="ajuste-cuenta">Gestionar mi cuenta</button>`
+          : `<p class="ajuste-ayuda">${idsFavoritas().size} favoritas y ${listaCorridas().length} carreras corridas guardadas en este dispositivo.</p>
+             <button class="btn-secondary" id="ajuste-borrar">Borrar todos mis datos</button>`}
         <p class="ajuste-ayuda"><a href="legal.html#privacidad">Cómo tratamos tus datos</a></p>
       </div>
     </div>
@@ -939,7 +944,13 @@ function mostrarAjustes() {
     aplicarFiltrosYRenderizar();
     mostrarToast(`Radio por defecto: ${r} km`);
   });
-  document.getElementById("ajuste-borrar").addEventListener("click", () => {
+  const gestionarCuenta = document.getElementById("ajuste-cuenta");
+  if (gestionarCuenta) gestionarCuenta.addEventListener("click", () => {
+    cerrarInfo();
+    abrirCuenta();
+  });
+  const borrarDatos = document.getElementById("ajuste-borrar");
+  if (borrarDatos) borrarDatos.addEventListener("click", () => {
     if (!confirm("¿Borrar de este dispositivo tus favoritas, carreras corridas, tiempos y ajustes?")) return;
     try {
       Object.keys(localStorage).filter(k => k.startsWith("runnear_")).forEach(k => localStorage.removeItem(k));
@@ -978,6 +989,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const acciones = {
     "ics-favoritas": exportarFavoritasICS,
+    cuenta: () => abrirCuenta(),
     instalar: lanzarInstalacion,
     acerca: mostrarAcercaDe,
     ajustes: mostrarAjustes

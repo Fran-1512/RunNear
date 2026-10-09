@@ -103,7 +103,7 @@
   <main class="pagina">
     <a class="volver" href="./">← Volver a RunNear</a>
     <h1>Privacidad y aviso legal</h1>
-    <p class="fecha">Última actualización: 7 de octubre de 2026</p>
+    <p class="fecha">Última actualización: 8 de octubre de 2026</p>
 
     <nav class="indice" aria-label="Apartados">
       <a href="#privacidad">Privacidad</a>
@@ -113,19 +113,19 @@
 
     <section id="privacidad">
       <h2>Política de privacidad</h2>
-      <p class="resumen">En resumen: RunNear no tiene cuentas de usuario, no usa cookies y no guarda ningún dato tuyo en sus servidores. Lo que guardas (favoritas, carreras corridas, tus tiempos, ajustes) se queda en tu dispositivo.</p>
+      <p class="resumen">En resumen: puedes usar RunNear sin cuenta, y entonces nada tuyo sale de tu dispositivo. Si te creas una cuenta, guardamos tu email y lo que tú guardas en la web (favoritas, carreras corridas, tiempos y ajustes) para que lo tengas en cualquier dispositivo. No usamos cookies, no hay publicidad y nunca vendemos ni cedemos tus datos. Puedes borrar tu cuenta y todo su contenido cuando quieras, desde la propia web.</p>
 
       <h3>Responsable</h3>
       <p>RunNear, proyecto personal y sin ánimo de lucro. Puedes escribirnos por los medios indicados en <a href="#contacto">Contacto</a>.</p>
 
-      <h3>Qué datos se usan y para qué</h3>
+      <h3>Si usas RunNear sin cuenta</h3>
       <table>
         <thead><tr><th>Dato</th><th>Para qué</th><th>Dónde se guarda</th></tr></thead>
         <tbody>
           <tr>
             <td>Tu ubicación (si das permiso)</td>
             <td>Calcular a cuántos km tienes cada carrera y mostrar las cercanas.</td>
-            <td>Solo se usa en tu dispositivo, mientras tienes la web abierta. No se envía a ningún sitio ni se guarda.</td>
+            <td>Solo se usa en tu dispositivo, mientras tienes la web abierta. No se envía a ningún sitio ni se guarda, tampoco si tienes cuenta.</td>
           </tr>
           <tr>
             <td>Favoritas, carreras corridas y tus tiempos</td>
@@ -141,28 +141,59 @@
       </table>
       <p>Si no das permiso de ubicación, la web funciona igual usando la ciudad que elijas o el centro de Castilla-La Mancha.</p>
 
+      <h3>Si te creas una cuenta</h3>
+      <p>La cuenta es opcional. Sirve para guardar lo tuyo fuera del dispositivo y tenerlo en el móvil y en el ordenador. Se crea la primera vez que entras, con Google o con un código que te enviamos por email.</p>
+      <table>
+        <thead><tr><th>Dato</th><th>Para qué</th><th>Dónde se guarda</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Tu email (y tu nombre, si entras con Google)</td>
+            <td>Identificar tu cuenta y enviarte el código para entrar. No te enviaremos publicidad.</td>
+            <td>En la base de datos de RunNear en Supabase (servidores en Irlanda, Unión Europea).</td>
+          </tr>
+          <tr>
+            <td>Favoritas, carreras corridas, tus tiempos y tus ajustes</td>
+            <td>Que los tengas en todos tus dispositivos.</td>
+            <td>En la base de datos de RunNear en Supabase. Solo tú puedes leerlos: las reglas de la base de datos impiden que nadie más acceda a ellos.</td>
+          </tr>
+          <tr>
+            <td>Datos técnicos de la sesión (fecha del último acceso, dirección IP)</td>
+            <td>Mantener tu sesión abierta y proteger las cuentas frente a abusos.</td>
+            <td>En Supabase. En tu navegador se guarda la sesión para que no tengas que entrar cada vez.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Base legal:</strong> tratamos estos datos porque nos pides crear la cuenta y usar sus funciones (artículo 6.1.b del RGPD). <strong>Conservación:</strong> mientras tengas la cuenta. Si la borras, se eliminan en el momento.</p>
+      <p>Al cerrar sesión, tus favoritas y carreras corridas dejan de estar en ese dispositivo, pero siguen en tu cuenta.</p>
+
       <h3>Cookies</h3>
-      <p>RunNear no usa cookies, ni de análisis ni de publicidad. El almacenamiento local que guarda tus favoritas y ajustes solo sirve para que funcionen las opciones que tú usas, y no se usa para seguirte. Por eso no hace falta aviso de cookies.</p>
+      <p>RunNear no usa cookies, ni de análisis ni de publicidad. El almacenamiento local del navegador solo guarda lo necesario para que funcionen las opciones que tú usas (tus favoritas, tus ajustes y, si tienes cuenta, tu sesión), y no se usa para seguirte. Por eso no hace falta aviso de cookies.</p>
 
       <h3>Servicios de terceros</h3>
       <p>Al usar la web, tu navegador se conecta a estos servicios, que pueden registrar datos técnicos de la conexión (como la dirección IP) según sus propias políticas:</p>
       <ul>
         <li><strong>GitHub Pages</strong> (GitHub, Inc.), que aloja la web. <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Declaración de privacidad de GitHub</a>.</li>
         <li><strong>Open-Meteo</strong>, solo al abrir la ficha de una carrera que se celebra en los próximos 15 días, para mostrar el tiempo previsto. Se le envía la ubicación de la carrera, nunca la tuya. <a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener noreferrer">Condiciones de Open-Meteo</a>.</li>
+        <li><strong>Supabase</strong> (Supabase, Inc.), solo si entras o tienes cuenta. Aloja la base de datos y el sistema de cuentas de RunNear en servidores de Irlanda (Unión Europea), como encargado del tratamiento y con las garantías del RGPD. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Política de privacidad de Supabase</a>.</li>
+        <li><strong>Google</strong>, solo si eliges «Continuar con Google»: Google nos confirma tu email y tu nombre. <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener noreferrer">Política de privacidad de Google</a>.</li>
+        <li>Si entras con tu email, el código se envía a través de nuestro proveedor de correo electrónico, que solo recibe tu dirección y el mensaje.</li>
       </ul>
       <p>El mapa, las tipografías y el resto de la web se sirven desde el propio RunNear, sin pasar por otros servicios. Los enlaces a las webs oficiales de las carreras te llevan a sitios externos con sus propias políticas.</p>
 
       <h3>Tus derechos y cómo borrar tus datos</h3>
-      <p>Como RunNear no guarda datos tuyos en ningún servidor, tienes el control total desde tu dispositivo:</p>
       <ul>
-        <li>En <strong>Ajustes → Borrar todos mis datos</strong> se eliminan tus favoritas, carreras corridas, tiempos y ajustes.</li>
-        <li>También puedes borrar los datos del sitio desde la configuración de tu navegador.</li>
+        <li><strong>Con cuenta:</strong> en <strong>Tu cuenta → Borrar mi cuenta</strong> se eliminan en el momento tu email, favoritas, carreras corridas, tiempos y ajustes.</li>
+        <li><strong>Sin cuenta:</strong> en <strong>Ajustes → Borrar todos mis datos</strong> se eliminan de tu dispositivo. También puedes borrar los datos del sitio desde la configuración de tu navegador.</li>
         <li>Puedes retirar el permiso de ubicación en cualquier momento desde el candado junto a la dirección web.</li>
+        <li>También tienes derecho a acceder a tus datos, corregirlos, llevártelos (portabilidad) u oponerte a su tratamiento. Escríbenos (ver <a href="#contacto">Contacto</a>) y te responderemos en el plazo legal de un mes.</li>
       </ul>
-      <p>Para cualquier duda sobre privacidad, escríbenos (ver <a href="#contacto">Contacto</a>). También puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos</a>.</p>
+      <p>Si crees que no hemos tratado bien tus datos, puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos</a>.</p>
+
+      <h3>Menores</h3>
+      <p>Para crear una cuenta hay que tener al menos 14 años, la edad mínima en España para dar el consentimiento por uno mismo.</p>
 
       <h3>Cambios</h3>
-      <p>Si en el futuro RunNear ofrece cuentas de usuario u otros servicios que traten datos personales, esta política se actualizará antes de ponerlos en marcha y lo indicaremos en la web.</p>
+      <p>Si cambiamos cómo tratamos los datos, actualizaremos esta página antes de hacerlo y cambiaremos la fecha de arriba.</p>
     </section>
 
     <section id="aviso-legal">
@@ -194,8 +225,9 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Para dudas, correcciones de carreras o cualquier consulta sobre privacidad, abre una incidencia en el repositorio del proyecto:</p>
-      <p><a href="https://github.com/Fran-1512/RunNear/issues" target="_blank" rel="noopener noreferrer">github.com/Fran-1512/RunNear/issues</a></p>
+      <p>Para dudas, correcciones de carreras o cualquier consulta sobre privacidad, escríbenos a:</p>
+      <p><a href="mailto:runnear.app@gmail.com">runnear.app@gmail.com</a></p>
+      <p>Si tienes cuenta en GitHub, también puedes abrir una incidencia en el <a href="https://github.com/Fran-1512/RunNear/issues" target="_blank" rel="noopener noreferrer">repositorio del proyecto</a>.</p>
     </section>
 
     <a class="volver" href="./">← Volver a RunNear</a>
