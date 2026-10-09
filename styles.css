@@ -3471,3 +3471,70 @@ body.tema-claro .perfil-barra {
 body.tema-claro .perfil-enlace {
   color: #4f46e5;
 }
+
+/* Avisos al móvil (ventana "Tu cuenta") */
+.cuenta-avisos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cuenta-avisos:empty {
+  display: none;
+}
+
+.avisos-titulo {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.avisos-boton {
+  justify-content: center;
+  width: 100%;
+}
+
+.avisos-activos {
+  font-size: 0.85rem;
+  color: #34d399;
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+}
+
+.avisos-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.avisos-opcion {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.avisos-opcion input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  flex: none;
+  accent-color: var(--color-accent);
+}
+
+.avisos-opcion.deshabilitada {
+  color: var(--text-dim);
+  cursor: default;
+}
+
+body.tema-claro .avisos-activos {
+  color: #047857;
+}

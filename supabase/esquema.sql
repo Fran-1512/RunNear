@@ -92,3 +92,45 @@ $$;
 
 revoke all on function public.borrar_mi_cuenta() from public, anon;
 grant execute on function public.borrar_mi_cuenta() to authenticated;
+
+-- ==========================================================================
+-- Avisos al móvil (notificaciones push)
+-- ==========================================================================
+
+-- Qué avisos quiere cada usuario: { "recordatorio": true, "corrida": true, "nuevas": false }
+alter table public.ajustes add column if not exists avisos jsonb;
+
+-- Dispositivos que han activado los avisos (la "dirección" que da el navegador)
+create table if not exists public.suscripciones_push (
+  endpoint text primary key check (char_length(endpoint) between 10 and 1000),
+  user_id  uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  p256dh   text not null check (char_length(p256dh) < 200),
+  auth     text not null check (char_length(auth) < 100),
+  creada   timestamptz not null default now()
+);
+alter table public.suscripciones_push enable row level security;
+
+drop policy if exists "suscripciones propias" on public.suscripciones_push;
+create policy "suscripciones propias" on public.suscripciones_push
+  for all to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+revoke all on public.suscripciones_push from anon;
+grant select, insert, update, delete on public.suscripciones_push to authenticated;
+
+-- Uso interno de la función que envía los avisos (nadie más puede leerlas ni tocarlas):
+-- avisos ya enviados, para no repetir, y carreras ya conocidas, para detectar las nuevas
+create table if not exists public.avisos_enviados (
+  user_id uuid not null references auth.users (id) on delete cascade,
+  clave   text not null,
+  enviado timestamptz not null default now(),
+  primary key (user_id, clave)
+);
+create table if not exists public.carreras_vistas (
+  carrera_id text primary key,
+  vista      date not null default current_date
+);
+alter table public.avisos_enviados enable row level security;
+alter table public.carreras_vistas enable row level security;
+revoke all on public.avisos_enviados, public.carreras_vistas from anon, authenticated;

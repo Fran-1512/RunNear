@@ -62,6 +62,26 @@ jobs:
             -H "apikey: sb_publishable_MKC7ayO7IWHaAqPMtzFOBw_TP0pCSdT" \
             -H "Content-Type: application/json" -d '{}'
 
+      # Avisos al móvil: se envía a la función "avisos" de Supabase el carreras.json recién
+      # generado; ella decide qué avisar a cada usuario. La clave está en los secretos del
+      # repositorio (Settings → Secrets and variables → Actions → AVISOS_CLAVE).
+      - name: Enviar avisos al móvil
+        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          AVISOS_CLAVE: ${{ secrets.AVISOS_CLAVE }}
+        run: |
+          if [ -z "$AVISOS_CLAVE" ]; then
+            echo "Sin AVISOS_CLAVE: avisos no configurados"
+            exit 0
+          fi
+          curl --fail --silent --show-error -X POST \
+            "https://fndytkkukhmijrrikjyw.supabase.co/functions/v1/avisos" \
+            -H "apikey: sb_publishable_MKC7ayO7IWHaAqPMtzFOBw_TP0pCSdT" \
+            -H "x-avisos-clave: $AVISOS_CLAVE" \
+            -H "Content-Type: application/json" \
+            --data-binary @carreras.json
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

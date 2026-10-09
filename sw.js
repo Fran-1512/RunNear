@@ -102,6 +102,41 @@ async function cacheYActualizar(peticion) {
   return guardada || deRed;
 }
 
+// ==========================================================================
+// Avisos al móvil: los envía cada mañana la función "avisos" de Supabase
+// ==========================================================================
+
+self.addEventListener("push", evento => {
+  let aviso = { titulo: "RunNear", cuerpo: "", url: "./" };
+  try {
+    aviso = { ...aviso, ...evento.data.json() };
+  } catch (e) {
+    if (evento.data) aviso.cuerpo = evento.data.text();
+  }
+  evento.waitUntil(self.registration.showNotification(aviso.titulo, {
+    body: aviso.cuerpo,
+    icon: "iconos/icono-192.png",
+    badge: "iconos/icono-192.png",
+    data: { url: aviso.url },
+    lang: "es"
+  }));
+});
+
+// Al tocar el aviso: se abre RunNear (o se reutiliza la ventana abierta) en esa carrera
+self.addEventListener("notificationclick", evento => {
+  evento.notification.close();
+  const url = new URL((evento.notification.data && evento.notification.data.url) || "./", self.registration.scope).href;
+  evento.waitUntil((async () => {
+    const ventanas = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+    const abierta = ventanas.find(v => v.url.startsWith(self.registration.scope));
+    if (abierta) {
+      await abierta.navigate(url);
+      return abierta.focus();
+    }
+    return self.clients.openWindow(url);
+  })());
+});
+
 self.addEventListener("fetch", evento => {
   const peticion = evento.request;
   if (peticion.method !== "GET") return;

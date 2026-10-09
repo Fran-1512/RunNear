@@ -246,6 +246,7 @@ async function sincronizarAlEntrar() {
 function aplicarAjustesDeCuenta(ajustes) {
   if (ajustes.tema === "claro" || ajustes.tema === "oscuro") aplicarTema(ajustes.tema);
   if (Number.isFinite(ajustes.radio_km)) ALMACEN.guardar("radio", ajustes.radio_km);
+  if (ajustes.avisos && typeof ajustes.avisos === "object") ALMACEN.guardar("avisos", ajustes.avisos);
   const ciudad = ajustes.ciudad;
   if (ciudad && Number.isFinite(ciudad.lat) && Number.isFinite(ciudad.lng) && ciudad.nombre) {
     const actual = typeof ciudadGuardada === "function" ? ciudadGuardada() : null;
@@ -266,7 +267,7 @@ function refrescarTrasSincronizar() {
 function alCambiarDatoLocal(clave) {
   if (!Cuenta.usuario || Cuenta.aplicandoRemoto) return;
   const tabla = clave === "favoritas" || clave === "corridas" ? clave
-    : ["tema", "radio", "ciudad"].includes(clave) ? "ajustes" : null;
+    : ["tema", "radio", "ciudad", "avisos"].includes(clave) ? "ajustes" : null;
   if (!tabla) return;
   // Cambio mientras aún se están trayendo los datos de la cuenta: se juntarán después
   guardarLocal("cuenta_pendiente", Cuenta.usuario.id);
@@ -333,13 +334,21 @@ async function subir(tablas) {
     const tema = ALMACEN.leer("tema", null);
     const radio = ALMACEN.leer("radio", null);
     const ciudad = typeof ciudadGuardada === "function" ? ciudadGuardada() : null;
-    comprobar(await cliente.from("ajustes").upsert({
+    const fila = {
       user_id: uid,
       tema: tema === "claro" || tema === "oscuro" ? tema : null,
       radio_km: Number.isFinite(radio) && radio >= 5 && radio <= 300 ? radio : null,
       ciudad,
+      avisos: preferenciasAvisos(),
       actualizado: new Date().toISOString()
-    }, { onConflict: "user_id" }));
+    };
+    let resultado = await cliente.from("ajustes").upsert(fila, { onConflict: "user_id" });
+    // Base de datos aún sin la columna de avisos: se guardan el resto de ajustes
+    if (resultado.error && /avisos/.test(resultado.error.message)) {
+      delete fila.avisos;
+      resultado = await cliente.from("ajustes").upsert(fila, { onConflict: "user_id" });
+    }
+    comprobar(resultado);
   }
 }
 
@@ -361,6 +370,8 @@ function borrarDatosDeCuentaDelDispositivo() {
 
 async function cerrarSesion() {
   await subirPendientes();
+  // Este dispositivo deja de recibir los avisos de esta cuenta
+  await quitarAvisosDeEsteDispositivo(true);
   const cliente = await obtenerSupabase();
   // "local": cierra la sesión solo en este dispositivo
   await cliente.auth.signOut({ scope: "local" });
@@ -380,6 +391,7 @@ async function borrarCuenta() {
     mostrarToast(`No se pudo borrar la cuenta: ${error.message}`, 6000);
     return;
   }
+  await quitarAvisosDeEsteDispositivo(false); // en la base de datos ya se han borrado
   try {
     await cliente.auth.signOut({ scope: "local" });
   } catch (e) {
@@ -524,6 +536,7 @@ function pintarPerfil() {
     <p class="cuenta-estado">${Cuenta.sincronizado
       ? `☁️ Tus ${nf} favoritas, ${nc} carreras corridas y tus ajustes se guardan en tu cuenta.`
       : "Cargando los datos de tu cuenta…"}</p>
+    <div class="cuenta-avisos" id="cuenta-avisos"></div>
     <div class="cuenta-botones">
       <button class="btn-primary" id="cuenta-ver-perfil">📊 Ver mi perfil</button>
       <button class="btn-secondary" id="cuenta-salir">Cerrar sesión</button>
@@ -541,6 +554,159 @@ function pintarPerfil() {
     aplicarVista("perfil");
   });
   cuerpo.querySelector("#cuenta-borrar").addEventListener("click", borrarCuenta);
+  pintarAvisos(cuerpo.querySelector("#cuenta-avisos"));
+}
+
+// ==========================================================================
+// Avisos al móvil (notificaciones push)
+// ==========================================================================
+
+// Clave pública VAPID (la privada solo está en los secretos de Supabase)
+const VAPID_PUBLICA = "BJxR1du2yHVAlvCY2zuE2tvfHvXWQYVlV8UgWcXYkeeS1cr7XxLNhx72eZ65lgJh3YehicjTs0S9KiYjYuuZwdE";
+const AVISOS_POR_DEFECTO = { recordatorio: true, corrida: true, nuevas: false };
+
+function preferenciasAvisos() {
+  return { ...AVISOS_POR_DEFECTO, ...(ALMACEN.leer("avisos", null) || {}) };
+}
+
+function claveDesdeBase64Url(texto) {
+  const relleno = "=".repeat((4 - (texto.length % 4)) % 4);
+  const binario = atob((texto + relleno).replace(/-/g, "+").replace(/_/g, "/"));
+  return Uint8Array.from(binario, c => c.charCodeAt(0));
+}
+
+async function suscripcionActual() {
+  if (!("serviceWorker" in navigator) || !("PushManager" in window)) return null;
+  const consulta = (async () => {
+    const registro = await navigator.serviceWorker.getRegistration();
+    return registro && registro.pushManager ? registro.pushManager.getSubscription() : null;
+  })();
+  // Algunos navegadores no responden nunca: no se bloquea por ello cerrar sesión
+  const limite = new Promise(resolver => setTimeout(() => resolver(null), 3000));
+  return Promise.race([consulta, limite]);
+}
+
+/** "ios-instalar" | "no-soportado" | "bloqueado" | "activo" | "inactivo" */
+async function estadoAvisos() {
+  if (typeof esDispositivoIOS === "function" && esDispositivoIOS() && !appYaInstalada()) return "ios-instalar";
+  if (!("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) return "no-soportado";
+  if (Notification.permission === "denied") return "bloqueado";
+  try {
+    return (await suscripcionActual()) ? "activo" : "inactivo";
+  } catch (e) {
+    return "inactivo";
+  }
+}
+
+async function guardarSuscripcion(cliente, suscripcion) {
+  const datos = suscripcion.toJSON();
+  return cliente.from("suscripciones_push").upsert({
+    endpoint: datos.endpoint,
+    user_id: Cuenta.usuario.id,
+    p256dh: datos.keys.p256dh,
+    auth: datos.keys.auth
+  }, { onConflict: "endpoint" });
+}
+
+async function activarAvisos() {
+  if (!Cuenta.usuario) return;
+  const permiso = await Notification.requestPermission();
+  if (permiso !== "granted") {
+    mostrarToast("Sin permiso no podemos enviarte avisos. Puedes activarlo cuando quieras.", 5000);
+    return;
+  }
+  try {
+    const cliente = await obtenerSupabase();
+    const registro = await navigator.serviceWorker.ready;
+    const opciones = { userVisibleOnly: true, applicationServerKey: claveDesdeBase64Url(VAPID_PUBLICA) };
+    let suscripcion = await registro.pushManager.subscribe(opciones);
+    let { error } = await guardarSuscripcion(cliente, suscripcion);
+    if (error) {
+      // Dirección usada antes por otra cuenta en este dispositivo: se pide una nueva
+      await suscripcion.unsubscribe();
+      suscripcion = await registro.pushManager.subscribe(opciones);
+      ({ error } = await guardarSuscripcion(cliente, suscripcion));
+    }
+    if (error) throw new Error(error.message);
+    await registro.showNotification("✅ Avisos activados", {
+      body: "Así te llegarán los avisos de RunNear en este dispositivo.",
+      icon: "iconos/icono-192.png",
+      lang: "es"
+    });
+  } catch (e) {
+    console.warn("Avisos:", e);
+    mostrarToast("No se han podido activar los avisos en este dispositivo. Inténtalo de nuevo.", 6000);
+  }
+}
+
+/** borrarDeLaCuenta: quitar también la suscripción guardada (hace falta la sesión) */
+async function quitarAvisosDeEsteDispositivo(borrarDeLaCuenta) {
+  try {
+    const suscripcion = await suscripcionActual();
+    if (!suscripcion) return;
+    if (borrarDeLaCuenta && Cuenta.usuario) {
+      const cliente = await obtenerSupabase();
+      await cliente.from("suscripciones_push").delete().eq("endpoint", suscripcion.endpoint);
+    }
+    await suscripcion.unsubscribe();
+  } catch (e) {
+    console.warn("Avisos:", e);
+  }
+}
+
+async function pintarAvisos(caja) {
+  if (!caja) return;
+  const estado = await estadoAvisos();
+  if (!document.body.contains(caja)) return;
+  const prefs = preferenciasAvisos();
+  const ciudad = typeof ciudadGuardada === "function" ? ciudadGuardada() : null;
+  const radio = typeof radioPorDefecto === "function" ? radioPorDefecto() : 50;
+
+  const estados = {
+    "ios-instalar": `<p class="cuenta-nota">En iPhone, los avisos solo funcionan con RunNear instalada en la pantalla de inicio. <button class="cuenta-enlace" id="avisos-instalar">Cómo instalarla</button></p>`,
+    "no-soportado": `<p class="cuenta-nota">Este navegador no permite recibir avisos. Prueba con Chrome, Edge, Firefox o Safari actualizados.</p>`,
+    "bloqueado": `<p class="cuenta-nota">Has bloqueado los avisos de RunNear en este navegador. Para activarlos, permite las notificaciones en el candado junto a la dirección web (o en los ajustes del móvil) y vuelve aquí.</p>`,
+    "inactivo": `<button class="btn-primary avisos-boton" id="avisos-activar">🔔 Activar avisos en este dispositivo</button>`,
+    "activo": `<p class="avisos-activos">✅ Activados en este dispositivo <button class="cuenta-enlace" id="avisos-desactivar">Desactivar</button></p>`
+  };
+  const opcion = (id, texto, marcado, deshabilitado = false) => `
+    <label class="avisos-opcion ${deshabilitado ? "deshabilitada" : ""}">
+      <input type="checkbox" data-aviso="${id}" ${marcado ? "checked" : ""} ${deshabilitado ? "disabled" : ""}>
+      <span>${texto}</span>
+    </label>`;
+
+  caja.innerHTML = `
+    <p class="avisos-titulo">🔔 Avisos al móvil</p>
+    ${estados[estado]}
+    <div class="avisos-opciones">
+      ${opcion("recordatorio", "Recordatorio el día antes de tus favoritas, con la hora de salida", prefs.recordatorio)}
+      ${opcion("corrida", "«¿La corriste?» el día después, para apuntar tu tiempo", prefs.corrida)}
+      ${ciudad
+        ? opcion("nuevas", `Carreras nuevas a menos de ${radio} km de ${escapeHtml(ciudad.nombre)}`, prefs.nuevas)
+        : opcion("nuevas", "Carreras nuevas cerca de tu ciudad (elige tu ciudad arriba, en «Tu ciudad…»)", false, true)}
+    </div>
+    <p class="cuenta-nota">Los avisos llegan por la mañana. Puedes cambiarlos cuando quieras.</p>`;
+
+  caja.querySelectorAll("[data-aviso]").forEach(casilla => casilla.addEventListener("change", () => {
+    ALMACEN.guardar("avisos", { ...preferenciasAvisos(), [casilla.dataset.aviso]: casilla.checked });
+  }));
+  const activar = caja.querySelector("#avisos-activar");
+  if (activar) activar.addEventListener("click", async () => {
+    activar.disabled = true;
+    await activarAvisos();
+    pintarAvisos(caja);
+  });
+  const desactivar = caja.querySelector("#avisos-desactivar");
+  if (desactivar) desactivar.addEventListener("click", async () => {
+    await quitarAvisosDeEsteDispositivo(true);
+    mostrarToast("Avisos desactivados en este dispositivo");
+    pintarAvisos(caja);
+  });
+  const instalar = caja.querySelector("#avisos-instalar");
+  if (instalar) instalar.addEventListener("click", () => {
+    cerrarCuentaModal();
+    if (typeof lanzarInstalacion === "function") lanzarInstalacion();
+  });
 }
 
 function traducirErrorCuenta(error) {
