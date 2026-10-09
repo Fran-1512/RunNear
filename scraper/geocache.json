@@ -19,6 +19,10 @@
     "lat": 39.38998,
     "lng": -3.21014
   },
+  "Almodóvar del Campo|Ciudad Real": {
+    "lat": 38.7084,
+    "lng": -4.17606
+  },
   "Almodóvar del Pinar|Cuenca": {
     "lat": 39.72563,
     "lng": -1.90174
@@ -107,6 +111,10 @@
     "lat": 40.92638,
     "lng": -2.92267
   },
+  "La Mata|Toledo": {
+    "lat": 39.9426,
+    "lng": -4.43842
+  },
   "La Puebla de Almoradiel|Toledo": {
     "lat": 39.59827,
     "lng": -3.11861
@@ -158,6 +166,10 @@
   "Membrilla|Ciudad Real": {
     "lat": 38.97248,
     "lng": -3.3465
+  },
+  "Miguelturra|Ciudad Real": {
+    "lat": 38.96481,
+    "lng": -3.88986
   },
   "Molina de Aragón|Guadalajara": {
     "lat": 40.84408,
@@ -262,6 +274,14 @@
   "Valdepeñas|Ciudad Real": {
     "lat": 38.75946,
     "lng": -3.38474
+  },
+  "Villafranca de los Caballeros|Toledo": {
+    "lat": 39.4263,
+    "lng": -3.35987
+  },
+  "Villalba de la Sierra|Cuenca": {
+    "lat": 40.2356,
+    "lng": -2.0893
   },
   "Villaverde de Guadalimar|Albacete": {
     "lat": 38.45989,

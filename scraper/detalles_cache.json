@@ -1,4 +1,12 @@
 {
+  "fdmcm:clm-1c5f41fe": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null
+  },
+  "fdmcm:clm-1db427e9": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null
+  },
   "fdmcm:clm-2573189f": {
     "consultado": "2026-10-04",
     "desnivel_positivo_m": null
@@ -21,6 +29,10 @@
   },
   "fdmcm:clm-3df52edd": {
     "consultado": "2026-10-04",
+    "desnivel_positivo_m": null
+  },
+  "fdmcm:clm-5fabc503": {
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-64e07492": {
@@ -49,6 +61,10 @@
   },
   "fdmcm:clm-e03a79cc": {
     "consultado": "2026-10-04",
+    "desnivel_positivo_m": null
+  },
+  "fdmcm:clm-ee9d27fd": {
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-fdb54097": {
@@ -170,13 +186,13 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/trail-puerta-del-rey-2027": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
     "inscritos": null,
     "plazas_max": null,
-    "precio_desde": null,
+    "precio_desde": 10.0,
     "resultados": [],
     "resultados_web": null,
     "version": 6
@@ -230,7 +246,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026/": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "11:30",
@@ -304,7 +320,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/10k-valdepenas-2027/": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -340,6 +356,18 @@
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
     "version": 6
   },
+  "https://carrerasciudadreal.es/evento/media-maraton-rural-miguelturra-2026/": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": "11:00",
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 12.0,
+    "resultados": [],
+    "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
+    "version": 6
+  },
   "https://carrerasciudadreal.es/evento/media-valdepenas-2027": {
     "consultado": "2026-10-04",
     "desnivel_positivo_m": null,
@@ -353,7 +381,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/media-valdepenas-2027/": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -434,7 +462,7 @@
     "version": 6
   },
   "https://crono3.es/evento/carrera-mini-media-maraton-alcazar-s-juan-2026/": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -446,7 +474,7 @@
     "version": 6
   },
   "https://crono3.es/evento/carrera-por-la-diabetes-los-cortijos-2026/": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -460,6 +488,18 @@
   "https://crono3.es/evento/media-maraton-alcazar-de-san-juan-2026/": {
     "bloqueado_robots": true,
     "consultado": "2026-10-03"
+  },
+  "https://crono3.es/evento/xii-trail-humedales-manchegos-2026/": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": "https://crono3.es/resultados/",
+    "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1121": {
     "bloqueado_robots": true,
@@ -538,6 +578,11 @@
     "consultado": "2026-10-07",
     "version": 6
   },
+  "https://deportes.dipualba.es/deportes/FichaPrueba/1192": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-09",
+    "version": 6
+  },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1207": {
     "bloqueado_robots": true,
     "consultado": "2026-10-07",
@@ -563,6 +608,11 @@
       }
     ],
     "resultados_web": "https://deportes.dipualba.es/clasificaciones",
+    "version": 6
+  },
+  "https://deportes.dipualba.es/deportes/FichaPrueba/1219": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-09",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1288": {
@@ -730,7 +780,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/equitrail": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -742,7 +792,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
-    "consultado": "2026-10-06",
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -803,6 +853,18 @@
   },
   "https://inscripciones.runrunsports.com/eventos/xix-carrera-nocturna-de-toledo-gran-premio-santander": {
     "consultado": "2026-10-07",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://inscripciones.runrunsports.com/eventos/xliv-san-silvestre-de-talavera-de-la-reina": {
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -991,6 +1053,30 @@
     "inscritos": 94,
     "plazas_max": null,
     "precio_desde": 5.0,
+    "resultados": [],
+    "resultados_web": "https://sportmaniacs.com/es/results",
+    "version": 6
+  },
+  "https://sportmaniacs.com/es/races/ix-carrera-popular-amp-ii-marcha-la-mata": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 11.0,
+    "resultados": [],
+    "resultados_web": "https://sportmaniacs.com/es/results",
+    "version": 6
+  },
+  "https://sportmaniacs.com/es/races/la-bermejo-2026": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
     "resultados": [],
     "resultados_web": "https://sportmaniacs.com/es/results",
     "version": 6
@@ -1584,6 +1670,30 @@
   },
   "https://www.timingsys.com/event/799": {
     "consultado": "2026-10-07",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://www.timingsys.com/event/800": {
+    "consultado": "2026-10-09",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://www.timingsys.com/event/802": {
+    "consultado": "2026-10-09",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
