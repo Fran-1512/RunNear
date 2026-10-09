@@ -525,6 +525,7 @@ function pintarPerfil() {
       ? `☁️ Tus ${nf} favoritas, ${nc} carreras corridas y tus ajustes se guardan en tu cuenta.`
       : "Cargando los datos de tu cuenta…"}</p>
     <div class="cuenta-botones">
+      <button class="btn-primary" id="cuenta-ver-perfil">📊 Ver mi perfil</button>
       <button class="btn-secondary" id="cuenta-salir">Cerrar sesión</button>
     </div>
     <details class="cuenta-peligro">
@@ -535,6 +536,10 @@ function pintarPerfil() {
     <p class="cuenta-nota"><a href="legal.html#privacidad">Cómo tratamos tus datos</a></p>`;
 
   cuerpo.querySelector("#cuenta-salir").addEventListener("click", cerrarSesion);
+  cuerpo.querySelector("#cuenta-ver-perfil").addEventListener("click", () => {
+    cerrarCuentaModal();
+    aplicarVista("perfil");
+  });
   cuerpo.querySelector("#cuenta-borrar").addEventListener("click", borrarCuenta);
 }
 

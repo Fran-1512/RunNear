@@ -3274,3 +3274,200 @@ body.tema-claro .btn-borrar-cuenta {
     height: 30px;
   }
 }
+
+/* ==========================================================================
+   Mi perfil
+   ========================================================================== */
+.panel-perfil {
+  padding: 14px 16px 16px;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel-perfil.hidden {
+  display: none;
+}
+
+.perfil-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.perfil-avatar {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.perfil-quien {
+  min-width: 0;
+}
+
+.perfil-nombre {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.perfil-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.perfil-enlace {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #818cf8;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.perfil-cifras {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.perfil-cifra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 4px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-md);
+  text-align: center;
+  min-width: 0;
+}
+
+.perfil-cifra strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.perfil-cifra span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.perfil-nota {
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+.perfil-titulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.perfil-anos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perfil-ano {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.perfil-ano-nombre {
+  font-weight: 700;
+}
+
+.perfil-barra {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.perfil-barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-accent);
+}
+
+.perfil-ano-dato {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.perfil-proximas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perfil-proxima {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 9px 12px;
+  background: rgba(244, 63, 94, 0.07);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.perfil-proxima-nombre {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.perfil-proxima-dato {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.perfil-provincias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.perfil-provincia {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-size: 0.78rem;
+}
+
+body.tema-claro .perfil-barra {
+  background: #e6eaf2;
+}
+
+body.tema-claro .perfil-enlace {
+  color: #4f46e5;
+}
