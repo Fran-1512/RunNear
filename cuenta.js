@@ -260,6 +260,10 @@ function refrescarTrasSincronizar() {
   if (typeof actualizarContadoresMenu === "function") actualizarContadoresMenu();
   if (typeof aplicarFiltrosYRenderizar === "function") aplicarFiltrosYRenderizar();
   if (AppState.carreraAbierta && typeof actualizarAccionesFicha === "function") actualizarAccionesFicha(AppState.carreraAbierta);
+  const ficha = document.getElementById("race-detail-modal");
+  if (AppState.carreraAbierta && ficha && !ficha.classList.contains("hidden") && typeof mostrarValoraciones === "function") {
+    mostrarValoraciones(AppState.carreraAbierta);
+  }
   if (cuentaModalAbierta()) pintarCuenta();
 }
 

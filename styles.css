@@ -3538,3 +3538,215 @@ body.tema-claro .perfil-enlace {
 body.tema-claro .avisos-activos {
   color: #047857;
 }
+
+/* ==========================================================================
+   Valoraciones
+   ========================================================================== */
+.bloque-valoraciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  background: rgba(250, 204, 21, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.bloque-valoraciones.hidden {
+  display: none;
+}
+
+.estrellas {
+  color: #facc15;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.estrellas-vacias {
+  color: rgba(148, 163, 184, 0.35);
+}
+
+.card-valoracion {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #facc15;
+  white-space: nowrap;
+}
+
+.card-valoracion small {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.valoraciones-nota {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.valoraciones-resumen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  align-items: center;
+}
+
+.valoraciones-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 90px;
+}
+
+.valoraciones-media strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.valoraciones-media span:last-child {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.valoraciones-aspectos {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.valoraciones-aspecto {
+  display: grid;
+  grid-template-columns: 112px 1fr 28px;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.valoraciones-aspecto .perfil-barra span {
+  background: #facc15;
+}
+
+.valoracion-tuya {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.cuenta-enlace.peligro {
+  color: #fb7185;
+}
+
+.valorar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+}
+
+.valorar-titulo {
+  font-weight: 700;
+}
+
+.valorar-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.valorar-estrellas {
+  display: flex;
+}
+
+.valorar-estrella {
+  background: none;
+  border: none;
+  padding: 2px 3px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: rgba(148, 163, 184, 0.4);
+  cursor: pointer;
+}
+
+.valorar-fila.principal .valorar-estrella {
+  font-size: 2rem;
+}
+
+.valorar-estrella.activa {
+  color: #facc15;
+}
+
+.valorar-comentario {
+  font-size: 16px;
+  resize: vertical;
+  min-height: 70px;
+}
+
+.valoraciones-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opinion {
+  padding-top: 10px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.opinion-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.opinion-fecha {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.opinion-texto {
+  margin-top: 4px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.opinion-denunciar {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+body.tema-claro .estrellas,
+body.tema-claro .card-valoracion {
+  color: #d97706;
+}
+
+body.tema-claro .valorar-estrella.activa {
+  color: #f59e0b;
+}
+
+body.tema-claro .cuenta-enlace.peligro {
+  color: #be123c;
+}

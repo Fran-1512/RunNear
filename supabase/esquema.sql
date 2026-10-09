@@ -134,3 +134,90 @@ create table if not exists public.carreras_vistas (
 alter table public.avisos_enviados enable row level security;
 alter table public.carreras_vistas enable row level security;
 revoke all on public.avisos_enviados, public.carreras_vistas from anon, authenticated;
+
+-- ==========================================================================
+-- Valoraciones de carreras
+-- ==========================================================================
+
+-- "evento" agrupa todas las ediciones de una carrera (nombre sin año ni número de
+-- edición + municipio), para que las opiniones de 2025 sirvan para la de 2026
+create table if not exists public.valoraciones (
+  user_id         uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  carrera_id      text not null check (char_length(carrera_id) between 1 and 100),
+  evento          text not null check (char_length(evento) between 1 and 200),
+  fecha           date not null check (fecha <= current_date),
+  nota            smallint not null check (nota between 1 and 5),
+  recorrido       smallint check (recorrido between 1 and 5),
+  organizacion    smallint check (organizacion between 1 and 5),
+  avituallamiento smallint check (avituallamiento between 1 and 5),
+  -- Sin enlaces: frena el spam
+  comentario      text check (char_length(comentario) <= 500 and comentario !~* '(https?://|www\.)'),
+  autor           text not null check (char_length(autor) between 1 and 40),
+  creada          timestamptz not null default now(),
+  actualizada     timestamptz not null default now(),
+  primary key (user_id, carrera_id)
+);
+create index if not exists valoraciones_evento on public.valoraciones (evento);
+alter table public.valoraciones enable row level security;
+
+-- Todo el mundo puede leerlas; solo quien ha marcado la carrera como corrida puede
+-- valorarla, y cada uno solo cambia o borra la suya
+drop policy if exists "leer valoraciones" on public.valoraciones;
+create policy "leer valoraciones" on public.valoraciones
+  for select to anon, authenticated using (true);
+
+drop policy if exists "valorar si la has corrido" on public.valoraciones;
+create policy "valorar si la has corrido" on public.valoraciones
+  for insert to authenticated
+  with check (
+    (select auth.uid()) = user_id
+    and exists (select 1 from public.corridas c where c.user_id = (select auth.uid()) and c.carrera_id = valoraciones.carrera_id)
+  );
+
+drop policy if exists "cambiar la propia" on public.valoraciones;
+create policy "cambiar la propia" on public.valoraciones
+  for update to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+drop policy if exists "borrar la propia" on public.valoraciones;
+create policy "borrar la propia" on public.valoraciones
+  for delete to authenticated
+  using ((select auth.uid()) = user_id);
+
+-- Los visitantes sin cuenta no ven quién (qué cuenta) ha escrito cada opinión
+revoke all on public.valoraciones from anon;
+grant select (carrera_id, evento, fecha, nota, recorrido, organizacion, avituallamiento, comentario, autor, creada)
+  on public.valoraciones to anon;
+grant select, insert, update, delete on public.valoraciones to authenticated;
+
+-- Resumen por carrera: nota media y número de opiniones
+create or replace view public.valoraciones_resumen with (security_invoker = true) as
+  select evento,
+         round(avg(nota), 1)            as media,
+         count(*)                       as opiniones,
+         round(avg(recorrido), 1)       as recorrido,
+         round(avg(organizacion), 1)    as organizacion,
+         round(avg(avituallamiento), 1) as avituallamiento
+  from public.valoraciones
+  group by evento;
+grant select on public.valoraciones_resumen to anon, authenticated;
+
+-- Denuncias de comentarios (las revisa el administrador en Supabase → Table Editor)
+create table if not exists public.denuncias (
+  id           bigint generated always as identity primary key,
+  denunciante  uuid default auth.uid() references auth.users (id) on delete set null,
+  autor_id     uuid not null,
+  carrera_id   text not null,
+  comentario   text,
+  creada       timestamptz not null default now(),
+  unique (denunciante, autor_id, carrera_id)
+);
+alter table public.denuncias enable row level security;
+drop policy if exists "denunciar" on public.denuncias;
+create policy "denunciar" on public.denuncias
+  for insert to authenticated
+  with check ((select auth.uid()) = denunciante);
+revoke all on public.denuncias from anon;
+grant insert on public.denuncias to authenticated;
+grant usage on sequence public.denuncias_id_seq to authenticated;

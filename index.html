@@ -43,7 +43,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=27">
+  <link rel="stylesheet" href="styles.css?v=28">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -424,6 +424,9 @@
         <!-- Resultados (solo carreras ya celebradas) -->
         <div class="bloque-resultados hidden" id="modal-resultados"></div>
 
+        <!-- Opiniones de quienes la han corrido (todas las ediciones) -->
+        <div class="bloque-valoraciones hidden" id="modal-valoraciones"></div>
+
         <!-- Acciones personales: favorita, calendario, corrida -->
         <div class="acciones-ficha">
           <button class="accion-ficha" id="btn-ficha-favorita" aria-pressed="false">
@@ -525,11 +528,13 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=27"></script>
+  <script src="mapa_detalle.js?v=28"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=27"></script>
+  <script src="app.js?v=28"></script>
   <!-- Menú lateral: secciones, favoritas, calendario, ajustes -->
-  <script src="menu.js?v=27"></script>
-  <script src="cuenta.js?v=27"></script>
+  <script src="menu.js?v=28"></script>
+  <script src="cuenta.js?v=28"></script>
+  <!-- Valoraciones de carreras -->
+  <script src="valoraciones.js?v=28"></script>
 </body>
 </html>

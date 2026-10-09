@@ -991,6 +991,7 @@ function configurarAccionesFicha() {
     actualizarAccionesFicha(c);
     mostrarToast(ahora ? "✅ Guardada en «Ya corridas»" : "Quitada de «Ya corridas»");
     if (esVistaDeCorridas()) aplicarFiltrosYRenderizar();
+    if (typeof mostrarValoraciones === "function") mostrarValoraciones(c);
   });
   document.getElementById("btn-ficha-compartir").addEventListener("click", () => {
     const c = AppState.carreraAbierta;

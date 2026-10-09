@@ -1057,6 +1057,7 @@ function renderizarListadoCarreras(carreras, mensajeVacio, contexto = {}) {
       <div class="card-location">
         <span>📍 ${escapeHtml(c.municipio || "Municipio")}, ${escapeHtml(c.provincia || "Provincia")}</span>
         ${tamano ? `<span class="card-tamano">👥 ${escapeHtml(tamano)}</span>` : ""}
+        ${typeof insigniaValoracion === "function" ? insigniaValoracion(c) : ""}
       </div>
       ${c.marca && typeof textoMarca === "function" ? `<div class="card-marca">⏱️ Tu tiempo: ${escapeHtml(textoMarca(c.marca))}</div>` : ""}
 
@@ -1365,6 +1366,7 @@ function abrirModalDetalleCarrera(carrera) {
   AppState.carreraAbierta = carrera;
   if (typeof actualizarAccionesFicha === "function") actualizarAccionesFicha(carrera);
   if (typeof mostrarTiempoPrevisto === "function") mostrarTiempoPrevisto(carrera);
+  if (typeof mostrarValoraciones === "function") mostrarValoraciones(carrera);
 
   // Mostrar modal
   modal.classList.remove("hidden");
