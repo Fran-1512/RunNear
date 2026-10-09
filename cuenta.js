@@ -108,12 +108,19 @@ function limpiarUrlEntrada() {
   }
 }
 
+/**
+ * nombre: el que eligió el usuario en RunNear o, si no, el de su cuenta de Google.
+ * nombrePublico: el que se muestra en sus opiniones (el elegido entero, o el de pila de Google).
+ */
 function datosUsuario(user) {
   const meta = user.user_metadata || {};
+  const deGoogle = meta.full_name || meta.name || "";
   return {
     id: user.id,
     email: user.email || "",
-    nombre: meta.full_name || meta.name || ""
+    nombre: meta.nombre || deGoogle,
+    nombrePublico: meta.nombre || deGoogle.trim().split(/\s+/)[0] || "",
+    nombrePreguntado: !!(meta.nombre || meta.nombre_preguntado || deGoogle)
   };
 }
 
@@ -465,7 +472,9 @@ async function abrirCuenta() {
 }
 
 function pintarCuenta() {
-  if (Cuenta.usuario) pintarPerfil();
+  // Primera vez sin nombre (entró con email): se le pregunta cómo llamarle
+  if (Cuenta.usuario && !Cuenta.usuario.nombrePreguntado) pintarNombre(true);
+  else if (Cuenta.usuario) pintarPerfil();
   else if (Cuenta.emailPendiente) pintarCodigo();
   else pintarEntrar();
 }
@@ -532,8 +541,9 @@ function pintarPerfil() {
   cuerpo.innerHTML = `
     <div class="cuenta-perfil">
       <span class="cuenta-avatar" aria-hidden="true">${escapeHtml(nombre.charAt(0).toUpperCase())}</span>
-      <div>
-        ${u.nombre ? `<p class="cuenta-nombre">${escapeHtml(u.nombre)}</p>` : ""}
+      <div class="cuenta-quien">
+        <p class="cuenta-nombre">${u.nombre ? escapeHtml(u.nombre) : `<span class="cuenta-sin-nombre">Sin nombre</span>`}
+          <button class="cuenta-enlace" id="cuenta-cambiar-nombre">${u.nombre ? "Cambiar" : "Ponte un nombre"}</button></p>
         <p class="cuenta-email">${escapeHtml(u.email)}</p>
       </div>
     </div>
@@ -553,12 +563,90 @@ function pintarPerfil() {
     <p class="cuenta-nota"><a href="legal.html#privacidad">Cómo tratamos tus datos</a></p>`;
 
   cuerpo.querySelector("#cuenta-salir").addEventListener("click", cerrarSesion);
+  cuerpo.querySelector("#cuenta-cambiar-nombre").addEventListener("click", () => pintarNombre(false));
   cuerpo.querySelector("#cuenta-ver-perfil").addEventListener("click", () => {
     cerrarCuentaModal();
     aplicarVista("perfil");
   });
   cuerpo.querySelector("#cuenta-borrar").addEventListener("click", borrarCuenta);
   pintarAvisos(cuerpo.querySelector("#cuenta-avisos"));
+}
+
+// ==========================================================================
+// Tu nombre (el que ven los demás en tus opiniones)
+// ==========================================================================
+
+function pintarNombre(primeraVez) {
+  const u = Cuenta.usuario;
+  document.getElementById("cuenta-titulo").textContent = primeraVez ? "¿Cómo te llamamos?" : "Tu nombre";
+  const cuerpo = document.getElementById("cuenta-cuerpo");
+  cuerpo.innerHTML = `
+    ${primeraVez ? `<p class="cuenta-texto">✅ ¡Ya tienes cuenta en RunNear!</p>` : ""}
+    <p class="cuenta-texto">Es el nombre que verán los demás en tus opiniones de carreras. Puede ser tu nombre o un apodo.</p>
+    <form class="cuenta-form" id="cuenta-form-nombre" novalidate>
+      <label class="sr-only" for="cuenta-nombre-input">Tu nombre</label>
+      <input class="cuenta-input" id="cuenta-nombre-input" type="text" maxlength="40" autocomplete="nickname"
+        placeholder="Por ejemplo: Ana o Ana Trail" value="${escapeHtml(u.nombre || "")}">
+      <button class="btn-primary cuenta-enviar" type="submit">Guardar</button>
+    </form>
+    <button class="cuenta-enlace" id="cuenta-nombre-saltar">${primeraVez ? "Ahora no" : "Cancelar"}</button>
+    ${primeraVez ? `<p class="cuenta-nota">Si no pones ninguno, en tus opiniones aparecerás como «Corredor/a». Puedes cambiarlo cuando quieras en «Tu cuenta».</p>` : ""}`;
+
+  const input = cuerpo.querySelector("#cuenta-nombre-input");
+  setTimeout(() => input.focus(), 50);
+  cuerpo.querySelector("#cuenta-form-nombre").addEventListener("submit", async e => {
+    e.preventDefault();
+    const nombre = input.value.replace(/\s+/g, " ").trim();
+    if (!nombre) {
+      mostrarToast("Escribe un nombre o pulsa «" + (primeraVez ? "Ahora no" : "Cancelar") + "»");
+      return;
+    }
+    if (/@|https?:\/\/|www\./i.test(nombre)) {
+      mostrarToast("El nombre no puede ser un email ni un enlace");
+      return;
+    }
+    const boton = e.submitter || cuerpo.querySelector("button[type=submit]");
+    boton.disabled = true;
+    const ok = await guardarNombre(nombre);
+    if (!ok) boton.disabled = false;
+  });
+  cuerpo.querySelector("#cuenta-nombre-saltar").addEventListener("click", async () => {
+    // "Ahora no": se apunta para no volver a preguntar
+    if (primeraVez) {
+      try {
+        await actualizarDatosCuenta({ nombre_preguntado: true });
+      } catch (e) {
+        // Si falla, se volverá a preguntar la próxima vez: no es grave
+      }
+    }
+    pintarPerfil();
+  });
+}
+
+async function actualizarDatosCuenta(datos) {
+  const cliente = await obtenerSupabase();
+  const { data, error } = await cliente.auth.updateUser({ data: datos });
+  if (error) throw new Error(error.message);
+  if (data && data.user) {
+    Cuenta.usuario = datosUsuario(data.user);
+    actualizarBotonCuenta();
+  }
+}
+
+async function guardarNombre(nombre) {
+  try {
+    await actualizarDatosCuenta({ nombre: nombre.slice(0, 40), nombre_preguntado: true });
+    // Las opiniones ya publicadas pasan a mostrar el nombre nuevo
+    const cliente = await obtenerSupabase();
+    await cliente.from("valoraciones").update({ autor: Cuenta.usuario.nombrePublico.slice(0, 40) }).eq("user_id", Cuenta.usuario.id);
+    mostrarToast(`👋 ¡Hola, ${Cuenta.usuario.nombre}!`);
+    pintarPerfil();
+    if (AppState.vista === "perfil" && typeof aplicarFiltrosYRenderizar === "function") aplicarFiltrosYRenderizar();
+    return true;
+  } catch (e) {
+    mostrarToast(`No se ha podido guardar el nombre: ${e.message}`, 6000);
+    return false;
+  }
 }
 
 // ==========================================================================

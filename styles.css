@@ -3750,3 +3750,18 @@ body.tema-claro .valorar-estrella.activa {
 body.tema-claro .cuenta-enlace.peligro {
   color: #be123c;
 }
+
+/* Nombre en "Tu cuenta" */
+.cuenta-quien {
+  min-width: 0;
+}
+
+.cuenta-nombre .cuenta-enlace {
+  margin-left: 6px;
+  font-size: 0.78rem;
+}
+
+.cuenta-sin-nombre {
+  color: var(--text-dim);
+  font-weight: 600;
+}

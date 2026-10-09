@@ -255,8 +255,7 @@ function pintarFormulario(zona, carrera, propia) {
 
 function nombreAutor() {
   const u = typeof Cuenta !== "undefined" ? Cuenta.usuario : null;
-  const nombre = u && u.nombre ? u.nombre.trim().split(/\s+/)[0] : "";
-  return (nombre || "Corredor/a").slice(0, 40);
+  return ((u && u.nombrePublico) || "Corredor/a").slice(0, 40);
 }
 
 async function publicarOpinion(carrera, valores) {
