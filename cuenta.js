@@ -148,9 +148,12 @@ function alCambiarSesion(evento, sesion) {
     const antes = Cuenta.usuario && Cuenta.usuario.id;
     Cuenta.usuario = datosUsuario(sesion.user);
     if (antes !== Cuenta.usuario.id) Cuenta.sincronizado = false;
+    // Para mostrar tu inicial nada más abrir la web la próxima vez
+    guardarLocal("cuenta_ultima", { nombre: Cuenta.usuario.nombre, email: Cuenta.usuario.email });
     actualizarBotonCuenta();
     if (!Cuenta.sincronizado) sincronizarAlEntrar();
-  } else if (Cuenta.usuario) {
+  } else {
+    guardarLocal("cuenta_ultima", null);
     Cuenta.usuario = null;
     Cuenta.sincronizado = false;
     actualizarBotonCuenta();
@@ -351,6 +354,7 @@ function borrarDatosDeCuentaDelDispositivo() {
   }
   guardarLocal("cuenta_vinculada", null);
   guardarLocal("cuenta_pendiente", null);
+  guardarLocal("cuenta_ultima", null);
   Cuenta.pendientes.clear();
   refrescarTrasSincronizar();
 }
@@ -399,7 +403,9 @@ function actualizarBotonCuenta() {
   const icono = document.getElementById("btn-cuenta-icono");
   const texto = document.getElementById("btn-cuenta-texto");
   const menu = document.getElementById("menu-cuenta-texto");
-  const u = Cuenta.usuario;
+  // Mientras se comprueba la sesión guardada, se muestra ya la última cuenta usada
+  const ultima = !Cuenta.usuario && haySesionGuardada() ? leerLocal("cuenta_ultima") : null;
+  const u = Cuenta.usuario || (ultima && ultima.email ? ultima : null);
   boton.classList.toggle("con-sesion", !!u);
   if (u) {
     const nombre = (u.nombre || u.email).trim();
