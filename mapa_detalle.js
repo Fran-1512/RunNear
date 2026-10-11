@@ -5,7 +5,10 @@
  * (datos de OpenStreetMap, © OpenStreetMap contributors, ODbL). Todo se sirve
  * desde el propio proyecto: no se usa ningún servidor de mapas externo.
  *
- * Formato de cada tesela JSON: { n: [nombres], f: [features] }
+ * Mapa base de toda España (niveles 8-12) y detalle (nivel 14, en paquetes de 4 x 4)
+ * solo en las zonas con carreras; cada archivo .bin es JSON comprimido con gzip.
+ *
+ * Formato de cada tesela: { n: [nombres], f: [features] }
  *   línea:    [clase, zoomMin, idxNombre, idxRef, flags(1=túnel,2=puente), coords]
  *   punto:    [clase, máscaraZooms, idxNombre, u, v]
  *   polígono: [clase, zoomMin, [anillo, ...]]
@@ -88,6 +91,19 @@ const MapaDetalle = (() => {
   // Carga de teselas
   // -------------------------------------------------------------------------
 
+  // Las teselas se guardan comprimidas (gzip): se descomprimen en el navegador
+  async function leerTesela(url) {
+    const r = await fetch(url);
+    if (!r.ok) return null;
+    const bytes = new Uint8Array(await r.arrayBuffer());
+    if (bytes[0] === 0x1f && bytes[1] === 0x8b) {
+      const flujo = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+      return new Response(flujo).json();
+    }
+    // Por si el servidor ya la entregó descomprimida
+    return JSON.parse(new TextDecoder().decode(bytes));
+  }
+
   function cargar(url) {
     if (cache.has(url)) {
       const valor = cache.get(url);
@@ -95,32 +111,81 @@ const MapaDetalle = (() => {
       cache.set(url, valor); // LRU: marcar como reciente
       return valor;
     }
-    const promesa = fetch(url).then(r => (r.ok ? r.json() : null)).catch(() => null);
+    const promesa = leerTesela(url).catch(() => null);
     cache.set(url, promesa);
     if (cache.size > MAX_CACHE) cache.delete(cache.keys().next().value);
     return promesa;
   }
 
-  function nivelPara(niveles, z) {
-    let elegido = null;
-    for (const nivel of niveles) if (nivel[0] <= z) elegido = nivel;
-    return elegido;
+  // Qué teselas existen (bits por rectángulo), para no pedir las de mar
+  const bitsDecodificados = new Map();
+  function existe(clave, x, y) {
+    const e = meta.existe[clave];
+    if (!e) return false;
+    const i = (y - e.y0) * e.ancho + (x - e.x0);
+    if (x < e.x0 || y < e.y0 || x >= e.x0 + e.ancho || y >= e.y0 + e.alto) return false;
+    if (!bitsDecodificados.has(clave)) bitsDecodificados.set(clave, Uint8Array.from(atob(e.bits), c => c.charCodeAt(0)));
+    return (bitsDecodificados.get(clave)[i >> 3] >> (i & 7)) & 1;
   }
 
-  function datosPara(capa, niveles, coords) {
-    const nivel = nivelPara(niveles, coords.z);
+  let bloquesDetalle = null;
+  function hayDetalle(coords) {
+    const d = meta.detalle;
+    if (!d || coords.z < d.nivel) return false;
+    if (!bloquesDetalle) bloquesDetalle = new Set(d.bloques);
+    const k = coords.z - d.bloque;
+    return bloquesDetalle.has(`${coords.x >> k}_${coords.y >> k}`);
+  }
+
+  function resultado(d, n, ext, coords) {
+    const k = coords.z - n;
+    const dx = coords.x >> k, dy = coords.y >> k;
+    return d && {
+      d,
+      escala: 256 * 2 ** k / ext,          // píxeles por unidad de tesela
+      ox: (coords.x - (dx << k)) * 256,    // desplazamiento del trozo visible dentro de la tesela de datos
+      oy: (coords.y - (dy << k)) * 256
+    };
+  }
+
+  // Formato antiguo (solo Castilla-La Mancha, JSON sin comprimir): se mantiene mientras
+  // no se publique el mapa nuevo
+  function datosParaV1(capa, coords) {
+    const niveles = capa === "l" ? meta.niveles_l : meta.niveles_p;
+    let nivel = null;
+    for (const nv of niveles) if (nv[0] <= coords.z) nivel = nv;
     if (!nivel) return Promise.resolve(null);
     const [n, , ext] = nivel;
     const k = coords.z - n;
     const dx = coords.x >> k, dy = coords.y >> k;
     const rango = meta.rangos[capa + n];
     if (!rango || dx < rango[0] || dy < rango[1] || dx > rango[2] || dy > rango[3]) return Promise.resolve(null);
-    return cargar(`${BASE}${capa}/${n}/${dx}/${dy}.json`).then(d => d && {
-      d,
-      escala: 256 * 2 ** k / ext,          // píxeles por unidad de tesela
-      ox: (coords.x - (dx << k)) * 256,    // desplazamiento del trozo visible dentro de la tesela de datos
-      oy: (coords.y - (dy << k)) * 256
-    });
+    return cargar(`${BASE}${capa}/${n}/${dx}/${dy}.json`).then(d => resultado(d, n, ext, coords));
+  }
+
+  function datosPara(capa, coords) {
+    if (meta.version !== 2) return datosParaV1(capa, coords);
+    // Zona con detalle (calles, caminos...): paquetes de 4 x 4 teselas de nivel 14
+    if (hayDetalle(coords)) {
+      const { nivel: n, ext, paquete } = meta.detalle;
+      const k = coords.z - n;
+      const dx = coords.x >> k, dy = coords.y >> k;
+      const kp = n - paquete;
+      const px = dx >> kp, py = dy >> kp;
+      if (!existe(capa + n, px, py)) return Promise.resolve(null);
+      const clave = `${dx & ((1 << kp) - 1)}_${dy & ((1 << kp) - 1)}`;
+      return cargar(`${BASE}${capa}/${n}/${px}/${py}.bin`).then(p => resultado(p && p[clave], n, ext, coords));
+    }
+    // Mapa base: el nivel más detallado disponible para este zoom (fuera de las zonas
+    // de detalle, al acercarse se amplía el último nivel)
+    let nivel = null;
+    for (const nv of meta.niveles) if (nv[0] <= coords.z) nivel = nv;
+    if (!nivel) return Promise.resolve(null);
+    const [n, , ext] = nivel;
+    const k = coords.z - n;
+    const dx = coords.x >> k, dy = coords.y >> k;
+    if (!existe(capa + n, dx, dy)) return Promise.resolve(null);
+    return cargar(`${BASE}${capa}/${n}/${dx}/${dy}.bin`).then(d => resultado(d, n, ext, coords));
   }
 
   // -------------------------------------------------------------------------
@@ -488,8 +553,8 @@ const MapaDetalle = (() => {
   async function dibujarTesela(canvas, coords, dpr) {
     const z = coords.z;
     const [tl, tp] = await Promise.all([
-      datosPara("l", meta.niveles_l, coords),
-      datosPara("p", meta.niveles_p, coords)
+      datosPara("l", coords),
+      datosPara("p", coords)
     ]);
     if (!tl && !tp) return;
     const ctx = canvas.getContext("2d");
@@ -510,10 +575,10 @@ const MapaDetalle = (() => {
   // Capa Leaflet
   // -------------------------------------------------------------------------
 
-  function limitesTeselas(rango, n) {
+  function limitesTeselas(e, n) {
     const lon = x => x / 2 ** n * 360 - 180;
     const lat = y => Math.atan(Math.sinh(Math.PI * (1 - 2 * y / 2 ** n))) * 180 / Math.PI;
-    return L.latLngBounds([lat(rango[3] + 1), lon(rango[0])], [lat(rango[1]), lon(rango[2] + 1)]);
+    return L.latLngBounds([lat(e.y0 + e.alto), lon(e.x0)], [lat(e.y0), lon(e.x0 + e.ancho)]);
   }
 
   const CapaDetalle = L.GridLayer.extend({
@@ -532,12 +597,24 @@ const MapaDetalle = (() => {
     const resp = await fetch(BASE + "meta.json");
     if (!resp.ok) throw new Error(`meta.json: HTTP ${resp.status}`);
     meta = await resp.json();
-    const [n] = meta.niveles_l[0];
+    // El mapa comprimido necesita DecompressionStream (navegadores de 2023 en adelante)
+    if (meta.formato === "gzip-json" && typeof DecompressionStream === "undefined") {
+      throw new Error("Este navegador no puede descomprimir el mapa detallado");
+    }
+    let n, limites;
+    if (meta.version === 2) {
+      n = meta.niveles[0][0];
+      limites = limitesTeselas(meta.existe["l" + n], n);
+    } else {
+      n = meta.niveles_l[0][0];
+      const r = meta.rangos["l" + n];
+      limites = limitesTeselas({ x0: r[0], y0: r[1], ancho: r[2] - r[0] + 1, alto: r[3] - r[1] + 1 }, n);
+    }
     return new CapaDetalle({
       pane,
       minZoom: n,
       maxZoom: 18,
-      bounds: limitesTeselas(meta.rangos["l" + n], n),
+      bounds: limites,
       updateWhenZooming: false,
       keepBuffer: 3,
       // Obligatorio por la licencia ODbL de OpenStreetMap

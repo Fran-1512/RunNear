@@ -1,20 +1,34 @@
 #!/usr/bin/env python3
 """
-Genera teselas vectoriales PROPIAS del mapa detallado de Castilla-La Mancha
-a partir del extracto de OpenStreetMap de Geofabrik (shapefiles).
+Genera el mapa PROPIO de RunNear para toda España (teselas vectoriales) a partir de los
+extractos de OpenStreetMap de Geofabrik, comunidad a comunidad.
 
-Resultado: mapa/teselas/  (JSON estáticos que sirve app.py; ningún servidor externo)
-  l/{nivel}/{x}/{y}.json  -> líneas (carreteras, calles, caminos, ríos, límites) y puntos (pueblos, picos)
-  p/{nivel}/{x}/{y}.json  -> polígonos (agua, bosques, casco urbano, viñedos...)
-  meta.json               -> niveles, clases y rangos de teselas
+Para que ocupe lo mínimo:
+  - Mapa base de toda España (zoom 8-13): pueblos, carreteras, calles a vista general,
+    ríos, embalses, bosques, cascos urbanos, límites y picos.
+  - Detalle completo (zoom 14-18: todas las calles, caminos, senderos, parques...) solo en
+    "bloques" de ~30 x 30 km (teselas de nivel 10) donde hay carreras. Fuera, al acercarse
+    se amplía el mapa base.
+  - Cada tesela se guarda comprimida (gzip, extensión .bin); el navegador la descomprime.
+  - Las teselas de detalle se agrupan en paquetes de 4 x 4 (por tesela de nivel 12).
 
-Licencia de los datos: © OpenStreetMap contributors, ODbL. Uso libre y gratuito
-con la única condición de citar la fuente (se muestra en la esquina del mapa).
+Resultado: mapa/teselas/
+  l/{nivel}/{x}/{y}.bin       líneas y etiquetas del mapa base
+  p/{nivel}/{x}/{y}.bin       polígonos del mapa base
+  l/14/{x12}/{y12}.bin        paquete de detalle: {"dx_dy": tesela, ...}
+  p/14/{x12}/{y12}.bin
+  meta.json                   niveles, clases, bloques de detalle y qué teselas existen
+
+Licencia de los datos: © OpenStreetMap contributors, ODbL (se cita en la esquina del mapa).
 
 Uso (desde la carpeta del proyecto, solo cuando se quiera regenerar):
-    py mapa/generar_teselas.py
+    py mapa/generar_teselas.py                      todo
+    py mapa/generar_teselas.py --regiones madrid    solo esas comunidades (pruebas)
 """
 
+import argparse
+import base64
+import gzip
 import json
 import math
 import os
@@ -24,12 +38,11 @@ import tempfile
 import time
 import urllib.request
 import zipfile
-from array import array
 from collections import defaultdict
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from shapefile_lector import LINEA, POLIGONO, leer_capa  # noqa: E402
+from shapefile_lector import leer_capa  # noqa: E402
 
 if sys.platform.startswith("win"):
     try:
@@ -37,17 +50,35 @@ if sys.platform.startswith("win"):
     except Exception:
         pass
 
-URL_EXTRACTO = "https://download.geofabrik.de/europe/spain/castilla-la-mancha-latest-free.shp.zip"
+PROYECTO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SALIDA = os.path.join(PROYECTO, "mapa", "teselas")
 CARPETA_DATOS = os.path.join(tempfile.gettempdir(), "runnear_osm")
-CARPETA_SHP = os.path.join(CARPETA_DATOS, "shp")
-SALIDA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "teselas")
+CARPETA_TMP = os.path.join(tempfile.gettempdir(), "runnear_teselas_tmp")
+
+GEOFABRIK = "https://download.geofabrik.de/"
+REGIONES = {
+    "andalucia": "europe/spain/andalucia", "aragon": "europe/spain/aragon",
+    "asturias": "europe/spain/asturias", "cantabria": "europe/spain/cantabria",
+    "castilla-la-mancha": "europe/spain/castilla-la-mancha", "castilla-y-leon": "europe/spain/castilla-y-leon",
+    "cataluna": "europe/spain/cataluna", "ceuta": "europe/spain/ceuta",
+    "extremadura": "europe/spain/extremadura", "galicia": "europe/spain/galicia",
+    "islas-baleares": "europe/spain/islas-baleares", "la-rioja": "europe/spain/la-rioja",
+    "madrid": "europe/spain/madrid", "melilla": "europe/spain/melilla",
+    "murcia": "europe/spain/murcia", "navarra": "europe/spain/navarra",
+    "pais-vasco": "europe/spain/pais-vasco", "valencia": "europe/spain/valencia",
+    "canarias": "africa/canary-islands",
+}
 
 # (nivel de datos, zoom máximo que sirve). Un nivel se reutiliza ("sobrezoom") hasta su zoom máximo.
-NIVELES_L = [(8, 9), (10, 11), (12, 13), (14, 18)]
-NIVELES_P = [(8, 9), (10, 11), (12, 18)]
-ZOOMS_ETIQUETAS = range(8, 19)
-TOL_PX = 0.8          # tolerancia de simplificación, en píxeles al zoom máximo del nivel
+NIVELES_BASE = [(8, 9), (10, 11), (12, 13)]
+NIVEL_DETALLE, ZMAX_DETALLE = 14, 18
+NIVEL_BLOQUE = 10    # zonas de detalle: teselas de nivel 10 (~30 km)
+NIVEL_PAQUETE = 12   # el detalle se agrupa por tesela de nivel 12
+ZOOM_MAX = 18
+ZOOMS_ETIQUETAS = range(8, ZOOM_MAX + 1)
+TOL_PX = 0.8           # tolerancia de simplificación, en píxeles al zoom máximo del nivel
 BUFFER_POLIGONO = 0.02  # solape entre teselas vecinas (fracción de tesela) para evitar costuras
+MARGEN_BLOQUE = 0.15   # si una carrera está a menos de este margen del borde, se añade el bloque vecino
 
 
 def extension(nivel, zmax):
@@ -258,10 +289,11 @@ def _caja(anillos):
     return min(xs), min(ys), max(xs), max(ys)
 
 
-def partir_poligono(anillos, escala):
+def partir_poligono(anillos, escala, admitir=None):
     """
     Reparte un polígono (anillos en Mercator normalizado) entre las teselas del nivel,
     recortando por mitades recursivamente (coste ~ puntos x log(teselas)).
+    admitir(x0, y0, x1, y1): si se da, descarta pronto zonas sin interés (detalle).
     Devuelve {(tx, ty): [anillo, ...]} en unidades de tesela.
     """
     anillos = [[v * escala for v in a] for a in anillos]
@@ -274,6 +306,8 @@ def partir_poligono(anillos, escala):
         x0, y0 = max(x0, math.floor(cx0)), max(y0, math.floor(cy0))
         x1, y1 = min(x1, math.floor(cx1) + 1), min(y1, math.floor(cy1) + 1)
         if x1 <= x0 or y1 <= y0:
+            return
+        if admitir and not admitir(x0, y0, x1, y1):
             return
         if x1 - x0 == 1 and y1 - y0 == 1:
             resultado[(x0, y0)] = anillos
@@ -296,8 +330,8 @@ def partir_poligono(anillos, escala):
 
 
 def codificar(tramo, tx, ty, ext, cerrado=False):
-    """Tramo en unidades de tesela -> array('i') de enteros locales con deltas."""
-    salida = array("i")
+    """Tramo en unidades de tesela -> lista de enteros locales con deltas."""
+    salida = []
     px = py = None
     for i in range(0, len(tramo), 2):
         u = round((tramo[i] - tx) * ext)
@@ -316,7 +350,147 @@ def codificar(tramo, tx, ty, ext, cerrado=False):
 
 
 # ---------------------------------------------------------------------------
-# Teselas en memoria
+# Zonas de detalle (bloques de nivel 10 con carreras)
+# ---------------------------------------------------------------------------
+
+class Bloques:
+    """Conjunto de teselas de nivel NIVEL_BLOQUE con detalle."""
+
+    def __init__(self, claves):
+        self.claves = set(claves)
+
+    def contiene(self, tx, ty, nivel):
+        k = nivel - NIVEL_BLOQUE
+        return (tx >> k, ty >> k) in self.claves
+
+    def toca(self, x0, y0, x1, y1, nivel):
+        """¿El rango de teselas [x0, x1) x [y0, y1) del nivel toca algún bloque?"""
+        k = nivel - NIVEL_BLOQUE
+        bx0, by0, bx1, by1 = x0 >> k, y0 >> k, (x1 - 1) >> k, (y1 - 1) >> k
+        if (bx1 - bx0 + 1) * (by1 - by0 + 1) > len(self.claves):
+            return any(bx0 <= bx <= bx1 and by0 <= by <= by1 for bx, by in self.claves)
+        return any((bx, by) in self.claves for bx in range(bx0, bx1 + 1) for by in range(by0, by1 + 1))
+
+
+def bloques_de_carreras(extra=()):
+    """Bloques con alguna carrera de carreras.json (y sus vecinos si está cerca del borde).
+    extra: puntos (lat, lng) adicionales donde se quiere detalle."""
+    with open(os.path.join(PROYECTO, "carreras.json"), encoding="utf-8") as f:
+        carreras = json.load(f)
+    puntos_detalle = [(c["ubicacion"]["lat"], c["ubicacion"]["lng"]) for c in carreras
+                      if (c.get("ubicacion") or {}).get("lat") is not None and c["ubicacion"].get("lng") is not None]
+    puntos_detalle += list(extra)
+    escala = 2 ** NIVEL_BLOQUE
+    claves = set()
+    for lat, lng in puntos_detalle:
+        x, y = proyectar([lng, lat])
+        fx, fy = x * escala, y * escala
+        tx, ty = math.floor(fx), math.floor(fy)
+        dxs = [0] + ([-1] if fx - tx < MARGEN_BLOQUE else []) + ([1] if fx - tx > 1 - MARGEN_BLOQUE else [])
+        dys = [0] + ([-1] if fy - ty < MARGEN_BLOQUE else []) + ([1] if fy - ty > 1 - MARGEN_BLOQUE else [])
+        for dx in dxs:
+            for dy in dys:
+                claves.add((tx + dx, ty + dy))
+    return claves
+
+
+# ---------------------------------------------------------------------------
+# Datos de Geofabrik
+# ---------------------------------------------------------------------------
+
+def carpeta_region(region):
+    return os.path.join(CARPETA_DATOS, region)
+
+
+def ruta_capa(region, nombre):
+    return os.path.join(carpeta_region(region), "shp", f"gis_osm_{nombre}_free_1")
+
+
+def asegurar_datos(region):
+    if os.path.exists(ruta_capa(region, "roads") + ".shp"):
+        return
+    carpeta = carpeta_region(region)
+    os.makedirs(carpeta, exist_ok=True)
+    zip_path = os.path.join(carpeta, "free.shp.zip")
+    if not os.path.exists(zip_path):
+        url = f"{GEOFABRIK}{REGIONES[region]}-latest-free.shp.zip"
+        parcial = zip_path + ".parcial"
+        # Geofabrik a veces responde 502 durante un rato: se reintenta con esperas crecientes
+        for intento in range(1, 6):
+            print(f"  descargando {url} (intento {intento})...")
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "RunNear/0.2 (mapa propio; runnear.app@gmail.com)"})
+                with urllib.request.urlopen(req, timeout=1200) as r, open(parcial, "wb") as f:
+                    shutil.copyfileobj(r, f)
+                os.replace(parcial, zip_path)
+                break
+            except Exception as e:
+                print(f"  fallo: {e}")
+                if intento == 5:
+                    raise
+                time.sleep(60 * intento)
+    print("  descomprimiendo...")
+    with zipfile.ZipFile(zip_path) as z:
+        z.extractall(os.path.join(carpeta, "shp"))
+
+
+# ---------------------------------------------------------------------------
+# Lectura de capas (generadores de features ya clasificadas)
+# ---------------------------------------------------------------------------
+
+def lineas(region):
+    """(clase, minz, nombre, ref, flags, partes)"""
+    for _, partes, a in leer_capa(ruta_capa(region, "roads"), ["fclass", "name", "ref", "bridge", "tunnel"]):
+        clase = VIAS.get(a["fclass"])
+        if clase:
+            flags = (1 if a.get("tunnel") == "T" else 0) | (2 if a.get("bridge") == "T" else 0)
+            yield clase[0], clase[1], a.get("name", ""), a.get("ref", ""), flags, partes
+    for _, partes, a in leer_capa(ruta_capa(region, "waterways"), ["fclass", "name"]):
+        clase = CURSOS_AGUA.get(a["fclass"])
+        if clase:
+            yield clase[0], clase[1], a.get("name", ""), "", 0, partes
+    for _, partes, a in leer_capa(ruta_capa(region, "railways"), ["fclass", "tunnel"]):
+        yield "ferrocarril", 9, "", "", (1 if a.get("tunnel") == "T" else 0), partes
+    for _, partes, a in leer_capa(ruta_capa(region, "adminareas_a"), ["fclass"]):
+        if a["fclass"] == "admin_level8":
+            yield "limite_municipal", 11, "", "", 0, partes
+        elif a["fclass"] == "admin_level6":
+            yield "limite_provincial", 8, "", "", 0, partes
+
+
+def poligonos(region):
+    """(clase, minz_clase, partes)"""
+    for _, partes, a in leer_capa(ruta_capa(region, "water_a"), ["fclass"]):
+        fc = a["fclass"]
+        if fc in ("water", "reservoir", "riverbank"):
+            yield "agua", 8, partes
+        elif fc.startswith("wetland"):
+            yield "humedal", 12, partes
+    for _, partes, a in leer_capa(ruta_capa(region, "landuse_a"), ["fclass"]):
+        clase = USOS_SUELO.get(a["fclass"])
+        if clase:
+            yield clase[0], clase[1], partes
+
+
+def puntos(region):
+    """Lista de dicts: clase, nombre, x, y, prioridad"""
+    lista = []
+    for _, (lon, lat), a in leer_capa(ruta_capa(region, "places"), ["fclass", "name", "population"]):
+        clase = LUGARES.get(a["fclass"])
+        if clase and a.get("name"):
+            x, y = proyectar([lon, lat])
+            lista.append({"clase": clase, "nombre": a["name"], "x": x, "y": y,
+                          "prioridad": (RANGO_T[clase], -(a.get("population") or 0))})
+    for _, (lon, lat), a in leer_capa(ruta_capa(region, "natural"), ["fclass", "name"]):
+        if a["fclass"] == "peak" and a.get("name"):
+            x, y = proyectar([lon, lat])
+            lista.append({"clase": "pico", "nombre": a["name"], "x": x, "y": y,
+                          "prioridad": (RANGO_T["pico"], 0)})
+    return lista
+
+
+# ---------------------------------------------------------------------------
+# Teselas en memoria y en disco
 # ---------------------------------------------------------------------------
 
 class Tesela:
@@ -334,85 +508,114 @@ class Tesela:
         return self.nombres[texto]
 
     def a_json(self):
-        return {"n": list(self.nombres), "f": [
-            [x.tolist() if isinstance(x, array) else
-             ([r.tolist() for r in x] if isinstance(x, list) and x and isinstance(x[0], array) else x)
-             for x in f] for f in self.features]}
+        return {"n": list(self.nombres), "f": self.features}
 
 
-def escribir(teselas, capa, nivel):
-    rango = [None, None, None, None]
+def escribir_tmp(teselas, carpeta, capa, nivel):
     for (tx, ty), t in teselas.items():
-        carpeta = os.path.join(SALIDA, capa, str(nivel), str(tx))
-        os.makedirs(carpeta, exist_ok=True)
-        with open(os.path.join(carpeta, f"{ty}.json"), "w", encoding="utf-8") as f:
+        destino = os.path.join(carpeta, capa, str(nivel), str(tx))
+        os.makedirs(destino, exist_ok=True)
+        with open(os.path.join(destino, f"{ty}.json"), "w", encoding="utf-8") as f:
             json.dump(t.a_json(), f, ensure_ascii=False, separators=(",", ":"))
-        rango = [tx if rango[0] is None else min(rango[0], tx), ty if rango[1] is None else min(rango[1], ty),
-                 tx if rango[2] is None else max(rango[2], tx), ty if rango[3] is None else max(rango[3], ty)]
-    return rango
-
-
-def ruta_capa(nombre):
-    return os.path.join(CARPETA_SHP, f"gis_osm_{nombre}_free_1")
 
 
 # ---------------------------------------------------------------------------
-# Lectura de capas (generadores de features ya clasificadas)
+# Generación de una comunidad (sin etiquetas: van aparte para toda España)
 # ---------------------------------------------------------------------------
 
-def lineas():
-    """(clase, minz, nombre, ref, flags, partes)"""
-    for _, partes, a in leer_capa(ruta_capa("roads"), ["fclass", "name", "ref", "bridge", "tunnel"]):
-        clase = VIAS.get(a["fclass"])
-        if clase:
-            flags = (1 if a.get("tunnel") == "T" else 0) | (2 if a.get("bridge") == "T" else 0)
-            yield clase[0], clase[1], a.get("name", ""), a.get("ref", ""), flags, partes
-    for _, partes, a in leer_capa(ruta_capa("waterways"), ["fclass", "name"]):
-        clase = CURSOS_AGUA.get(a["fclass"])
-        if clase:
-            yield clase[0], clase[1], a.get("name", ""), "", 0, partes
-    for _, partes, a in leer_capa(ruta_capa("railways"), ["fclass", "tunnel"]):
-        yield "ferrocarril", 9, "", "", (1 if a.get("tunnel") == "T" else 0), partes
-    for _, partes, a in leer_capa(ruta_capa("adminareas_a"), ["fclass"]):
-        if a["fclass"] == "admin_level8":
-            yield "limite_municipal", 11, "", "", 0, partes
-        elif a["fclass"] == "admin_level6":
-            yield "limite_provincial", 8, "", "", 0, partes
+def generar_lineas(region, nivel, zmax, bloques, carpeta):
+    ext = extension(nivel, zmax)
+    escala = 2 ** nivel
+    tol = TOL_PX / (256 * 2 ** zmax)
+    teselas = defaultdict(Tesela)
+    id_clase = {c: i for i, c in enumerate(CLASES_L)}
+    detalle = bloques is not None
+    for clase, minz, nombre, ref, flags, partes in lineas(region):
+        if minz > zmax:
+            continue
+        for parte in partes:
+            pts = proyectar(parte)
+            if detalle:
+                xs, ys = pts[0::2], pts[1::2]
+                if not bloques.toca(math.floor(min(xs) * escala), math.floor(min(ys) * escala),
+                                    math.floor(max(xs) * escala) + 1, math.floor(max(ys) * escala) + 1, nivel):
+                    continue
+            pts = simplificar(pts, tol)
+            if len(pts) < 4:
+                continue
+            for (tx, ty), tramos in partir_linea(pts, escala).items():
+                if detalle and not bloques.contiene(tx, ty, nivel):
+                    continue
+                t = teselas[(tx, ty)]
+                for tramo in tramos:
+                    coords = codificar(tramo, tx, ty, ext)
+                    if coords is not None:
+                        t.features.append([id_clase[clase], minz, t.indice(nombre), t.indice(ref), flags, coords])
+    escribir_tmp(teselas, carpeta, "l", nivel)
+    return len(teselas)
 
 
-def poligonos():
-    """(clase, minz_clase, partes)"""
-    for _, partes, a in leer_capa(ruta_capa("water_a"), ["fclass"]):
-        fc = a["fclass"]
-        if fc in ("water", "reservoir", "riverbank"):
-            yield "agua", 8, partes
-        elif fc.startswith("wetland"):
-            yield "humedal", 12, partes
-    for _, partes, a in leer_capa(ruta_capa("landuse_a"), ["fclass"]):
-        clase = USOS_SUELO.get(a["fclass"])
-        if clase:
-            yield clase[0], clase[1], partes
+def generar_poligonos(region, nivel, zmax, bloques, carpeta):
+    ext = extension(nivel, zmax)
+    escala = 2 ** nivel
+    tol = TOL_PX / (256 * 2 ** zmax)
+    teselas = defaultdict(Tesela)
+    id_clase = {c: i for i, c in enumerate(CLASES_P)}
+    admitir = (lambda x0, y0, x1, y1: bloques.toca(x0, y0, x1, y1, nivel)) if bloques is not None else None
+    for clase, minz_clase, partes in poligonos(region):
+        anillos = [proyectar(p) for p in partes if len(p) >= 6]
+        if not anillos:
+            continue  # polígono vacío o degenerado en los datos
+        # Zoom mínimo por tamaño: que mida al menos ~3 px de lado
+        x0, y0, x1, y1 = _caja(anillos)
+        lado = max(x1 - x0, y1 - y0) * 256
+        minz = max(minz_clase, math.ceil(math.log2(3 / lado)) if lado > 0 else 99)
+        if minz > zmax:
+            continue
+        if admitir and not admitir(math.floor(x0 * escala), math.floor(y0 * escala),
+                                   math.floor(x1 * escala) + 1, math.floor(y1 * escala) + 1):
+            continue
+        anillos = [simplificar(a, tol) for a in anillos]
+        anillos = [a for a in anillos if len(a) >= 8]
+        if not anillos:
+            continue
+        for (tx, ty), trozos in partir_poligono(anillos, escala, admitir).items():
+            if bloques is not None and not bloques.contiene(tx, ty, nivel):
+                continue
+            t = teselas[(tx, ty)]
+            cod = [codificar(a, tx, ty, ext, cerrado=True) for a in trozos]
+            cod = [c for c in cod if c is not None]
+            if cod:
+                t.features.append([id_clase[clase], minz, cod])
+    escribir_tmp(teselas, carpeta, "p", nivel)
+    return len(teselas)
 
 
-def puntos():
-    """Lista de dicts: clase, nombre, x, y, prioridad"""
-    lista = []
-    for _, (lon, lat), a in leer_capa(ruta_capa("places"), ["fclass", "name", "population"]):
-        clase = LUGARES.get(a["fclass"])
-        if clase and a.get("name"):
-            x, y = proyectar([lon, lat])
-            lista.append({"clase": clase, "nombre": a["name"], "x": x, "y": y,
-                          "prioridad": (RANGO_T[clase], -(a.get("population") or 0))})
-    for _, (lon, lat), a in leer_capa(ruta_capa("natural"), ["fclass", "name"]):
-        if a["fclass"] == "peak" and a.get("name"):
-            x, y = proyectar([lon, lat])
-            lista.append({"clase": "pico", "nombre": a["name"], "x": x, "y": y,
-                          "prioridad": (RANGO_T["pico"], 0)})
-    return lista
+def generar_region(region, bloques):
+    carpeta = os.path.join(CARPETA_TMP, region)
+    hecho = os.path.join(carpeta, "HECHO")
+    if os.path.exists(hecho):
+        print(f"{region}: ya generada (se reutiliza)")
+        return
+    asegurar_datos(region)
+    if os.path.exists(carpeta):
+        shutil.rmtree(carpeta)
+    os.makedirs(carpeta)
+    inicio = time.time()
+    for nivel, zmax in NIVELES_BASE:
+        n_p = generar_poligonos(region, nivel, zmax, None, carpeta)
+        n_l = generar_lineas(region, nivel, zmax, None, carpeta)
+        print(f"  {region} nivel {nivel}: {n_l} teselas de líneas, {n_p} de polígonos")
+    n_p = generar_poligonos(region, NIVEL_DETALLE, ZMAX_DETALLE, bloques, carpeta)
+    n_l = generar_lineas(region, NIVEL_DETALLE, ZMAX_DETALLE, bloques, carpeta)
+    print(f"  {region} detalle: {n_l} teselas de líneas, {n_p} de polígonos")
+    open(hecho, "w").close()
+    print(f"{region}: lista en {time.time() - inicio:.0f} s")
 
 
 # ---------------------------------------------------------------------------
-# Etiquetas: qué nombres caben en cada zoom (colisiones calculadas una sola vez)
+# Etiquetas de pueblos y picos: se calculan para toda España a la vez (así no chocan
+# en las fronteras entre comunidades)
 # ---------------------------------------------------------------------------
 
 def caja_etiqueta(p, escala):
@@ -447,134 +650,228 @@ def calcular_mascaras(lista):
                 p["mascara"] |= 1 << z
 
 
-# ---------------------------------------------------------------------------
-# Generación por niveles
-# ---------------------------------------------------------------------------
-
-def generar_nivel_lineas(nivel, zmax, lista_puntos):
-    ext = extension(nivel, zmax)
-    escala = 2 ** nivel
-    tol = TOL_PX / (256 * 2 ** zmax)
-    teselas = defaultdict(Tesela)
-    id_clase = {c: i for i, c in enumerate(CLASES_L)}
-    n = 0
-    for clase, minz, nombre, ref, flags, partes in lineas():
-        if minz > zmax:
-            continue
-        for parte in partes:
-            pts = simplificar(proyectar(parte), tol)
-            if len(pts) < 4:
-                continue
-            for (tx, ty), tramos in partir_linea(pts, escala).items():
-                t = teselas[(tx, ty)]
-                for tramo in tramos:
-                    coords = codificar(tramo, tx, ty, ext)
-                    if coords is not None:
-                        t.features.append([id_clase[clase], minz, t.indice(nombre), t.indice(ref), flags, coords])
-                        n += 1
-
-    # Puntos con alguna etiqueta visible en los zooms que sirve este nivel
-    bits = sum(1 << z for z in range(nivel, zmax + 1))
+def generar_etiquetas(regiones, bloques):
+    carpeta = os.path.join(CARPETA_TMP, "_etiquetas")
+    if os.path.exists(carpeta):
+        shutil.rmtree(carpeta)
+    vistos, lista = set(), []
+    for region in regiones:
+        for p in puntos(region):
+            clave = (p["clase"], p["nombre"], round(p["x"], 7), round(p["y"], 7))
+            if clave not in vistos:
+                vistos.add(clave)
+                lista.append(p)
+    calcular_mascaras(lista)
+    print(f"Etiquetas: {len(lista):,} pueblos, barrios y picos")
     id_t = {c: i for i, c in enumerate(CLASES_T)}
-    for p in lista_puntos:
-        if not p["mascara"] & bits:
+    for nivel, zmax in NIVELES_BASE + [(NIVEL_DETALLE, ZMAX_DETALLE)]:
+        ext = extension(nivel, zmax)
+        escala = 2 ** nivel
+        bits = sum(1 << z for z in range(nivel, zmax + 1))
+        teselas = defaultdict(Tesela)
+        for p in lista:
+            if not p["mascara"] & bits:
+                continue
+            x0, y0, x1, y1 = caja_etiqueta(p, 256 * 2 ** nivel)
+            margen_x = (x1 - x0) / 2 / 256 + 0.05
+            margen_y = (y1 - y0) / 256 + 0.05
+            px, py = p["x"] * escala, p["y"] * escala
+            for tx in range(math.floor(px - margen_x), math.floor(px + margen_x) + 1):
+                for ty in range(math.floor(py - margen_y), math.floor(py + margen_y) + 1):
+                    if nivel == NIVEL_DETALLE and not bloques.contiene(tx, ty, nivel):
+                        continue
+                    t = teselas[(tx, ty)]
+                    t.features.append([id_t[p["clase"]], p["mascara"], t.indice(p["nombre"]),
+                                       round((px - tx) * ext), round((py - ty) * ext)])
+        escribir_tmp(teselas, carpeta, "l", nivel)
+
+
+# ---------------------------------------------------------------------------
+# Unión de comunidades, compresión y paquetes de detalle
+# ---------------------------------------------------------------------------
+
+def unir_tesela(rutas):
+    """Junta las teselas de varias comunidades: une nombres y quita features repetidas
+    (las vías que cruzan una frontera vienen en las dos comunidades)."""
+    nombres, features, vistas = {}, [], set()
+    for ruta in rutas:
+        with open(ruta, encoding="utf-8") as f:
+            d = json.load(f)
+        mapa = []
+        for texto in d["n"]:
+            if texto not in nombres:
+                nombres[texto] = len(nombres)
+            mapa.append(nombres[texto])
+        for feat in d["f"]:
+            if len(feat) == 6:      # línea: [clase, minz, nombre, ref, flags, coords]
+                feat = [feat[0], feat[1], mapa[feat[2]] if feat[2] >= 0 else -1,
+                        mapa[feat[3]] if feat[3] >= 0 else -1, feat[4], feat[5]]
+            elif len(feat) == 5:    # punto: [clase, máscara, nombre, u, v]
+                feat = [feat[0], feat[1], mapa[feat[2]], feat[3], feat[4]]
+            clave = json.dumps(feat, separators=(",", ":"))
+            if clave not in vistas:
+                vistas.add(clave)
+                features.append(feat)
+    # Polígonos primero por clase no hace falta: el renderizador agrupa por clase
+    return {"n": list(nombres), "f": features}
+
+
+def comprimir(datos):
+    texto = json.dumps(datos, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return gzip.compress(texto, compresslevel=9, mtime=0)
+
+
+def indice_tmp(capa, nivel):
+    """{(tx, ty): [rutas de cada comunidad]} de una capa y nivel en la carpeta temporal."""
+    indice = defaultdict(list)
+    for origen in os.listdir(CARPETA_TMP):
+        base = os.path.join(CARPETA_TMP, origen, capa, str(nivel))
+        if not os.path.isdir(base):
             continue
-        x0, y0, x1, y1 = caja_etiqueta(p, 256 * 2 ** nivel)
-        margen_x = (x1 - x0) / 2 / 256 + 0.05
-        margen_y = (y1 - y0) / 256 + 0.05
-        px, py = p["x"] * escala, p["y"] * escala
-        for tx in range(math.floor(px - margen_x), math.floor(px + margen_x) + 1):
-            for ty in range(math.floor(py - margen_y), math.floor(py + margen_y) + 1):
-                t = teselas[(tx, ty)]
-                t.features.append([id_t[p["clase"]], p["mascara"], t.indice(p["nombre"]),
-                                   round((px - tx) * ext), round((py - ty) * ext)])
-    rango = escribir(teselas, "l", nivel)
-    print(f"  líneas nivel {nivel}: {len(teselas)} teselas, {n:,} tramos")
-    return rango
+        for x in os.listdir(base):
+            for archivo in os.listdir(os.path.join(base, x)):
+                indice[(int(x), int(archivo[:-5]))].append(os.path.join(base, x, archivo))
+    return indice
 
 
-def generar_nivel_poligonos(nivel, zmax):
-    ext = extension(nivel, zmax)
-    escala = 2 ** nivel
-    tol = TOL_PX / (256 * 2 ** zmax)
-    teselas = defaultdict(Tesela)
-    id_clase = {c: i for i, c in enumerate(CLASES_P)}
-    n = 0
-    for clase, minz_clase, partes in poligonos():
-        anillos = [proyectar(p) for p in partes]
-        # Zoom mínimo por tamaño: que mida al menos ~3 px de lado
-        x0, y0, x1, y1 = _caja(anillos)
-        lado = max(x1 - x0, y1 - y0) * 256
-        minz = max(minz_clase, math.ceil(math.log2(3 / lado)) if lado > 0 else 99)
-        if minz > zmax:
-            continue
-        anillos = [simplificar(a, tol) for a in anillos]
-        anillos = [a for a in anillos if len(a) >= 8]
-        if not anillos:
-            continue
-        for (tx, ty), trozos in partir_poligono(anillos, escala).items():
-            cod = [codificar(a, tx, ty, ext, cerrado=True) for a in trozos]
-            cod = [c for c in cod if c is not None]
-            if cod:
-                teselas[(tx, ty)].features.append([id_clase[clase], minz, cod])
-                n += 1
-    rango = escribir(teselas, "p", nivel)
-    print(f"  polígonos nivel {nivel}: {len(teselas)} teselas, {n:,} piezas")
-    return rango
+def mascara_existencia(claves):
+    """Bits de qué teselas existen dentro de su rectángulo (para no pedir teselas de mar)."""
+    if not claves:
+        return None
+    x0, y0 = min(k[0] for k in claves), min(k[1] for k in claves)
+    x1, y1 = max(k[0] for k in claves), max(k[1] for k in claves)
+    ancho, alto = x1 - x0 + 1, y1 - y0 + 1
+    bits = bytearray((ancho * alto + 7) // 8)
+    for x, y in claves:
+        i = (y - y0) * ancho + (x - x0)
+        bits[i >> 3] |= 1 << (i & 7)
+    return {"x0": x0, "y0": y0, "ancho": ancho, "alto": alto, "bits": base64.b64encode(bytes(bits)).decode()}
 
 
-def asegurar_datos():
-    if os.path.exists(ruta_capa("roads") + ".shp"):
-        return
-    os.makedirs(CARPETA_DATOS, exist_ok=True)
-    zip_path = os.path.join(CARPETA_DATOS, "clm-free.shp.zip")
-    if not os.path.exists(zip_path):
-        print(f"Descargando extracto OSM ({URL_EXTRACTO})...")
-        req = urllib.request.Request(URL_EXTRACTO, headers={"User-Agent": "RunNear/0.1"})
-        with urllib.request.urlopen(req, timeout=600) as r, open(zip_path, "wb") as f:
-            shutil.copyfileobj(r, f)
-    print("Descomprimiendo...")
-    with zipfile.ZipFile(zip_path) as z:
-        z.extractall(CARPETA_SHP)
-
-
-def main():
-    inicio = time.time()
-    asegurar_datos()
+def unir_y_escribir():
     if os.path.exists(SALIDA):
         shutil.rmtree(SALIDA)
     os.makedirs(SALIDA)
+    existencia = {}
+    for capa in ("l", "p"):
+        for nivel, _ in NIVELES_BASE:
+            indice = indice_tmp(capa, nivel)
+            for (tx, ty), rutas in indice.items():
+                destino = os.path.join(SALIDA, capa, str(nivel), str(tx))
+                os.makedirs(destino, exist_ok=True)
+                with open(os.path.join(destino, f"{ty}.bin"), "wb") as f:
+                    f.write(comprimir(unir_tesela(rutas)))
+            existencia[f"{capa}{nivel}"] = mascara_existencia(list(indice))
+            print(f"  {capa}/{nivel}: {len(indice):,} teselas")
 
-    print("Calculando etiquetas de pueblos y picos...")
-    lista_puntos = puntos()
-    calcular_mascaras(lista_puntos)
-    print(f"  {len(lista_puntos):,} puntos con nombre")
+        # Detalle: paquetes de 4 x 4 teselas por tesela de nivel 12
+        indice = indice_tmp(capa, NIVEL_DETALLE)
+        k = NIVEL_DETALLE - NIVEL_PAQUETE
+        paquetes = defaultdict(dict)
+        for (tx, ty), rutas in indice.items():
+            paquetes[(tx >> k, ty >> k)][f"{tx & ((1 << k) - 1)}_{ty & ((1 << k) - 1)}"] = rutas
+        for (px, py), hijas in paquetes.items():
+            contenido = {clave: unir_tesela(rutas) for clave, rutas in hijas.items()}
+            destino = os.path.join(SALIDA, capa, str(NIVEL_DETALLE), str(px))
+            os.makedirs(destino, exist_ok=True)
+            with open(os.path.join(destino, f"{py}.bin"), "wb") as f:
+                f.write(comprimir(contenido))
+        existencia[f"{capa}{NIVEL_DETALLE}"] = mascara_existencia(list(paquetes))
+        print(f"  {capa}/{NIVEL_DETALLE}: {len(indice):,} teselas en {len(paquetes):,} paquetes")
+    return existencia
 
-    rangos = {}
-    for nivel, zmax in NIVELES_P:
-        t = time.time()
-        rangos[f"p{nivel}"] = generar_nivel_poligonos(nivel, zmax)
-        print(f"    ({time.time() - t:.0f} s)")
-    for nivel, zmax in NIVELES_L:
-        t = time.time()
-        rangos[f"l{nivel}"] = generar_nivel_lineas(nivel, zmax, lista_puntos)
-        print(f"    ({time.time() - t:.0f} s)")
+
+def descargar_todo(regiones, horas_max=12):
+    """Descarga los extractos que falten, reintentando cada 5 minutos (Geofabrik falla a ratos)."""
+    fin = time.time() + horas_max * 3600
+    while True:
+        faltan = [r for r in regiones if not os.path.exists(os.path.join(carpeta_region(r), "free.shp.zip"))]
+        if not faltan:
+            print("Descargas completas")
+            return True
+        print(f"[{time.strftime('%H:%M')}] faltan {len(faltan)}: {', '.join(faltan)}")
+        for region in faltan:
+            carpeta = carpeta_region(region)
+            os.makedirs(carpeta, exist_ok=True)
+            zip_path = os.path.join(carpeta, "free.shp.zip")
+            url = f"{GEOFABRIK}{REGIONES[region]}-latest-free.shp.zip"
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "RunNear/0.2 (mapa propio; runnear.app@gmail.com)"})
+                with urllib.request.urlopen(req, timeout=1200) as r, open(zip_path + ".parcial", "wb") as f:
+                    shutil.copyfileobj(r, f)
+                os.replace(zip_path + ".parcial", zip_path)
+                print(f"  {region}: descargada ({os.path.getsize(zip_path) // 1024 // 1024} MB)")
+            except Exception as e:
+                print(f"  {region}: {e}")
+            time.sleep(5)  # sin prisas: no saturar el servidor
+        if time.time() > fin:
+            print("Tiempo agotado: vuelve a ejecutar más tarde")
+            return False
+        time.sleep(300)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--regiones", nargs="*", default=list(REGIONES), help="comunidades a procesar")
+    parser.add_argument("--rehacer", action="store_true", help="no reutilizar comunidades ya generadas")
+    parser.add_argument("--detalle-extra", nargs="*", default=[], metavar="LAT,LNG",
+                        help="puntos adicionales con detalle, p. ej. 40.4168,-3.7038")
+    parser.add_argument("--solo-descargar", action="store_true",
+                        help="solo descargar los extractos que falten (reintenta cada 5 min hasta 12 h)")
+    args = parser.parse_args()
+    inicio = time.time()
+
+    if args.solo_descargar:
+        sys.exit(0 if descargar_todo(args.regiones) else 1)
+
+    extra =[tuple(float(v) for v in p.split(",")) for p in args.detalle_extra]
+    bloques = Bloques(bloques_de_carreras(extra))
+    print(f"Zonas de detalle: {len(bloques.claves)} bloques de ~30 km con carreras")
+
+    if args.rehacer and os.path.exists(CARPETA_TMP):
+        shutil.rmtree(CARPETA_TMP)
+    os.makedirs(CARPETA_TMP, exist_ok=True)
+    pendientes = list(args.regiones)
+    for ronda in range(2):  # las que fallan (descarga) se reintentan al final
+        fallidas = []
+        for region in pendientes:
+            print(f"== {region}")
+            try:
+                generar_region(region, bloques)
+            except Exception as e:
+                print(f"!! {region} no se pudo generar: {e}")
+                fallidas.append(region)
+        pendientes = fallidas
+        if not pendientes:
+            break
+    if pendientes:
+        print(f"ERROR: faltan {', '.join(pendientes)}. Vuelve a ejecutar más tarde: las demás se reutilizan.")
+        sys.exit(1)
+
+    generar_etiquetas(args.regiones, bloques)
+
+    print("Uniendo comunidades y comprimiendo...")
+    existencia = unir_y_escribir()
 
     meta = {
+        "version": 2,
         "generado": date.today().isoformat(),
         "atribucion": "© OpenStreetMap contributors (ODbL)",
-        "niveles_l": [[n, z, extension(n, z)] for n, z in NIVELES_L],
-        "niveles_p": [[n, z, extension(n, z)] for n, z in NIVELES_P],
+        "formato": "gzip-json",
+        "niveles": [[n, z, extension(n, z)] for n, z in NIVELES_BASE],
+        "detalle": {"nivel": NIVEL_DETALLE, "zmax": ZMAX_DETALLE, "ext": extension(NIVEL_DETALLE, ZMAX_DETALLE),
+                    "paquete": NIVEL_PAQUETE, "bloque": NIVEL_BLOQUE,
+                    "bloques": sorted(f"{x}_{y}" for x, y in bloques.claves)},
+        "existe": existencia,
         "clases_l": CLASES_L, "clases_p": CLASES_P, "clases_t": CLASES_T,
         "fuente_t": FUENTE_T,
-        "rangos": rangos,
     }
     with open(os.path.join(SALIDA, "meta.json"), "w", encoding="utf-8") as f:
-        json.dump(meta, f, ensure_ascii=False, indent=1)
+        json.dump(meta, f, ensure_ascii=False, separators=(",", ":"))
 
     total = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(SALIDA) for f in fs)
     archivos = sum(len(fs) for _, _, fs in os.walk(SALIDA))
-    print(f"OK: {archivos:,} archivos, {total / 1024 / 1024:.1f} MB en {SALIDA} ({time.time() - inicio:.0f} s)")
+    print(f"OK: {archivos:,} archivos, {total / 1024 / 1024:.1f} MB en {SALIDA} ({(time.time() - inicio) / 60:.0f} min)")
 
 
 if __name__ == "__main__":
