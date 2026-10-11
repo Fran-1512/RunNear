@@ -1,291 +1,5 @@
 [
   {
-    "id": "clm-d428ee42",
-    "nombre": "Carrera 4 Millas Por la Torre",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "La Torre de Esteban Hambrán",
-    "provincia": "Toledo",
-    "distancia_km": 6.4,
-    "distancias_km": [
-      6.4
-    ],
-    "url_oficial": "https://inscripciones.runrunsports.com/eventos/carrera-4-millas-por-la-torre",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 40.16941,
-      "lng": -4.21591
-    },
-    "actualizado": "2026-10-10"
-  },
-  {
-    "id": "clm-89311b86",
-    "nombre": "III Escaleno en Marcha",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Toledo",
-    "provincia": "Toledo",
-    "distancia_km": 8.7,
-    "distancias_km": [
-      3.8,
-      8.7
-    ],
-    "url_oficial": "https://sportmaniacs.com/es/races/iii-escaleno-en-marcha",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 39.85589,
-      "lng": -4.02426
-    },
-    "actualizado": "2026-10-10",
-    "precio_desde": 5.0,
-    "resultados_web": "https://sportmaniacs.com/es/results"
-  },
-  {
-    "id": "clm-ecf2ac29",
-    "nombre": "IX Trail Pie del Hombre - Molina de Aragón",
-    "tipo": "trail",
-    "fecha": "2026-09-26",
-    "municipio": "Molina de Aragón",
-    "provincia": "Guadalajara",
-    "distancia_km": 18.0,
-    "distancias_km": [
-      12.0,
-      18.0
-    ],
-    "url_oficial": "https://web.rockthesport.com/es/event/trail-pie-del-hombre-molina-aragon",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 40.84408,
-      "lng": -1.88887
-    },
-    "actualizado": "2026-10-10",
-    "precio_desde": 5.0,
-    "desnivel_positivo_m": 900,
-    "hora": "10:00"
-  },
-  {
-    "id": "clm-25f71e4d",
-    "nombre": "VI Carrera Por la Discapacidad Ciudad de Albacete",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Albacete",
-    "provincia": "Albacete",
-    "distancia_km": 5.0,
-    "distancias_km": [
-      5.0
-    ],
-    "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2120&arg_tipo=eventos&arg_year=2026&arg_month=9",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 38.99509,
-      "lng": -1.85592
-    },
-    "actualizado": "2026-10-10"
-  },
-  {
-    "id": "clm-1fcf0864",
-    "nombre": "VII Night Trail San Julián",
-    "tipo": "trail",
-    "fecha": "2026-09-26",
-    "municipio": "Cuenca",
-    "provincia": "Cuenca",
-    "distancia_km": 13.0,
-    "distancias_km": [
-      13.0
-    ],
-    "url_oficial": "https://dorsal1.com/producto/vii-night-trail-san-julian-x-circ-prov-cxm-dip-cuenca/",
-    "circuito": "Circuito Trail Cuenca 2026",
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 40.0661,
-      "lng": -2.13135
-    },
-    "actualizado": "2026-10-10",
-    "resultados": [
-      {
-        "texto": "Descargar resultados - VIi Night Trail",
-        "url": "https://dorsal1.com/wp-content/uploads/2026/09/CLAS-2026-NIGHT-TRAIL.pdf"
-      }
-    ],
-    "resultados_web": "https://dorsal1.com/resultados/"
-  },
-  {
-    "id": "clm-4a4ec488",
-    "nombre": "XII Marcha Contra el Cancer",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Guadalajara",
-    "provincia": "Guadalajara",
-    "distancia_km": 5.0,
-    "distancias_km": [
-      5.0
-    ],
-    "url_oficial": "https://web.rockthesport.com/es/event/xii-marcha-contra-el-cancer",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 40.6327,
-      "lng": -3.16461
-    },
-    "actualizado": "2026-10-10",
-    "hora": "11:00"
-  },
-  {
-    "id": "clm-ce38272a",
-    "nombre": "XIII CP Pinos de Abdón",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Olmedilla de Alarcón",
-    "provincia": "Cuenca",
-    "distancia_km": 8.8,
-    "distancias_km": [
-      8.8
-    ],
-    "url_oficial": "https://www.timingsys.com/event/769",
-    "circuito": "Circuito Carreras Populares Cuenca 2026",
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 39.614,
-      "lng": -2.10379
-    },
-    "actualizado": "2026-10-10",
-    "inscritos": 178,
-    "resultados": [
-      {
-        "texto": "Resultados",
-        "url": "https://www.timingsys.com/resultdata/769"
-      }
-    ]
-  },
-  {
-    "id": "clm-0d093560",
-    "nombre": "XIII Legua Solidaria Nocturna Miguel Ángel Pascual Amor",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Oropesa",
-    "provincia": "Toledo",
-    "distancia_km": 5.5,
-    "distancias_km": [
-      5.5
-    ],
-    "url_oficial": "https://inscripciones.runrunsports.com/eventos/xiii-legua-solidaria-nocturna-miguel-angel-pascual-amor",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 39.91723,
-      "lng": -5.17475
-    },
-    "actualizado": "2026-10-10"
-  },
-  {
-    "id": "clm-52194049",
-    "nombre": "XX Carrera Popular Pozo Cañada",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Pozo Cañada",
-    "provincia": "Albacete",
-    "distancia_km": 10.0,
-    "distancias_km": [
-      10.0
-    ],
-    "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1175",
-    "circuito": "Circuito Carreras Populares Albacete 2026",
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 38.8029,
-      "lng": -1.73469
-    },
-    "actualizado": "2026-10-10"
-  },
-  {
-    "id": "clm-524118ea",
-    "nombre": "XXII Carrera de la Ciruela - Olías del Rey 2026",
-    "tipo": "popular",
-    "fecha": "2026-09-26",
-    "municipio": "Olías del Rey",
-    "provincia": "Toledo",
-    "distancia_km": 10.0,
-    "distancias_km": [
-      5.0,
-      10.0
-    ],
-    "url_oficial": "https://sportmaniacs.com/es/races/ldquoxxii-carrera-de-la-ciruela-olas-del-rey-2026rdquo",
-    "circuito": null,
-    "fuente": {
-      "nombre": "Carreras CLM",
-      "url": "https://carrerasclm.es"
-    },
-    "fuentes": [
-      "Carreras CLM"
-    ],
-    "ubicacion": {
-      "lat": 39.94474,
-      "lng": -3.98725
-    },
-    "actualizado": "2026-10-10",
-    "precio_desde": 7.0,
-    "hora": "11:50",
-    "resultados_web": "https://sportmaniacs.com/es/results"
-  },
-  {
     "id": "clm-74786d5d",
     "nombre": "Carrera - Marcha Rosa de Amuma 2026",
     "tipo": "popular",
@@ -309,7 +23,7 @@
       "lat": 38.98542,
       "lng": -3.92851
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-16a5b86c",
@@ -335,7 +49,7 @@
       "lat": 38.59737,
       "lng": -2.34585
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-b68bb154",
@@ -363,7 +77,7 @@
       "lat": 38.59737,
       "lng": -2.34585
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-bdfa164b",
@@ -389,7 +103,7 @@
       "lat": 38.68522,
       "lng": -4.11117
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 11.0,
     "hora": "09:30",
     "resultados": [
@@ -433,7 +147,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "hora": "09:33",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -461,7 +175,7 @@
       "lat": 38.59737,
       "lng": -2.34585
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-4b3a7bbe",
@@ -488,7 +202,7 @@
       "lat": 40.55624,
       "lng": -2.64971
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 17.0,
     "hora": "11:00"
   },
@@ -516,7 +230,7 @@
       "lat": 40.0661,
       "lng": -2.13135
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "hora": "11:00"
   },
   {
@@ -543,7 +257,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-a5ccfbf3",
@@ -570,7 +284,7 @@
       "lat": 41.0465,
       "lng": -2.20399
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 12.0,
     "plazas_max": 450,
     "hora": "10:00"
@@ -599,7 +313,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-d5adc554",
@@ -626,7 +340,7 @@
       "lat": 40.56838,
       "lng": -3.26271
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-b934cc14",
@@ -652,7 +366,7 @@
       "lat": 38.68522,
       "lng": -4.11117
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "inscritos": 276,
     "resultados": [
       {
@@ -685,7 +399,7 @@
       "lat": 39.15855,
       "lng": -3.02149
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "hora": "11:30",
     "resultados": [
@@ -728,7 +442,7 @@
       "lat": 40.18634,
       "lng": -1.82934
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 18.0,
     "resultados": [
       {
@@ -762,7 +476,7 @@
       "lat": 39.88742,
       "lng": -4.45428
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-f104049e",
@@ -788,7 +502,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-695e366a",
@@ -814,7 +528,7 @@
       "lat": 39.93528,
       "lng": -4.89177
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-6023d0b0",
@@ -834,14 +548,13 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-15a05e52",
@@ -861,14 +574,13 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 39.84216,
       "lng": -2.99737
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "inscritos": 199,
     "resultados": [
       {
@@ -904,7 +616,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
   {
@@ -933,7 +645,7 @@
       "lng": -4.40149
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "hora": "10:30"
   },
@@ -961,7 +673,7 @@
       "lat": 38.7084,
       "lng": -4.17606
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
   {
@@ -993,7 +705,7 @@
       "lng": -1.63418
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 18.0,
     "hora": "09:30",
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -1022,7 +734,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "resultados_web": "https://multiesport.es/resultados/"
   },
@@ -1050,7 +762,7 @@
       "lat": 38.36693,
       "lng": -2.31904
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-45deeb52",
@@ -1078,7 +790,7 @@
       "lng": -3.85323
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "inscritos": 137
   },
   {
@@ -1106,7 +818,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 12.0,
     "hora": "14:00"
   },
@@ -1132,7 +844,7 @@
       "lat": 39.38998,
       "lng": -3.21014
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1159,7 +871,7 @@
       "lat": 38.95776,
       "lng": -1.5561
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-0c7f9809",
@@ -1185,7 +897,7 @@
       "lat": 39.59827,
       "lng": -3.11861
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "hora": "10:00"
   },
@@ -1215,7 +927,7 @@
       "lng": -2.88452
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "inscritos": 141,
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -1246,7 +958,7 @@
       "lng": -4.7187
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 8.0,
     "hora": "10:00"
   },
@@ -1278,7 +990,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-da7bfda1",
@@ -1306,7 +1018,7 @@
       "lng": -1.55658
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-ea31fca7",
@@ -1334,7 +1046,7 @@
       "lng": -2.28151
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "inscritos": 27
   },
@@ -1362,7 +1074,7 @@
       "lat": 39.38998,
       "lng": -3.21014
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1391,7 +1103,7 @@
       "lng": -3.2101
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1418,7 +1130,7 @@
       "lat": 39.38998,
       "lng": -3.21014
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -1445,7 +1157,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 18.0,
     "resultados": [
       {
@@ -1481,7 +1193,7 @@
       "lng": -3.12528
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "hora": "10:00"
   },
   {
@@ -1508,7 +1220,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-271439b2",
@@ -1539,7 +1251,7 @@
       "lng": -4.30387
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 18.0,
     "inscritos": 227
   },
@@ -1568,7 +1280,7 @@
       "lat": 39.72563,
       "lng": -1.90174
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 8.0,
     "resultados_web": "https://dorsal1.com/resultados/"
   },
@@ -1596,7 +1308,7 @@
       "lat": 39.98086,
       "lng": -4.28423
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "hora": "10:30"
   },
@@ -1629,7 +1341,7 @@
       "lng": -3.92738
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 19.0,
     "hora": "08:30"
   },
@@ -1659,7 +1371,7 @@
       "lng": -2.32155
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-444ea81a",
@@ -1689,7 +1401,7 @@
       "lng": -2.92633
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "hora": "10:30"
   },
@@ -1719,7 +1431,7 @@
       "lng": -1.86017
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-4a821232",
@@ -1740,6 +1452,7 @@
     },
     "fuentes": [
       "Carreras CLM",
+      "carreraspopulares.com",
       "Running.life"
     ],
     "ubicacion": {
@@ -1747,7 +1460,7 @@
       "lng": -4.83045
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-570d4c67",
@@ -1776,7 +1489,7 @@
       "lng": -3.21696
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 8.0,
     "inscritos": 39,
     "hora": "18:30",
@@ -1807,7 +1520,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-fca53f59",
@@ -1836,7 +1549,7 @@
       "lng": -2.13742
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "inscritos": 467
   },
@@ -1864,7 +1577,7 @@
       "lat": 39.19289,
       "lng": -1.42899
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-f7a0e1ec",
@@ -1891,7 +1604,7 @@
       "lat": 39.81137,
       "lng": -4.14888
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-c8b0f1f5",
@@ -1919,7 +1632,7 @@
       "lng": -1.42958
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-470c8837",
@@ -1949,7 +1662,7 @@
       "lng": -2.79043
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -1977,7 +1690,7 @@
       "lat": 38.77159,
       "lng": -2.15889
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-24e044f4",
@@ -2006,7 +1719,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -2035,7 +1748,7 @@
       "lat": 39.9426,
       "lng": -4.43842
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 11.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -2063,7 +1776,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-7a670bb3",
@@ -2093,7 +1806,7 @@
       "lng": -3.10847
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 12.0,
     "desnivel_positivo_m": 850,
     "hora": "09:30"
@@ -2124,7 +1837,7 @@
       "lng": -1.98448
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-9a1a204d",
@@ -2152,7 +1865,7 @@
       "lng": -3.16667
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-789e5415",
@@ -2179,7 +1892,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-8bd6c541",
@@ -2209,7 +1922,7 @@
       "lng": -3.01507
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -2238,7 +1951,7 @@
       "lng": -2.57134
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "inscritos": 22
   },
@@ -2268,7 +1981,7 @@
       "lng": -1.92092
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-aacd218b",
@@ -2295,7 +2008,7 @@
       "lat": 39.31421,
       "lng": -4.05194
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -2324,7 +2037,7 @@
       "lng": -2.31415
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 8.0,
     "resultados_web": "https://dorsal1.com/resultados/"
   },
@@ -2352,7 +2065,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "rl-homenaje-jose-manuel-y-fernando-entrenamiento-solidario",
@@ -2378,7 +2091,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-c5823811",
@@ -2406,7 +2119,7 @@
       "lng": -1.71861
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 13.0,
     "inscritos": 82
   },
@@ -2440,7 +2153,7 @@
       "lng": -4.10789
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 8.0,
     "inscritos": 179
   },
@@ -2472,7 +2185,7 @@
       "lng": -3.2392
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -2500,7 +2213,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-aa3d5b43",
@@ -2528,7 +2241,7 @@
       "lng": -3.87317
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -2559,7 +2272,7 @@
       "lng": -3.98657
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -2587,7 +2300,7 @@
       "lat": 38.51066,
       "lng": -1.69951
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-c4c96b56",
@@ -2613,7 +2326,7 @@
       "lat": 38.99509,
       "lng": -1.85592
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-153576b1",
@@ -2641,7 +2354,7 @@
       "lng": -4.83045
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-aff89e9c",
@@ -2667,7 +2380,7 @@
       "lat": 38.51066,
       "lng": -1.69951
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-e6f77310",
@@ -2696,7 +2409,7 @@
       "lng": -1.66028
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 14.0,
     "desnivel_positivo_m": 517,
     "hora": "09:00"
@@ -2727,7 +2440,7 @@
       "lng": -3.24773
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 40.0,
     "hora": "08:30"
   },
@@ -2755,7 +2468,7 @@
       "lat": 39.03446,
       "lng": -4.17533
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "hora": "17:00"
   },
   {
@@ -2782,7 +2495,7 @@
       "lat": 38.54228,
       "lng": -1.95581
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-898c0848",
@@ -2810,7 +2523,7 @@
       "lng": -3.12026
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "inscritos": 83
   },
@@ -2841,7 +2554,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-1c5f41fe",
@@ -2867,7 +2580,7 @@
       "lat": 38.45989,
       "lng": -2.50976
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-fdb54097",
@@ -2895,7 +2608,7 @@
       "lng": -2.51836
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-5fabc503",
@@ -2921,7 +2634,7 @@
       "lat": 38.45989,
       "lng": -2.50976
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-0f6b093b",
@@ -2949,7 +2662,7 @@
       "lng": -4.10789
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "inscritos": 17
   },
@@ -2960,10 +2673,8 @@
     "fecha": "2026-11-15",
     "municipio": "Guadalajara",
     "provincia": "Guadalajara",
-    "distancia_km": 6.0,
-    "distancias_km": [
-      6.0
-    ],
+    "distancia_km": null,
+    "distancias_km": [],
     "url_oficial": "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara",
     "circuito": null,
     "fuente": {
@@ -2971,15 +2682,13 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
-      "lat": 40.63249,
-      "lng": -3.16017
+      "lat": 40.6327,
+      "lng": -3.16461
     },
-    "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-cedf2b46",
@@ -3007,7 +2716,7 @@
       "lng": -1.86017
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-506bf5bf",
@@ -3035,7 +2744,7 @@
       "lng": -3.57747
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0
   },
   {
@@ -3065,7 +2774,7 @@
       "lat": 38.98542,
       "lng": -3.92851
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 35.0,
     "inscritos": 150,
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -3098,7 +2807,7 @@
       "lng": -4.78599
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "hora": "16:00"
   },
@@ -3121,14 +2830,16 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Circuito Carreras Ciudad Real"
+      "Circuito Carreras Ciudad Real",
+      "Running.life"
     ],
     "hora": "11:00",
     "ubicacion": {
-      "lat": 38.96481,
-      "lng": -3.88986
+      "lat": 38.9622,
+      "lng": -3.88844
     },
-    "actualizado": "2026-10-10",
+    "ubicacion_exacta": true,
+    "actualizado": "2026-10-11",
     "precio_desde": 12.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -3158,7 +2869,7 @@
       "lng": -4.02843
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "inscritos": 85,
     "resultados_web": "https://sportmaniacs.com/es/results"
@@ -3187,7 +2898,7 @@
       "lat": 38.66475,
       "lng": -2.49108
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-27cc2c3c",
@@ -3213,7 +2924,7 @@
       "lat": 38.66475,
       "lng": -2.49108
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-1db427e9",
@@ -3239,7 +2950,7 @@
       "lat": 39.4263,
       "lng": -3.35987
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://crono3.es/resultados/"
   },
   {
@@ -3266,7 +2977,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-7f611c6f",
@@ -3295,7 +3006,7 @@
       "lng": -3.62558
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 14.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -3325,7 +3036,7 @@
       "lng": -4.10789
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 15.0,
     "inscritos": 21
   },
@@ -3353,7 +3064,7 @@
       "lat": 38.56087,
       "lng": -1.6593
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-3be78268",
@@ -3380,7 +3091,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-c77be931",
@@ -3408,7 +3119,7 @@
       "lng": -3.12528
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-9e3c807a",
@@ -3436,7 +3147,7 @@
       "lng": -3.3049
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 5.0,
     "resultados_web": "https://sportmaniacs.com/es/results"
   },
@@ -3464,7 +3175,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "hora": "17:00"
   },
   {
@@ -3491,7 +3202,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://dorsal1.com/resultados/"
   },
   {
@@ -3518,7 +3229,7 @@
       "lat": 39.85589,
       "lng": -4.02426
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-952461d1",
@@ -3542,7 +3253,7 @@
       "lat": 39.95224,
       "lng": -4.89018
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-64e07492",
@@ -3573,7 +3284,7 @@
       "lng": -3.85323
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 21.0,
     "hora": "06:30",
     "resultados_web": "https://sportmaniacs.com/es/results",
@@ -3607,7 +3318,7 @@
       "lng": -1.64814
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 10.0,
     "desnivel_positivo_m": 1750
   },
@@ -3639,7 +3350,7 @@
       "lng": -3.38761
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 18.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -3669,7 +3380,7 @@
       "lat": 38.75946,
       "lng": -3.38474
     },
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 12.0,
     "resultados_web": "https://carrerasciudadreal.es/clasificacion/"
   },
@@ -3699,7 +3410,7 @@
       "lng": -4.61986
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "precio_desde": 19.0,
     "hora": "10:00"
   },
@@ -3725,7 +3436,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "clm-ee9d27fd",
@@ -3753,7 +3464,7 @@
       "lat": 40.2356,
       "lng": -2.0893
     },
-    "actualizado": "2026-10-10"
+    "actualizado": "2026-10-11"
   },
   {
     "id": "rl-media-maraton-azuqueca",
@@ -3779,7 +3490,7 @@
     "fuentes": [
       "Running.life"
     ],
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "resultados_web": "https://mediamaratonazuqueca.es/clasificaciones-2026/"
   },
   {
@@ -3810,7 +3521,7 @@
       "lng": -3.86935
     },
     "ubicacion_exacta": true,
-    "actualizado": "2026-10-10",
+    "actualizado": "2026-10-11",
     "hora": "09:00",
     "resultados_web": "https://sportmaniacs.com/es/results"
   }
