@@ -67,6 +67,18 @@ class Direccion(unittest.TestCase):
                 self.assertNotIn("github.io/RunNear", f.read())
 
 
+class AdSense(unittest.TestCase):
+    def test_misma_cuenta_en_paginas_y_ads_txt(self):
+        cuenta = generar.ADSENSE_CUENTA
+        self.assertRegex(cuenta, r"^ca-pub-\d{16}$")
+        meta = f'<meta name="google-adsense-account" content="{cuenta}">'
+        for nombre in ("mapa.html", "legal.html"):
+            with self.subTest(pagina=nombre), open(os.path.join(RAIZ, nombre), encoding="utf-8") as f:
+                self.assertIn(meta, f.read())
+        with open(os.path.join(RAIZ, "ads.txt"), encoding="utf-8") as f:
+            self.assertEqual(f.read().strip(), f"google.com, {cuenta[3:]}, DIRECT, f08c47fec0942fa0")
+
+
 class HoraOficial(unittest.TestCase):
     def test_verano_invierno_y_canarias(self):
         self.assertEqual(generar.desfase_horario("2026-07-15", "Madrid"), "+02:00")

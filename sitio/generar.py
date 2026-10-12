@@ -41,6 +41,8 @@ if sys.platform.startswith("win"):
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITIO_URL = "https://gorunnear.com/"   # dirección pública de la web (también en mapa.html)
+# Cuenta de Google AdSense (la misma en mapa.html, legal.html y ads.txt; lo comprueba tests/test_sitio.py)
+ADSENSE_CUENTA = "ca-pub-6802213588582157"
 SALIDAS = ["carrera", "calendario", "guias", "sobre-runnear", "contacto", "cookies"]  # carpetas generadas (se borran y rehacen)
 
 # Páginas informativas (texto en sitio/paginas/<slug>.html; marcas {{R}}, {{N_CARRERAS}}, {{N_GUIAS}}).
@@ -192,6 +194,7 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="{CSP}">
+<meta name="google-adsense-account" content="{ADSENSE_CUENTA}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{e(titulo)}</title>
 <meta name="description" content="{e(descripcion)}">

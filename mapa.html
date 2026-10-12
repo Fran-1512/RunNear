@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com https://nominatim.openstreetmap.org; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <!-- viewport-fit=cover: en iPhone la app instalada usa toda la pantalla (se respetan las zonas seguras en el CSS) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Cuenta de Google AdSense (la misma que ADSENSE_CUENTA en sitio/generar.py) -->
+  <meta name="google-adsense-account" content="ca-pub-6802213588582157">
   <meta name="description" content="Mapa de carreras populares y de trail de toda España. Encuentra las que tienes cerca, con fecha, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
   <title>Mapa de carreras populares y trail en España | RunNear</title>
   <link rel="canonical" href="https://gorunnear.com/mapa.html">
@@ -45,18 +47,18 @@
 
   <!-- Estilos de la aplicación (css/), en este orden: las reglas posteriores mandan sobre las anteriores.
        ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="css/base.css?v=41">
-  <link rel="stylesheet" href="css/cabecera.css?v=41">
-  <link rel="stylesheet" href="css/lista.css?v=41">
-  <link rel="stylesheet" href="css/mapa.css?v=41">
-  <link rel="stylesheet" href="css/ventanas.css?v=41">
-  <link rel="stylesheet" href="css/movil.css?v=41">
-  <link rel="stylesheet" href="css/menu.css?v=41">
-  <link rel="stylesheet" href="css/tema-claro.css?v=41">
-  <link rel="stylesheet" href="css/cuenta.css?v=41">
-  <link rel="stylesheet" href="css/perfil.css?v=41">
-  <link rel="stylesheet" href="css/valoraciones.css?v=41">
-  <link rel="stylesheet" href="css/anuncios.css?v=41">
+  <link rel="stylesheet" href="css/base.css?v=42">
+  <link rel="stylesheet" href="css/cabecera.css?v=42">
+  <link rel="stylesheet" href="css/lista.css?v=42">
+  <link rel="stylesheet" href="css/mapa.css?v=42">
+  <link rel="stylesheet" href="css/ventanas.css?v=42">
+  <link rel="stylesheet" href="css/movil.css?v=42">
+  <link rel="stylesheet" href="css/menu.css?v=42">
+  <link rel="stylesheet" href="css/tema-claro.css?v=42">
+  <link rel="stylesheet" href="css/cuenta.css?v=42">
+  <link rel="stylesheet" href="css/perfil.css?v=42">
+  <link rel="stylesheet" href="css/valoraciones.css?v=42">
+  <link rel="stylesheet" href="css/anuncios.css?v=42">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -553,29 +555,29 @@
 
   <!-- Código de la app (js/). El orden importa: cada archivo puede usar lo de los anteriores
        al cargarse, y arranque.js pone todo en marcha cuando la página está lista. -->
-  <script src="js/diagnostico.js?v=41"></script>
+  <script src="js/diagnostico.js?v=42"></script>
   <script src="vendor/leaflet/leaflet.js"></script>
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
-  <script src="js/estado.js?v=41"></script>
-  <script src="js/utilidades.js?v=41"></script>
-  <script src="js/almacen.js?v=41"></script>
-  <script src="js/tema.js?v=41"></script>
-  <script src="js/provincias.js?v=41"></script>
-  <script src="js/anuncios.js?v=41"></script>
-  <script src="js/mapa_detalle.js?v=41"></script>
-  <script src="js/mapa.js?v=41"></script>
-  <script src="js/ubicacion.js?v=41"></script>
-  <script src="js/lista.js?v=41"></script>
-  <script src="js/vistas.js?v=41"></script>
-  <script src="js/calendario.js?v=41"></script>
-  <script src="js/ficha.js?v=41"></script>
-  <script src="js/perfil.js?v=41"></script>
-  <script src="js/ventanas.js?v=41"></script>
-  <script src="js/pwa.js?v=41"></script>
-  <script src="js/arranque.js?v=41"></script>
+  <script src="js/estado.js?v=42"></script>
+  <script src="js/utilidades.js?v=42"></script>
+  <script src="js/almacen.js?v=42"></script>
+  <script src="js/tema.js?v=42"></script>
+  <script src="js/provincias.js?v=42"></script>
+  <script src="js/anuncios.js?v=42"></script>
+  <script src="js/mapa_detalle.js?v=42"></script>
+  <script src="js/mapa.js?v=42"></script>
+  <script src="js/ubicacion.js?v=42"></script>
+  <script src="js/lista.js?v=42"></script>
+  <script src="js/vistas.js?v=42"></script>
+  <script src="js/calendario.js?v=42"></script>
+  <script src="js/ficha.js?v=42"></script>
+  <script src="js/perfil.js?v=42"></script>
+  <script src="js/ventanas.js?v=42"></script>
+  <script src="js/pwa.js?v=42"></script>
+  <script src="js/arranque.js?v=42"></script>
   <!-- Cuenta, opiniones y propuestas de carreras (Supabase) -->
-  <script src="js/cuenta.js?v=41"></script>
-  <script src="js/valoraciones.js?v=41"></script>
-  <script src="js/propuestas.js?v=41"></script>
+  <script src="js/cuenta.js?v=42"></script>
+  <script src="js/valoraciones.js?v=42"></script>
+  <script src="js/propuestas.js?v=42"></script>
 </body>
 </html>
