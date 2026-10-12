@@ -3,6 +3,7 @@
 # - Al subir cambios (push a main): publica la web tal cual.
 # - Cada día a las 05:00 UTC, o a mano desde la pestaña "Actions": ejecuta el
 #   scraper, guarda carreras.json en el repositorio y publica la web.
+# - En ambos casos genera antes las páginas para buscadores (sitio/generar.py).
 
 name: Actualizar carreras y publicar web
 
@@ -30,7 +31,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
-        if: github.event_name != 'push'
         with:
           python-version: "3.12"
 
@@ -83,6 +83,11 @@ jobs:
             -H "x-avisos-clave: $AVISOS_CLAVE" \
             -H "Content-Type: application/json" \
             --data-binary @carreras.json
+
+      # Páginas de texto para Google (una por carrera, calendarios por zona y sitemap).
+      # Se generan en cada publicación a partir de carreras.json y no se guardan en el repositorio.
+      - name: Generar páginas para buscadores
+        run: python -m sitio.generar
 
       - uses: actions/configure-pages@v5
 

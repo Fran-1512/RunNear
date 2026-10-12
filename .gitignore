@@ -4,3 +4,9 @@ __pycache__/
 
 # Ficheros temporales de escritura atómica
 *.tmp
+
+# Páginas para buscadores: las genera sitio/generar.py en cada publicación
+/carrera/
+/calendario/
+/sitemap.xml
+/robots.txt

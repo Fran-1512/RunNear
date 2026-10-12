@@ -1,0 +1,104 @@
+/* Páginas de texto generadas por sitio/generar.py (carreras y calendarios).
+   Mismos colores que la web principal (styles.css), pero sin mapa: ligeras y legibles. */
+
+:root {
+  --fondo: #0c1220;
+  --tarjeta: rgba(18, 28, 50, 0.65);
+  --borde: rgba(255, 255, 255, 0.08);
+  --texto: #f8fafc;
+  --suave: #94a3b8;
+  --tenue: #64748b;
+  --popular: #06b6d4;
+  --trail: #10b981;
+  --acento: #6366f1;
+  --aviso: #f59e0b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 0%, #1a2440 0%, var(--fondo) 55%) fixed, var(--fondo);
+  color: var(--texto);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color-scheme: dark;
+}
+
+a { color: #a5b4fc; }
+a:hover { color: #c7d2fe; }
+
+h1, h2 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin: 0.2rem 0 0.8rem; }
+h2 { font-size: 1.3rem; margin: 2rem 0 0.8rem; }
+h2 small { color: var(--tenue); font-weight: 400; font-size: 0.9rem; }
+
+/* Cabecera y pie */
+.cabecera {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 16px; border-bottom: 1px solid var(--borde);
+  background: rgba(15, 23, 42, 0.75); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 5;
+}
+.marca { display: flex; align-items: center; gap: 8px; color: var(--texto); text-decoration: none;
+         font-family: 'Outfit', sans-serif; font-size: 1.35rem; }
+.marca img { border-radius: 8px; }
+.marca b { color: var(--popular); }
+.nav { display: flex; align-items: center; gap: 14px; font-size: 0.95rem; }
+.nav a { text-decoration: none; }
+
+.contenido { max-width: 860px; margin: 0 auto; padding: 16px 16px 40px; }
+.pie { border-top: 1px solid var(--borde); color: var(--tenue); font-size: 0.85rem;
+       padding: 20px 16px 32px; text-align: center; }
+.pie p { max-width: 760px; margin: 0.5rem auto; }
+
+.migas { font-size: 0.85rem; color: var(--tenue); margin: 6px 0 14px; overflow-wrap: anywhere; }
+.migas a { color: var(--suave); text-decoration: none; }
+.migas a:hover { text-decoration: underline; }
+
+/* Botones */
+.boton {
+  display: inline-block; padding: 9px 16px; border-radius: 9999px; text-decoration: none;
+  border: 1px solid var(--borde); background: var(--tarjeta); color: var(--texto); font-weight: 600;
+}
+.boton:hover { color: var(--texto); border-color: rgba(99, 102, 241, 0.5); }
+.boton.principal { background: linear-gradient(135deg, var(--popular), var(--acento)); border: none; }
+.acciones { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+
+/* Ficha de una carrera */
+.resumen { color: var(--suave); font-size: 1.05rem; }
+.etiqueta { display: inline-block; margin: 0; padding: 2px 12px; border-radius: 9999px;
+            font-size: 0.85rem; font-weight: 600; }
+.etiqueta.asfalto { background: rgba(6, 182, 212, 0.15); color: var(--popular); }
+.etiqueta.trail { background: rgba(16, 185, 129, 0.15); color: var(--trail); }
+.aviso { border-left: 3px solid var(--aviso); background: rgba(245, 158, 11, 0.1);
+         padding: 10px 14px; border-radius: 8px; }
+.datos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 18px 0; }
+.datos div { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 10px 14px; }
+.datos dt { color: var(--tenue); font-size: 0.8rem; }
+.datos dd { margin: 2px 0 0; font-weight: 600; }
+.origen { color: var(--tenue); font-size: 0.85rem; margin-top: 24px; }
+
+.lista-carreras { list-style: none; padding: 0; margin: 0; }
+.lista-carreras li { padding: 8px 0; border-bottom: 1px solid var(--borde); }
+.lista-carreras span { display: block; color: var(--tenue); font-size: 0.85rem; }
+
+/* Calendarios */
+.calendario { width: 100%; border-collapse: collapse; }
+.calendario td { padding: 9px 6px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+.calendario .f { white-space: nowrap; color: var(--suave); width: 4.5rem; font-weight: 600; }
+.calendario .t { width: 2rem; text-align: center; }
+.calendario a { text-decoration: none; font-weight: 600; }
+.calendario a:hover { text-decoration: underline; }
+.calendario .sub { display: block; color: var(--tenue); font-size: 0.85rem; }
+
+.zonas { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+.zonas a { display: flex; justify-content: space-between; gap: 8px; padding: 9px 14px; border-radius: 12px;
+           background: var(--tarjeta); border: 1px solid var(--borde); text-decoration: none; color: var(--texto); }
+.zonas a:hover { border-color: rgba(99, 102, 241, 0.5); }
+.zonas span { color: var(--tenue); }
+.zonas.grande { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+@media (max-width: 480px) {
+  .nav a:not(.boton) { display: none; }
+  .datos { grid-template-columns: 1fr; }
+}
