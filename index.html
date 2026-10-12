@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <!-- viewport-fit=cover: en iPhone la app instalada usa toda la pantalla (se respetan las zonas seguras en el CSS) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Calendario y mapa de carreras populares y de trail en Castilla-La Mancha (Albacete, Ciudad Real, Cuenca, Guadalajara y Toledo). Encuentra las que tienes cerca, con fecha, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
-  <title>RunNear | Carreras populares y trail en Castilla-La Mancha</title>
+  <meta name="description" content="Calendario y mapa de carreras populares y de trail de toda España. Encuentra las que tienes cerca, con fecha, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
+  <title>RunNear | Carreras populares y trail en España</title>
   <link rel="canonical" href="https://fran-1512.github.io/RunNear/">
 
   <!-- Vista previa al compartir el enlace (WhatsApp, Telegram, redes sociales) -->
@@ -13,12 +13,12 @@
   <meta property="og:site_name" content="RunNear">
   <meta property="og:locale" content="es_ES">
   <meta property="og:url" content="https://fran-1512.github.io/RunNear/">
-  <meta property="og:title" content="RunNear · Carreras populares y trail en Castilla-La Mancha">
+  <meta property="og:title" content="RunNear · Carreras populares y trail en España">
   <meta property="og:description" content="Encuentra las carreras que tienes cerca: fechas, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
   <meta property="og:image" content="https://fran-1512.github.io/RunNear/iconos/compartir.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="RunNear: carreras populares y trail en Castilla-La Mancha">
+  <meta property="og:image:alt" content="RunNear: carreras populares y trail en toda España">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- App instalable (PWA) -->
@@ -43,7 +43,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=29">
+  <link rel="stylesheet" href="styles.css?v=34">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -66,7 +66,7 @@
         </div>
         <div class="brand-text">
           <h1 class="brand-title">Run<span class="gradient-text">Near</span></h1>
-          <p class="brand-tagline">Carreras Populares & Trail · Castilla-La Mancha</p>
+          <p class="brand-tagline">Carreras Populares & Trail · España</p>
         </div>
       </div>
     </div>
@@ -147,14 +147,9 @@
           <button class="menu-item" data-vista="mes">Este mes</button>
         </div>
 
-        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">🗺️</span>Por provincia<span class="menu-flecha">›</span></button>
-        <div class="menu-subitems">
-          <button class="menu-item" data-vista="prov:Albacete">Albacete</button>
-          <button class="menu-item" data-vista="prov:Ciudad Real">Ciudad Real</button>
-          <button class="menu-item" data-vista="prov:Cuenca">Cuenca</button>
-          <button class="menu-item" data-vista="prov:Guadalajara">Guadalajara</button>
-          <button class="menu-item" data-vista="prov:Toledo">Toledo</button>
-        </div>
+        <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">🗺️</span>Por zona<span class="menu-flecha">›</span></button>
+        <!-- Comunidades y sus provincias con carreras próximas (lo rellena menu.js) -->
+        <div class="menu-subitems" id="menu-zonas"></div>
 
         <button class="menu-grupo" aria-expanded="false"><span class="menu-icono">📏</span>Por distancia<span class="menu-flecha">›</span></button>
         <div class="menu-subitems">
@@ -188,6 +183,7 @@
         <button class="menu-item" data-vista="favoritas"><span class="menu-icono">❤️</span>Mis favoritas<span class="menu-contador" id="contador-favoritas"></span></button>
         <button class="menu-item" data-vista="corridas"><span class="menu-icono">✅</span>Ya corridas<span class="menu-contador" id="contador-corridas"></span></button>
         <button class="menu-item" data-accion="cuenta" id="menu-cuenta"><span class="menu-icono">👤</span><span id="menu-cuenta-texto">Entrar o crear cuenta</span></button>
+        <button class="menu-item" data-accion="proponer"><span class="menu-icono">➕</span>Añadir una carrera</button>
         <button class="menu-item" data-accion="ics-favoritas"><span class="menu-icono">📲</span>Favoritas al calendario</button>
       </div>
 
@@ -275,12 +271,10 @@
             <span class="radius-value-pill" id="radius-display-value">50 km</span>
           </div>
           <div class="range-slider-wrapper">
-            <input type="range" id="filter-radius-slider" min="15" max="300" step="5" value="50" class="custom-range" aria-label="Radio de búsqueda en kilómetros">
+            <input type="range" id="filter-radius-slider" min="15" max="500" step="5" value="50" class="custom-range" aria-label="Radio de búsqueda en kilómetros (al final, sin límite)">
             <div class="range-ticks">
               <span>15 km</span>
-              <span>100 km</span>
-              <span>200 km</span>
-              <span>300 km</span>
+              <span>Sin límite</span>
             </div>
           </div>
         </div>
@@ -521,6 +515,17 @@
     </div>
   </div>
 
+  <!-- Modal: proponer una carrera que falta -->
+  <div class="modal-overlay hidden" id="propuesta-modal" role="dialog" aria-modal="true" aria-labelledby="propuesta-titulo">
+    <div class="modal-card modal-cuenta modal-propuesta">
+      <button class="modal-close-btn" id="btn-cerrar-propuesta" aria-label="Cerrar ventana">✕</button>
+      <div class="modal-header">
+        <h2 class="modal-race-title" id="propuesta-titulo">Añadir una carrera</h2>
+      </div>
+      <div class="modal-body" id="propuesta-cuerpo"></div>
+    </div>
+  </div>
+
   <div class="toast-container" id="toast-container" aria-live="polite"></div>
 
   <!-- Leaflet JS -->
@@ -528,13 +533,15 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=29"></script>
+  <script src="mapa_detalle.js?v=34"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=29"></script>
+  <script src="app.js?v=34"></script>
   <!-- Menú lateral: secciones, favoritas, calendario, ajustes -->
-  <script src="menu.js?v=29"></script>
-  <script src="cuenta.js?v=29"></script>
+  <script src="menu.js?v=34"></script>
+  <script src="cuenta.js?v=34"></script>
   <!-- Valoraciones de carreras -->
-  <script src="valoraciones.js?v=29"></script>
+  <script src="valoraciones.js?v=34"></script>
+  <!-- Proponer carreras que faltan -->
+  <script src="propuestas.js?v=34"></script>
 </body>
 </html>

@@ -72,6 +72,10 @@ REGIONES = {
 # (nivel de datos, zoom máximo que sirve). Un nivel se reutiliza ("sobrezoom") hasta su zoom máximo.
 NIVELES_BASE = [(8, 9), (10, 11), (12, 13)]
 NIVEL_DETALLE, ZMAX_DETALLE = 14, 18
+# El detalle se guarda con la precisión del zoom 17 (no del 18): al ampliar del todo la
+# diferencia es de ~1 píxel y el mapa ocupa bastante menos
+RESOL_DETALLE = 17
+TOL_PX_DETALLE = 1.0
 NIVEL_BLOQUE = 10    # zonas de detalle: teselas de nivel 10 (~30 km)
 NIVEL_PAQUETE = 12   # el detalle se agrupa por tesela de nivel 12
 ZOOM_MAX = 18
@@ -526,7 +530,7 @@ def escribir_tmp(teselas, carpeta, capa, nivel):
 def generar_lineas(region, nivel, zmax, bloques, carpeta):
     ext = extension(nivel, zmax)
     escala = 2 ** nivel
-    tol = TOL_PX / (256 * 2 ** zmax)
+    tol = (TOL_PX_DETALLE if nivel == NIVEL_DETALLE else TOL_PX) / (256 * 2 ** zmax)
     teselas = defaultdict(Tesela)
     id_clase = {c: i for i, c in enumerate(CLASES_L)}
     detalle = bloques is not None
@@ -558,7 +562,7 @@ def generar_lineas(region, nivel, zmax, bloques, carpeta):
 def generar_poligonos(region, nivel, zmax, bloques, carpeta):
     ext = extension(nivel, zmax)
     escala = 2 ** nivel
-    tol = TOL_PX / (256 * 2 ** zmax)
+    tol = (TOL_PX_DETALLE if nivel == NIVEL_DETALLE else TOL_PX) / (256 * 2 ** zmax)
     teselas = defaultdict(Tesela)
     id_clase = {c: i for i, c in enumerate(CLASES_P)}
     admitir = (lambda x0, y0, x1, y1: bloques.toca(x0, y0, x1, y1, nivel)) if bloques is not None else None
@@ -591,9 +595,21 @@ def generar_poligonos(region, nivel, zmax, bloques, carpeta):
     return len(teselas)
 
 
-def generar_region(region, bloques):
+def generar_region(region, bloques, solo_detalle=False):
     carpeta = os.path.join(CARPETA_TMP, region)
     hecho = os.path.join(carpeta, "HECHO")
+    if os.path.exists(hecho) and solo_detalle:
+        # Rehacer solo el detalle (zonas con carreras), reutilizando el mapa base
+        asegurar_datos(region)
+        inicio = time.time()
+        for capa in ("l", "p"):
+            vieja = os.path.join(carpeta, capa, str(NIVEL_DETALLE))
+            if os.path.exists(vieja):
+                shutil.rmtree(vieja)
+        n_p = generar_poligonos(region, NIVEL_DETALLE, RESOL_DETALLE, bloques, carpeta)
+        n_l = generar_lineas(region, NIVEL_DETALLE, RESOL_DETALLE, bloques, carpeta)
+        print(f"{region}: detalle rehecho ({n_l} teselas de líneas, {n_p} de polígonos) en {time.time() - inicio:.0f} s")
+        return
     if os.path.exists(hecho):
         print(f"{region}: ya generada (se reutiliza)")
         return
@@ -606,8 +622,8 @@ def generar_region(region, bloques):
         n_p = generar_poligonos(region, nivel, zmax, None, carpeta)
         n_l = generar_lineas(region, nivel, zmax, None, carpeta)
         print(f"  {region} nivel {nivel}: {n_l} teselas de líneas, {n_p} de polígonos")
-    n_p = generar_poligonos(region, NIVEL_DETALLE, ZMAX_DETALLE, bloques, carpeta)
-    n_l = generar_lineas(region, NIVEL_DETALLE, ZMAX_DETALLE, bloques, carpeta)
+    n_p = generar_poligonos(region, NIVEL_DETALLE, RESOL_DETALLE, bloques, carpeta)
+    n_l = generar_lineas(region, NIVEL_DETALLE, RESOL_DETALLE, bloques, carpeta)
     print(f"  {region} detalle: {n_l} teselas de líneas, {n_p} de polígonos")
     open(hecho, "w").close()
     print(f"{region}: lista en {time.time() - inicio:.0f} s")
@@ -665,7 +681,7 @@ def generar_etiquetas(regiones, bloques):
     print(f"Etiquetas: {len(lista):,} pueblos, barrios y picos")
     id_t = {c: i for i, c in enumerate(CLASES_T)}
     for nivel, zmax in NIVELES_BASE + [(NIVEL_DETALLE, ZMAX_DETALLE)]:
-        ext = extension(nivel, zmax)
+        ext = extension(nivel, RESOL_DETALLE if nivel == NIVEL_DETALLE else zmax)
         escala = 2 ** nivel
         bits = sum(1 << z for z in range(nivel, zmax + 1))
         teselas = defaultdict(Tesela)
@@ -814,6 +830,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--regiones", nargs="*", default=list(REGIONES), help="comunidades a procesar")
     parser.add_argument("--rehacer", action="store_true", help="no reutilizar comunidades ya generadas")
+    parser.add_argument("--solo-detalle", action="store_true",
+                        help="rehacer solo el detalle (p. ej. con carreras en zonas nuevas), reutilizando el mapa base")
     parser.add_argument("--detalle-extra", nargs="*", default=[], metavar="LAT,LNG",
                         help="puntos adicionales con detalle, p. ej. 40.4168,-3.7038")
     parser.add_argument("--solo-descargar", action="store_true",
@@ -837,7 +855,7 @@ def main():
         for region in pendientes:
             print(f"== {region}")
             try:
-                generar_region(region, bloques)
+                generar_region(region, bloques, args.solo_detalle)
             except Exception as e:
                 print(f"!! {region} no se pudo generar: {e}")
                 fallidas.append(region)
@@ -859,7 +877,7 @@ def main():
         "atribucion": "© OpenStreetMap contributors (ODbL)",
         "formato": "gzip-json",
         "niveles": [[n, z, extension(n, z)] for n, z in NIVELES_BASE],
-        "detalle": {"nivel": NIVEL_DETALLE, "zmax": ZMAX_DETALLE, "ext": extension(NIVEL_DETALLE, ZMAX_DETALLE),
+        "detalle": {"nivel": NIVEL_DETALLE, "zmax": ZMAX_DETALLE, "ext": extension(NIVEL_DETALLE, RESOL_DETALLE),
                     "paquete": NIVEL_PAQUETE, "bloque": NIVEL_BLOQUE,
                     "bloques": sorted(f"{x}_{y}" for x, y in bloques.claves)},
         "existe": existencia,

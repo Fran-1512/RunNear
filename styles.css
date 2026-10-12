@@ -3765,3 +3765,108 @@ body.tema-claro .cuenta-enlace.peligro {
   color: var(--text-dim);
   font-weight: 600;
 }
+
+/* Menú "Por zona": comunidades y, debajo, sus provincias */
+.menu-subitems .menu-comunidad {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.menu-subitems .menu-provincia {
+  padding-left: 22px;
+  font-size: 0.76rem;
+}
+
+.menu-num {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Lista por tandas: botón para ver más carreras */
+.lista-mas {
+  width: 100%;
+  justify-content: center;
+  margin: 4px 0 12px;
+}
+
+/* Añadir una carrera */
+.modal-propuesta {
+  max-width: 520px;
+}
+
+.propuesta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.propuesta-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 0;
+}
+
+.propuesta-campo .cuenta-input {
+  font-weight: 400;
+}
+
+.propuesta-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.propuesta-campo select.cuenta-input {
+  appearance: auto;
+}
+
+.propuestas-mias {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 12px;
+}
+
+.propuestas-mias:empty {
+  display: none;
+}
+
+.propuesta-mia {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.84rem;
+}
+
+.propuesta-mia span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 480px) {
+  .propuesta-fila {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Listas desplegables de formularios: opciones legibles en tema oscuro y claro */
+select.cuenta-input {
+  color-scheme: dark;
+}
+
+select.cuenta-input option {
+  background: var(--bg-dark-800);
+  color: var(--text-main);
+}
+
+body.tema-claro select.cuenta-input {
+  color-scheme: light;
+}

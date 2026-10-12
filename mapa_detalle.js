@@ -622,5 +622,10 @@ const MapaDetalle = (() => {
     });
   }
 
-  return { crear };
+  /** ¿El mapa detallado cubre toda España? (formato nuevo) o solo Castilla-La Mancha (antiguo) */
+  function esNacional() {
+    return !!meta && meta.version === 2;
+  }
+
+  return { crear, esNacional };
 })();

@@ -1,6 +1,5 @@
 """
-Adaptador para carreraspopulares.com (calendario nacional; nos quedamos con las de
-Castilla-La Mancha).
+Adaptador para carreraspopulares.com (calendario de toda España).
 
 robots.txt: "Disallow:" vacío = todo permitido (revisado 2026-10-03).
 
@@ -17,7 +16,8 @@ from ..comun import (descargar_permitido, distancias_por_nombre, extraer_desnive
 
 NOMBRE = "carreraspopulares.com"
 URL_BASE = "https://carreraspopulares.com"
-MAX_PAGINAS = 12
+LISTA = URL_BASE + "/calendario_carreras/lista/CuVPow/carreras_espa%C3%B1a_proximos_30_dias"
+MAX_PAGINAS = 250
 
 
 def _fichas(h):
@@ -35,7 +35,7 @@ def _fichas(h):
             continue
         provincia = normalizar_provincia(lugar.group(2))
         if not provincia:
-            continue  # fuera de Castilla-La Mancha
+            continue  # fuera de España
         nombre = titulo_carrera(texto_visible(enlace.group(3)))
         detalle = " ".join(lineas[2:])
         distancias = extraer_distancias_km(detalle) or distancias_por_nombre(nombre)
@@ -59,13 +59,18 @@ def _fichas(h):
 
 
 def obtener_carreras():
-    carreras = []
+    """Lista "carreras España próximos 30 días" (la de /calendario_carreras no se puede paginar:
+    siempre devuelve las mismas carreras)."""
+    carreras, vistas = [], set()
     for pagina in range(1, MAX_PAGINAS + 1):
-        url = f"{URL_BASE}/calendario_carreras" + (f"?page={pagina}" if pagina > 1 else "")
-        h = descargar_permitido(url)
+        h = descargar_permitido(LISTA + (f"?page={pagina}" if pagina > 1 else ""))
         if "fichaEdicion" not in h:
             break
-        carreras += _fichas(h)
+        nuevas = [c for c in _fichas(h) if c["id"] not in vistas]
+        if not nuevas:
+            break  # página repetida: se ha llegado al final
+        vistas.update(c["id"] for c in nuevas)
+        carreras += nuevas
         if f"page={pagina + 1}" not in h:
             break
     return carreras

@@ -12,7 +12,9 @@ import sys
 from datetime import date, timedelta
 
 from . import detalles, fusion, geocodificador
-from .fuentes import carrerasclm, carrerasciudadreal, carreraspopulares, dipualba, mayayo, runnea, runninglife
+from .comun import comunidad_de
+from .fuentes import (carrerasclm, carrerasciudadreal, carreraspopulares, dipualba, mayayo, propuestas, runnea,
+                      runninglife)
 
 if sys.platform.startswith("win"):
     try:
@@ -29,13 +31,14 @@ DIAS_RESULTADOS = 14
 # En orden de PRIORIDAD: ante una carrera repetida se conservan los datos de la primera
 # fuente y las demás solo completan lo que falte.
 ADAPTADORES = [
+    propuestas,           # propuestas por usuarios y organizadores, revisadas a mano: datos de primera mano
     carrerasclm,          # calendario regional, el más completo
     dipualba,             # circuitos de la Diputación de Albacete (fuente oficial)
     carrerasciudadreal,   # circuito de Ciudad Real (aporta la hora de salida)
     mayayo,               # calendario federativo de montaña (aporta desniveles)
     carreraspopulares,    # calendario nacional
-    runnea,               # calendario nacional
-    runninglife,          # calendario regional amplio (aporta coordenadas exactas)
+    runnea,               # calendarios de cada comunidad
+    runninglife,          # calendario nacional amplio (aporta coordenadas exactas)
 ]
 
 
@@ -49,6 +52,33 @@ def aplicar_correcciones(carreras):
         for campo, valor in correcciones.get(c["id"], {}).items():
             if not campo.startswith("_"):
                 c[campo] = valor
+
+
+def conservar_celebradas(resultado, desde, hoy):
+    """Añade a resultado las carreras del carreras.json anterior celebradas entre desde y ayer
+    que ya no han venido de ninguna fuente (ni con su id ni repetidas con otro nombre)."""
+    try:
+        with open(SALIDA, encoding="utf-8") as f:
+            anteriores = json.load(f)
+    except (OSError, ValueError):
+        return 0
+    ids = {c["id"] for c in resultado}
+    por_fecha = {}
+    for c in resultado:
+        por_fecha.setdefault(c["fecha"], []).append(c)
+    añadidas = 0
+    for c in anteriores:
+        fecha = c.get("fecha") or ""
+        if not (desde <= fecha < hoy) or c.get("id") in ids:
+            continue
+        # ¿Ya está con otro id (otra fuente la sigue mostrando)?
+        if any(fusion.puntuacion(e, c, set()) for e in por_fecha.get(fecha, [])):
+            continue
+        resultado.append(c)
+        ids.add(c["id"])
+        por_fecha.setdefault(fecha, []).append(c)
+        añadidas += 1
+    return añadidas
 
 
 def main():
@@ -82,8 +112,12 @@ def main():
     pendientes = [c for c in unicas if c["id"].startswith("rl-") and fusion.es_agregador(c.get("url_oficial"))]
     if pendientes:
         print(f"Buscando la web oficial de {len(pendientes)} carreras de Running.life...")
-        for c in pendientes:
+        for i, c in enumerate(pendientes, 1):
             runninglife.completar_web_oficial(c)
+            if i % 100 == 0:
+                print(f"  {i}/{len(pendientes)}")
+                runninglife.guardar_cache_webs()  # por si se corta, no repetir lo ya consultado
+        runninglife.guardar_cache_webs()
         # Con su web ya conocida, alguna resulta ser una carrera que ya teníamos
         unicas, uniones = fusion.unir_por_web(unicas)
         if uniones:
@@ -102,6 +136,7 @@ def main():
                 continue
             c["ubicacion"] = coords
         c["actualizado"] = hoy
+        c["comunidad"] = comunidad_de(c.get("provincia"))
         c.pop("url_ficha_fuente", None)
         resultado.append(c)
     geocodificador.guardar_cache()
@@ -115,6 +150,13 @@ def main():
     if not resultado:
         print("AVISO: 0 carreras obtenidas; se conserva el carreras.json actual.")
         return False
+
+    # Carreras ya celebradas que su fuente ha quitado del calendario (Running.life las borra
+    # al pasar la fecha): se conservan las de los últimos DIAS_RESULTADOS días que ya
+    # teníamos, para que sigan en la sección "Resultados" con toda España
+    conservadas = conservar_celebradas(resultado, desde, hoy)
+    if conservadas:
+        print(f"Celebradas en los últimos {DIAS_RESULTADOS} días que ya no están en su fuente: {conservadas} conservadas")
 
     # Precio, desnivel, inscritos... desde la web de inscripción de cada carrera (cacheado)
     print("Leyendo precio y desnivel de las webs de inscripción...")

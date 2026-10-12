@@ -54,7 +54,6 @@ def geocodificar(municipio, provincia):
     params = urllib.parse.urlencode({
         "city": municipio,
         "county": provincia,
-        "state": "Castilla-La Mancha",
         "country": "España",
         "format": "json",
         "limit": 1,

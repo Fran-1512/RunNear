@@ -14,7 +14,7 @@ import urllib.parse
 import urllib.request
 from urllib import robotparser
 
-USER_AGENT = "RunNearBot/0.1 (prototipo calendario carreras CLM)"
+USER_AGENT = "RunNearBot/0.2 (calendario de carreras populares y trail; runnear.app@gmail.com)"
 
 # Pausa mínima entre peticiones al mismo sitio (segundos)
 PAUSA_ENTRE_PETICIONES = 2.0
@@ -28,6 +28,47 @@ PROVINCIAS_CLM = {
     "GU": "Guadalajara",
     "TO": "Toledo",
 }
+
+# Provincias de España: nombre que se muestra -> (comunidad, otros nombres con que aparecen
+# en las fuentes: en otras lenguas oficiales o antiguos)
+PROVINCIAS = {
+    "Almería": ("Andalucía", []), "Cádiz": ("Andalucía", []), "Córdoba": ("Andalucía", []),
+    "Granada": ("Andalucía", []), "Huelva": ("Andalucía", []), "Jaén": ("Andalucía", []),
+    "Málaga": ("Andalucía", []), "Sevilla": ("Andalucía", []),
+    "Huesca": ("Aragón", ["Uesca"]), "Teruel": ("Aragón", []), "Zaragoza": ("Aragón", []),
+    "Asturias": ("Asturias", ["Principado de Asturias", "Oviedo"]),
+    "Baleares": ("Baleares", ["Illes Balears", "Islas Baleares", "Balears", "Mallorca", "Menorca", "Ibiza", "Eivissa"]),
+    "Las Palmas": ("Canarias", ["Gran Canaria", "Lanzarote", "Fuerteventura"]),
+    "Santa Cruz de Tenerife": ("Canarias", ["Tenerife", "S C Tenerife", "La Palma", "La Gomera", "El Hierro"]),
+    "Cantabria": ("Cantabria", ["Santander"]),
+    "Albacete": ("Castilla-La Mancha", ["AB"]), "Ciudad Real": ("Castilla-La Mancha", ["CR"]),
+    "Cuenca": ("Castilla-La Mancha", ["CU"]), "Guadalajara": ("Castilla-La Mancha", ["GU"]),
+    "Toledo": ("Castilla-La Mancha", ["TO"]),
+    "Ávila": ("Castilla y León", []), "Burgos": ("Castilla y León", []), "León": ("Castilla y León", []),
+    "Palencia": ("Castilla y León", []), "Salamanca": ("Castilla y León", []), "Segovia": ("Castilla y León", []),
+    "Soria": ("Castilla y León", []), "Valladolid": ("Castilla y León", []), "Zamora": ("Castilla y León", []),
+    "Barcelona": ("Cataluña", []), "Girona": ("Cataluña", ["Gerona"]), "Lleida": ("Cataluña", ["Lérida"]),
+    "Tarragona": ("Cataluña", []),
+    "Alicante": ("Comunidad Valenciana", ["Alacant"]), "Castellón": ("Comunidad Valenciana", ["Castelló", "Castellón de la Plana"]),
+    "Valencia": ("Comunidad Valenciana", ["València"]),
+    "Badajoz": ("Extremadura", []), "Cáceres": ("Extremadura", []),
+    "A Coruña": ("Galicia", ["La Coruña", "Coruña"]), "Lugo": ("Galicia", []), "Ourense": ("Galicia", ["Orense"]),
+    "Pontevedra": ("Galicia", []),
+    "Madrid": ("Comunidad de Madrid", ["Comunidad de Madrid"]),
+    "Murcia": ("Región de Murcia", ["Región de Murcia", "Region de Murcia"]),
+    "Navarra": ("Navarra", ["Nafarroa", "Comunidad Foral de Navarra"]),
+    "Álava": ("País Vasco", ["Araba", "Araba/Álava", "Alava"]), "Bizkaia": ("País Vasco", ["Vizcaya"]),
+    "Gipuzkoa": ("País Vasco", ["Guipúzcoa", "Guipuzcoa"]),
+    "La Rioja": ("La Rioja", ["Rioja", "Logroño"]),
+    "Ceuta": ("Ceuta", []), "Melilla": ("Melilla", []),
+}
+COMUNIDADES = sorted({c for c, _ in PROVINCIAS.values()})
+
+_ALIAS_PROVINCIA = {}
+for _nombre, (_comunidad, _otros) in PROVINCIAS.items():
+    for _alias in [_nombre] + _otros:
+        _ALIAS_PROVINCIA[re.sub(r"[^a-z0-9ñ]+", " ", "".join(
+            ch for ch in unicodedata.normalize("NFD", _alias.lower()) if unicodedata.category(ch) != "Mn")).strip()] = _nombre
 
 MESES = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6, "julio": 7,
          "agosto": 8, "septiembre": 9, "setiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
@@ -44,6 +85,8 @@ def descargar(url, timeout=30):
     if espera > 0:
         time.sleep(espera)
 
+    # Direcciones con letras especiales ("—", "·", tildes...): se codifican para poder pedirlas
+    url = urllib.parse.quote(url, safe=":/?&=%#+,;@!$'()*[]~")
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -131,14 +174,16 @@ def titulo_carrera(nombre):
 
 
 def normalizar_provincia(texto):
-    """'CIUDAD REAL' / 'ciudad real' / 'CR' -> 'Ciudad Real'; None si no es de Castilla-La Mancha."""
+    """'CIUDAD REAL' / 'CR' -> 'Ciudad Real'; 'Lérida' -> 'Lleida'; None si no es una provincia de España."""
     if not texto:
         return None
-    t = normalizar(texto)
-    for codigo, nombre in PROVINCIAS_CLM.items():
-        if t in (normalizar(nombre), codigo.lower()):
-            return nombre
-    return None
+    return _ALIAS_PROVINCIA.get(normalizar(texto))
+
+
+def comunidad_de(provincia):
+    """'Toledo' -> 'Castilla-La Mancha' (None si no se conoce)."""
+    datos = PROVINCIAS.get(provincia)
+    return datos[0] if datos else None
 
 
 # ---------------------------------------------------------------------------
@@ -224,16 +269,26 @@ def _cargar_provincias():
             with open(ruta, "r", encoding="utf-8") as f:
                 capas = json.load(f)["capas"]
             for f in capas["provincias"]["features"]:
-                if f["properties"].get("destacada"):
-                    g = f["geometry"]
-                    poligonos = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
-                    _provincias_geo.append((f["properties"]["nombre"], poligonos))
+                nombre = normalizar_provincia(f["properties"]["nombre"])
+                if not nombre:
+                    continue
+                g = f["geometry"]
+                poligonos = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+                puntos = [p for anillos in poligonos for anillo in anillos for p in anillo]
+                caja = (min(p[0] for p in puntos), min(p[1] for p in puntos),
+                        max(p[0] for p in puntos), max(p[1] for p in puntos))
+                _provincias_geo.append((nombre, poligonos, caja))
     return _provincias_geo
 
 
 def provincia_por_punto(lat, lng):
-    """Provincia de Castilla-La Mancha que contiene el punto, o None."""
-    for nombre, poligonos in _cargar_provincias():
+    """Provincia de España que contiene el punto, o None (fuera de España)."""
+    # Canarias no está en el mapa base: las islas orientales son Las Palmas y las occidentales, Tenerife
+    if 27.4 <= lat <= 29.5 and -18.3 <= lng <= -13.3:
+        return "Las Palmas" if lng > -16.0 else "Santa Cruz de Tenerife"
+    for nombre, poligonos, caja in _cargar_provincias():
+        if not (caja[0] <= lng <= caja[2] and caja[1] <= lat <= caja[3]):
+            continue
         dentro = False
         for anillos in poligonos:
             for anillo in anillos:
@@ -244,5 +299,5 @@ def provincia_por_punto(lat, lng):
                     if (y1 > lat) != (y2 > lat) and lng < (x2 - x1) * (lat - y1) / (y2 - y1) + x1:
                         dentro = not dentro
         if dentro:
-            return normalizar_provincia(nombre)
+            return nombre
     return None

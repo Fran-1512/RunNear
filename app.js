@@ -39,14 +39,19 @@ function iniciarDiagnostico() {
   setInterval(actualizar, 1000);
 }
 
-// Región piloto: Castilla-La Mancha
+// Toda España. Sin GPS ni ciudad elegida no se limita por distancia (radio 0 = sin límite)
 const REGION = {
-  nombre: "Castilla-La Mancha",
-  centro: { lat: 39.5, lng: -3.0 },
-  zoomInicial: 7,
-  // Radio que cubre toda la región desde su centro (se usa si no hay GPS)
-  radioCompletoKm: 250
+  nombre: "España",
+  centro: { lat: 40.2, lng: -3.6 },
+  zoomInicial: 6,
+  radioCompletoKm: 0
 };
+// Valor del deslizador de radio que significa "sin límite"
+const RADIO_SIN_LIMITE = 500;
+
+function textoRadio(km) {
+  return km > 0 ? `${km} km` : "Sin límite";
+}
 
 // Estado global de la aplicación
 const AppState = {
@@ -221,6 +226,7 @@ function inicializarMapa() {
   // Grupo de marcadores agrupados (clusters) para las carreras
   AppState.clusterGroup = L.markerClusterGroup({
     showCoverageOnHover: false,
+    chunkedLoading: true, // con miles de carreras, no bloquea la página mientras agrupa
     maxClusterRadius: 45
   }).addTo(AppState.map);
 
@@ -235,20 +241,23 @@ function inicializarMapa() {
 }
 
 async function cargarMapaBase() {
+  // Capa detallada (calles, pueblos, caminos) a partir de ZOOM_DETALLE. Se carga primero
+  // para saber si cubre toda España o solo Castilla-La Mancha (mapa antiguo)
+  let capaDetalle = null;
   try {
-    (await crearMapaPropio()).addTo(AppState.map);
+    if (!AppState.map.getPane("mapaDetalle")) AppState.map.createPane("mapaDetalle").style.zIndex = 260;
+    capaDetalle = await MapaDetalle.crear("mapaDetalle");
+  } catch (err) {
+    console.error("No se pudo cargar el mapa detallado:", err);
+  }
+
+  try {
+    (await crearMapaPropio(!!capaDetalle && MapaDetalle.esNacional())).addTo(AppState.map);
   } catch (err) {
     console.error("No se pudo cargar el mapa base:", err);
     mostrarToast("No se pudo cargar el mapa base");
   }
-
-  // Capa detallada (calles, pueblos, caminos) a partir de ZOOM_DETALLE
-  try {
-    if (!AppState.map.getPane("mapaDetalle")) AppState.map.createPane("mapaDetalle").style.zIndex = 260;
-    (await MapaDetalle.crear("mapaDetalle")).addTo(AppState.map);
-  } catch (err) {
-    console.error("No se pudo cargar el mapa detallado:", err);
-  }
+  if (capaDetalle) capaDetalle.addTo(AppState.map);
 }
 
 // Zoom desde el que se usa el mapa detallado de OpenStreetMap en Castilla-La Mancha
@@ -293,7 +302,11 @@ function zoomMinimoEtiqueta(p) {
   return 8;
 }
 
-async function crearMapaPropio() {
+/**
+ * nacional: el mapa detallado cubre toda España, así que todas las provincias se tratan
+ * igual. Si no (mapa antiguo), solo se resaltan las de Castilla-La Mancha ("destacada").
+ */
+async function crearMapaPropio(nacional = false) {
   const resp = await fetch("mapa/mapa_base.json");
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   const { capas } = await resp.json();
@@ -315,12 +328,12 @@ async function crearMapaPropio() {
   L.geoJSON(capas.provincias, {
     ...opcionesBase,
     // Primero las demás provincias y encima las de la región, para que su borde se vea entero
-    filter: f => !f.properties.destacada,
+    filter: f => !(nacional || f.properties.destacada),
     style: ESTILO_MAPA.provincia
   }).addTo(grupo);
   const provinciasCLM = L.geoJSON(capas.provincias, {
     ...opcionesBase,
-    filter: f => f.properties.destacada,
+    filter: f => nacional || f.properties.destacada,
     style: ESTILO_MAPA.provinciaCLM
   }).addTo(grupo);
   // Ríos y carreteras simplificados: solo a poco zoom (con más zoom los dibuja el mapa detallado)
@@ -348,11 +361,11 @@ async function crearMapaPropio() {
 
   // Poblaciones: se muestran u ocultan según el zoom. Las de Castilla-La Mancha las
   // sustituye el mapa detallado a partir de ZOOM_DETALLE.
-  const geometriasCLM = capas.provincias.features.filter(f => f.properties.destacada).map(f => f.geometry);
+  const geometriasCLM = capas.provincias.features.filter(f => nacional || f.properties.destacada).map(f => f.geometry);
   const etiquetas = L.layerGroup().addTo(grupo);
   const poblaciones = capas.poblaciones.features.map(f => ({
     zoomMin: zoomMinimoEtiqueta(f.properties),
-    enCLM: geometriasCLM.some(g => puntoEnGeometria(f.geometry.coordinates[0], f.geometry.coordinates[1], g)),
+    enCLM: nacional || geometriasCLM.some(g => puntoEnGeometria(f.geometry.coordinates[0], f.geometry.coordinates[1], g)),
     marker: L.marker([f.geometry.coordinates[1], f.geometry.coordinates[0]], {
       pane: "mapaEtiquetas",
       interactive: false,
@@ -371,7 +384,7 @@ async function crearMapaPropio() {
       if (z >= zoomMin && !(enCLM && detalle)) etiquetas.addLayer(marker);
       else etiquetas.removeLayer(marker);
     });
-    for (const [capa, visible] of [[lineasSimples, !detalle], [nombresProvincia, z < 10]]) {
+    for (const [capa, visible] of [[lineasSimples, !detalle], [nombresProvincia, nacional ? z >= 7 && z < 10 : z < 10]]) {
       if (visible) grupo.addLayer(capa);
       else grupo.removeLayer(capa);
     }
@@ -417,7 +430,7 @@ function actualizarMarcadorUsuarioEnMapa() {
       <div class="popup-race-card">
         <div class="popup-title">📍 Tu Ubicación</div>
         <p class="popup-meta">${AppState.userLocation.label}</p>
-        <span style="font-size:0.75rem; color:#94a3b8;">Buscando carreras en un radio de ${AppState.filters.radiusKm} km</span>
+        <span style="font-size:0.75rem; color:#94a3b8;">${AppState.filters.radiusKm > 0 ? `Buscando carreras en un radio de ${AppState.filters.radiusKm} km` : "Buscando carreras en toda España"}</span>
       </div>
     `);
   }
@@ -454,12 +467,13 @@ function establecerUbicacionUsuario(lat, lng, label, isGps = false) {
   aplicarFiltrosYRenderizar();
 }
 
+/** km = 0: sin límite de distancia (el deslizador queda al final, en "Sin límite") */
 function ponerRadio(km) {
   AppState.filters.radiusKm = km;
   const slider = document.getElementById("filter-radius-slider");
-  if (slider) slider.value = km;
+  if (slider) slider.value = km > 0 ? km : RADIO_SIN_LIMITE;
   const radiusDisplay = document.getElementById("radius-display-value");
-  if (radiusDisplay) radiusDisplay.textContent = `${km} km`;
+  if (radiusDisplay) radiusDisplay.textContent = textoRadio(km);
 }
 
 /** Última ciudad elegida en el selector (se recuerda en el dispositivo) */
@@ -494,17 +508,40 @@ function usarUbicacionPorDefecto() {
 // Ciudad o pueblo de referencia (buscador de la cabecera)
 // ==========================================================================
 
-// Siempre disponibles, aunque no tengan carreras próximas
+// Capitales de provincia y grandes ciudades, de más a menos población: siempre disponibles
+// aunque no tengan carreras próximas. Con la casilla vacía se proponen las primeras.
 const CIUDADES_PRINCIPALES = [
-  { nombre: "Albacete", provincia: "Albacete", lat: 38.9943, lng: -1.8585 },
-  { nombre: "Ciudad Real", provincia: "Ciudad Real", lat: 38.9848, lng: -3.9274 },
-  { nombre: "Cuenca", provincia: "Cuenca", lat: 40.0704, lng: -2.1374 },
-  { nombre: "Guadalajara", provincia: "Guadalajara", lat: 40.6329, lng: -3.1664 },
-  { nombre: "Toledo", provincia: "Toledo", lat: 39.8628, lng: -4.0273 },
-  { nombre: "Talavera de la Reina", provincia: "Toledo", lat: 39.9636, lng: -4.8307 },
-  { nombre: "Puertollano", provincia: "Ciudad Real", lat: 38.6871, lng: -4.1073 },
-  { nombre: "Hellín", provincia: "Albacete", lat: 38.5100, lng: -1.7010 }
-];
+  ["Madrid", "Madrid", 40.4168, -3.7038], ["Barcelona", "Barcelona", 41.3874, 2.1686],
+  ["Valencia", "Valencia", 39.4699, -0.3763], ["Sevilla", "Sevilla", 37.3891, -5.9845],
+  ["Zaragoza", "Zaragoza", 41.6488, -0.8891], ["Málaga", "Málaga", 36.7213, -4.4214],
+  ["Murcia", "Murcia", 37.9922, -1.1307], ["Palma", "Baleares", 39.5696, 2.6502],
+  ["Las Palmas de Gran Canaria", "Las Palmas", 28.1235, -15.4363], ["Bilbao", "Bizkaia", 43.263, -2.935],
+  ["Alicante", "Alicante", 38.3452, -0.481], ["Córdoba", "Córdoba", 37.8882, -4.7794],
+  ["Valladolid", "Valladolid", 41.6523, -4.7245], ["Vigo", "Pontevedra", 42.2406, -8.7207],
+  ["Gijón", "Asturias", 43.5322, -5.6611], ["Vitoria-Gasteiz", "Álava", 42.8467, -2.6716],
+  ["A Coruña", "A Coruña", 43.3623, -8.4115], ["Elche", "Alicante", 38.2669, -0.6983],
+  ["Granada", "Granada", 37.1773, -3.5986], ["Oviedo", "Asturias", 43.3619, -5.8494],
+  ["Santa Cruz de Tenerife", "Santa Cruz de Tenerife", 28.4636, -16.2518], ["Pamplona", "Navarra", 42.8125, -1.6458],
+  ["Almería", "Almería", 36.834, -2.4637], ["Jerez de la Frontera", "Cádiz", 36.685, -6.1261],
+  ["San Sebastián", "Gipuzkoa", 43.3183, -1.9812], ["Burgos", "Burgos", 42.3439, -3.6969],
+  ["Santander", "Cantabria", 43.4623, -3.81], ["Castellón de la Plana", "Castellón", 39.9864, -0.0513],
+  ["Albacete", "Albacete", 38.9943, -1.8585], ["Cartagena", "Murcia", 37.6257, -0.9966],
+  ["Logroño", "La Rioja", 42.4627, -2.445], ["Badajoz", "Badajoz", 38.8794, -6.9707],
+  ["Salamanca", "Salamanca", 40.9701, -5.6635], ["Huelva", "Huelva", 37.2614, -6.9447],
+  ["Lleida", "Lleida", 41.6176, 0.62], ["Tarragona", "Tarragona", 41.1189, 1.2445],
+  ["León", "León", 42.5987, -5.5671], ["Cádiz", "Cádiz", 36.5271, -6.2886],
+  ["Jaén", "Jaén", 37.7796, -3.7849], ["Ourense", "Ourense", 42.3358, -7.8639],
+  ["Girona", "Girona", 41.9794, 2.8214], ["Lugo", "Lugo", 43.0097, -7.5568],
+  ["Cáceres", "Cáceres", 39.4753, -6.3724], ["Guadalajara", "Guadalajara", 40.6329, -3.1664],
+  ["Toledo", "Toledo", 39.8628, -4.0273], ["Melilla", "Melilla", 35.2923, -2.9381],
+  ["Ceuta", "Ceuta", 35.8894, -5.3213], ["Pontevedra", "Pontevedra", 42.431, -8.6444],
+  ["Palencia", "Palencia", 42.0095, -4.5288], ["Talavera de la Reina", "Toledo", 39.9636, -4.8307],
+  ["Ciudad Real", "Ciudad Real", 38.9848, -3.9274], ["Zamora", "Zamora", 41.5034, -5.7467],
+  ["Ávila", "Ávila", 40.6565, -4.6818], ["Cuenca", "Cuenca", 40.0704, -2.1374],
+  ["Segovia", "Segovia", 40.9429, -4.1088], ["Huesca", "Huesca", 42.1401, -0.4089],
+  ["Soria", "Soria", 41.7666, -2.479], ["Teruel", "Teruel", 40.3456, -1.1065]
+].map(([nombre, provincia, lat, lng]) => ({ nombre, provincia, lat, lng }));
+const CIUDADES_SUGERIDAS = 10;
 
 /** Ciudades principales + todos los pueblos que tienen alguna carrera (sin repetir) */
 function lugaresDisponibles() {
@@ -563,7 +600,7 @@ function configurarSelectorCiudad() {
     // Sin texto (o con el nombre ya elegido): las ciudades principales
     const actual = AppState.userLocation && normalizarTexto(AppState.userLocation.label) === texto;
     opciones = !texto || actual
-      ? CIUDADES_PRINCIPALES
+      ? CIUDADES_PRINCIPALES.slice(0, CIUDADES_SUGERIDAS)
       : todos.filter(l => normalizarTexto(l.nombre).split(/[\s-]+/).some(p => p.startsWith(texto))
           || normalizarTexto(l.nombre).startsWith(texto)).slice(0, 8);
     if (!opciones.length && texto) {
@@ -734,6 +771,8 @@ async function cargarCarrerasDesdeServidor() {
   aplicarFiltrosYRenderizar();
   // Enlace compartido (?carrera=<id>): abrir su ficha
   if (typeof abrirCarreraCompartida === "function") abrirCarreraCompartida();
+  // Carreras propuestas recién aprobadas (no esperan a la actualización diaria)
+  if (typeof incorporarPropuestasAprobadas === "function") incorporarPropuestasAprobadas();
 }
 
 // ==========================================================================
@@ -935,14 +974,10 @@ function seleccionarFecha(id, filtrar = true) {
   if (filtrar) aplicarFiltrosYRenderizar();
 }
 
-const RADIO_MAXIMO_KM = 300; // el máximo del deslizador
+const RADIO_MAXIMO_KM = RADIO_SIN_LIMITE - 5; // el máximo del deslizador antes de "Sin límite"
 
 function ampliarRadio(km) {
-  AppState.filters.radiusKm = km;
-  const slider = document.getElementById("filter-radius-slider");
-  if (slider) slider.value = km;
-  const etiqueta = document.getElementById("radius-display-value");
-  if (etiqueta) etiqueta.textContent = `${km} km`;
+  ponerRadio(km);
   aplicarFiltrosYRenderizar();
 }
 
@@ -1003,8 +1038,61 @@ function renderizarListadoCarreras(carreras, mensajeVacio, contexto = {}) {
   }
 
   container.innerHTML = "";
+  // Con miles de carreras, se pintan por tandas al bajar por la lista
+  listaPaginada.empezar(container, carreras);
+}
 
-  carreras.forEach(c => {
+const TARJETAS_POR_TANDA = 40;
+const listaPaginada = {
+  carreras: [],
+  mostradas: 0,
+  observador: null,
+
+  empezar(container, carreras) {
+    this.container = container;
+    this.carreras = carreras;
+    this.mostradas = 0;
+    this.siguiente();
+  },
+
+  siguiente() {
+    const { container, carreras } = this;
+    const viejo = container.querySelector(".lista-mas");
+    if (viejo) viejo.remove();
+    const fragmento = document.createDocumentFragment();
+    const fin = Math.min(carreras.length, this.mostradas + TARJETAS_POR_TANDA);
+    for (let i = this.mostradas; i < fin; i++) fragmento.appendChild(crearTarjeta(carreras[i]));
+    this.mostradas = fin;
+    container.appendChild(fragmento);
+
+    const quedan = carreras.length - this.mostradas;
+    if (quedan <= 0) return;
+    // Botón "Ver más" que además se pulsa solo al llegar a él
+    const mas = document.createElement("button");
+    mas.className = "btn-secondary lista-mas";
+    mas.textContent = `Ver ${Math.min(quedan, TARJETAS_POR_TANDA)} más (quedan ${quedan})`;
+    mas.addEventListener("click", () => this.siguiente());
+    container.appendChild(mas);
+    if ("IntersectionObserver" in window) {
+      if (this.observador) this.observador.disconnect();
+      this.observador = new IntersectionObserver(entradas => {
+        if (entradas.some(e => e.isIntersecting)) {
+          this.observador.disconnect();
+          this.siguiente();
+        }
+      }, { rootMargin: "400px" });
+      this.observador.observe(mas);
+    }
+  },
+
+  /** Muestra hasta la carrera indicada (para resaltarla en la lista) */
+  mostrarHasta(carreraId) {
+    const i = this.carreras.findIndex(c => c.id === carreraId);
+    while (i >= this.mostradas && this.mostradas < this.carreras.length) this.siguiente();
+  }
+};
+
+function crearTarjeta(c) {
     const isTrail = c.tipo === "trail";
     const typeLabel = isTrail ? "⛰️ Trail" : "🏃 Asfalto";
     const typeBadgeClass = isTrail ? "badge-trail" : "badge-popular";
@@ -1132,8 +1220,7 @@ function renderizarListadoCarreras(carreras, mensajeVacio, contexto = {}) {
       });
     }
 
-    container.appendChild(card);
-  });
+    return card;
 }
 
 // ==========================================================================
@@ -1146,6 +1233,7 @@ function renderizarMarcadoresEnMapa(carreras) {
   // Limpiar marcadores anteriores
   AppState.clusterGroup.clearLayers();
   AppState.mapMarkers = {};
+  const nuevos = [];
 
   carreras.forEach(c => {
     if (!c.ubicacion || !c.ubicacion.lat || !c.ubicacion.lng) return;
@@ -1170,14 +1258,14 @@ function renderizarMarcadoresEnMapa(carreras) {
       icon: customIcon,
       title: c.nombre
     });
-    AppState.clusterGroup.addLayer(marker);
+    nuevos.push(marker);
 
+    // Contenido del Popup: se prepara al abrirlo (con miles de carreras, hacerlo para todas es lento)
+    marker.bindPopup(() => {
     const distStr = c.distancia_usuario_km !== null
       ? `A ${c.distancia_usuario_km} km de ti`
       : "";
-
-    // Contenido del Popup en el Mapa
-    const popupContent = `
+    return `
       <div class="popup-race-card">
         <div class="popup-tag-row">
           <span class="badge-tag ${isTrail ? 'badge-trail' : 'badge-popular'}">
@@ -1201,8 +1289,7 @@ function renderizarMarcadoresEnMapa(carreras) {
         </div>
       </div>
     `;
-
-    marker.bindPopup(popupContent);
+    });
 
     // Evento de clic en marcador: resaltar tarjeta en listado lateral
     marker.on("click", () => {
@@ -1211,6 +1298,8 @@ function renderizarMarcadoresEnMapa(carreras) {
 
     AppState.mapMarkers[c.id] = marker;
   });
+  // Todos de una vez: mucho más rápido que añadirlos uno a uno
+  AppState.clusterGroup.addLayers(nuevos);
 }
 
 // Misma condición que el CSS de móvil (incluye táctiles en modo "versión para ordenador")
@@ -1246,6 +1335,8 @@ function resaltarMarcador(carreraId, resaltar) {
 }
 
 function resaltarTarjetaEnLista(carreraId) {
+  // La tarjeta puede no estar pintada aún (la lista se pinta por tandas)
+  listaPaginada.mostrarHasta(carreraId);
   const card = document.getElementById(`card-${carreraId}`);
   if (!card) return;
 
@@ -1324,6 +1415,9 @@ function abrirModalDetalleCarrera(carrera) {
       Confirma fecha y detalles en la web oficial antes de inscribirte.`;
   } else {
     avisoTexto.textContent = "Confirma fecha y detalles en la web oficial antes de inscribirte.";
+  }
+  if (carrera.verificada_organizador) {
+    avisoTexto.insertAdjacentHTML("afterbegin", `<strong>✅ Datos facilitados por la organización.</strong> `);
   }
 
   // Botón principal: inscripción o, si ya se ha celebrado, resultados
@@ -1429,11 +1523,7 @@ function resetearFiltros() {
     chip.classList.toggle("active", chip.dataset.dist === "todas");
   });
 
-  const slider = document.getElementById("filter-radius-slider");
-  if (slider) slider.value = radio;
-
-  const radiusDisplay = document.getElementById("radius-display-value");
-  if (radiusDisplay) radiusDisplay.textContent = `${radio} km`;
+  ponerRadio(radio);
 
   const sortSelect = document.getElementById("filter-sort-select");
   if (sortSelect) sortSelect.value = "distancia";
@@ -1537,11 +1627,14 @@ function configurarEventListeners() {
   const radiusSlider = document.getElementById("filter-radius-slider");
   const radiusDisplay = document.getElementById("radius-display-value");
   if (radiusSlider && radiusDisplay) {
+    // Mientras se arrastra solo cambia la cifra; la lista se recalcula al parar un instante
+    let esperaRadio = null;
     radiusSlider.addEventListener("input", (e) => {
       const val = parseInt(e.target.value, 10);
-      AppState.filters.radiusKm = val;
-      radiusDisplay.textContent = `${val} km`;
-      aplicarFiltrosYRenderizar();
+      AppState.filters.radiusKm = val >= RADIO_SIN_LIMITE ? 0 : val;
+      radiusDisplay.textContent = textoRadio(AppState.filters.radiusKm);
+      clearTimeout(esperaRadio);
+      esperaRadio = setTimeout(aplicarFiltrosYRenderizar, 150);
     });
   }
 

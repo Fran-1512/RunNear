@@ -221,3 +221,98 @@ create policy "denunciar" on public.denuncias
 revoke all on public.denuncias from anon;
 grant insert on public.denuncias to authenticated;
 grant usage on sequence public.denuncias_id_seq to authenticated;
+
+-- ==========================================================================
+-- Carreras propuestas por los usuarios (las revisa el administrador)
+-- ==========================================================================
+
+create table if not exists public.propuestas (
+  id            bigint generated always as identity primary key,
+  user_id       uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  nombre        text not null check (char_length(nombre) between 3 and 150),
+  fecha         date not null,
+  hora          text check (hora ~ '^\d{2}:\d{2}$'),
+  municipio     text not null check (char_length(municipio) between 2 and 80),
+  provincia     text not null check (char_length(provincia) between 2 and 40),
+  tipo          text not null check (tipo in ('popular', 'trail')),
+  distancias_km numeric[] not null check (cardinality(distancias_km) between 1 and 10),
+  url_oficial   text not null check (url_oficial ~* '^https?://[^ ]{4,}$' and char_length(url_oficial) <= 500),
+  precio_desde  numeric check (precio_desde between 0 and 1000),
+  descripcion   text check (char_length(descripcion) <= 600),
+  organizador   boolean not null default false,
+  -- pendiente -> aprobada / rechazada (lo cambia el administrador en Table Editor)
+  estado        text not null default 'pendiente' check (estado in ('pendiente', 'aprobada', 'rechazada')),
+  motivo        text,                                  -- por qué se rechazó (lo ve quien la propuso)
+  creada        timestamptz not null default now()
+);
+alter table public.propuestas enable row level security;
+
+-- Cada usuario crea propuestas a su nombre (siempre "pendiente") y ve solo las suyas
+drop policy if exists "proponer" on public.propuestas;
+create policy "proponer" on public.propuestas
+  for insert to authenticated
+  with check ((select auth.uid()) = user_id and estado = 'pendiente' and motivo is null);
+
+drop policy if exists "ver mis propuestas" on public.propuestas;
+create policy "ver mis propuestas" on public.propuestas
+  for select to authenticated
+  using ((select auth.uid()) = user_id);
+
+revoke all on public.propuestas from anon;
+grant select, insert on public.propuestas to authenticated;
+grant usage on sequence public.propuestas_id_seq to authenticated;
+
+-- Las aprobadas, sin datos de quién las propuso: las lee la actualización diaria
+create or replace view public.propuestas_aprobadas as
+  select id, nombre, fecha, hora, municipio, provincia, tipo, distancias_km, url_oficial,
+         precio_desde, descripcion, organizador
+  from public.propuestas
+  where estado = 'aprobada' and fecha >= current_date - 14;
+grant select on public.propuestas_aprobadas to anon, authenticated;
+
+-- Ubicación de la propuesta (se busca al enviarla) para poder mostrarla en el mapa en
+-- cuanto se aprueba, sin esperar a la actualización diaria
+alter table public.propuestas add column if not exists lat numeric check (lat between 27 and 44.5);
+alter table public.propuestas add column if not exists lng numeric check (lng between -18.5 and 4.6);
+
+create or replace view public.propuestas_aprobadas as
+  select id, nombre, fecha, hora, municipio, provincia, tipo, distancias_km, url_oficial,
+         precio_desde, descripcion, organizador, lat, lng
+  from public.propuestas
+  where estado = 'aprobada' and fecha >= current_date - 14;
+grant select on public.propuestas_aprobadas to anon, authenticated;
+
+-- Aviso "Security Definer View": la vista usa los permisos de quien consulta. Los visitantes
+-- pueden leer solo las propuestas aprobadas y solo estas columnas (nunca quién la propuso)
+create or replace view public.propuestas_aprobadas with (security_invoker = true) as
+  select id, nombre, fecha, hora, municipio, provincia, tipo, distancias_km, url_oficial,
+         precio_desde, descripcion, organizador, lat, lng
+  from public.propuestas
+  where estado = 'aprobada' and fecha >= current_date - 14;
+
+grant select (id, nombre, fecha, hora, municipio, provincia, tipo, distancias_km, url_oficial,
+              precio_desde, descripcion, organizador, lat, lng, estado)
+  on public.propuestas to anon;
+
+drop policy if exists "leer aprobadas" on public.propuestas;
+create policy "leer aprobadas" on public.propuestas
+  for select to anon
+  using (estado = 'aprobada');
+
+grant select on public.propuestas_aprobadas to anon, authenticated;
+
+-- Aviso "RLS Enabled No Policy": tablas internas de la función de avisos. Regla explícita de
+-- "nadie" para visitantes y usuarios (la función entra como administrador y no le afecta)
+drop policy if exists "solo el servidor" on public.avisos_enviados;
+create policy "solo el servidor" on public.avisos_enviados
+  for all to anon, authenticated
+  using (false) with check (false);
+
+drop policy if exists "solo el servidor" on public.carreras_vistas;
+create policy "solo el servidor" on public.carreras_vistas
+  for all to anon, authenticated
+  using (false) with check (false);
+
+-- Aviso "Public Can Execute SECURITY DEFINER Function": función creada por la opción
+-- "Enable automatic RLS"; nadie necesita llamarla desde fuera
+revoke execute on function public.rls_auto_enable() from public, anon, authenticated;

@@ -252,6 +252,8 @@ function obtenerVista(id) {
       };
     case "cerca":
       return { titulo: "📍 Cerca de ti", orden: (a, b) => (a.distancia_usuario_km ?? 1e9) - (b.distancia_usuario_km ?? 1e9) };
+    case "com":
+      return { titulo: `🗺️ ${valor}`, filtro: c => comunidadDe(c) === valor, orden: porFecha, ignorarRadio: true };
     case "prov":
       return { titulo: `🗺️ Provincia de ${valor}`, filtro: c => c.provincia === valor, orden: porFecha, ignorarRadio: true };
     case "dist": {
@@ -364,6 +366,7 @@ function alAplicarVista(resultados) {
   renderizarPanelMarcas();
   renderizarPanelPerfil();
   construirMenuCircuitos();
+  construirMenuZonas();
   actualizarContadoresMenu();
 
   // Encuadrar el mapa en las carreras de la sección recién elegida
@@ -384,6 +387,64 @@ function abrirGrupo(boton, abrir) {
   const estado = abrir ?? boton.getAttribute("aria-expanded") !== "true";
   boton.setAttribute("aria-expanded", String(estado));
   if (sub) sub.classList.toggle("abierto", estado);
+}
+
+// Comunidad de cada provincia (las carreras nuevas ya traen "comunidad"; esto cubre las demás)
+const COMUNIDAD_DE_PROVINCIA = {
+  "Almería": "Andalucía", "Cádiz": "Andalucía", "Córdoba": "Andalucía", "Granada": "Andalucía",
+  "Huelva": "Andalucía", "Jaén": "Andalucía", "Málaga": "Andalucía", "Sevilla": "Andalucía",
+  "Huesca": "Aragón", "Teruel": "Aragón", "Zaragoza": "Aragón", "Asturias": "Asturias", "Baleares": "Baleares",
+  "Las Palmas": "Canarias", "Santa Cruz de Tenerife": "Canarias", "Cantabria": "Cantabria",
+  "Albacete": "Castilla-La Mancha", "Ciudad Real": "Castilla-La Mancha", "Cuenca": "Castilla-La Mancha",
+  "Guadalajara": "Castilla-La Mancha", "Toledo": "Castilla-La Mancha",
+  "Ávila": "Castilla y León", "Burgos": "Castilla y León", "León": "Castilla y León", "Palencia": "Castilla y León",
+  "Salamanca": "Castilla y León", "Segovia": "Castilla y León", "Soria": "Castilla y León",
+  "Valladolid": "Castilla y León", "Zamora": "Castilla y León",
+  "Barcelona": "Cataluña", "Girona": "Cataluña", "Lleida": "Cataluña", "Tarragona": "Cataluña",
+  "Alicante": "Comunidad Valenciana", "Castellón": "Comunidad Valenciana", "Valencia": "Comunidad Valenciana",
+  "Badajoz": "Extremadura", "Cáceres": "Extremadura",
+  "A Coruña": "Galicia", "Lugo": "Galicia", "Ourense": "Galicia", "Pontevedra": "Galicia",
+  "Madrid": "Comunidad de Madrid", "Murcia": "Región de Murcia", "Navarra": "Navarra",
+  "Álava": "País Vasco", "Bizkaia": "País Vasco", "Gipuzkoa": "País Vasco", "La Rioja": "La Rioja",
+  "Ceuta": "Ceuta", "Melilla": "Melilla"
+};
+
+function comunidadDe(c) {
+  return c.comunidad || COMUNIDAD_DE_PROVINCIA[c.provincia] || null;
+}
+
+/** Menú "Por zona": comunidades con carreras próximas y, debajo, sus provincias */
+let zonasMostradas = "";
+function construirMenuZonas() {
+  const cont = document.getElementById("menu-zonas");
+  if (!cont) return;
+  const hoy = hoyISO();
+  const conteo = new Map(); // comunidad -> Map(provincia -> n)
+  AppState.races.forEach(c => {
+    const comunidad = comunidadDe(c);
+    if (!comunidad || !c.fecha || c.fecha < hoy) return;
+    if (!conteo.has(comunidad)) conteo.set(comunidad, new Map());
+    const provincias = conteo.get(comunidad);
+    provincias.set(c.provincia, (provincias.get(c.provincia) || 0) + 1);
+  });
+  const comunidades = [...conteo.keys()].sort((a, b) => a.localeCompare(b, "es"));
+  const clave = comunidades.map(c => c + [...conteo.get(c)].join()).join("|");
+  if (clave === zonasMostradas) return;
+  zonasMostradas = clave;
+
+  cont.innerHTML = comunidades.length ? comunidades.map(comunidad => {
+    const provincias = [...conteo.get(comunidad)].sort((a, b) => a[0].localeCompare(b[0], "es"));
+    const total = provincias.reduce((s, [, n]) => s + n, 0);
+    // En comunidades de una sola provincia no hace falta repetirla
+    const lista = provincias.length > 1 ? provincias.map(([p, n]) =>
+      `<button class="menu-item menu-provincia" data-vista="prov:${escapeHtml(p)}">${escapeHtml(p)}<span class="menu-num">${n}</span></button>`).join("") : "";
+    return `<button class="menu-item menu-comunidad" data-vista="com:${escapeHtml(comunidad)}">${escapeHtml(comunidad)}<span class="menu-num">${total}</span></button>${lista}`;
+  }).join("") : `<p class="menu-vacio">Sin carreras próximas</p>`;
+
+  cont.querySelectorAll(".menu-item").forEach(b => {
+    b.classList.toggle("activo", b.dataset.vista === AppState.vista);
+    b.addEventListener("click", () => aplicarVista(b.dataset.vista));
+  });
 }
 
 let circuitosMostrados = "";
@@ -498,7 +559,7 @@ function escaparICS(texto) {
 
 function generarICS(carreras) {
   const ahora = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  const lineas = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//RunNear//Carreras CLM//ES", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
+  const lineas = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//RunNear//Carreras//ES", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
   carreras.forEach(c => {
     const dia = c.fecha.replace(/-/g, "");
     // Con hora de salida: evento a esa hora (hora local, 2 h de duración orientativa).
@@ -1016,13 +1077,17 @@ function cerrarInfo() {
 function mostrarAcercaDe() {
   abrirInfo("Acerca de RunNear", `
     <div class="info-texto">
-      <p><strong>RunNear</strong> reúne las carreras populares y de trail de Castilla-La Mancha en un mapa, para que encuentres las que tienes cerca.</p>
+      <p><strong>RunNear</strong> reúne las carreras populares y de trail de toda España en un mapa, para que encuentres las que tienes cerca.</p>
       <h3>¿De dónde salen los datos?</h3>
       <ul>
         <li>El calendario se actualiza cada día uniendo varias fuentes y quitando las carreras repetidas:
-          Carreras CLM, Deportes Dipualba, Circuito de Carreras de Ciudad Real, el calendario de montaña de la FDMCM
-          (vía Carreras de Montaña por Mayayo), carreraspopulares.com, Runnea y Running.life.</li>
-        <li>Precios, desniveles e inscritos se leen de la web de inscripción de cada carrera. Algunos desniveles de trail salen de las noticias de la FDMCM.</li>
+          <ul>
+            <li><strong>Toda España:</strong> Running.life, carreraspopulares.com y Runnea.</li>
+            <li><strong>Castilla-La Mancha:</strong> Carreras CLM, Deportes Dipualba (Diputación de Albacete), Circuito de Carreras
+              de Ciudad Real y el calendario de montaña de la FDMCM (vía Carreras de Montaña por Mayayo).</li>
+          </ul></li>
+        <li>Precios, horarios, desniveles e inscritos se leen de la web de inscripción de cada carrera. Algunos desniveles de trail salen de las noticias de la FDMCM.</li>
+        <li>Cada ficha indica de qué web sale la carrera y enlaza a su web oficial.</li>
         <li>El tiempo previsto (cuando faltan 15 días o menos) es de Open-Meteo.com: solo se le envía la ubicación de la carrera, nunca la tuya.</li>
         <li>Confirma siempre fecha y detalles en la web oficial antes de inscribirte.</li>
       </ul>
@@ -1072,11 +1137,7 @@ function mostrarAjustes() {
   document.getElementById("ajuste-radio").addEventListener("change", e => {
     const r = Number(e.target.value);
     ALMACEN.guardar("radio", r);
-    AppState.filters.radiusKm = r;
-    const slider = document.getElementById("filter-radius-slider");
-    if (slider) slider.value = r;
-    const etiqueta = document.getElementById("radius-display-value");
-    if (etiqueta) etiqueta.textContent = `${r} km`;
+    ponerRadio(r);
     aplicarFiltrosYRenderizar();
     mostrarToast(`Radio por defecto: ${r} km`);
   });
@@ -1126,6 +1187,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const acciones = {
     "ics-favoritas": exportarFavoritasICS,
     cuenta: () => abrirCuenta(),
+    proponer: () => abrirPropuesta(),
     instalar: lanzarInstalacion,
     acerca: mostrarAcercaDe,
     ajustes: mostrarAjustes
