@@ -316,3 +316,89 @@ create policy "solo el servidor" on public.carreras_vistas
 -- Aviso "Public Can Execute SECURITY DEFINER Function": función creada por la opción
 -- "Enable automatic RLS"; nadie necesita llamarla desde fuera
 revoke execute on function public.rls_auto_enable() from public, anon, authenticated;
+
+-- ==========================================================================
+-- Límites contra el abuso (spam y llenar la base de datos)
+-- Añadido el 12/10/2026: se puede ejecutar de nuevo sin problema (Supabase → SQL Editor → Run).
+-- ==========================================================================
+
+-- Cuántas filas puede crear cada usuario. Argumentos del disparador:
+--   1) columna con el id del usuario   2) máximo   3) periodo ('24 hours') o 'total'
+-- Va como SECURITY DEFINER para poder contar filas que el propio usuario no puede leer
+-- (por ejemplo, sus denuncias); nadie puede llamarla directamente.
+create or replace function public.limitar_por_usuario()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  columna text := tg_argv[0];
+  maximo  integer := tg_argv[1]::integer;
+  periodo text := tg_argv[2];
+  usuario uuid;
+  n       integer;
+begin
+  execute format('select ($1).%I', columna) using new into usuario;
+  if usuario is null then
+    return new;
+  end if;
+  if periodo = 'total' then
+    execute format('select count(*) from %I.%I where %I = $1', tg_table_schema, tg_table_name, columna)
+      using usuario into n;
+  else
+    execute format('select count(*) from %I.%I where %I = $1 and creada > now() - $2::interval',
+                   tg_table_schema, tg_table_name, columna)
+      using usuario, periodo into n;
+  end if;
+  if n >= maximo then
+    raise exception 'Has alcanzado el límite de % (%). Inténtalo más tarde.',
+      maximo, case when periodo = 'total' then 'en total' else 'cada ' || periodo end
+      using errcode = 'P0001';
+  end if;
+  return new;
+end;
+$$;
+revoke execute on function public.limitar_por_usuario() from public, anon, authenticated;
+
+-- Propuestas de carreras: 5 al día
+drop trigger if exists limite_propuestas on public.propuestas;
+create trigger limite_propuestas before insert on public.propuestas
+  for each row execute function public.limitar_por_usuario('user_id', '5', '24 hours');
+
+-- Opiniones: 20 al día (además, solo una por carrera y solo de carreras corridas)
+drop trigger if exists limite_valoraciones on public.valoraciones;
+create trigger limite_valoraciones before insert on public.valoraciones
+  for each row execute function public.limitar_por_usuario('user_id', '20', '24 hours');
+
+-- Denuncias de opiniones: 20 al día
+drop trigger if exists limite_denuncias on public.denuncias;
+create trigger limite_denuncias before insert on public.denuncias
+  for each row execute function public.limitar_por_usuario('denunciante', '20', '24 hours');
+
+-- Favoritas y carreras corridas: 2.000 de cada como máximo por cuenta (nadie normal llega)
+drop trigger if exists limite_favoritas on public.favoritas;
+create trigger limite_favoritas before insert on public.favoritas
+  for each row execute function public.limitar_por_usuario('user_id', '2000', 'total');
+
+drop trigger if exists limite_corridas on public.corridas;
+create trigger limite_corridas before insert on public.corridas
+  for each row execute function public.limitar_por_usuario('user_id', '2000', 'total');
+
+-- Avisos al móvil: 10 dispositivos por cuenta
+drop trigger if exists limite_suscripciones on public.suscripciones_push;
+create trigger limite_suscripciones before insert on public.suscripciones_push
+  for each row execute function public.limitar_por_usuario('user_id', '10', 'total');
+
+-- Tamaño máximo de los textos y datos que aún no lo tenían
+alter table public.denuncias drop constraint if exists denuncias_tamano;
+alter table public.denuncias add constraint denuncias_tamano
+  check (char_length(carrera_id) <= 100 and char_length(coalesce(comentario, '')) <= 600);
+
+alter table public.corridas drop constraint if exists corridas_marca_tamano;
+alter table public.corridas add constraint corridas_marca_tamano
+  check (marca is null or pg_column_size(marca) < 1000);
+
+alter table public.ajustes drop constraint if exists ajustes_tamano;
+alter table public.ajustes add constraint ajustes_tamano
+  check (pg_column_size(ciudad) < 1000 and pg_column_size(avisos) < 2000);
