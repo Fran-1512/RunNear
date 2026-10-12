@@ -148,23 +148,7 @@ const MapaDetalle = (() => {
     };
   }
 
-  // Formato antiguo (solo Castilla-La Mancha, JSON sin comprimir): se mantiene mientras
-  // no se publique el mapa nuevo
-  function datosParaV1(capa, coords) {
-    const niveles = capa === "l" ? meta.niveles_l : meta.niveles_p;
-    let nivel = null;
-    for (const nv of niveles) if (nv[0] <= coords.z) nivel = nv;
-    if (!nivel) return Promise.resolve(null);
-    const [n, , ext] = nivel;
-    const k = coords.z - n;
-    const dx = coords.x >> k, dy = coords.y >> k;
-    const rango = meta.rangos[capa + n];
-    if (!rango || dx < rango[0] || dy < rango[1] || dx > rango[2] || dy > rango[3]) return Promise.resolve(null);
-    return cargar(`${BASE}${capa}/${n}/${dx}/${dy}.json`).then(d => resultado(d, n, ext, coords));
-  }
-
   function datosPara(capa, coords) {
-    if (meta.version !== 2) return datosParaV1(capa, coords);
     // Zona con detalle (calles, caminos...): paquetes de 4 x 4 teselas de nivel 14
     if (hayDetalle(coords)) {
       const { nivel: n, ext, paquete } = meta.detalle;
@@ -601,15 +585,8 @@ const MapaDetalle = (() => {
     if (meta.formato === "gzip-json" && typeof DecompressionStream === "undefined") {
       throw new Error("Este navegador no puede descomprimir el mapa detallado");
     }
-    let n, limites;
-    if (meta.version === 2) {
-      n = meta.niveles[0][0];
-      limites = limitesTeselas(meta.existe["l" + n], n);
-    } else {
-      n = meta.niveles_l[0][0];
-      const r = meta.rangos["l" + n];
-      limites = limitesTeselas({ x0: r[0], y0: r[1], ancho: r[2] - r[0] + 1, alto: r[3] - r[1] + 1 }, n);
-    }
+    const n = meta.niveles[0][0];
+    const limites = limitesTeselas(meta.existe["l" + n], n);
     return new CapaDetalle({
       pane,
       minZoom: n,
@@ -622,10 +599,5 @@ const MapaDetalle = (() => {
     });
   }
 
-  /** ¿El mapa detallado cubre toda España? (formato nuevo) o solo Castilla-La Mancha (antiguo) */
-  function esNacional() {
-    return !!meta && meta.version === 2;
-  }
-
-  return { crear, esNacional };
+  return { crear };
 })();

@@ -389,26 +389,7 @@ function abrirGrupo(boton, abrir) {
   if (sub) sub.classList.toggle("abierto", estado);
 }
 
-// Comunidad de cada provincia (las carreras nuevas ya traen "comunidad"; esto cubre las demás)
-const COMUNIDAD_DE_PROVINCIA = {
-  "Almería": "Andalucía", "Cádiz": "Andalucía", "Córdoba": "Andalucía", "Granada": "Andalucía",
-  "Huelva": "Andalucía", "Jaén": "Andalucía", "Málaga": "Andalucía", "Sevilla": "Andalucía",
-  "Huesca": "Aragón", "Teruel": "Aragón", "Zaragoza": "Aragón", "Asturias": "Asturias", "Baleares": "Baleares",
-  "Las Palmas": "Canarias", "Santa Cruz de Tenerife": "Canarias", "Cantabria": "Cantabria",
-  "Albacete": "Castilla-La Mancha", "Ciudad Real": "Castilla-La Mancha", "Cuenca": "Castilla-La Mancha",
-  "Guadalajara": "Castilla-La Mancha", "Toledo": "Castilla-La Mancha",
-  "Ávila": "Castilla y León", "Burgos": "Castilla y León", "León": "Castilla y León", "Palencia": "Castilla y León",
-  "Salamanca": "Castilla y León", "Segovia": "Castilla y León", "Soria": "Castilla y León",
-  "Valladolid": "Castilla y León", "Zamora": "Castilla y León",
-  "Barcelona": "Cataluña", "Girona": "Cataluña", "Lleida": "Cataluña", "Tarragona": "Cataluña",
-  "Alicante": "Comunidad Valenciana", "Castellón": "Comunidad Valenciana", "Valencia": "Comunidad Valenciana",
-  "Badajoz": "Extremadura", "Cáceres": "Extremadura",
-  "A Coruña": "Galicia", "Lugo": "Galicia", "Ourense": "Galicia", "Pontevedra": "Galicia",
-  "Madrid": "Comunidad de Madrid", "Murcia": "Región de Murcia", "Navarra": "Navarra",
-  "Álava": "País Vasco", "Bizkaia": "País Vasco", "Gipuzkoa": "País Vasco", "La Rioja": "La Rioja",
-  "Ceuta": "Ceuta", "Melilla": "Melilla"
-};
-
+// Las carreras ya traen "comunidad"; COMUNIDAD_DE_PROVINCIA (provincias.js) cubre las que no
 function comunidadDe(c) {
   return c.comunidad || COMUNIDAD_DE_PROVINCIA[c.provincia] || null;
 }

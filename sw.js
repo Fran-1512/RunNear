@@ -142,8 +142,8 @@ self.addEventListener("fetch", evento => {
   if (peticion.method !== "GET") return;
 
   const url = new URL(peticion.url);
-  // Webs externas (inscripciones, etc.) y la API del servidor local: sin intervenir
-  if (url.origin !== self.location.origin || url.pathname.includes("/api/")) return;
+  // Webs externas (inscripciones, cuentas, tiempo...): sin intervenir
+  if (url.origin !== self.location.origin) return;
 
   if (url.pathname.includes("/mapa/teselas/") && !url.pathname.endsWith("meta.json")) {
     evento.respondWith(primeroCacheTesela(peticion));

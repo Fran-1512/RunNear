@@ -241,8 +241,7 @@ function inicializarMapa() {
 }
 
 async function cargarMapaBase() {
-  // Capa detallada (calles, pueblos, caminos) a partir de ZOOM_DETALLE. Se carga primero
-  // para saber si cubre toda España o solo Castilla-La Mancha (mapa antiguo)
+  // Capa detallada (calles, pueblos, caminos) a partir de ZOOM_DETALLE
   let capaDetalle = null;
   try {
     if (!AppState.map.getPane("mapaDetalle")) AppState.map.createPane("mapaDetalle").style.zIndex = 260;
@@ -252,7 +251,7 @@ async function cargarMapaBase() {
   }
 
   try {
-    (await crearMapaPropio(!!capaDetalle && MapaDetalle.esNacional())).addTo(AppState.map);
+    (await crearMapaPropio(!!capaDetalle)).addTo(AppState.map);
   } catch (err) {
     console.error("No se pudo cargar el mapa base:", err);
     mostrarToast("No se pudo cargar el mapa base");
@@ -260,37 +259,19 @@ async function cargarMapaBase() {
   if (capaDetalle) capaDetalle.addTo(AppState.map);
 }
 
-// Zoom desde el que se usa el mapa detallado de OpenStreetMap en Castilla-La Mancha
+// Zoom desde el que el mapa detallado (OpenStreetMap) sustituye a carreteras y pueblos del mapa base
 const ZOOM_DETALLE = 8;
-
-/**
- * Punto [lng, lat] dentro de alguna geometría GeoJSON (Polygon / MultiPolygon), por ray casting
- */
-function puntoEnGeometria(lng, lat, geom) {
-  const poligonos = geom.type === "Polygon" ? [geom.coordinates] : geom.coordinates;
-  let dentro = false;
-  for (const anillos of poligonos) {
-    for (const anillo of anillos) {
-      for (let i = 0, j = anillo.length - 1; i < anillo.length; j = i++) {
-        const [xi, yi] = anillo[i], [xj, yj] = anillo[j];
-        if ((yi > lat) !== (yj > lat) && lng < (xj - xi) * (lat - yi) / (yj - yi) + xi) dentro = !dentro;
-      }
-    }
-  }
-  return dentro;
-}
 
 // ==========================================================================
 // Mapa base propio (vectorial, generado con mapa/generar_mapa.py)
 // ==========================================================================
 
 const ESTILO_MAPA = {
-  pais:          { color: "#c9c4b8", weight: 0.8, fillColor: "#ebe7df", fillOpacity: 1 },
-  provincia:     { color: "#c2bcae", weight: 0.7, fillColor: "#f4f1ea", fillOpacity: 1, dashArray: "3 3" },
-  provinciaCLM:  { color: "#8c7a5b", weight: 1.4, fillColor: "#fbf6e6", fillOpacity: 1 },
-  rio:           { color: "#7fb3d5", weight: 1.3 },
-  autovia:       { color: "#e39b54", weight: 2 },
-  carretera:     { color: "#d6c7a1", weight: 1 }
+  pais:      { color: "#c9c4b8", weight: 0.8, fillColor: "#ebe7df", fillOpacity: 1 },
+  provincia: { color: "#8c7a5b", weight: 1.4, fillColor: "#fbf6e6", fillOpacity: 1 },
+  rio:       { color: "#7fb3d5", weight: 1.3 },
+  autovia:   { color: "#e39b54", weight: 2 },
+  carretera: { color: "#d6c7a1", weight: 1 }
 };
 
 /**
@@ -303,10 +284,11 @@ function zoomMinimoEtiqueta(p) {
 }
 
 /**
- * nacional: el mapa detallado cubre toda España, así que todas las provincias se tratan
- * igual. Si no (mapa antiguo), solo se resaltan las de Castilla-La Mancha ("destacada").
+ * Países, provincias, ríos, carreteras y poblaciones (Natural Earth).
+ * conDetalle: si el mapa detallado se ha cargado, a partir de ZOOM_DETALLE es él quien dibuja
+ * carreteras y pueblos; si no, el mapa base los sigue mostrando con cualquier zoom.
  */
-async function crearMapaPropio(nacional = false) {
+async function crearMapaPropio(conDetalle) {
   const resp = await fetch("mapa/mapa_base.json");
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   const { capas } = await resp.json();
@@ -325,17 +307,7 @@ async function crearMapaPropio(nacional = false) {
   const grupo = L.layerGroup([], { attribution: "Natural Earth" });
 
   L.geoJSON(capas.paises, { ...opcionesBase, style: ESTILO_MAPA.pais }).addTo(grupo);
-  L.geoJSON(capas.provincias, {
-    ...opcionesBase,
-    // Primero las demás provincias y encima las de la región, para que su borde se vea entero
-    filter: f => !(nacional || f.properties.destacada),
-    style: ESTILO_MAPA.provincia
-  }).addTo(grupo);
-  const provinciasCLM = L.geoJSON(capas.provincias, {
-    ...opcionesBase,
-    filter: f => nacional || f.properties.destacada,
-    style: ESTILO_MAPA.provinciaCLM
-  }).addTo(grupo);
+  const provincias = L.geoJSON(capas.provincias, { ...opcionesBase, style: ESTILO_MAPA.provincia }).addTo(grupo);
   // Ríos y carreteras simplificados: solo a poco zoom (con más zoom los dibuja el mapa detallado)
   const lineasSimples = L.layerGroup([
     L.geoJSON(capas.rios, { ...opcionesBase, style: ESTILO_MAPA.rio }),
@@ -345,9 +317,9 @@ async function crearMapaPropio(nacional = false) {
     })
   ]).addTo(grupo);
 
-  // Nombres de provincia de la región, en el centro de cada una (solo a poco zoom)
+  // Nombre de cada provincia en su centro (a zoom intermedio)
   const nombresProvincia = L.layerGroup().addTo(grupo);
-  provinciasCLM.eachLayer(capa => {
+  provincias.eachLayer(capa => {
     L.marker(capa.getBounds().getCenter(), {
       pane: "mapaEtiquetas",
       interactive: false,
@@ -359,13 +331,10 @@ async function crearMapaPropio(nacional = false) {
     }).addTo(nombresProvincia);
   });
 
-  // Poblaciones: se muestran u ocultan según el zoom. Las de Castilla-La Mancha las
-  // sustituye el mapa detallado a partir de ZOOM_DETALLE.
-  const geometriasCLM = capas.provincias.features.filter(f => nacional || f.properties.destacada).map(f => f.geometry);
+  // Poblaciones: se muestran u ocultan según el zoom
   const etiquetas = L.layerGroup().addTo(grupo);
   const poblaciones = capas.poblaciones.features.map(f => ({
     zoomMin: zoomMinimoEtiqueta(f.properties),
-    enCLM: nacional || geometriasCLM.some(g => puntoEnGeometria(f.geometry.coordinates[0], f.geometry.coordinates[1], g)),
     marker: L.marker([f.geometry.coordinates[1], f.geometry.coordinates[0]], {
       pane: "mapaEtiquetas",
       interactive: false,
@@ -379,12 +348,12 @@ async function crearMapaPropio(nacional = false) {
   }));
   const actualizarEtiquetas = () => {
     const z = AppState.map.getZoom();
-    const detalle = z >= ZOOM_DETALLE;
-    poblaciones.forEach(({ zoomMin, enCLM, marker }) => {
-      if (z >= zoomMin && !(enCLM && detalle)) etiquetas.addLayer(marker);
+    const detalle = conDetalle && z >= ZOOM_DETALLE;
+    poblaciones.forEach(({ zoomMin, marker }) => {
+      if (z >= zoomMin && !detalle) etiquetas.addLayer(marker);
       else etiquetas.removeLayer(marker);
     });
-    for (const [capa, visible] of [[lineasSimples, !detalle], [nombresProvincia, nacional ? z >= 7 && z < 10 : z < 10]]) {
+    for (const [capa, visible] of [[lineasSimples, !detalle], [nombresProvincia, z >= 7 && z < 10]]) {
       if (visible) grupo.addLayer(capa);
       else grupo.removeLayer(capa);
     }
@@ -740,27 +709,18 @@ async function solicitarGeolocalizacionNavegador(manual = false) {
 }
 
 // ==========================================================================
-// Carga de Datos desde Backend o Local
+// Carga de las carreras (carreras.json, que actualiza GitHub cada día)
 // ==========================================================================
 
-async function cargarCarrerasDesdeServidor() {
-  const listContainer = document.getElementById("races-list-container");
-  
+async function cargarCarreras() {
   try {
-    const response = await fetch("/api/carreras");
-    if (!response.ok) throw new Error("Error en servidor API");
-    const data = await response.json();
-    AppState.races = data.carreras || [];
+    const respuesta = await fetch("carreras.json");
+    if (!respuesta.ok) throw new Error(`carreras.json: ${respuesta.status}`);
+    AppState.races = await respuesta.json();
   } catch (err) {
-    // Web estática (GitHub Pages): sin servidor, se lee el archivo publicado
-    try {
-      const localResp = await fetch("carreras.json");
-      AppState.races = await localResp.json();
-    } catch (localErr) {
-      console.error("No se pudieron cargar los datos de carreras:", localErr);
-      mostrarToast("Error al cargar datos de eventos");
-      AppState.races = [];
-    }
+    console.error("No se pudieron cargar las carreras:", err);
+    mostrarToast("Error al cargar las carreras");
+    AppState.races = [];
   }
 
   // Actualizar contador total en el header
@@ -1790,5 +1750,5 @@ document.addEventListener("DOMContentLoaded", () => {
   configurarEventListeners();
   usarUbicacionPorDefecto();
   solicitarGeolocalizacionNavegador();
-  cargarCarrerasDesdeServidor();
+  cargarCarreras();
 });

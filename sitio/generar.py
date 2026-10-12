@@ -529,7 +529,10 @@ def generar():
     sitemap += generar_paginas_fijas(len(futuras))
     sitemap.insert(1, (SITIO_URL + "mapa.html", hoy))
 
-    # 7) Para los buscadores
+    # 7) Lista de provincias para la web (una sola fuente: scraper/comun.py)
+    escribir_provincias_js()
+
+    # 8) Para los buscadores
     with open(os.path.join(RAIZ, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
         for url, fecha in sitemap:
@@ -813,6 +816,20 @@ def generar_guias(futuras, rutas):
                               "guias/", 1, cuerpo, [("RunNear", ""), ("Guías", None)]))
     entradas.append((SITIO_URL + "guias/", max(g["actualizada"] for g in GUIAS)))
     return entradas
+
+
+def escribir_provincias_js():
+    """provincias.js: provincia -> comunidad para el mapa (menú "Por zona" y "Añadir una carrera").
+    Se genera desde scraper.comun.PROVINCIAS para que no haya dos listas que mantener."""
+    pares = ",\n".join(f"  {json.dumps(p, ensure_ascii=False)}: {json.dumps(c, ensure_ascii=False)}"
+                       for p, c in sorted(COMUNIDAD_DE.items(), key=lambda x: (x[1], x[0])))
+    contenido = ("// Generado por sitio/generar.py a partir de scraper/comun.py: no editar a mano.\n"
+                 f"const COMUNIDAD_DE_PROVINCIA = {{\n{pares}\n}};\n")
+    ruta = os.path.join(RAIZ, "provincias.js")
+    actual = open(ruta, encoding="utf-8").read() if os.path.exists(ruta) else ""
+    if actual != contenido:
+        with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(contenido)
 
 
 def escribir(ruta, contenido):
