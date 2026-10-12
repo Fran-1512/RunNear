@@ -1,0 +1,94 @@
+<p>Introduce una distancia y un tiempo para saber a qué ritmo tienes que correr, o un ritmo para
+saber en cuánto terminarás. La calculadora también te da los parciales de cada kilómetro y una
+estimación de tu marca en otras distancias.</p>
+
+<form class="calculadora" id="calculadora" autocomplete="off" onsubmit="return false">
+  <div class="campo">
+    <label for="calc-distancia">Distancia</label>
+    <select id="calc-distancia">
+      <option value="5">5 km</option>
+      <option value="10" selected>10 km</option>
+      <option value="21.0975">Media maratón (21,1 km)</option>
+      <option value="42.195">Maratón (42,2 km)</option>
+      <option value="otra">Otra distancia…</option>
+    </select>
+    <input id="calc-otra" type="number" min="0.1" max="500" step="0.1" inputmode="decimal" placeholder="km" hidden aria-label="Otra distancia en km">
+  </div>
+  <fieldset class="campo">
+    <legend>Calcular</legend>
+    <label><input type="radio" name="calc-modo" value="ritmo" checked> el ritmo, a partir de un tiempo</label>
+    <label><input type="radio" name="calc-modo" value="tiempo"> el tiempo, a partir de un ritmo</label>
+  </fieldset>
+  <div class="campo" id="calc-con-tiempo">
+    <label>Tiempo objetivo <small>(horas, minutos, segundos)</small></label>
+    <div class="hms">
+      <input id="calc-h" type="number" min="0" max="99" inputmode="numeric" value="0" aria-label="Horas"><span>h</span>
+      <input id="calc-m" type="number" min="0" max="59" inputmode="numeric" value="55" aria-label="Minutos"><span>min</span>
+      <input id="calc-s" type="number" min="0" max="59" inputmode="numeric" value="0" aria-label="Segundos"><span>s</span>
+    </div>
+  </div>
+  <div class="campo" id="calc-con-ritmo" hidden>
+    <label>Ritmo <small>(minutos y segundos por km)</small></label>
+    <div class="hms">
+      <input id="calc-rm" type="number" min="1" max="30" inputmode="numeric" value="5" aria-label="Minutos por km"><span>min</span>
+      <input id="calc-rs" type="number" min="0" max="59" inputmode="numeric" value="30" aria-label="Segundos por km"><span>s /km</span>
+    </div>
+  </div>
+  <div class="resultado" id="calc-resultado" aria-live="polite"></div>
+  <details class="parciales">
+    <summary>Ver parciales por kilómetro</summary>
+    <div id="calc-parciales"></div>
+  </details>
+</form>
+<noscript><p class="aviso">La calculadora necesita JavaScript. Mientras tanto, puedes usar la tabla de ritmos de más abajo.</p></noscript>
+
+<h2>Cómo se calcula el ritmo</h2>
+<p>El <b>ritmo</b> es el tiempo que tardas en recorrer un kilómetro y se expresa en minutos por
+kilómetro (min/km). Se obtiene dividiendo el tiempo total entre la distancia:</p>
+<p class="formula">ritmo = tiempo ÷ kilómetros</p>
+<p>Por ejemplo, si terminas un 10K en 55 minutos, tu ritmo medio ha sido 55 ÷ 10 = 5,5 minutos por
+kilómetro. Como medio minuto son 30 segundos, eso se escribe <b>5:30 min/km</b>.</p>
+<p>La <b>velocidad</b> es lo mismo visto al revés: kilómetros por hora. Para pasar de una a otra,
+divide 60 entre el dato que tengas. A 5:00 min/km vas a 60 ÷ 5 = 12 km/h, y a 10 km/h vas a
+60 ÷ 10 = 6:00 min/km. Las cintas de correr del gimnasio suelen marcar km/h; los relojes y las
+aplicaciones de running, min/km.</p>
+
+<h2>Tabla de ritmos: tiempo final en 5K, 10K, media maratón y maratón</h2>
+<p>Busca tu ritmo en la primera columna y verás en cuánto terminarías cada distancia
+manteniéndolo de principio a fin.</p>
+{{TABLA_RITMOS}}
+
+<h2>Para qué sirven los parciales</h2>
+<p>Los <b>parciales</b> son el tiempo que deberías llevar al pasar por cada kilómetro. Llevarlos
+apuntados (o mirarlos en el reloj) ayuda a no cometer el error más común en una carrera: salir
+demasiado rápido. Con la emoción de la salida es fácil hacer los primeros kilómetros muy por
+encima de tu ritmo y pagarlo al final.</p>
+<p>Una estrategia sencilla y eficaz es intentar un <b>ritmo uniforme</b>, o incluso hacer la
+segunda mitad un poco más rápida que la primera. En recorridos con cuestas, piensa en el
+esfuerzo más que en el reloj: es normal perder segundos al subir y recuperarlos al bajar.</p>
+
+<h2>Cómo se estima tu marca en otras distancias</h2>
+<p>La calculadora usa la <b>fórmula de Riegel</b>, propuesta por el ingeniero Peter Riegel en
+los años 70 y muy utilizada para predecir marcas:</p>
+<p class="formula">tiempo 2 = tiempo 1 × (distancia 2 ÷ distancia 1)<sup>1,06</sup></p>
+<p>Funciona razonablemente bien entre distancias parecidas (de 5K a 10K, o de 10K a media
+maratón) y siempre que hayas entrenado la distancia nueva. Para el maratón suele ser optimista
+si no has hecho tiradas largas, así que tómala como un punto de partida, no como un objetivo
+cerrado.</p>
+
+<h2>Consejos para elegir un ritmo objetivo realista</h2>
+<ul>
+  <li><b>Parte de una marca reciente</b>, de una carrera o de un entrenamiento a tope de los
+  últimos dos o tres meses, mejor que de una de hace años.</li>
+  <li><b>Si es tu primera carrera</b>, no te pongas un tiempo: sal tranquilo, a un ritmo al que
+  puedas hablar, y disfruta. Tu marca de ese día será la referencia para la siguiente.</li>
+  <li><b>Ten en cuenta el recorrido y el tiempo</b>: el calor, el viento y el desnivel pueden
+  costar bastante más de lo que parece.</li>
+  <li><b>En trail el ritmo por kilómetro sirve de poco</b>: con desnivel es mejor guiarse por el
+  tiempo total y las sensaciones.</li>
+</ul>
+<p>¿Ya tienes ritmo objetivo? Busca tu próxima carrera en el
+<a href="{{R}}calendario/">calendario por provincias</a> o mira cuáles te quedan cerca en el
+<a href="{{R}}">mapa de RunNear</a>.</p>
+
+<script src="{{R}}calculadora.js" defer></script>

@@ -98,7 +98,61 @@ h2 small { color: var(--tenue); font-weight: 400; font-size: 0.9rem; }
 .zonas span { color: var(--tenue); }
 .zonas.grande { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
 
+/* Guías */
+h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin: 1.4rem 0 0.4rem; }
+h3 small { color: var(--tenue); font-weight: 400; }
+.guia p, .guia li { color: #e2e8f0; }
+.guia li { margin: 0.35rem 0; }
+.fecha-guia { color: var(--tenue); font-size: 0.85rem; margin-top: -0.4rem; }
+.formula { text-align: center; font-family: 'Outfit', sans-serif; font-size: 1.15rem;
+           background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 10px; }
+.tabla-envoltorio { overflow-x: auto; }
+.tabla { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.tabla th { text-align: left; color: var(--suave); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.tabla th, .tabla td { padding: 7px 8px; border-bottom: 1px solid var(--borde); white-space: nowrap; }
+.tabla td:nth-child(2) { white-space: normal; }
+.lista-control { list-style: none; padding: 0; }
+.lista-control li::before { content: "☐ "; color: var(--popular); }
+
+.faq details { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; margin: 8px 0; padding: 10px 14px; }
+.faq summary { cursor: pointer; font-weight: 600; }
+.faq details p { margin: 8px 0 2px; color: var(--suave); }
+
+.tarjetas-guias { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.tarjetas-guias a { display: block; height: 100%; padding: 16px; border-radius: 14px; text-decoration: none;
+                    background: var(--tarjeta); border: 1px solid var(--borde); color: var(--texto); }
+.tarjetas-guias a:hover { border-color: rgba(99, 102, 241, 0.5); }
+.tarjetas-guias .icono { font-size: 1.8rem; display: block; }
+.tarjetas-guias b { display: block; font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin: 6px 0; }
+.tarjetas-guias .sub { color: var(--suave); font-size: 0.9rem; }
+.guias-mini { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+
+/* Calculadora de ritmo */
+.calculadora { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 16px; padding: 16px; margin: 18px 0; }
+.calculadora .campo { margin: 0 0 14px; border: none; padding: 0; }
+.calculadora label, .calculadora legend { display: block; font-weight: 600; margin-bottom: 6px; }
+.calculadora fieldset label { font-weight: 400; color: var(--suave); }
+.calculadora small { color: var(--tenue); font-weight: 400; }
+.calculadora select, .calculadora input[type="number"] {
+  background: #0f172a; color: var(--texto); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px;
+  padding: 9px 10px; font: inherit; font-size: 1rem;
+}
+.calculadora select option { background: #0f172a; color: var(--texto); }
+.calculadora #calc-otra { margin-top: 8px; width: 7rem; }
+.hms { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.hms input { width: 3.8rem; }
+.hms span { color: var(--suave); margin-right: 4px; }
+.cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.cifras div { background: rgba(99, 102, 241, 0.12); border-radius: 12px; padding: 10px; text-align: center; }
+.cifras span { display: block; color: var(--suave); font-size: 0.8rem; }
+.cifras b { font-family: 'Outfit', sans-serif; font-size: 1.3rem; }
+.estimacion { color: var(--suave); margin: 12px 0 4px; }
+ul.estimacion { margin-top: 0; }
+.parciales summary { cursor: pointer; color: #a5b4fc; margin-top: 10px; }
+.parciales .tabla { max-width: 320px; margin-top: 8px; }
+
 @media (max-width: 480px) {
+  .cifras b { font-size: 1.05rem; }
   .nav a:not(.boton) { display: none; }
   .datos { grid-template-columns: 1fr; }
 }

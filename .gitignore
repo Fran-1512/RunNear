@@ -8,5 +8,6 @@ __pycache__/
 # Páginas para buscadores: las genera sitio/generar.py en cada publicación
 /carrera/
 /calendario/
+/guias/
 /sitemap.xml
 /robots.txt
