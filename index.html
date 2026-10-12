@@ -43,7 +43,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=34">
+  <link rel="stylesheet" href="styles.css?v=35">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -98,6 +98,11 @@
 
     <!-- Botones de Acción -->
     <div class="header-right">
+      <!-- Páginas de texto (calendario por zonas y guías), visibles siempre -->
+      <nav class="header-enlaces" aria-label="Secciones">
+        <a href="calendario/"><span aria-hidden="true">📅</span><span>Calendario</span></a>
+        <a href="guias/"><span aria-hidden="true">💡</span><span>Guías</span></a>
+      </nav>
       <div class="stats-counter" id="stats-counter-badge">
         <span class="count-num" id="total-races-count">0</span>
         <span class="count-label">carreras activas</span>
@@ -535,15 +540,15 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=34"></script>
+  <script src="mapa_detalle.js?v=35"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=34"></script>
+  <script src="app.js?v=35"></script>
   <!-- Menú lateral: secciones, favoritas, calendario, ajustes -->
-  <script src="menu.js?v=34"></script>
-  <script src="cuenta.js?v=34"></script>
+  <script src="menu.js?v=35"></script>
+  <script src="cuenta.js?v=35"></script>
   <!-- Valoraciones de carreras -->
-  <script src="valoraciones.js?v=34"></script>
+  <script src="valoraciones.js?v=35"></script>
   <!-- Proponer carreras que faltan -->
-  <script src="propuestas.js?v=34"></script>
+  <script src="propuestas.js?v=35"></script>
 </body>
 </html>
