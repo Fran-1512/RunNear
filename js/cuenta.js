@@ -275,7 +275,7 @@ function refrescarTrasSincronizar() {
   if (cuentaModalAbierta()) pintarCuenta();
 }
 
-/** Lo llama menu.js (ALMACEN.guardar) y app.js (ciudad) cada vez que cambia un dato */
+/** Lo llama almacen.js (ALMACEN.guardar) y ubicacion.js (ciudad) cada vez que cambia un dato */
 function alCambiarDatoLocal(clave) {
   if (!Cuenta.usuario || Cuenta.aplicandoRemoto) return;
   const tabla = clave === "favoritas" || clave === "corridas" ? clave

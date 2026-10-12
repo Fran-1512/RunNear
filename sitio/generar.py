@@ -202,7 +202,7 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <link rel="stylesheet" href="{r}vendor/fonts/fonts.css">
 <link rel="stylesheet" href="{r}paginas.css">
 {cabeza}{ld}
-<script src="{r}anuncios.js" defer></script>
+<script src="{r}js/anuncios.js" defer></script>
 </head>
 <body>
 <header class="cabecera">
@@ -819,13 +819,13 @@ def generar_guias(futuras, rutas):
 
 
 def escribir_provincias_js():
-    """provincias.js: provincia -> comunidad para el mapa (menú "Por zona" y "Añadir una carrera").
+    """js/provincias.js: provincia -> comunidad para el mapa (menú "Por zona" y "Añadir una carrera").
     Se genera desde scraper.comun.PROVINCIAS para que no haya dos listas que mantener."""
     pares = ",\n".join(f"  {json.dumps(p, ensure_ascii=False)}: {json.dumps(c, ensure_ascii=False)}"
                        for p, c in sorted(COMUNIDAD_DE.items(), key=lambda x: (x[1], x[0])))
     contenido = ("// Generado por sitio/generar.py a partir de scraper/comun.py: no editar a mano.\n"
                  f"const COMUNIDAD_DE_PROVINCIA = {{\n{pares}\n}};\n")
-    ruta = os.path.join(RAIZ, "provincias.js")
+    ruta = os.path.join(RAIZ, "js", "provincias.js")
     actual = open(ruta, encoding="utf-8").read() if os.path.exists(ruta) else ""
     if actual != contenido:
         with open(ruta, "w", encoding="utf-8", newline="\n") as f:
