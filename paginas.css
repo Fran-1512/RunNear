@@ -202,6 +202,26 @@ h3 small { color: var(--tenue); font-weight: 400; }
 .temas a:hover { border-color: rgba(99, 102, 241, 0.5); }
 .sigue-leyendo { margin-top: 2rem; }
 
+/* Páginas informativas (Sobre RunNear, Contacto, Cookies) */
+.contacto-correo { display: flex; align-items: center; gap: 14px; padding: 16px 18px; margin: 18px 0;
+                   background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 16px; box-shadow: var(--sombra); }
+.contacto-correo .icono { font-size: 2rem; }
+.contacto-correo b { display: block; }
+.contacto-correo a { font-size: 1.15rem; font-weight: 700; overflow-wrap: anywhere; }
+.tabla-texto td { white-space: normal; vertical-align: top; }
+.tabla-texto td:first-child { min-width: 9rem; }
+@media (max-width: 560px) {
+  /* En el móvil, cada fila de la tabla como una ficha */
+  .tabla-texto, .tabla-texto tbody, .tabla-texto tr, .tabla-texto td { display: block; }
+  .tabla-texto thead { display: none; }
+  .tabla-texto tr { padding: 10px 0; border-bottom: 1px solid var(--borde); }
+  .tabla-texto td { border: none; padding: 2px 0; }
+  .tabla-texto td:nth-child(3), .tabla-texto td:nth-child(4) { display: inline; color: var(--tenue); font-size: 0.85rem; }
+  .tabla-texto td:nth-child(3)::after { content: " · "; }
+}
+code { font-size: 0.85em; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 6px; padding: 1px 5px;
+       overflow-wrap: anywhere; }
+
 /* Calculadora de ritmo */
 .calculadora { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 16px; padding: 16px; margin: 18px 0; }
 .calculadora .campo { margin: 0 0 14px; border: none; padding: 0; }

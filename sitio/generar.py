@@ -41,7 +41,24 @@ if sys.platform.startswith("win"):
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITIO_URL = "https://fran-1512.github.io/RunNear/"   # cambiar al conectar el dominio propio
-SALIDAS = ["carrera", "calendario", "guias"]                  # carpetas generadas (se borran y rehacen)
+SALIDAS = ["carrera", "calendario", "guias", "sobre-runnear", "contacto", "cookies"]  # carpetas generadas (se borran y rehacen)
+
+# Páginas informativas (texto en sitio/paginas/<slug>.html; marcas {{R}}, {{N_CARRERAS}}, {{N_GUIAS}}).
+# Al cambiar el texto de una, actualizar su fecha.
+PAGINAS_FIJAS = [
+    {"slug": "sobre-runnear", "titulo": "Sobre RunNear", "fecha": "2026-10-12",
+     "titulo_seo": "Sobre RunNear: qué es, de dónde salen los datos y cómo se mantiene",
+     "descripcion": "RunNear reúne las carreras populares y de trail de España en un mapa y un calendario. "
+                    "Qué ofrece, de dónde salen sus datos, cómo se actualiza y cómo se mantiene."},
+    {"slug": "contacto", "titulo": "Contacto", "fecha": "2026-10-12",
+     "titulo_seo": "Contacto: correcciones, organizadores y sugerencias",
+     "descripcion": "Escribe a RunNear para corregir los datos de una carrera, si organizas una, por "
+                    "privacidad o para enviar sugerencias."},
+    {"slug": "cookies", "titulo": "Política de cookies", "fecha": "2026-10-12",
+     "titulo_seo": "Política de cookies",
+     "descripcion": "Qué guarda RunNear en tu navegador, para qué sirve, qué ocurrirá con la publicidad y "
+                    "cómo borrar o bloquear estos datos."},
+]
 
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -205,7 +222,9 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
   cada día de calendarios públicos y de las webs de cada carrera, citando siempre la fuente:
   confirma siempre fecha y condiciones en la web oficial antes de inscribirte.</p>
   <p><a href="{r or './'}">Inicio</a> · <a href="{r}mapa.html">Mapa de carreras</a> · <a href="{r}calendario/">Calendario por zonas</a> ·
-  <a href="{r}guias/">Guías para corredores</a> · <a href="{r}legal.html">Privacidad y aviso legal</a></p>
+  <a href="{r}guias/">Guías para corredores</a></p>
+  <p><a href="{r}sobre-runnear/">Sobre RunNear</a> · <a href="{r}contacto/">Contacto</a> ·
+  <a href="{r}legal.html">Privacidad y aviso legal</a> · <a href="{r}cookies/">Política de cookies</a></p>
 </footer>
 </body>
 </html>
@@ -505,8 +524,9 @@ def generar():
     # 5) Guías
     sitemap += generar_guias(futuras, rutas)
 
-    # 6) Portada (lo primero que se ve al entrar en la web)
+    # 6) Portada (lo primero que se ve al entrar en la web) y páginas informativas
     generar_portada(futuras, rutas, por_comunidad)
+    sitemap += generar_paginas_fijas(len(futuras))
     sitemap.insert(1, (SITIO_URL + "mapa.html", hoy))
 
     # 7) Para los buscadores
@@ -627,6 +647,29 @@ def generar_portada(futuras, rutas, por_comunidad):
         f"Encuentra carreras populares y de trail en toda España: {len(futuras)} próximas carreras en un mapa y "
         "un calendario por provincias, con fecha, distancias e inscripción, y guías para corredores.",
         "", 0, cuerpo, None, datos, cabeza=REDIRIGIR_AL_MAPA))
+
+
+# ---------------------------------------------------------------------------
+# Páginas informativas: Sobre RunNear, Contacto, Política de cookies
+# ---------------------------------------------------------------------------
+
+def generar_paginas_fijas(n_carreras):
+    """Escribe <slug>/index.html de cada página informativa; devuelve sus entradas del sitemap."""
+    entradas = []
+    for p in PAGINAS_FIJAS:
+        with open(os.path.join(RAIZ, "sitio", "paginas", p["slug"] + ".html"), encoding="utf-8") as f:
+            texto = f.read()
+        for marca, valor in {"{{R}}": "../", "{{N_CARRERAS}}": str(n_carreras), "{{N_GUIAS}}": str(len(GUIAS))}.items():
+            texto = texto.replace(marca, valor)
+        texto, indice = con_indice(texto)
+        cuerpo = (f'<article class="guia"><h1>{e(p["titulo"])}</h1>'
+                  f'<p class="fecha-guia">Última actualización: {e(fecha_larga(p["fecha"]).split(", ")[1])}</p>'
+                  f"{indice.replace('En esta guía', 'En esta página')}{texto}</article>")
+        ruta = p["slug"] + "/"
+        escribir(ruta, pagina(f'{p["titulo_seo"]} | RunNear', p["descripcion"], ruta, 1, cuerpo,
+                              [("RunNear", ""), (p["titulo"], None)]))
+        entradas.append((SITIO_URL + ruta, p["fecha"]))
+    return entradas
 
 
 # ---------------------------------------------------------------------------
