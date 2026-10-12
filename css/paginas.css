@@ -272,10 +272,12 @@ ul.estimacion { margin-top: 0; }
 
 /* Anuncios (anuncios.js): ocultos hasta que AdSense esté activado */
 .anuncio { display: none; }
-.anuncio.activo, .anuncio.prueba { display: block; margin: 28px 0; min-height: 250px; }
-/* Sin anuncio de Google para el hueco (o web aún sin aprobar): no se deja un espacio en blanco */
-.anuncio.activo:has(ins[data-ad-status="unfilled"]), ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
-.anuncio.activo::before { content: "Publicidad"; display: block; font-size: 0.7rem; color: var(--tenue); margin-bottom: 4px; }
+/* Hueco pedido a Google: visible (Google mide su ancho) pero sin altura ni etiqueta hasta que llega
+   un anuncio de verdad ("lleno", lo pone anuncios.js): sin aprobar o sin anuncio, no queda espacio en blanco */
+.anuncio.activo { display: block; }
+.anuncio.activo.lleno, .anuncio.prueba { display: block; margin: 28px 0; min-height: 250px; }
+ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
+.anuncio.activo.lleno::before { content: "Publicidad"; display: block; font-size: 0.7rem; color: var(--tenue); margin-bottom: 4px; }
 .anuncio.prueba { display: grid; place-items: center; border: 2px dashed rgba(245, 158, 11, 0.6); border-radius: 14px;
                   color: var(--aviso); font-size: 0.85rem; text-align: center; padding: 8px; }
 

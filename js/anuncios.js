@@ -57,6 +57,10 @@
       }
       hueco.appendChild(ins);
       hueco.classList.add("activo");
+      // El hueco no ocupa sitio ni dice "Publicidad" hasta que Google pone un anuncio de verdad
+      // (data-ad-status="filled"); vacío o sin aprobar, no queda ningún espacio en blanco
+      new MutationObserver(() => hueco.classList.toggle("lleno", ins.dataset.adStatus === "filled"))
+        .observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } else if (local && !probarEnLocal) {
       hueco.classList.add("prueba");

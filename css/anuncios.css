@@ -5,22 +5,26 @@
   display: none;
 }
 
-.anuncio.activo,
+/* Hueco con anuncio de Google pedido: visible (Google necesita medir su ancho) pero sin altura
+   ni etiqueta hasta que llega un anuncio de verdad ("lleno", lo pone anuncios.js). Así, mientras
+   la web no está aprobada o no hay anuncio, no queda ningún espacio en blanco. */
+.anuncio.activo {
+  display: block;
+}
+
+.anuncio.activo.lleno,
 .anuncio.prueba {
   display: block;
   margin: 4px 0 12px;
   min-height: 120px;
 }
 
-/* Si Google no tiene anuncio para ese hueco (o la web aún no está aprobada), no se deja un
-   espacio en blanco: el hueco desaparece */
-.anuncio.activo:has(ins[data-ad-status="unfilled"]),
 ins.adsbygoogle[data-ad-status="unfilled"] {
   display: none !important;
 }
 
 /* Etiqueta obligatoria para distinguir el anuncio del contenido */
-.anuncio.activo::before {
+.anuncio.activo.lleno::before {
   content: "Publicidad";
   display: block;
   font-size: 0.68rem;

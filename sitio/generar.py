@@ -19,6 +19,8 @@ Uso (desde la carpeta del proyecto):
     py -m sitio.generar
 """
 
+import functools
+import hashlib
 import html
 import json
 import math
@@ -172,6 +174,14 @@ CSP = ("default-src 'self'; "
        "worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'")
 
 
+@functools.lru_cache(maxsize=None)
+def recurso(ruta):
+    """'css/paginas.css' -> 'css/paginas.css?v=1a2b3c4d': la huella cambia con el contenido, para que
+    el navegador (y el service worker) descarguen la versión nueva en cuanto cambia el archivo."""
+    with open(os.path.join(RAIZ, *ruta.split("/")), "rb") as f:
+        return f"{ruta}?v={hashlib.md5(f.read()).hexdigest()[:8]}"
+
+
 def hueco(tipo="horizontal"):
     """Sitio para un anuncio; anuncios.js lo rellena (o lo deja oculto si AdSense no está activo)."""
     return f'<div class="anuncio" data-tipo="{tipo}"></div>'
@@ -217,12 +227,12 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0c1220" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)">
-<script src="{r}js/tema-paginas.js"></script>
+<script src="{r}{recurso('js/tema-paginas.js')}"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="{r}iconos/favicon-32.png">
 <link rel="stylesheet" href="{r}vendor/fonts/fonts.css">
-<link rel="stylesheet" href="{r}css/paginas.css">
+<link rel="stylesheet" href="{r}{recurso('css/paginas.css')}">
 {cabeza}{ld}
-<script src="{r}js/anuncios.js" defer></script>
+<script src="{r}{recurso('js/anuncios.js')}" defer></script>
 </head>
 <body>
 <header class="cabecera">
@@ -571,10 +581,6 @@ def generar():
 # Portada (index.html): elegir entre mapa, calendario y guías
 # ---------------------------------------------------------------------------
 
-# Los enlaces antiguos a la raíz que son en realidad del mapa (carrera compartida, vuelta del
-# inicio de sesión con Google, avisos al móvil) y la app instalada se llevan al mapa (js/portada.js).
-REDIRIGIR_AL_MAPA = '<script src="js/portada.js"></script>\n'
-
 GUIAS_PORTADA = ["empezar-a-correr", "primera-carrera-5-km", "plan-10k", "calculadora-ritmo",
                  "iniciarse-en-el-trail", "alimentacion-para-corredores"]
 
@@ -661,7 +667,9 @@ def generar_portada(futuras, rutas, por_comunidad):
         "RunNear | Carreras populares y trail en España: mapa, calendario y guías",
         f"Encuentra carreras populares y de trail en toda España: {len(futuras)} próximas carreras en un mapa y "
         "un calendario por provincias, con fecha, distancias e inscripción, y guías para corredores.",
-        "", 0, cuerpo, None, datos, cabeza=REDIRIGIR_AL_MAPA))
+        # js/portada.js: los enlaces antiguos a la raíz que son del mapa (carrera compartida, vuelta del
+        # inicio de sesión, avisos al móvil) y la app instalada se llevan al mapa
+        "", 0, cuerpo, None, datos, cabeza=f'<script src="{recurso("js/portada.js")}"></script>\n'))
 
 
 # ---------------------------------------------------------------------------
