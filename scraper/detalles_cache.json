@@ -16,11 +16,11 @@
     "desnivel_positivo_m": 1750
   },
   "fdmcm:clm-3070dc10": {
-    "consultado": "2026-10-04",
-    "desnivel_positivo_m": null
+    "consultado": "2026-10-12",
+    "desnivel_positivo_m": 2500
   },
   "fdmcm:clm-3097975c": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-3be78268": {
@@ -28,7 +28,7 @@
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-3df52edd": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-5fabc503": {
@@ -36,23 +36,23 @@
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-64e07492": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": 3174
   },
   "fdmcm:clm-c238e182": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-c8b0f1f5": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-d229af66": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-d9680724": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-db92fb31": {
@@ -60,7 +60,7 @@
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-e03a79cc": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-ee9d27fd": {
@@ -68,7 +68,7 @@
     "desnivel_positivo_m": null
   },
   "fdmcm:clm-fdb54097": {
-    "consultado": "2026-10-04",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null
   },
   "fdmcm:dip-1189": {
@@ -80,8 +80,8 @@
     "desnivel_positivo_m": null
   },
   "fdmcm:rl-alacera-trail": {
-    "consultado": "2026-10-04",
-    "desnivel_positivo_m": null
+    "consultado": "2026-10-12",
+    "desnivel_positivo_m": 1000
   },
   "fdmcm:rl-trail-puerta-del-infierno": {
     "consultado": "2026-10-04",
@@ -186,7 +186,7 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/trail-puerta-del-rey-2027": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -246,7 +246,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/10k-ciudad-de-tomelloso-2026/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "11:30",
@@ -320,7 +320,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/10k-valdepenas-2027/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -357,7 +357,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/media-maraton-rural-miguelturra-2026/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "11:00",
@@ -381,7 +381,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/media-valdepenas-2027/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -462,7 +462,7 @@
     "version": 6
   },
   "https://crono3.es/evento/carrera-mini-media-maraton-alcazar-s-juan-2026/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -474,7 +474,7 @@
     "version": 6
   },
   "https://crono3.es/evento/carrera-por-la-diabetes-los-cortijos-2026/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -490,7 +490,7 @@
     "consultado": "2026-10-03"
   },
   "https://crono3.es/evento/xii-trail-humedales-manchegos-2026/": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -580,7 +580,7 @@
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1192": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1207": {
@@ -612,7 +612,7 @@
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1219": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1288": {
@@ -780,7 +780,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/equitrail": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -792,7 +792,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/ii-carrera-popular-carpio-de-tajo": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -864,7 +864,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/xliv-san-silvestre-de-talavera-de-la-reina": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -1058,7 +1058,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/ix-carrera-popular-amp-ii-marcha-la-mata": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -1070,7 +1070,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/la-bermejo-2026": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -1078,7 +1078,7 @@
     "plazas_max": null,
     "precio_desde": null,
     "resultados": [],
-    "resultados_web": "https://sportmaniacs.com/es/results",
+    "resultados_web": null,
     "version": 6
   },
   "https://sportmaniacs.com/es/races/ldquoxxii-carrera-de-la-ciruela-olas-del-rey-2026rdquo": {
@@ -1698,7 +1698,7 @@
     "version": 6
   },
   "https://www.timingsys.com/event/802": {
-    "consultado": "2026-10-09",
+    "consultado": "2026-10-12",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
