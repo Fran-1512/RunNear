@@ -41,6 +41,12 @@ function inicializarMapa() {
   actualizarMarcadorUsuarioEnMapa();
 
   // Permitir hacer clic en el mapa para mover la ubicación de referencia
+  // Botón "Ver ficha" de los globos de las carreras (Leaflet no deja pasar sus clics al documento)
+  AppState.map.on("popupopen", e => {
+    const boton = e.popup.getElement().querySelector(".popup-btn-detail[data-id]");
+    if (boton) boton.addEventListener("click", () => abrirModalDetallePorId(boton.dataset.id));
+  });
+
   AppState.map.on("click", (e) => {
     establecerUbicacionUsuario(e.latlng.lat, e.latlng.lng, `Punto personalizado (${e.latlng.lat.toFixed(3)}, ${e.latlng.lng.toFixed(3)})`);
     mostrarToast("📍 Ubicación actualizada según clic en el mapa");
@@ -193,7 +199,7 @@ function renderizarMarcadoresEnMapa(carreras) {
     const customIcon = L.divIcon({
       className: `custom-race-pin ${pinClass}`,
       html: `
-        <div class="pin-bubble" id="pin-bubble-${c.id}">
+        <div class="pin-bubble" id="pin-bubble-${escapeHtml(c.id)}">
           <span class="pin-icon-inner">${iconChar}</span>
         </div>
       `,
@@ -228,7 +234,7 @@ function renderizarMarcadoresEnMapa(carreras) {
           ${distStr ? `<strong>${distStr}</strong>` : ''}
         </div>
         <div class="popup-actions-row">
-          <button class="popup-btn popup-btn-detail" onclick="abrirModalDetallePorId('${escapeHtml(c.id)}')">
+          <button class="popup-btn popup-btn-detail" data-id="${escapeHtml(c.id)}">
             Ver Ficha
           </button>
           <a href="${escapeHtml(urlSegura(c.url_oficial))}" target="_blank" rel="noopener noreferrer" class="popup-btn popup-btn-register">

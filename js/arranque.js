@@ -121,6 +121,17 @@ function configurarEventListeners() {
   // Botones de fecha: Este finde / 7 días / Este mes / Todas
   document.querySelectorAll(".chip-fecha").forEach(b => b.addEventListener("click", () => seleccionarFecha(b.dataset.fecha)));
 
+  // Botones de la lista vacía: "Restablecer filtros" y "Ampliar a N km"
+  const lista = document.getElementById("races-list-container");
+  if (lista) {
+    lista.addEventListener("click", (e) => {
+      const boton = e.target.closest("button[data-accion]");
+      if (!boton) return;
+      if (boton.dataset.accion === "restablecer") resetearFiltros();
+      else if (boton.dataset.accion === "ampliar") ampliarRadio(Number(boton.dataset.km));
+    });
+  }
+
   // Botón Restablecer
   const resetBtn = document.getElementById("btn-reset-filters");
   if (resetBtn) resetBtn.addEventListener("click", resetearFiltros);

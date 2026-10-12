@@ -104,6 +104,12 @@ def fecha_larga(iso):
     return f"{DIAS[d.weekday()]}, {d.day} de {MESES[d.month - 1]} de {d.year}"
 
 
+def url_segura(url):
+    """La URL solo si es http(s): un enlace "javascript:" de una fuente podría ejecutar código."""
+    url = str(url or "").strip()
+    return url if re.match(r"https?://", url, re.I) else None
+
+
 def km_texto(km):
     return f"{km:g}".replace(".", ",") + " km"
 
@@ -279,7 +285,7 @@ def datos_evento(c, url):
     }
     if c.get("precio_desde") is not None:
         datos["offers"] = {"@type": "Offer", "price": c["precio_desde"], "priceCurrency": "EUR",
-                           "url": c.get("url_oficial") or url}
+                           "url": url_segura(c.get("url_oficial")) or url}
     return datos
 
 
@@ -322,12 +328,12 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia):
 
     enlaces_resultados = ""
     if celebrada:
-        enlaces = [(r.get("texto") or "Resultados", r["url"]) for r in c.get("resultados") or []
-                   if isinstance(r, dict) and r.get("url")]
+        enlaces = [(r.get("texto") or "Resultados", url_segura(r["url"])) for r in c.get("resultados") or []
+                   if isinstance(r, dict) and url_segura(r.get("url"))]
         repetidos = {t for t, _ in enlaces if sum(1 for x, _ in enlaces if x == t) > 1}
         enlaces = [(f"{t} · {u.rstrip('/').rsplit('/', 1)[-1]}" if t in repetidos else t, u) for t, u in enlaces]
-        if c.get("resultados_web"):
-            enlaces.append(("Todas las clasificaciones", c["resultados_web"]))
+        if url_segura(c.get("resultados_web")):
+            enlaces.append(("Todas las clasificaciones", url_segura(c["resultados_web"])))
         if enlaces:
             enlaces_resultados = "<h2>Resultados</h2><ul>" + "".join(
                 f'<li><a href="{e(u)}" rel="nofollow noopener" target="_blank">{e(t)} ↗</a></li>'
@@ -351,7 +357,7 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia):
   {aviso}
   <dl class="datos">{''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in filas)}</dl>
   <p class="acciones">
-    <a class="boton principal" href="{e(c.get('url_oficial') or '#')}" rel="noopener" target="_blank">{'Ver en la web oficial' if celebrada else 'Inscripción en la web oficial'} ↗</a>
+    <a class="boton principal" href="{e(url_segura(c.get('url_oficial')) or '#')}" rel="noopener" target="_blank">{'Ver en la web oficial' if celebrada else 'Inscripción en la web oficial'} ↗</a>
     <a class="boton" href="../../mapa.html?carrera={e(c['id'])}">📍 Ver en el mapa</a>
   </p>
   {f'<h2>Sobre la carrera</h2><p>{e(c["descripcion"])}</p>' if c.get("descripcion") else ''}

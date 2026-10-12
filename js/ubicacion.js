@@ -36,7 +36,7 @@ function actualizarMarcadorUsuarioEnMapa() {
     AppState.userMarker.bindPopup(`
       <div class="popup-race-card">
         <div class="popup-title">📍 Tu Ubicación</div>
-        <p class="popup-meta">${AppState.userLocation.label}</p>
+        <p class="popup-meta">${escapeHtml(AppState.userLocation.label)}</p>
         <span style="font-size:0.75rem; color:#94a3b8;">${AppState.filters.radiusKm > 0 ? `Buscando carreras en un radio de ${AppState.filters.radiusKm} km` : "Buscando carreras en toda España"}</span>
       </div>
     `);

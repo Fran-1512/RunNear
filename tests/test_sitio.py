@@ -35,6 +35,19 @@ class Direcciones(unittest.TestCase):
                                  esperado)
 
 
+class Seguridad(unittest.TestCase):
+    def test_solo_enlaces_http(self):
+        self.assertEqual(generar.url_segura("https://carrera.es/inscripcion"), "https://carrera.es/inscripcion")
+        self.assertEqual(generar.url_segura(" http://x.es "), "http://x.es")
+        for mala in ("javascript:alert(1)", "JAVASCRIPT:alert(1)", "data:text/html,hola", "//x.es", "", None):
+            with self.subTest(url=mala):
+                self.assertIsNone(generar.url_segura(mala))
+
+    def test_textos_escapados(self):
+        self.assertEqual(generar.e('<img src=x onerror="alert(1)">'),
+                         "&lt;img src=x onerror=&quot;alert(1)&quot;&gt;")
+
+
 class HoraOficial(unittest.TestCase):
     def test_verano_invierno_y_canarias(self):
         self.assertEqual(generar.desfase_horario("2026-07-15", "Madrid"), "+02:00")

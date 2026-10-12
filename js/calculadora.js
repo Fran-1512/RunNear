@@ -60,6 +60,7 @@
     $("calc-parciales").innerHTML = `<table class="tabla"><thead><tr><th>Paso</th><th>Tiempo</th></tr></thead><tbody>${filas.join("")}</tbody></table>`;
   }
 
+  formulario.addEventListener("submit", e => e.preventDefault());
   formulario.addEventListener("input", calcular);
   formulario.addEventListener("change", calcular);
   calcular();

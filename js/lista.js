@@ -245,21 +245,21 @@ function htmlListaVacia(mensajeVacio, contexto) {
   if (buscando) {
     titulo = "No encontramos esa carrera";
     texto = "Revisa cómo está escrito, prueba con menos palabras (por ejemplo, solo el pueblo) o quita los filtros de modalidad y distancia.";
-    botones.push(`<button class="btn-secondary" onclick="resetearFiltros()">Restablecer filtros</button>`);
+    botones.push(`<button class="btn-secondary" data-accion="restablecer">Restablecer filtros</button>`);
   } else if (filtrosActivos || radioActivo || !mensajeVacio) {
     titulo = "No hay carreras con estos filtros";
     if (radioActivo && masCercanaKm !== null) {
       const sugerido = Math.ceil(masCercanaKm / 5) * 5;
       texto = `Prueba a ampliar el radio de búsqueda: la carrera más cercana que cumple tus filtros está a ${String(masCercanaKm).replace(".", ",")} km.`;
       if (sugerido <= RADIO_MAXIMO_KM) {
-        botones.push(`<button class="btn-primary" onclick="ampliarRadio(${sugerido})">Ampliar a ${sugerido} km</button>`);
+        botones.push(`<button class="btn-primary" data-accion="ampliar" data-km="${sugerido}">Ampliar a ${sugerido} km</button>`);
       }
     } else if (radioActivo) {
       texto = "Ni ampliando el radio hay carreras con estos filtros. Prueba a quitar alguno (fecha, modalidad o distancia).";
     } else {
       texto = "Prueba a quitar algún filtro (fecha, modalidad o distancia).";
     }
-    if (filtrosActivos) botones.push(`<button class="btn-secondary" onclick="resetearFiltros()">Quitar filtros</button>`);
+    if (filtrosActivos) botones.push(`<button class="btn-secondary" data-accion="restablecer">Quitar filtros</button>`);
   } else {
     titulo = "Nada por aquí todavía";
     texto = mensajeVacio;
@@ -440,7 +440,7 @@ function crearTarjeta(c) {
 
       <div class="card-footer-actions">
         <span class="card-date-badge">
-          📅 ${formatearFechaLegible(c.fecha)} <small style="color:#64748b;">${diasStr}</small>
+          📅 ${escapeHtml(formatearFechaLegible(c.fecha))} <small style="color:#64748b;">${diasStr}</small>
         </span>
         <div class="card-btn-group">
           <button class="card-mini-btn btn-favorita ${favorita ? "activa" : ""}" aria-pressed="${favorita}"

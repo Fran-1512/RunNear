@@ -100,7 +100,8 @@ function generarICS(carreras) {
       `SUMMARY:${escaparICS("🏃 " + c.nombre)}`,
       `LOCATION:${escaparICS([c.municipio, c.provincia].filter(Boolean).join(", "))}`,
       `DESCRIPTION:${escaparICS(descripcion)}`,
-      c.url_oficial ? `URL:${c.url_oficial}` : "",
+      // urlSegura: solo http(s) y ya normalizada (sin saltos de línea que rompan el archivo)
+      urlSegura(c.url_oficial) !== "#" ? `URL:${urlSegura(c.url_oficial)}` : "",
       "BEGIN:VALARM", "TRIGGER:-P2D", "ACTION:DISPLAY", `DESCRIPTION:${escaparICS("Dentro de 2 días: " + c.nombre)}`, "END:VALARM",
       "END:VEVENT"
     );
