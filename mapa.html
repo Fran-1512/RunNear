@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- Seguridad: solo código de la propia web (la misma política que sitio/generar.py: CSP) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com https://nominatim.openstreetmap.org; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googlesyndication.com https://*.google.com https://*.gstatic.com https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com https://nominatim.openstreetmap.org https://*.googlesyndication.com https://*.google.com https://*.gstatic.com https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.adtrafficquality.google; frame-src https://*.googlesyndication.com https://*.google.com https://*.gstatic.com https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.adtrafficquality.google; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <!-- viewport-fit=cover: en iPhone la app instalada usa toda la pantalla (se respetan las zonas seguras en el CSS) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <!-- Cuenta de Google AdSense (la misma que ADSENSE_CUENTA en sitio/generar.py) -->
@@ -47,18 +47,18 @@
 
   <!-- Estilos de la aplicación (css/), en este orden: las reglas posteriores mandan sobre las anteriores.
        ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="css/base.css?v=43">
-  <link rel="stylesheet" href="css/cabecera.css?v=43">
-  <link rel="stylesheet" href="css/lista.css?v=43">
-  <link rel="stylesheet" href="css/mapa.css?v=43">
-  <link rel="stylesheet" href="css/ventanas.css?v=43">
-  <link rel="stylesheet" href="css/movil.css?v=43">
-  <link rel="stylesheet" href="css/menu.css?v=43">
-  <link rel="stylesheet" href="css/tema-claro.css?v=43">
-  <link rel="stylesheet" href="css/cuenta.css?v=43">
-  <link rel="stylesheet" href="css/perfil.css?v=43">
-  <link rel="stylesheet" href="css/valoraciones.css?v=43">
-  <link rel="stylesheet" href="css/anuncios.css?v=43">
+  <link rel="stylesheet" href="css/base.css?v=44">
+  <link rel="stylesheet" href="css/cabecera.css?v=44">
+  <link rel="stylesheet" href="css/lista.css?v=44">
+  <link rel="stylesheet" href="css/mapa.css?v=44">
+  <link rel="stylesheet" href="css/ventanas.css?v=44">
+  <link rel="stylesheet" href="css/movil.css?v=44">
+  <link rel="stylesheet" href="css/menu.css?v=44">
+  <link rel="stylesheet" href="css/tema-claro.css?v=44">
+  <link rel="stylesheet" href="css/cuenta.css?v=44">
+  <link rel="stylesheet" href="css/perfil.css?v=44">
+  <link rel="stylesheet" href="css/valoraciones.css?v=44">
+  <link rel="stylesheet" href="css/anuncios.css?v=44">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -217,6 +217,7 @@
         <a class="menu-item" href="sobre-runnear/"><span class="menu-icono">🏃</span>Sobre RunNear</a>
         <a class="menu-item" href="contacto/"><span class="menu-icono">✉️</span>Contacto</a>
         <a class="menu-item" href="cookies/"><span class="menu-icono">🍪</span>Política de cookies</a>
+        <a class="menu-item" href="cookies/#configurar" data-cookies><span class="menu-icono">⚙️</span>Configurar cookies</a>
         <a class="menu-item" href="legal.html"><span class="menu-icono">🔒</span>Privacidad y aviso legal</a>
       </div>
     </nav>
@@ -555,29 +556,29 @@
 
   <!-- Código de la app (js/). El orden importa: cada archivo puede usar lo de los anteriores
        al cargarse, y arranque.js pone todo en marcha cuando la página está lista. -->
-  <script src="js/diagnostico.js?v=43"></script>
+  <script src="js/diagnostico.js?v=44"></script>
   <script src="vendor/leaflet/leaflet.js"></script>
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
-  <script src="js/estado.js?v=43"></script>
-  <script src="js/utilidades.js?v=43"></script>
-  <script src="js/almacen.js?v=43"></script>
-  <script src="js/tema.js?v=43"></script>
-  <script src="js/provincias.js?v=43"></script>
-  <script src="js/anuncios.js?v=43"></script>
-  <script src="js/mapa_detalle.js?v=43"></script>
-  <script src="js/mapa.js?v=43"></script>
-  <script src="js/ubicacion.js?v=43"></script>
-  <script src="js/lista.js?v=43"></script>
-  <script src="js/vistas.js?v=43"></script>
-  <script src="js/calendario.js?v=43"></script>
-  <script src="js/ficha.js?v=43"></script>
-  <script src="js/perfil.js?v=43"></script>
-  <script src="js/ventanas.js?v=43"></script>
-  <script src="js/pwa.js?v=43"></script>
-  <script src="js/arranque.js?v=43"></script>
+  <script src="js/estado.js?v=44"></script>
+  <script src="js/utilidades.js?v=44"></script>
+  <script src="js/almacen.js?v=44"></script>
+  <script src="js/tema.js?v=44"></script>
+  <script src="js/provincias.js?v=44"></script>
+  <script src="js/anuncios.js?v=44"></script>
+  <script src="js/mapa_detalle.js?v=44"></script>
+  <script src="js/mapa.js?v=44"></script>
+  <script src="js/ubicacion.js?v=44"></script>
+  <script src="js/lista.js?v=44"></script>
+  <script src="js/vistas.js?v=44"></script>
+  <script src="js/calendario.js?v=44"></script>
+  <script src="js/ficha.js?v=44"></script>
+  <script src="js/perfil.js?v=44"></script>
+  <script src="js/ventanas.js?v=44"></script>
+  <script src="js/pwa.js?v=44"></script>
+  <script src="js/arranque.js?v=44"></script>
   <!-- Cuenta, opiniones y propuestas de carreras (Supabase) -->
-  <script src="js/cuenta.js?v=43"></script>
-  <script src="js/valoraciones.js?v=43"></script>
-  <script src="js/propuestas.js?v=43"></script>
+  <script src="js/cuenta.js?v=44"></script>
+  <script src="js/valoraciones.js?v=44"></script>
+  <script src="js/propuestas.js?v=44"></script>
 </body>
 </html>

@@ -48,7 +48,9 @@ class Seguridad(unittest.TestCase):
         for nombre in ("mapa.html", "legal.html"):
             with self.subTest(pagina=nombre), open(os.path.join(RAIZ, nombre), encoding="utf-8") as f:
                 self.assertIn(meta, f.read())
-        self.assertIn("script-src 'self';", generar.CSP)    # nunca 'unsafe-inline' para el código
+        script_src = re.search(r"script-src ([^;]*);", generar.CSP).group(1)
+        self.assertTrue(script_src.startswith("'self'"))
+        self.assertNotIn("unsafe", script_src)              # nunca 'unsafe-inline' ni 'unsafe-eval'
 
     def test_textos_escapados(self):
         self.assertEqual(generar.e('<img src=x onerror="alert(1)">'),
@@ -77,6 +79,8 @@ class AdSense(unittest.TestCase):
                 self.assertIn(meta, f.read())
         with open(os.path.join(RAIZ, "ads.txt"), encoding="utf-8") as f:
             self.assertEqual(f.read().strip(), f"google.com, {cuenta[3:]}, DIRECT, f08c47fec0942fa0")
+        with open(os.path.join(RAIZ, "js", "anuncios.js"), encoding="utf-8") as f:
+            self.assertIn(f'const CLIENTE = "{cuenta}";', f.read())
 
 
 class HoraOficial(unittest.TestCase):

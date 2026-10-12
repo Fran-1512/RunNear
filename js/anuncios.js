@@ -5,22 +5,26 @@
  * Tipos: "horizontal" (entre secciones), "articulo" (dentro del texto de las guías) y
  * "lista" (entre las carreras de la lista del mapa).
  *
- * PARA ACTIVARLOS (cuando Google apruebe la web):
- *   1. Poner en CLIENTE el código de editor de AdSense ("ca-pub-...").
- *   2. Opcional: crear en AdSense un bloque de anuncios por tipo y poner su número en BLOQUES.
- *      Sin bloques, AdSense coloca los anuncios automáticamente (Auto ads) y los huecos no se usan.
+ * - CLIENTE: la cuenta de AdSense (la misma que ADSENSE_CUENTA en sitio/generar.py y ads.txt).
+ *   Con ella se carga el código de Google, que además muestra el aviso de cookies (configurado
+ *   en AdSense → Privacidad y mensajes).
+ * - BLOQUES: el número de cada bloque de anuncios creado en AdSense (Anuncios → Por bloque de
+ *   anuncios). Un hueco sin bloque no ocupa sitio (los anuncios automáticos, si están activados
+ *   en AdSense, los coloca Google por su cuenta).
+ * - Los dominios de Google están permitidos en la política de seguridad (CSP en sitio/generar.py,
+ *   copiada en mapa.html y legal.html).
  *
- *   3. Añadir los dominios de Google AdSense a la política de seguridad (CSP en sitio/generar.py,
- *      copiada en mapa.html y legal.html); si no, el navegador bloqueará los anuncios.
- *
- * Mientras CLIENTE esté vacío no se carga nada de Google y los huecos no ocupan sitio.
- * En el ordenador local (localhost) se ven como recuadros de prueba para revisar su posición.
+ * En el ordenador local (localhost) no se cargan anuncios reales (contarían como visitas no
+ * válidas): los huecos se ven como recuadros de prueba. Para probar el código de Google en local,
+ * abrir la página con ?anuncios=google.
  */
 (function () {
-  const CLIENTE = "";
+  const CLIENTE = "ca-pub-6802213588582157";
   const BLOQUES = { horizontal: "", articulo: "", lista: "" };
 
   const local = ["localhost", "127.0.0.1"].includes(location.hostname);
+  const probarEnLocal = local && /[?&]anuncios=google\b/.test(location.search);
+  const reales = !!CLIENTE && (!local || probarEnLocal);
   let scriptCargado = false;
 
   function cargarScript() {
@@ -36,7 +40,7 @@
   function rellenar(hueco) {
     const tipo = hueco.dataset.tipo || "horizontal";
     const bloque = BLOQUES[tipo];
-    if (CLIENTE && bloque) {
+    if (reales && bloque) {
       const ins = document.createElement("ins");
       ins.className = "adsbygoogle";
       ins.style.display = "block";
@@ -53,7 +57,7 @@
       hueco.appendChild(ins);
       hueco.classList.add("activo");
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } else if (!CLIENTE && local) {
+    } else if (local && !probarEnLocal) {
       hueco.classList.add("prueba");
       hueco.textContent = `Anuncio (${tipo}) · solo se ve en tu ordenador`;
     }
@@ -67,9 +71,21 @@
     });
   }
 
-  window.RunNearAnuncios = { activar, activos: !!CLIENTE || local };
+  // Enlaces "Configurar cookies" (data-cookies): vuelven a abrir el aviso de consentimiento de
+  // Google para cambiar la elección. Si el aviso aún no está cargado, el enlace lleva a la política.
+  document.addEventListener("click", e => {
+    const enlace = e.target.closest("[data-cookies]");
+    const fc = window.googlefc;
+    if (!enlace || !fc || typeof fc.showRevocationMessage !== "function") return;
+    e.preventDefault();
+    fc.showRevocationMessage();
+  });
 
-  if (CLIENTE) cargarScript();
+  // La lista del mapa solo intercala huecos si alguno se va a ver
+  const hayBloques = Object.values(BLOQUES).some(Boolean);
+  window.RunNearAnuncios = { activar, activos: (reales && hayBloques) || (local && !probarEnLocal) };
+
+  if (reales) cargarScript();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => activar());
   } else {

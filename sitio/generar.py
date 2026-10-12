@@ -153,15 +153,23 @@ def relativo(profundidad):
     return "../" * profundidad
 
 
-# Política de seguridad de contenido: el navegador solo ejecuta código de la propia web y solo
-# se conecta a los servicios que usa (cuentas, tiempo previsto, situar propuestas en el mapa).
-# Aunque alguien colara código en un texto, no se ejecutaría. Es la misma en todas las páginas:
-# mapa.html y legal.html la copian (tests/test_sitio.py comprueba que coincidan).
-# AL ACTIVAR ADSENSE hay que añadir sus dominios (ver js/anuncios.js).
-CSP = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; "
-       "font-src 'self'; connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com "
-       "https://nominatim.openstreetmap.org; worker-src 'self'; manifest-src 'self'; frame-src 'none'; "
-       "object-src 'none'; base-uri 'self'; form-action 'self'")
+# Política de seguridad de contenido: el navegador solo ejecuta código de la propia web y de
+# Google AdSense (anuncios y aviso de cookies), y solo se conecta a los servicios que usa (cuentas,
+# tiempo previsto, situar propuestas en el mapa, anuncios). Aunque alguien colara código en un
+# texto, no se ejecutaría: nunca 'unsafe-inline' ni 'unsafe-eval' en script-src.
+# Es la misma en todas las páginas: mapa.html y legal.html la copian (tests/test_sitio.py lo comprueba).
+GOOGLE_ANUNCIOS = ("https://*.googlesyndication.com https://*.google.com https://*.gstatic.com "
+                   "https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com "
+                   "https://*.adtrafficquality.google")
+CSP = ("default-src 'self'; "
+       f"script-src 'self' {GOOGLE_ANUNCIOS}; "
+       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "img-src 'self' data: blob: https:; "
+       "font-src 'self' https://fonts.gstatic.com; "
+       "connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com "
+       f"https://nominatim.openstreetmap.org {GOOGLE_ANUNCIOS}; "
+       f"frame-src {GOOGLE_ANUNCIOS}; "
+       "worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'")
 
 
 def hueco(tipo="horizontal"):
@@ -236,7 +244,8 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
   <p><a href="{r or './'}">Inicio</a> · <a href="{r}mapa.html">Mapa de carreras</a> · <a href="{r}calendario/">Calendario por zonas</a> ·
   <a href="{r}guias/">Guías para corredores</a></p>
   <p><a href="{r}sobre-runnear/">Sobre RunNear</a> · <a href="{r}contacto/">Contacto</a> ·
-  <a href="{r}legal.html">Privacidad y aviso legal</a> · <a href="{r}cookies/">Política de cookies</a></p>
+  <a href="{r}legal.html">Privacidad y aviso legal</a> · <a href="{r}cookies/">Política de cookies</a> ·
+  <a href="{r}cookies/#configurar" data-cookies>Configurar cookies</a></p>
 </footer>
 </body>
 </html>
