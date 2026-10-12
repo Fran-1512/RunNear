@@ -1,5 +1,5 @@
 /* Páginas de texto generadas por sitio/generar.py (portada, carreras, calendarios y guías).
-   Mismos colores que la web principal (styles.css), pero sin mapa: ligeras y legibles.
+   Mismos colores que el mapa (css/base.css), pero sin mapa: ligeras y legibles.
 
    Tema: sigue el modo claro/oscuro del dispositivo, salvo que la persona haya elegido uno en
    los Ajustes del mapa (la página lo indica con <html data-tema="claro|oscuro">). */

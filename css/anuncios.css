@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Anuncios (anuncios.js): ocultos hasta que AdSense esté activado
+   ========================================================================== */
+.anuncio {
+  display: none;
+}
+
+.anuncio.activo,
+.anuncio.prueba {
+  display: block;
+  margin: 4px 0 12px;
+  min-height: 120px;
+}
+
+/* Etiqueta obligatoria para distinguir el anuncio del contenido */
+.anuncio.activo::before {
+  content: "Publicidad";
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+/* Vista previa en el ordenador local */
+.anuncio.prueba {
+  display: grid;
+  place-items: center;
+  border: 2px dashed rgba(245, 158, 11, 0.6);
+  border-radius: var(--radius-md);
+  color: var(--color-warning);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 8px;
+}

@@ -144,7 +144,7 @@ def relativo(profundidad):
     return "../" * profundidad
 
 
-# Tema elegido en los Ajustes del mapa (si no se eligió, paginas.css sigue al dispositivo).
+# Tema elegido en los Ajustes del mapa (si no se eligió, css/paginas.css sigue al dispositivo).
 # Va en línea en el <head> para que la página no parpadee al cargar.
 TEMA_ELEGIDO = """<script>
 try {
@@ -200,7 +200,7 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 {TEMA_ELEGIDO}
 <link rel="icon" type="image/png" sizes="32x32" href="{r}iconos/favicon-32.png">
 <link rel="stylesheet" href="{r}vendor/fonts/fonts.css">
-<link rel="stylesheet" href="{r}paginas.css">
+<link rel="stylesheet" href="{r}css/paginas.css">
 {cabeza}{ld}
 <script src="{r}js/anuncios.js" defer></script>
 </head>

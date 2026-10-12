@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Panel Derecho: Mapa y Controles
+   ========================================================================== */
+.map-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-dark-900);
+}
+
+.map-view {
+  width: 100%;
+  height: 100%;
+  background: #111827;
+}
+
+/* Mapa propio: el fondo del contenedor hace de mar */
+.map-view.leaflet-container {
+  background: #b8d8e8;
+}
+
+.etiqueta-provincia {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(110, 92, 60, 0.75);
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 3px #fbf6e6, 0 0 3px #fbf6e6;
+}
+
+.etiqueta-poblacion {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #3f3a33;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+}
+
+.etiqueta-poblacion .punto {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3f3a33;
+  border: 1px solid #fff;
+  flex-shrink: 0;
+}
+
+/* Controles Flotantes en Mapa */
+.map-overlay-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.map-control-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.map-control-btn:hover {
+  background: rgba(30, 41, 59, 0.95);
+  color: #38bdf8;
+  transform: scale(1.05);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.control-tooltip {
+  position: absolute;
+  right: 52px;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(5px);
+  transition: var(--transition-fast);
+  border: 1px solid var(--glass-border);
+}
+
+.map-control-btn:hover .control-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Leyenda del Mapa */
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  display: flex;
+  gap: 14px;
+  z-index: 1000;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-popular {
+  background-color: var(--color-popular);
+  box-shadow: 0 0 8px var(--color-popular);
+}
+
+.dot-trail {
+  background-color: var(--color-trail);
+  box-shadow: 0 0 8px var(--color-trail);
+}
+
+.dot-user {
+  background-color: #6366f1;
+  box-shadow: 0 0 8px #6366f1;
+}
+
+/* ==========================================================================
+   Personalización de Leaflet Popups y Marcadores
+   ========================================================================== */
+.leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-main) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Contenido del Popup */
+.popup-race-card {
+  padding: 14px 16px;
+  min-width: 240px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.popup-tag-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.popup-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.popup-actions-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.popup-btn {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
+}
+
+.popup-btn-detail {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.popup-btn-register {
+  background: var(--color-popular-gradient);
+  color: #fff;
+}
+
+/* Marcadores SVG Personalizados */
+.custom-race-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.pin-bubble {
+  width: 38px;
+  height: 38px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 2px solid #ffffff;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pin-bubble:hover, .custom-race-pin.active-pin .pin-bubble {
+  transform: rotate(-45deg) scale(1.25);
+  z-index: 1000;
+}
+
+.pin-icon-inner {
+  transform: rotate(45deg);
+  font-size: 15px;
+  color: #fff;
+}
+
+.pin-popular .pin-bubble {
+  background: var(--color-popular-gradient);
+  box-shadow: var(--glow-popular);
+}
+
+.pin-trail .pin-bubble {
+  background: var(--color-trail-gradient);
+  box-shadow: var(--glow-trail);
+}
+
+/* Marcador de Usuario */
+.user-marker-wrap {
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+
+.user-marker-core {
+  width: 18px;
+  height: 18px;
+  background: #6366f1;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.9);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 2;
+}
+
+.user-marker-pulse {
+  width: 44px;
+  height: 44px;
+  background: rgba(99, 102, 241, 0.25);
+  border-radius: 50%;
+  position: absolute;
+  top: -11px;
+  left: -11px;
+  animation: user-radar 2.2s infinite ease-out;
+}
+
+@keyframes user-radar {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}

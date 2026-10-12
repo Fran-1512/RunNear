@@ -1,0 +1,277 @@
+/* ==========================================================================
+   Header de la Aplicación
+   ========================================================================== */
+.app-header {
+  height: var(--header-height);
+  background: rgba(12, 18, 32, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: relative;
+  /* Por encima de los botones del mapa, para que la lista de pueblos no quede tapada */
+  z-index: 1500;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo-icon-wrap {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: var(--glow-accent);
+}
+
+.logo-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.brand-tagline {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Centro: Estado de Geolocalización y Selector de Ciudad */
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.location-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: var(--transition-fast);
+}
+
+.location-badge:hover {
+  background: rgba(51, 65, 85, 0.8);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.9; }
+}
+
+.btn-geo-refresh {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+
+.btn-geo-refresh:hover {
+  color: #38bdf8;
+  transform: rotate(45deg);
+}
+
+.city-select {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 7px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.city-select:hover, .city-select:focus {
+  border-color: var(--color-accent);
+  color: var(--text-main);
+}
+
+/* Derecha del Header */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stats-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.count-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #38bdf8;
+  line-height: 1;
+}
+
+.count-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Enlaces a Calendario y Guías (páginas de texto) */
+.header-enlaces {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-enlaces a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  background: rgba(30, 41, 59, 0.7);
+  color: var(--text-main);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.header-enlaces a:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(51, 65, 85, 0.8);
+}
+
+body.tema-claro .header-enlaces a {
+  background: #ffffff;
+}
+
+/* Portátiles pequeños: se quitan el lema y el contador para que quepan los enlaces */
+@media (max-width: 1250px) {
+  .brand-tagline,
+  .stats-counter {
+    display: none;
+  }
+}
+
+/* Móvil: icono con el nombre pequeño debajo, para que quepa junto al logo */
+@media (max-width: 600px) {
+  .header-enlaces {
+    gap: 2px;
+  }
+
+  .header-enlaces a {
+    flex-direction: column;
+    gap: 0;
+    padding: 2px 6px;
+    border: none;
+    background: none;
+    font-size: 0.62rem;
+    line-height: 1.2;
+  }
+
+  .header-enlaces a span:first-child {
+    font-size: 1.15rem;
+  }
+
+  body.tema-claro .header-enlaces a {
+    background: none;
+  }
+}
+
+/* Botones Comunes */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,583 @@
+/* ==========================================================================
+   Tema claro (Ajustes → Apariencia)
+   ========================================================================== */
+body.tema-claro {
+  --bg-dark-900: #eef1f6;
+  --bg-dark-800: #ffffff;
+  --bg-dark-700: #ffffff;
+  --bg-dark-600: #e6eaf2;
+  --glass-card: #ffffff;
+  --glass-card-hover: #f7f8fc;
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --text-main: #1b2233;
+  --text-muted: #4a5468;
+  --text-dim: #6b7487;
+  background-color: var(--bg-dark-900);
+  color: var(--text-main);
+}
+
+body.tema-claro .app-header {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body.tema-claro .filters-card,
+body.tema-claro .results-header {
+  background: #f6f8fb;
+}
+
+body.tema-claro .search-input,
+body.tema-claro .segmented-control,
+body.tema-claro .chip-btn,
+body.tema-claro .sort-select,
+body.tema-claro .city-select,
+body.tema-claro .location-badge,
+body.tema-claro .btn-toggle-filtros {
+  background: #ffffff;
+  color: var(--text-main);
+}
+
+body.tema-claro .chip-btn.active {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+body.tema-claro .segment-btn.active {
+  color: #1b2233;
+}
+
+body.tema-claro .race-card {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+body.tema-claro .card-title,
+body.tema-claro .modal-race-title,
+body.tema-claro .metric-value,
+body.tema-claro .popup-title {
+  color: #111827;
+}
+
+body.tema-claro .card-stats-grid,
+body.tema-claro .metric-box {
+  background: #f3f5f9;
+}
+
+body.tema-claro .badge-distance-km,
+body.tema-claro .distance-pill,
+body.tema-claro .card-mini-btn,
+body.tema-claro .btn-secondary,
+body.tema-claro .accion-ficha {
+  background: #f1f3f8;
+  color: var(--text-main);
+}
+
+body.tema-claro .card-tamano {
+  color: #b45309;
+}
+
+body.tema-claro .menu-item.activo {
+  background: rgba(99, 102, 241, 0.14);
+  color: #312e81;
+}
+
+body.tema-claro .menu-item:hover,
+body.tema-claro .menu-grupo:hover {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+body.tema-claro .map-control-btn,
+body.tema-claro .map-legend,
+body.tema-claro .toast,
+body.tema-claro .btn-menu {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-main);
+}
+
+body.tema-claro .leaflet-popup-content-wrapper,
+body.tema-claro .leaflet-popup-tip {
+  background: #ffffff !important;
+  color: var(--text-main) !important;
+}
+
+body.tema-claro .modal-overlay {
+  background: rgba(15, 23, 42, 0.45);
+}
+
+body.tema-claro .modal-footer {
+  background: #f6f8fb;
+}
+
+body.tema-claro .cal-nav,
+body.tema-claro .menu-cerrar {
+  background: #f1f3f8;
+}
+
+body.tema-claro .brand-tagline,
+body.tema-claro .count-label {
+  color: var(--text-muted);
+}
+
+/* Pie de las tarjetas: los botones no se parten; si no caben, bajan de línea */
+.card-footer-actions {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-mini-btn {
+  white-space: nowrap;
+}
+/* Resultados de carreras ya celebradas */
+.bloque-resultados {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bloque-resultados.hidden {
+  display: none;
+}
+
+.resultados-nota {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.resultados-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.enlace-resultado {
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fbbf24;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace-resultado:hover {
+  background: rgba(245, 158, 11, 0.26);
+}
+
+.card-mini-btn.btn-resultados {
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+body.tema-claro .enlace-resultado,
+body.tema-claro .card-mini-btn.btn-resultados {
+  color: #b45309;
+}
+/* Tu tiempo en una carrera corrida (ficha) */
+.bloque-marca {
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bloque-marca.hidden,
+.bloque-tiempo.hidden,
+.panel-marcas.hidden {
+  display: none;
+}
+
+.marca-resumen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.marca-etiqueta,
+.marca-titulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.marca-titulo {
+  width: 100%;
+}
+
+.marca-tiempo {
+  font-size: 1.35rem;
+  color: #34d399;
+  font-variant-numeric: tabular-nums;
+}
+
+.marca-detalle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.marca-botones {
+  display: flex;
+  gap: 6px;
+}
+
+.marca-botones .btn-secondary {
+  padding: 6px 12px;
+}
+
+.marca-form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.marca-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.marca-form input,
+.marca-form select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 16px; /* evita el zoom automático de iOS */
+  padding: 7px 8px;
+}
+
+#marca-km {
+  width: 96px;
+}
+
+.marca-tiempo-inputs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.marca-tiempo-inputs input {
+  width: 64px;
+  text-align: center;
+}
+
+.marca-guardar {
+  padding: 8px 16px;
+}
+
+body.tema-claro .marca-form input,
+body.tema-claro .marca-form select {
+  background: #ffffff;
+}
+
+body.tema-claro .marca-tiempo {
+  color: #047857;
+}
+
+/* Tiempo en la tarjeta (sección "Ya corridas") */
+.card-marca {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #34d399;
+  margin-top: -4px;
+}
+
+body.tema-claro .card-marca {
+  color: #047857;
+}
+
+/* Tus mejores marcas (sección "Ya corridas") */
+.panel-marcas {
+  padding: 12px 16px 14px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.marcas-titulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.marcas-ayuda {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.marcas-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.marca-pb {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.marca-pb-distancia {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.marca-pb-tiempo {
+  font-size: 1.15rem;
+  color: #34d399;
+  font-variant-numeric: tabular-nums;
+}
+
+.marca-pb-ritmo {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.marca-pb-carrera {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.tema-claro .marca-pb-tiempo {
+  color: #047857;
+}
+
+/* Tiempo previsto (ficha) */
+.bloque-tiempo {
+  background: rgba(56, 189, 248, 0.07);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tiempo-resumen {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tiempo-icono {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tiempo-texto {
+  font-weight: 700;
+}
+
+.tiempo-datos,
+.tiempo-salida {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tiempo-salida strong {
+  color: var(--text-main);
+}
+
+.tiempo-nota {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.tiempo-nota a {
+  color: inherit;
+}
+
+/* Botones del mensaje de lista vacía */
+.empty-state-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Botones de fecha, siempre a la vista bajo el buscador */
+.chips-fecha {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.chip-fecha {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 4px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.chip-fecha:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chip-fecha.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+body.tema-claro .chip-fecha {
+  background: #ffffff;
+  color: var(--text-main);
+}
+
+body.tema-claro .chip-fecha.active {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Enlaces dentro de las ventanas informativas (Acerca de, Ajustes) */
+.info-texto a,
+.ajuste-ayuda a {
+  color: #818cf8;
+  font-weight: 600;
+}
+
+body.tema-claro .info-texto a,
+body.tema-claro .ajuste-ayuda a {
+  color: #4f46e5;
+}
+
+/* Dato que la carrera no publica: en gris, sin parecer un error */
+.stat-val.sin-dato,
+.metric-value.sin-dato {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* Cabecera de la lista: "N carreras encontradas" en una línea y, debajo, fechas u orden */
+.results-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.results-title {
+  white-space: nowrap;
+}
+
+/* Buscador de ciudad o pueblo (cabecera) */
+.city-selector-wrap {
+  position: relative;
+}
+
+input.city-select {
+  width: 170px;
+  cursor: text;
+  font-family: inherit;
+}
+
+input.city-select::placeholder {
+  color: var(--text-muted);
+}
+
+.lista-ciudades {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--bg-dark-800);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 3000;
+}
+
+.lista-ciudades.hidden {
+  display: none;
+}
+
+.opcion-ciudad {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.opcion-ciudad:hover,
+.opcion-ciudad.marcada {
+  background: rgba(99, 102, 241, 0.18);
+}
+
+.opcion-nombre {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.opcion-provincia {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.opcion-vacia {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 960px), (pointer: coarse) and (max-width: 1200px) {
+  input.city-select {
+    width: 150px;
+    font-size: 16px; /* evita el zoom automático de iOS */
+  }
+}
+
+@media (max-width: 480px) {
+  input.city-select {
+    width: 128px;
+  }
+}
