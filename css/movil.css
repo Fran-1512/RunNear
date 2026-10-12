@@ -29,6 +29,14 @@
   display: none;
 }
 
+/* Tablet y móvil: no cabe en la cabecera junto a Calendario y Guías; está en el menú (☰ → Instalar la app) */
+@media (max-width: 960px), (pointer: coarse) and (max-width: 1200px) {
+  .btn-instalar,
+  .btn-instalar.hidden {
+    display: none;
+  }
+}
+
 .modal-instalar {
   max-width: 440px;
 }
