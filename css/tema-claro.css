@@ -41,6 +41,11 @@ body.tema-claro .chip-btn.active {
   color: #fff;
 }
 
+/* Barra del deslizador de radio: en oscuro es blanca translúcida y sobre blanco no se veía */
+body.tema-claro .custom-range {
+  background: rgba(15, 23, 42, 0.16);
+}
+
 body.tema-claro .segment-btn.active {
   color: #1b2233;
 }
