@@ -1083,12 +1083,11 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
-      "lat": 39.86539,
-      "lng": -4.02843
+      "lat": 39.85589,
+      "lng": -4.02426
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-11",
@@ -1496,12 +1495,11 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
-      "lat": 39.95563,
-      "lng": -4.40149
+      "lat": 39.92976,
+      "lng": -4.40051
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-11",
@@ -2010,14 +2008,11 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "carreraspopulares.com",
-      "Running.life"
+      "Carreras CLM"
     ],
-    "desnivel_positivo_m": 670,
     "ubicacion": {
-      "lat": 40.14082,
-      "lng": -1.63418
+      "lat": 40.14014,
+      "lng": -1.63473
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-11",
@@ -2284,12 +2279,11 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
-      "lat": 39.16681,
-      "lng": -3.85323
+      "lat": 39.16891,
+      "lng": -3.85145
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-11",
@@ -5652,7 +5646,8 @@
         "url": "https://multiesport.es/wp-content/Json_files/2026/CLASIFICACIONES-PDF/Reglamento%20%20CAUDETE%202026.pdf"
       }
     ],
-    "resultados_web": "https://multiesport.es/resultados/"
+    "resultados_web": "https://multiesport.es/resultados/",
+    "desnivel_positivo_m": 1000
   },
   {
     "id": "rl-carrera-popular-aragon-sur",
@@ -16115,8 +16110,7 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
       "lat": 39.31421,
@@ -18400,12 +18394,11 @@
       "url": "https://carrerasclm.es"
     },
     "fuentes": [
-      "Carreras CLM",
-      "Running.life"
+      "Carreras CLM"
     ],
     "ubicacion": {
-      "lat": 39.35596,
-      "lng": -1.71861
+      "lat": 39.35619,
+      "lng": -1.71576
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-11",
@@ -18486,13 +18479,12 @@
     },
     "fuentes": [
       "Carreras CLM",
-      "Carreras de Montaña por Mayayo (calendario FDMCM)",
-      "Running.life"
+      "Carreras de Montaña por Mayayo (calendario FDMCM)"
     ],
     "desnivel_positivo_m": 1300,
     "ubicacion": {
-      "lat": 38.68845,
-      "lng": -4.10789
+      "lat": 38.68522,
+      "lng": -4.11117
     },
     "ubicacion_exacta": true,
     "actualizado": "2026-10-11",
@@ -25049,7 +25041,8 @@
     "comunidad": "Castilla-La Mancha",
     "precio_desde": 35.0,
     "inscritos": 150,
-    "resultados_web": "https://sportmaniacs.com/es/results"
+    "resultados_web": "https://sportmaniacs.com/es/results",
+    "desnivel_positivo_m": 2500
   },
   {
     "id": "rl-anibal-race",
