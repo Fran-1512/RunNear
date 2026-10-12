@@ -1101,7 +1101,7 @@ function mostrarAcercaDe() {
 }
 
 function mostrarAjustes() {
-  const claro = document.body.classList.contains("tema-claro");
+  const apariencia = aparienciaGuardada();
   const radio = radioPorDefecto();
   const opcionesRadio = [15, 25, 50, 100, 150, 250]
     .map(r => `<option value="${r}" ${r === radio ? "selected" : ""}>${r} km</option>`).join("");
@@ -1110,8 +1110,9 @@ function mostrarAjustes() {
       <div class="ajuste">
         <span class="ajuste-nombre">Apariencia</span>
         <div class="segmented-control ajuste-tema">
-          <button class="segment-btn ${claro ? "" : "active"}" data-tema="oscuro">🌙 Oscuro</button>
-          <button class="segment-btn ${claro ? "active" : ""}" data-tema="claro">☀️ Claro</button>
+          <button class="segment-btn ${apariencia === "auto" ? "active" : ""}" data-tema="auto" title="Según el modo claro u oscuro de tu dispositivo">📱 Automático</button>
+          <button class="segment-btn ${apariencia === "oscuro" ? "active" : ""}" data-tema="oscuro">🌙 Oscuro</button>
+          <button class="segment-btn ${apariencia === "claro" ? "active" : ""}" data-tema="claro">☀️ Claro</button>
         </div>
       </div>
       <div class="ajuste">
@@ -1154,7 +1155,7 @@ function mostrarAjustes() {
     } catch (e) {
       // Sin acceso al almacenamiento: no hay nada guardado que borrar
     }
-    aplicarTema("oscuro");
+    aplicarTema("auto", false);
     actualizarContadoresMenu();
     aplicarFiltrosYRenderizar();
     mostrarAjustes();
@@ -1162,10 +1163,32 @@ function mostrarAjustes() {
   });
 }
 
-function aplicarTema(tema) {
-  const claro = tema === "claro";
+/**
+ * Apariencia: "auto" (según el modo claro/oscuro del dispositivo, por defecto), "claro" u "oscuro".
+ * Las páginas de texto (portada, guías, calendario) leen la misma elección.
+ * Versiones anteriores guardaban "tema" y siempre "oscuro" por defecto, así que de aquello solo
+ * se conserva "claro", que sí lo eligió la persona.
+ */
+const MODO_CLARO = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+
+function aparienciaGuardada() {
+  let apariencia = ALMACEN.leer("apariencia", null);
+  if (!apariencia) {
+    apariencia = ALMACEN.leer("tema", null) === "claro" ? "claro" : "auto";
+    if (apariencia === "claro") ALMACEN.guardar("apariencia", "claro");
+    try {
+      localStorage.removeItem("runnear_tema");
+    } catch (e) {
+      // Sin almacenamiento: nada que limpiar
+    }
+  }
+  return apariencia;
+}
+
+function aplicarTema(apariencia, guardar = true) {
+  const claro = apariencia === "claro" || (apariencia === "auto" && !!MODO_CLARO && MODO_CLARO.matches);
   document.body.classList.toggle("tema-claro", claro);
-  ALMACEN.guardar("tema", tema);
+  if (guardar) ALMACEN.guardar("apariencia", apariencia);
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute("content", claro ? "#ffffff" : "#0c1220");
 }
@@ -1174,8 +1197,13 @@ function aplicarTema(tema) {
 // Arranque
 // ==========================================================================
 
-// El tema se aplica cuanto antes para evitar un parpadeo
-aplicarTema(ALMACEN.leer("tema", "oscuro"));
+// El tema se aplica cuanto antes para evitar un parpadeo; en automático, sigue al dispositivo
+aplicarTema(aparienciaGuardada(), false);
+if (MODO_CLARO && MODO_CLARO.addEventListener) {
+  MODO_CLARO.addEventListener("change", () => {
+    if (aparienciaGuardada() === "auto") aplicarTema("auto", false);
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   AppState.vista = "todas";

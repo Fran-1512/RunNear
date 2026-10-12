@@ -9,9 +9,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="iconos/favicon-32.png">
   <link rel="stylesheet" href="vendor/fonts/fonts.css">
   <script>
-    // Mismo tema (claro u oscuro) que el elegido en Ajustes de la web
+    // Mismo tema que en Ajustes del mapa: elegido (claro u oscuro) o, si no, el del dispositivo
     try {
-      if (JSON.parse(localStorage.getItem("runnear_tema")) === "claro") document.documentElement.dataset.theme = "light";
+      var apariencia = JSON.parse(localStorage.getItem("runnear_apariencia")) || "auto";
+      var claro = apariencia === "claro" ||
+        (apariencia === "auto" && window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches);
+      if (claro) document.documentElement.dataset.theme = "light";
     } catch (e) {}
   </script>
   <style>

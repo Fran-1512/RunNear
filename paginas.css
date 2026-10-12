@@ -1,32 +1,92 @@
-/* Páginas de texto generadas por sitio/generar.py (carreras y calendarios).
-   Mismos colores que la web principal (styles.css), pero sin mapa: ligeras y legibles. */
+/* Páginas de texto generadas por sitio/generar.py (portada, carreras, calendarios y guías).
+   Mismos colores que la web principal (styles.css), pero sin mapa: ligeras y legibles.
 
+   Tema: sigue el modo claro/oscuro del dispositivo, salvo que la persona haya elegido uno en
+   los Ajustes del mapa (la página lo indica con <html data-tema="claro|oscuro">). */
+
+/* Oscuro (por defecto) */
 :root {
+  --esquema: dark;
   --fondo: #0c1220;
+  --fondo-luz: #1a2440;
+  --cabecera: rgba(15, 23, 42, 0.75);
   --tarjeta: rgba(18, 28, 50, 0.65);
+  --campo: #0f172a;
   --borde: rgba(255, 255, 255, 0.08);
+  --borde-fuerte: rgba(255, 255, 255, 0.18);
   --texto: #f8fafc;
+  --texto-largo: #e2e8f0;
   --suave: #94a3b8;
   --tenue: #64748b;
+  --enlace: #a5b4fc;
+  --enlace-hover: #c7d2fe;
   --popular: #06b6d4;
   --trail: #10b981;
   --acento: #6366f1;
   --aviso: #f59e0b;
+  --sombra: none;
+}
+
+/* Claro: si el dispositivo está en modo claro (y no se eligió oscuro) o si se eligió claro */
+@media (prefers-color-scheme: light) {
+  :root:not([data-tema="oscuro"]) {
+    --esquema: light;
+    --fondo: #f6f8fc;
+    --fondo-luz: #e8eefb;
+    --cabecera: rgba(255, 255, 255, 0.85);
+    --tarjeta: #ffffff;
+    --campo: #ffffff;
+    --borde: rgba(15, 23, 42, 0.1);
+    --borde-fuerte: rgba(15, 23, 42, 0.22);
+    --texto: #0f172a;
+    --texto-largo: #1e293b;
+    --suave: #475569;
+    --tenue: #64748b;
+    --enlace: #4f46e5;
+    --enlace-hover: #3730a3;
+    --popular: #0891b2;
+    --trail: #059669;
+    --aviso: #d97706;
+    --sombra: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+}
+:root[data-tema="claro"] {
+  --esquema: light;
+  --fondo: #f6f8fc;
+  --fondo-luz: #e8eefb;
+  --cabecera: rgba(255, 255, 255, 0.85);
+  --tarjeta: #ffffff;
+  --campo: #ffffff;
+  --borde: rgba(15, 23, 42, 0.1);
+  --borde-fuerte: rgba(15, 23, 42, 0.22);
+  --texto: #0f172a;
+  --texto-largo: #1e293b;
+  --suave: #475569;
+  --tenue: #64748b;
+  --enlace: #4f46e5;
+  --enlace-hover: #3730a3;
+  --popular: #0891b2;
+  --trail: #059669;
+  --aviso: #d97706;
+  --sombra: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 14px rgba(15, 23, 42, 0.04);
 }
 
 * { box-sizing: border-box; }
 
+/* Relieve de las tarjetas (solo se nota en el tema claro) */
+.opciones a, .tarjetas-guias a, .zonas a, .datos div, .indice, .faq details, .calculadora, .formula { box-shadow: var(--sombra); }
+
 body {
   margin: 0;
-  background: radial-gradient(circle at 20% 0%, #1a2440 0%, var(--fondo) 55%) fixed, var(--fondo);
+  background: radial-gradient(circle at 20% 0%, var(--fondo-luz) 0%, var(--fondo) 55%) fixed, var(--fondo);
   color: var(--texto);
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  color-scheme: dark;
+  color-scheme: var(--esquema);
 }
 
-a { color: #a5b4fc; }
-a:hover { color: #c7d2fe; }
+a { color: var(--enlace); }
+a:hover { color: var(--enlace-hover); }
 
 h1, h2 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
 h1 { font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin: 0.2rem 0 0.8rem; }
@@ -37,7 +97,7 @@ h2 small { color: var(--tenue); font-weight: 400; font-size: 0.9rem; }
 .cabecera {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding: 12px 16px; border-bottom: 1px solid var(--borde);
-  background: rgba(15, 23, 42, 0.75); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 5;
+  background: var(--cabecera); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 5;
 }
 .marca { display: flex; align-items: center; gap: 8px; color: var(--texto); text-decoration: none;
          font-family: 'Outfit', sans-serif; font-size: 1.35rem; }
@@ -64,7 +124,8 @@ h2 small { color: var(--tenue); font-weight: 400; font-size: 0.9rem; }
   border: 1px solid var(--borde); background: var(--tarjeta); color: var(--texto); font-weight: 600;
 }
 .boton:hover { color: var(--texto); border-color: rgba(99, 102, 241, 0.5); }
-.boton.principal { background: linear-gradient(135deg, var(--popular), var(--acento)); border: none; }
+.boton.principal { background: linear-gradient(135deg, var(--popular), var(--acento)); border: none; color: #fff; }
+.boton.principal:hover { color: #fff; }
 .acciones { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
 
 /* Ficha de una carrera */
@@ -104,14 +165,14 @@ h2 small { color: var(--tenue); font-weight: 400; font-size: 0.9rem; }
 /* Guías */
 h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin: 1.4rem 0 0.4rem; }
 h3 small { color: var(--tenue); font-weight: 400; }
-.guia p, .guia li { color: #e2e8f0; }
+.guia p, .guia li { color: var(--texto-largo); }
 .guia li { margin: 0.35rem 0; }
 .fecha-guia { color: var(--tenue); font-size: 0.85rem; margin-top: -0.4rem; }
 .formula { text-align: center; font-family: 'Outfit', sans-serif; font-size: 1.15rem;
            background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 10px; }
 .tabla-envoltorio { overflow-x: auto; }
 .tabla { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-.tabla th { text-align: left; color: var(--suave); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.tabla th { text-align: left; color: var(--suave); font-weight: 600; border-bottom: 1px solid var(--borde-fuerte); }
 .tabla th, .tabla td { padding: 7px 8px; border-bottom: 1px solid var(--borde); white-space: nowrap; }
 .tabla td:nth-child(2) { white-space: normal; }
 .lista-control { list-style: none; padding: 0; }
@@ -148,10 +209,10 @@ h3 small { color: var(--tenue); font-weight: 400; }
 .calculadora fieldset label { font-weight: 400; color: var(--suave); }
 .calculadora small { color: var(--tenue); font-weight: 400; }
 .calculadora select, .calculadora input[type="number"] {
-  background: #0f172a; color: var(--texto); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px;
+  background: var(--campo); color: var(--texto); border: 1px solid var(--borde-fuerte); border-radius: 10px;
   padding: 9px 10px; font: inherit; font-size: 1rem;
 }
-.calculadora select option { background: #0f172a; color: var(--texto); }
+.calculadora select option { background: var(--campo); color: var(--texto); }
 .calculadora #calc-otra { margin-top: 8px; width: 7rem; }
 .hms { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .hms input { width: 3.8rem; }
@@ -162,7 +223,7 @@ h3 small { color: var(--tenue); font-weight: 400; }
 .cifras b { font-family: 'Outfit', sans-serif; font-size: 1.3rem; }
 .estimacion { color: var(--suave); margin: 12px 0 4px; }
 ul.estimacion { margin-top: 0; }
-.parciales summary { cursor: pointer; color: #a5b4fc; margin-top: 10px; }
+.parciales summary { cursor: pointer; color: var(--enlace); margin-top: 10px; }
 .parciales .tabla { max-width: 320px; margin-top: 8px; }
 
 /* Portada */
@@ -179,7 +240,7 @@ ul.estimacion { margin-top: 0; }
 .opciones .icono { font-size: 2.2rem; }
 .opciones b { font-family: 'Outfit', sans-serif; font-size: 1.35rem; margin: 8px 0 6px; }
 .opciones .sub { color: var(--suave); font-size: 0.95rem; flex: 1; }
-.opciones .ir { margin-top: 14px; color: #a5b4fc; font-weight: 700; }
+.opciones .ir { margin-top: 14px; color: var(--enlace); font-weight: 700; }
 
 @media (max-width: 720px) {
   .opciones { grid-template-columns: 1fr; gap: 10px; }

@@ -127,6 +127,16 @@ def relativo(profundidad):
     return "../" * profundidad
 
 
+# Tema elegido en los Ajustes del mapa (si no se eligió, paginas.css sigue al dispositivo).
+# Va en línea en el <head> para que la página no parpadee al cargar.
+TEMA_ELEGIDO = """<script>
+try {
+  var apariencia = JSON.parse(localStorage.getItem("runnear_apariencia"));
+  if (apariencia === "claro" || apariencia === "oscuro") document.documentElement.dataset.tema = apariencia;
+} catch (e) {}
+</script>"""
+
+
 def hueco(tipo="horizontal"):
     """Sitio para un anuncio; anuncios.js lo rellena (o lo deja oculto si AdSense no está activo)."""
     return f'<div class="anuncio" data-tipo="{tipo}"></div>'
@@ -168,7 +178,9 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <meta property="og:description" content="{e(descripcion)}">
 <meta property="og:image" content="{e(imagen or SITIO_URL + 'iconos/compartir.jpg')}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0c1220">
+<meta name="theme-color" content="#0c1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)">
+{TEMA_ELEGIDO}
 <link rel="icon" type="image/png" sizes="32x32" href="{r}iconos/favicon-32.png">
 <link rel="stylesheet" href="{r}vendor/fonts/fonts.css">
 <link rel="stylesheet" href="{r}paginas.css">

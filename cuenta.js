@@ -251,6 +251,7 @@ async function sincronizarAlEntrar() {
 }
 
 function aplicarAjustesDeCuenta(ajustes) {
+  // En la base de datos, "automático" se guarda vacío (tema = null)
   if (ajustes.tema === "claro" || ajustes.tema === "oscuro") aplicarTema(ajustes.tema);
   if (Number.isFinite(ajustes.radio_km)) ALMACEN.guardar("radio", ajustes.radio_km);
   if (ajustes.avisos && typeof ajustes.avisos === "object") ALMACEN.guardar("avisos", ajustes.avisos);
@@ -278,7 +279,7 @@ function refrescarTrasSincronizar() {
 function alCambiarDatoLocal(clave) {
   if (!Cuenta.usuario || Cuenta.aplicandoRemoto) return;
   const tabla = clave === "favoritas" || clave === "corridas" ? clave
-    : ["tema", "radio", "ciudad", "avisos"].includes(clave) ? "ajustes" : null;
+    : ["apariencia", "radio", "ciudad", "avisos"].includes(clave) ? "ajustes" : null;
   if (!tabla) return;
   // Cambio mientras aún se están trayendo los datos de la cuenta: se juntarán después
   guardarLocal("cuenta_pendiente", Cuenta.usuario.id);
@@ -342,7 +343,7 @@ async function subir(tablas) {
   }
 
   if (tablas.includes("ajustes")) {
-    const tema = ALMACEN.leer("tema", null);
+    const tema = ALMACEN.leer("apariencia", null);
     const radio = ALMACEN.leer("radio", null);
     const ciudad = typeof ciudadGuardada === "function" ? ciudadGuardada() : null;
     const fila = {
