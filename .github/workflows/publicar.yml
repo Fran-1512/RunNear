@@ -3,7 +3,8 @@
 # - Al subir cambios (push a main): publica la web tal cual.
 # - Cada día a las 05:00 UTC, o a mano desde la pestaña "Actions": ejecuta el
 #   scraper, guarda carreras.json en el repositorio y publica la web.
-# - En ambos casos genera antes las páginas para buscadores (sitio/generar.py).
+# - En ambos casos pasa antes las pruebas (tests/), genera las páginas para buscadores
+#   (sitio/generar.py) y las revisa; si algo falla, no se publica.
 
 name: Actualizar carreras y publicar web
 
@@ -33,6 +34,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      # Pruebas del código (tests/): si alguna falla, no se actualiza ni se publica nada
+      - name: Pruebas
+        run: python -m unittest discover -s tests -t . -v
 
       - name: Actualizar carreras (scraper)
         if: github.event_name != 'push'
@@ -88,6 +93,11 @@ jobs:
       # Se generan en cada publicación a partir de carreras.json y no se guardan en el repositorio.
       - name: Generar páginas para buscadores
         run: python -m sitio.generar
+
+      # Si alguna página tiene un enlace roto o datos para Google mal formados, no se publica
+      # (la web anterior sigue en pie)
+      - name: Revisar las páginas generadas
+        run: python tests/comprobar_paginas.py
 
       - uses: actions/configure-pages@v5
 

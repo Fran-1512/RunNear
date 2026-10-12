@@ -76,7 +76,8 @@ def e(texto):
 
 
 def slug(texto):
-    t = unicodedata.normalize("NFD", str(texto or ""))
+    # NFKD también convierte "28ª" / "5º" en "28a" / "5o", para poder quitar el número de edición
+    t = unicodedata.normalize("NFKD", str(texto or ""))
     t = "".join(ch for ch in t if unicodedata.category(ch) != "Mn").lower()
     return re.sub(r"[^a-z0-9]+", "-", t).strip("-")[:80] or "carrera"
 
@@ -818,13 +819,18 @@ def generar_guias(futuras, rutas):
     return entradas
 
 
+def contenido_provincias_js(comunidad_de):
+    """Texto de js/provincias.js a partir de {provincia: comunidad}."""
+    pares = ",\n".join(f"  {json.dumps(p, ensure_ascii=False)}: {json.dumps(c, ensure_ascii=False)}"
+                       for p, c in sorted(comunidad_de.items(), key=lambda x: (x[1], x[0])))
+    return ("// Generado por sitio/generar.py a partir de scraper/comun.py: no editar a mano.\n"
+            f"const COMUNIDAD_DE_PROVINCIA = {{\n{pares}\n}};\n")
+
+
 def escribir_provincias_js():
     """js/provincias.js: provincia -> comunidad para el mapa (menú "Por zona" y "Añadir una carrera").
     Se genera desde scraper.comun.PROVINCIAS para que no haya dos listas que mantener."""
-    pares = ",\n".join(f"  {json.dumps(p, ensure_ascii=False)}: {json.dumps(c, ensure_ascii=False)}"
-                       for p, c in sorted(COMUNIDAD_DE.items(), key=lambda x: (x[1], x[0])))
-    contenido = ("// Generado por sitio/generar.py a partir de scraper/comun.py: no editar a mano.\n"
-                 f"const COMUNIDAD_DE_PROVINCIA = {{\n{pares}\n}};\n")
+    contenido = contenido_provincias_js(COMUNIDAD_DE)
     ruta = os.path.join(RAIZ, "js", "provincias.js")
     actual = open(ruta, encoding="utf-8").read() if os.path.exists(ruta) else ""
     if actual != contenido:

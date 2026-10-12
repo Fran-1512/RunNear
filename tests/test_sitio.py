@@ -1,0 +1,104 @@
+"""
+Pruebas del generador de páginas (sitio/): direcciones de las carreras, horas con su zona
+horaria, enlaces entre guías, huecos de anuncios y la lista de provincias de la web.
+
+    py -m unittest discover -s tests -t .
+"""
+
+import os
+import re
+import unittest
+
+from scraper.comun import PROVINCIAS
+from sitio import generar
+from sitio.guias import GUIAS, GUIAS_DE_CALENDARIO, GUIAS_GENERALES, GUIAS_LARGAS, GUIAS_TRAIL, TEMAS
+
+RAIZ = generar.RAIZ
+
+
+class Direcciones(unittest.TestCase):
+    def test_slug(self):
+        self.assertEqual(generar.slug("Alcázar de San Juan"), "alcazar-de-san-juan")
+        self.assertEqual(generar.slug("  ¡¡Hola!!  "), "hola")
+
+    def test_direccion_estable_entre_ediciones(self):
+        """Sin año ni número de edición: la misma dirección sirve el año que viene."""
+        casos = {
+            ("XXI Carrera de Tomelloso 2026", "Tomelloso"): "carrera-de-tomelloso",
+            ("10K Ciudad de Tomelloso 2026", "Tomelloso"): "10k-ciudad-de-tomelloso",
+            ("28ª Media Maratón de Alcázar", "Alcázar de San Juan"): "media-maraton-de-alcazar-alcazar-de-san-juan",
+            ("Inforun VI Carrera Solidaria Ruidera 26", "Ruidera"): "inforun-carrera-solidaria-ruidera",
+        }
+        for (nombre, pueblo), esperado in casos.items():
+            with self.subTest(nombre=nombre):
+                self.assertEqual(generar.slug_evento({"nombre": nombre, "municipio": pueblo, "fecha": "2026-10-04"}),
+                                 esperado)
+
+
+class HoraOficial(unittest.TestCase):
+    def test_verano_invierno_y_canarias(self):
+        self.assertEqual(generar.desfase_horario("2026-07-15", "Madrid"), "+02:00")
+        self.assertEqual(generar.desfase_horario("2026-12-15", "Madrid"), "+01:00")
+        self.assertEqual(generar.desfase_horario("2026-07-15", "Las Palmas"), "+01:00")
+        self.assertEqual(generar.desfase_horario("2026-12-15", "Santa Cruz de Tenerife"), "+00:00")
+
+    def test_cambio_de_hora(self):
+        # 2026: horario de verano del domingo 29 de marzo al domingo 25 de octubre
+        self.assertEqual(generar.desfase_horario("2026-03-28", "Madrid"), "+01:00")
+        self.assertEqual(generar.desfase_horario("2026-03-29", "Madrid"), "+02:00")
+        self.assertEqual(generar.desfase_horario("2026-10-24", "Madrid"), "+02:00")
+        self.assertEqual(generar.desfase_horario("2026-10-25", "Madrid"), "+01:00")
+
+
+class Guias(unittest.TestCase):
+    def test_cada_guia_tiene_su_texto_y_datos(self):
+        slugs = [g["slug"] for g in GUIAS]
+        self.assertEqual(len(slugs), len(set(slugs)), "guías repetidas")
+        for g in GUIAS:
+            with self.subTest(guia=g["slug"]):
+                self.assertTrue(os.path.exists(os.path.join(RAIZ, "sitio", "guias", g["slug"] + ".html")))
+                self.assertIn(g["tema"], TEMAS)
+                self.assertGreaterEqual(len(g["faq"]), 3)
+                self.assertLessEqual(len(g["descripcion"]), 200, "descripción demasiado larga para Google")
+
+    def test_enlaces_entre_guias(self):
+        """Ninguna guía enlaza (en el texto o en "Sigue leyendo") a una guía que no existe."""
+        for g in GUIAS:
+            with self.subTest(guia=g["slug"]):
+                with open(os.path.join(RAIZ, "sitio", "guias", g["slug"] + ".html"), encoding="utf-8") as f:
+                    generar.comprobar_enlaces_guias(g["slug"], f.read())
+
+    def test_listas_de_guias_recomendadas(self):
+        existentes = {g["slug"] for g in GUIAS}
+        for lista in (GUIAS_GENERALES, GUIAS_TRAIL, GUIAS_LARGAS, GUIAS_DE_CALENDARIO):
+            self.assertTrue(set(lista) <= existentes, lista)
+
+    def test_paginas_informativas(self):
+        for p in generar.PAGINAS_FIJAS:
+            with self.subTest(pagina=p["slug"]):
+                self.assertTrue(os.path.exists(os.path.join(RAIZ, "sitio", "paginas", p["slug"] + ".html")))
+
+
+class Anuncios(unittest.TestCase):
+    def test_huecos_repartidos_en_una_guia(self):
+        texto = "<p>Intro</p>" + "".join(f"<h2>Apartado {i}</h2><p>Texto {i}</p>" for i in range(1, 9))
+        resultado = generar.con_anuncios(texto)
+        self.assertEqual(resultado.count('class="anuncio"'), 3)        # tras la intro y antes del 3.º y 6.º
+        self.assertTrue(resultado.startswith('<p>Intro</p><div class="anuncio"'))
+
+    def test_sin_anuncio_pegado_a_la_calculadora(self):
+        texto = '<p>Intro</p><form id="calculadora"></form><h2>A</h2><p>x</p>'
+        self.assertNotIn('class="anuncio"', generar.con_anuncios(texto))
+
+
+class ProvinciasDeLaWeb(unittest.TestCase):
+    def test_provincias_js_al_dia(self):
+        """js/provincias.js debe coincidir con scraper/comun.py (lo regenera sitio/generar.py)."""
+        esperado = generar.contenido_provincias_js({p: c for p, (c, _) in PROVINCIAS.items()})
+        with open(os.path.join(RAIZ, "js", "provincias.js"), encoding="utf-8") as f:
+            self.assertEqual(f.read(), esperado)
+        self.assertEqual(len(re.findall(r'^  "', esperado, flags=re.M)), 52)
+
+
+if __name__ == "__main__":
+    unittest.main()
