@@ -136,6 +136,8 @@ window.addEventListener("load", () => setTimeout(async () => {
 }, 2000));
 </script>
 '@
+# La copia de prueba lleva su propio código en línea: sin la política de seguridad (CSP), que lo bloquearía
+$html = $html -replace '<meta http-equiv="Content-Security-Policy"[^>]*>', ''
 $html = $html -replace '</body>', ($js + '</body>')
 [IO.File]::WriteAllText($prueba, $html, (New-Object Text.UTF8Encoding $false))
 $p = Start-Process py -ArgumentList '-m','http.server','8004' -WorkingDirectory $proj -PassThru -WindowStyle Hidden -RedirectStandardOutput "$out\tc.log" -RedirectStandardError "$out\tc.err"

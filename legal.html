@@ -2,21 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com https://nominatim.openstreetmap.org; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Política de privacidad y aviso legal de RunNear, el mapa de carreras populares y de trail de España.">
   <title>Privacidad y aviso legal | RunNear</title>
   <meta name="theme-color" content="#0c1220">
   <link rel="icon" type="image/png" sizes="32x32" href="iconos/favicon-32.png">
   <link rel="stylesheet" href="vendor/fonts/fonts.css">
-  <script>
-    // Mismo tema que en Ajustes del mapa: elegido (claro u oscuro) o, si no, el del dispositivo
-    try {
-      var apariencia = JSON.parse(localStorage.getItem("runnear_apariencia")) || "auto";
-      var claro = apariencia === "claro" ||
-        (apariencia === "auto" && window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches);
-      if (claro) document.documentElement.dataset.theme = "light";
-    } catch (e) {}
-  </script>
+  <!-- Mismo tema que en Ajustes del mapa (elegido o, si no, el del dispositivo) -->
+  <script src="js/tema-paginas.js"></script>
   <style>
     :root {
       --fondo: #070a13;
@@ -26,7 +20,17 @@
       --suave: #94a3b8;
       --acento: #818cf8;
     }
-    :root[data-theme="light"] {
+    @media (prefers-color-scheme: light) {
+      :root:not([data-tema="oscuro"]) {
+        --fondo: #eef1f6;
+        --tarjeta: #ffffff;
+        --borde: rgba(15, 23, 42, 0.1);
+        --texto: #1b2233;
+        --suave: #4a5468;
+        --acento: #4f46e5;
+      }
+    }
+    :root[data-tema="claro"] {
       --fondo: #eef1f6;
       --tarjeta: #ffffff;
       --borde: rgba(15, 23, 42, 0.1);

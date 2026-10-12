@@ -151,14 +151,15 @@ def relativo(profundidad):
     return "../" * profundidad
 
 
-# Tema elegido en los Ajustes del mapa (si no se eligió, css/paginas.css sigue al dispositivo).
-# Va en línea en el <head> para que la página no parpadee al cargar.
-TEMA_ELEGIDO = """<script>
-try {
-  var apariencia = JSON.parse(localStorage.getItem("runnear_apariencia"));
-  if (apariencia === "claro" || apariencia === "oscuro") document.documentElement.dataset.tema = apariencia;
-} catch (e) {}
-</script>"""
+# Política de seguridad de contenido: el navegador solo ejecuta código de la propia web y solo
+# se conecta a los servicios que usa (cuentas, tiempo previsto, situar propuestas en el mapa).
+# Aunque alguien colara código en un texto, no se ejecutaría. Es la misma en todas las páginas:
+# mapa.html y legal.html la copian (tests/test_sitio.py comprueba que coincidan).
+# AL ACTIVAR ADSENSE hay que añadir sus dominios (ver js/anuncios.js).
+CSP = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; "
+       "font-src 'self'; connect-src 'self' https://fndytkkukhmijrrikjyw.supabase.co https://api.open-meteo.com "
+       "https://nominatim.openstreetmap.org; worker-src 'self'; manifest-src 'self'; frame-src 'none'; "
+       "object-src 'none'; base-uri 'self'; form-action 'self'")
 
 
 def hueco(tipo="horizontal"):
@@ -190,6 +191,7 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{e(titulo)}</title>
 <meta name="description" content="{e(descripcion)}">
@@ -204,7 +206,7 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0c1220" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)">
-{TEMA_ELEGIDO}
+<script src="{r}js/tema-paginas.js"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="{r}iconos/favicon-32.png">
 <link rel="stylesheet" href="{r}vendor/fonts/fonts.css">
 <link rel="stylesheet" href="{r}css/paginas.css">
@@ -558,17 +560,8 @@ def generar():
 # ---------------------------------------------------------------------------
 
 # Los enlaces antiguos a la raíz que son en realidad del mapa (carrera compartida, vuelta del
-# inicio de sesión con Google, avisos al móvil) y la app instalada se llevan al mapa.
-REDIRIGIR_AL_MAPA = """<script>
-(function () {
-  var q = location.search, h = location.hash;
-  var instalada = window.matchMedia && matchMedia("(display-mode: standalone)").matches;
-  if (/[?&](carrera|code|error|error_description)=/.test(q) || /access_token|error_description/.test(h) || instalada) {
-    location.replace("mapa.html" + q + h);
-  }
-})();
-</script>
-"""
+# inicio de sesión con Google, avisos al móvil) y la app instalada se llevan al mapa (js/portada.js).
+REDIRIGIR_AL_MAPA = '<script src="js/portada.js"></script>\n'
 
 GUIAS_PORTADA = ["empezar-a-correr", "primera-carrera-5-km", "plan-10k", "calculadora-ritmo",
                  "iniciarse-en-el-trail", "alimentacion-para-corredores"]

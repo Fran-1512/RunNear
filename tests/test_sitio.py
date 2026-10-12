@@ -43,6 +43,13 @@ class Seguridad(unittest.TestCase):
             with self.subTest(url=mala):
                 self.assertIsNone(generar.url_segura(mala))
 
+    def test_misma_politica_de_seguridad_en_todas_las_paginas(self):
+        meta = f'<meta http-equiv="Content-Security-Policy" content="{generar.CSP}">'
+        for nombre in ("mapa.html", "legal.html"):
+            with self.subTest(pagina=nombre), open(os.path.join(RAIZ, nombre), encoding="utf-8") as f:
+                self.assertIn(meta, f.read())
+        self.assertIn("script-src 'self';", generar.CSP)    # nunca 'unsafe-inline' para el código
+
     def test_textos_escapados(self):
         self.assertEqual(generar.e('<img src=x onerror="alert(1)">'),
                          "&lt;img src=x onerror=&quot;alert(1)&quot;&gt;")

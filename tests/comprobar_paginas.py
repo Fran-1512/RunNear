@@ -3,7 +3,8 @@ Comprueba las páginas generadas (py -m sitio.generar) antes de publicarlas:
   - que ningún enlace o recurso interno apunte a un archivo que no existe;
   - que los datos estructurados para Google (JSON-LD) sean JSON válido;
   - que no haya dos páginas con el mismo título;
-  - que ningún enlace use "javascript:" (podría ejecutar código).
+  - que ningún enlace use "javascript:" (podría ejecutar código);
+  - que no haya código escrito dentro del HTML (la política de seguridad no lo dejaría ejecutar).
 Termina con error si encuentra algún problema, para que GitHub no publique la web rota.
 
     py tests/comprobar_paginas.py
@@ -45,6 +46,13 @@ def main():
                 json.loads(bloque)
             except ValueError as error:
                 problemas.append(f"{relativa}: JSON-LD inválido ({error})")
+
+        # Código escrito dentro del HTML: la política de seguridad (CSP) no deja ejecutarlo
+        for etiqueta in re.findall(r"<script\b[^>]*>", texto):
+            if "src=" not in etiqueta and "application/ld+json" not in etiqueta:
+                problemas.append(f"{relativa}: <script> en línea (lo bloquearía la CSP)")
+        if re.search(r"\son[a-z]+=\"", texto):
+            problemas.append(f"{relativa}: atributo on...= en línea (lo bloquearía la CSP)")
 
         titulo = re.search(r"<title>(.*?)</title>", texto, re.S)
         if titulo:

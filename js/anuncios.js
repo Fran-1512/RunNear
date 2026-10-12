@@ -10,6 +10,9 @@
  *   2. Opcional: crear en AdSense un bloque de anuncios por tipo y poner su número en BLOQUES.
  *      Sin bloques, AdSense coloca los anuncios automáticamente (Auto ads) y los huecos no se usan.
  *
+ *   3. Añadir los dominios de Google AdSense a la política de seguridad (CSP en sitio/generar.py,
+ *      copiada en mapa.html y legal.html); si no, el navegador bloqueará los anuncios.
+ *
  * Mientras CLIENTE esté vacío no se carga nada de Google y los huecos no ocupan sitio.
  * En el ordenador local (localhost) se ven como recuadros de prueba para revisar su posición.
  */
