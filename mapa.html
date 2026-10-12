@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <!-- viewport-fit=cover: en iPhone la app instalada usa toda la pantalla (se respetan las zonas seguras en el CSS) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Calendario y mapa de carreras populares y de trail de toda España. Encuentra las que tienes cerca, con fecha, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
-  <title>RunNear | Carreras populares y trail en España</title>
-  <link rel="canonical" href="https://fran-1512.github.io/RunNear/">
+  <meta name="description" content="Mapa de carreras populares y de trail de toda España. Encuentra las que tienes cerca, con fecha, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
+  <title>Mapa de carreras populares y trail en España | RunNear</title>
+  <link rel="canonical" href="https://fran-1512.github.io/RunNear/mapa.html">
 
   <!-- Vista previa al compartir el enlace (WhatsApp, Telegram, redes sociales) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RunNear">
   <meta property="og:locale" content="es_ES">
-  <meta property="og:url" content="https://fran-1512.github.io/RunNear/">
+  <meta property="og:url" content="https://fran-1512.github.io/RunNear/mapa.html">
   <meta property="og:title" content="RunNear · Carreras populares y trail en España">
   <meta property="og:description" content="Encuentra las carreras que tienes cerca: fechas, distancias, precio y enlace a la inscripción. Se actualiza cada día.">
   <meta property="og:image" content="https://fran-1512.github.io/RunNear/iconos/compartir.jpg">
@@ -43,7 +43,7 @@
 
   <!-- Estilos de la aplicación -->
   <!-- ?v= obliga al navegador (sobre todo en móvil) a descargar la versión nueva tras cada cambio -->
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="styles.css?v=36">
 </head>
 <body class="dark-theme">
   <!-- Cabecera Principal -->
@@ -57,7 +57,7 @@
           <line x1="4" y1="17" x2="20" y2="17"></line>
         </svg>
       </button>
-      <div class="brand-logo" id="brand-logo">
+      <a class="brand-logo" id="brand-logo" href="./" aria-label="RunNear: ir al inicio">
         <div class="logo-icon-wrap">
           <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
@@ -68,7 +68,7 @@
           <h1 class="brand-title">Run<span class="gradient-text">Near</span></h1>
           <p class="brand-tagline">Carreras Populares & Trail · España</p>
         </div>
-      </div>
+      </a>
     </div>
 
     <!-- Barra de Estado / Ubicación Central -->
@@ -540,15 +540,17 @@
   <!-- Leaflet.markercluster JS -->
   <script src="vendor/markercluster/leaflet.markercluster.js"></script>
   <!-- Mapa detallado propio (teselas generadas desde OpenStreetMap) -->
-  <script src="mapa_detalle.js?v=35"></script>
+  <script src="mapa_detalle.js?v=36"></script>
   <!-- Lógica de la aplicación -->
-  <script src="app.js?v=35"></script>
+  <!-- Anuncios: antes que app.js, que pone huecos en la lista de carreras -->
+  <script src="anuncios.js?v=36"></script>
+  <script src="app.js?v=36"></script>
   <!-- Menú lateral: secciones, favoritas, calendario, ajustes -->
-  <script src="menu.js?v=35"></script>
-  <script src="cuenta.js?v=35"></script>
+  <script src="menu.js?v=36"></script>
+  <script src="cuenta.js?v=36"></script>
   <!-- Valoraciones de carreras -->
-  <script src="valoraciones.js?v=35"></script>
+  <script src="valoraciones.js?v=36"></script>
   <!-- Proponer carreras que faltan -->
-  <script src="propuestas.js?v=35"></script>
+  <script src="propuestas.js?v=36"></script>
 </body>
 </html>

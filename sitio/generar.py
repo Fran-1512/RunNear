@@ -127,25 +127,31 @@ def relativo(profundidad):
     return "../" * profundidad
 
 
+def hueco(tipo="horizontal"):
+    """Sitio para un anuncio; anuncios.js lo rellena (o lo deja oculto si AdSense no está activo)."""
+    return f'<div class="anuncio" data-tipo="{tipo}"></div>'
+
+
 # ---------------------------------------------------------------------------
 # Plantilla común
 # ---------------------------------------------------------------------------
 
 def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructurados=None, imagen=None,
-           tipo_og="website"):
+           tipo_og="website", cabeza=""):
     """ruta: dirección relativa de la página (para el enlace canónico), p. ej. 'carrera/x/'.
-    migas: [(texto, ruta relativa a la raíz o None si es la página actual)]."""
+    migas: [(texto, ruta relativa a la raíz o None si es la página actual)]; None en la portada.
+    cabeza: HTML extra para el <head>."""
     r = relativo(profundidad)
     canonica = SITIO_URL + ruta
     migas_html = " › ".join(
-        f'<a href="{r}{e(url)}">{e(texto)}</a>' if url is not None else f"<span>{e(texto)}</span>"
-        for texto, url in migas)
+        f'<a href="{r}{e(url) or "./"}">{e(texto)}</a>' if url is not None else f"<span>{e(texto)}</span>"
+        for texto, url in migas or [])
     # Las migas también como datos estructurados: Google las muestra en lugar de la dirección
-    lista_migas = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    lista_migas = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i, "name": texto, "item": SITIO_URL + url if url is not None else canonica}
-        for i, (texto, url) in enumerate(migas, 1)]}
+        for i, (texto, url) in enumerate(migas, 1)]}] if migas else []
     ld = "\n".join(f'<script type="application/ld+json">{json.dumps(d, ensure_ascii=False).replace("</", "<" + chr(92) + "/")}</script>'
-                   for d in (datos_estructurados or []) + [lista_migas])
+                   for d in (datos_estructurados or []) + lista_migas)
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -166,26 +172,27 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <link rel="icon" type="image/png" sizes="32x32" href="{r}iconos/favicon-32.png">
 <link rel="stylesheet" href="{r}vendor/fonts/fonts.css">
 <link rel="stylesheet" href="{r}paginas.css">
-{ld}
+{cabeza}{ld}
+<script src="{r}anuncios.js" defer></script>
 </head>
 <body>
 <header class="cabecera">
-  <a class="marca" href="{r}"><img src="{r}iconos/icono-192.png" alt="" width="34" height="34"><span>Run<b>Near</b></span></a>
+  <a class="marca" href="{r or './'}"><img src="{r}iconos/icono-192.png" alt="" width="34" height="34"><span>Run<b>Near</b></span></a>
   <nav class="nav">
     <a href="{r}calendario/"><span aria-hidden="true">📅</span><span>Calendario</span></a>
     <a href="{r}guias/"><span aria-hidden="true">💡</span><span>Guías</span></a>
-    <a class="boton" href="{r}"><span aria-hidden="true">📍</span><span>Mapa</span></a>
+    <a class="boton" href="{r}mapa.html"><span aria-hidden="true">📍</span><span>Mapa</span></a>
   </nav>
 </header>
 <main class="contenido">
-<nav class="migas" aria-label="Estás en">{migas_html}</nav>
+{f'<nav class="migas" aria-label="Estás en">{migas_html}</nav>' if migas else ''}
 {cuerpo}
 </main>
 <footer class="pie">
   <p>RunNear reúne las carreras populares y de trail de España en un mapa. Los datos se recopilan
   cada día de calendarios públicos y de las webs de cada carrera, citando siempre la fuente:
   confirma siempre fecha y condiciones en la web oficial antes de inscribirte.</p>
-  <p><a href="{r}">Mapa de carreras</a> · <a href="{r}calendario/">Calendario por zonas</a> ·
+  <p><a href="{r or './'}">Inicio</a> · <a href="{r}mapa.html">Mapa de carreras</a> · <a href="{r}calendario/">Calendario por zonas</a> ·
   <a href="{r}guias/">Guías para corredores</a> · <a href="{r}legal.html">Privacidad y aviso legal</a></p>
 </footer>
 </body>
@@ -313,14 +320,16 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia):
   <dl class="datos">{''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in filas)}</dl>
   <p class="acciones">
     <a class="boton principal" href="{e(c.get('url_oficial') or '#')}" rel="noopener" target="_blank">{'Ver en la web oficial' if celebrada else 'Inscripción en la web oficial'} ↗</a>
-    <a class="boton" href="../../?carrera={e(c['id'])}">📍 Ver en el mapa</a>
+    <a class="boton" href="../../mapa.html?carrera={e(c['id'])}">📍 Ver en el mapa</a>
   </p>
   {f'<h2>Sobre la carrera</h2><p>{e(c["descripcion"])}</p>' if c.get("descripcion") else ''}
   {enlaces_resultados}
   <p class="origen">{origen} Confirma fecha, horario y condiciones en la web oficial antes de inscribirte.</p>
 </article>
+{hueco()}
 {f'<section><h2>Carreras cerca</h2>{lista(cercanas, True)}</section>' if cercanas else ''}
 {f'<section><h2>Más carreras en {e(c.get("provincia"))}</h2>{lista(misma_provincia)}<p><a href="../../{e(url_provincia)}">Ver todo el calendario de {e(c.get("provincia"))} →</a></p></section>' if misma_provincia else ''}
+{hueco() if cercanas or misma_provincia else ''}
 {bloque_guias("../../", guias_para_carrera(c))}
 """
     titulo = f"{c['nombre']} · {fecha_larga(c['fecha'])} · {c.get('municipio')} | RunNear"
@@ -340,7 +349,9 @@ def tabla_por_meses(carreras, rutas, prefijo):
     for c in sorted(carreras, key=lambda x: (x["fecha"], x["nombre"])):
         por_mes[c["fecha"][:7]].append(c)
     bloques = []
-    for mes, lista in por_mes.items():
+    for n, (mes, lista) in enumerate(por_mes.items()):
+        if n and n % 2 == 0:
+            bloques.append(hueco())   # un anuncio cada dos meses de calendario
         anio, m = mes.split("-")
         filas = "".join(
             f'<tr><td class="f">{date.fromisoformat(c["fecha"]).day} {MESES[int(m) - 1][:3]}</td>'
@@ -432,8 +443,8 @@ def generar():
         vecinas = sorted(x for x in por_provincia if COMUNIDAD_DE.get(x) == comunidad and x != p)
         cuerpo = (f"<h1>Carreras populares y trail en {e(p)}</h1>"
                   f'<p class="resumen">{e(resumen_zona("la provincia de " + p, lista))}</p>'
-                  f'<p class="acciones"><a class="boton principal" href="../../../">📍 Ver en el mapa</a></p>'
-                  + tabla_por_meses(lista, rutas, "../../../")
+                  f'<p class="acciones"><a class="boton principal" href="../../../mapa.html">📍 Ver en el mapa</a></p>'
+                  + tabla_por_meses(lista, rutas, "../../../") + hueco()
                   + (f"<section><h2>Otras provincias de {e(comunidad)}</h2><ul class=\"zonas\">"
                      + "".join(f'<li><a href="../{slug(x)}/">{e(x)} <span>{len(por_provincia[x])}</span></a></li>' for x in vecinas)
                      + "</ul></section>" if vecinas else "")
@@ -454,8 +465,8 @@ def generar():
                 f'<li><a href="{slug(p)}/">{e(p)} <span>{len(por_provincia[p])}</span></a></li>' for p in provincias) + "</ul>")
         cuerpo = (f"<h1>Carreras populares y trail en {e(comunidad)}</h1>"
                   f'<p class="resumen">{e(resumen_zona(comunidad, lista))}</p>{zonas}'
-                  f'<p class="acciones"><a class="boton principal" href="../../">📍 Ver en el mapa</a></p>'
-                  + tabla_por_meses(lista, rutas, "../../")
+                  f'<p class="acciones"><a class="boton principal" href="../../mapa.html">📍 Ver en el mapa</a></p>'
+                  + tabla_por_meses(lista, rutas, "../../") + hueco()
                   + bloque_guias("../../", GUIAS_DE_CALENDARIO, "Guías para preparar tu carrera"))
         titulo = f"Carreras populares y trail en {comunidad} {date.today().year} · Calendario | RunNear"
         desc = f"Calendario de carreras en {comunidad}: {len(lista)} próximas carreras populares y de trail por provincias, con fechas y distancias."
@@ -471,7 +482,8 @@ def generar():
               + "</ul>"
               + "<h2>Próximas carreras</h2>"
               + tabla_por_meses(sorted(futuras, key=lambda x: x["fecha"])[:40], rutas, "../")
-              + '<p class="acciones"><a class="boton principal" href="../">📍 Ver todas en el mapa</a></p>'
+              + '<p class="acciones"><a class="boton principal" href="../mapa.html">📍 Ver todas en el mapa</a></p>'
+              + hueco()
               + bloque_guias("../", GUIAS_DE_CALENDARIO, "Guías para corredores"))
     escribir("calendario/", pagina(
         f"Calendario de carreras populares y trail en España {date.today().year} | RunNear",
@@ -481,7 +493,11 @@ def generar():
     # 5) Guías
     sitemap += generar_guias(futuras, rutas)
 
-    # 6) Para los buscadores
+    # 6) Portada (lo primero que se ve al entrar en la web)
+    generar_portada(futuras, rutas, por_comunidad)
+    sitemap.insert(1, (SITIO_URL + "mapa.html", hoy))
+
+    # 7) Para los buscadores
     with open(os.path.join(RAIZ, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
         for url, fecha in sitemap:
@@ -493,6 +509,112 @@ def generar():
     print(f"OK: {len(carreras)} páginas de carreras, "
           f"{sum(1 for p in por_provincia if n_provincias[COMUNIDAD_DE[p]] > 1)} de provincias, "
           f"{len(por_comunidad)} de comunidades, {len(GUIAS)} guías y el sitemap ({len(sitemap)} direcciones)")
+
+
+# ---------------------------------------------------------------------------
+# Portada (index.html): elegir entre mapa, calendario y guías
+# ---------------------------------------------------------------------------
+
+# Los enlaces antiguos a la raíz que son en realidad del mapa (carrera compartida, vuelta del
+# inicio de sesión con Google, avisos al móvil) y la app instalada se llevan al mapa.
+REDIRIGIR_AL_MAPA = """<script>
+(function () {
+  var q = location.search, h = location.hash;
+  var instalada = window.matchMedia && matchMedia("(display-mode: standalone)").matches;
+  if (/[?&](carrera|code|error|error_description)=/.test(q) || /access_token|error_description/.test(h) || instalada) {
+    location.replace("mapa.html" + q + h);
+  }
+})();
+</script>
+"""
+
+GUIAS_PORTADA = ["empezar-a-correr", "primera-carrera-5-km", "plan-10k", "calculadora-ritmo",
+                 "iniciarse-en-el-trail", "alimentacion-para-corredores"]
+
+
+def generar_portada(futuras, rutas, por_comunidad):
+    hoy = date.today()
+    sabado = hoy + timedelta(days=(5 - hoy.weekday()) % 7) if hoy.weekday() != 6 else hoy - timedelta(days=1)
+    finde = sorted((c for c in futuras if sabado.isoformat() <= c["fecha"] <= (sabado + timedelta(days=1)).isoformat()),
+                   key=lambda c: (c["fecha"], c["nombre"]))
+    trail = sum(1 for c in futuras if c.get("tipo") == "trail")
+    por_slug = {g["slug"]: g for g in GUIAS}
+    destacadas = ([GUIA_SAN_SILVESTRE] if hoy.month in (10, 11, 12) else []) + GUIAS_PORTADA
+    destacadas = destacadas[:6]
+
+    opciones = [
+        ("mapa.html", "📍", "Mapa de carreras",
+         f"Las {len(futuras)} próximas carreras en el mapa: mira cuáles tienes más cerca y filtra por fecha, distancia o tipo."),
+        ("calendario/", "📅", "Calendario por zonas",
+         f"Todas las carreras de las {len(por_comunidad)} comunidades y sus provincias, ordenadas mes a mes."),
+        ("guias/", "💡", "Guías para corredores",
+         f"{len(GUIAS)} guías: empezar a correr, planes de 5K a maratón, trail, salud y una calculadora de ritmo."),
+    ]
+    tarjetas = "".join(
+        f'<li><a href="{url}"><span class="icono">{icono}</span><b>{e(titulo)}</b><span class="sub">{e(texto)}</span>'
+        f'<span class="ir">Entrar →</span></a></li>' for url, icono, titulo, texto in opciones)
+
+    if finde:
+        # 10 carreras repartidas por comunidades (primero las de más inscritos o con precio publicado)
+        grupos = defaultdict(list)
+        for c in sorted(finde, key=lambda c: (-(c.get("inscritos") or 0), c.get("precio_desde") is None, c["nombre"])):
+            grupos[c["comunidad"]].append(c)
+        elegidas = []
+        while len(elegidas) < 10 and any(grupos.values()):
+            for comunidad in sorted(grupos, key=lambda x: -len(grupos[x])):
+                if grupos[comunidad] and len(elegidas) < 10:
+                    elegidas.append(grupos[comunidad].pop(0))
+        lista_finde = ('<ul class="lista-carreras">' + "".join(
+            f'<li><a href="{e(rutas[c["id"]])}">{e(c["nombre"])}</a> <span>{e(fecha_larga(c["fecha"]))} · '
+            f'{e(c.get("municipio"))} ({e(c.get("provincia"))}) · {e(distancias_texto(c))}</span></li>'
+            for c in sorted(elegidas, key=lambda c: (c["fecha"], c["nombre"]))) + "</ul>")
+        mas = f" Te mostramos 10 de las {len(finde)}." if len(finde) > 10 else ""
+        bloque_finde = (f"<section><h2>Este fin de semana: {len(finde)} carreras</h2>"
+                        f'<p class="resumen">Carreras del {sabado.day} y {(sabado + timedelta(days=1)).day} de '
+                        f"{MESES[sabado.month - 1]} en toda España.{mas}</p>{lista_finde}"
+                        '<p><a href="mapa.html">Ver las que tienes más cerca en el mapa →</a></p></section>')
+    else:
+        bloque_finde = ""
+
+    cuerpo = (
+        '<section class="portada">'
+        "<h1>Carreras populares y trail en toda España</h1>"
+        f'<p class="resumen">{len(futuras)} próximas carreras, {len(futuras) - trail} de asfalto y {trail} de trail, '
+        "recogidas cada día de los calendarios públicos. ¿Qué quieres hacer?</p>"
+        f'<ul class="opciones">{tarjetas}</ul></section>'
+        + hueco()
+        + bloque_finde
+        + "<section><h2>Carreras por comunidades</h2><ul class=\"zonas grande\">"
+        + "".join(f'<li><a href="calendario/{slug(x)}/">{e(x)} <span>{len(por_comunidad[x])}</span></a></li>'
+                  for x in sorted(por_comunidad)) + "</ul></section>"
+        + hueco()
+        + '<section><h2>Guías para corredores</h2><ul class="tarjetas-guias">' + "".join(
+            f'<li><a href="guias/{s}/"><span class="icono">{por_slug[s]["icono"]}</span><b>{e(por_slug[s]["titulo"])}</b>'
+            f'<span class="sub">{e(por_slug[s]["resumen"])}</span></a></li>' for s in destacadas)
+        + '</ul><p><a href="guias/">Ver las ' + str(len(GUIAS)) + " guías →</a></p></section>"
+        + "<section><h2>Qué es RunNear</h2>"
+        "<p>RunNear reúne en un solo sitio las carreras populares y de trail de toda España: urbanas, "
+        "nocturnas, solidarias, cross, San Silvestre, medias maratones, maratones y carreras por montaña. "
+        "Cada día revisamos los calendarios públicos y las webs de las carreras para que encuentres la tuya "
+        "sin tener que buscar en decenas de páginas, y siempre te enlazamos a la web oficial para "
+        "inscribirte.</p>"
+        "<p>En el mapa puedes ver las carreras más cercanas a tu ubicación y, con una cuenta gratuita, "
+        "guardar tus favoritas, marcar las que ya has corrido, recibir avisos de nuevas carreras cerca de ti "
+        "y dejar tu opinión. ¿Organizas una carrera que no aparece? Puedes añadirla desde el menú del mapa.</p>"
+        "</section>"
+    )
+    datos = [
+        {"@context": "https://schema.org", "@type": "WebSite", "name": "RunNear", "url": SITIO_URL,
+         "inLanguage": "es-ES",
+         "description": "Mapa, calendario y guías de carreras populares y de trail en España."},
+        {"@context": "https://schema.org", "@type": "Organization", "name": "RunNear", "url": SITIO_URL,
+         "logo": SITIO_URL + "iconos/icono-512.png"},
+    ]
+    escribir("", pagina(
+        "RunNear | Carreras populares y trail en España: mapa, calendario y guías",
+        f"Encuentra carreras populares y de trail en toda España: {len(futuras)} próximas carreras en un mapa y "
+        "un calendario por provincias, con fecha, distancias e inscripción, y guías para corredores.",
+        "", 0, cuerpo, None, datos, cabeza=REDIRIGIR_AL_MAPA))
 
 
 # ---------------------------------------------------------------------------
@@ -556,6 +678,18 @@ def con_indice(texto):
         f'<li><a href="#{i}">{t}</a></li>' for i, t in apartados) + "</ol></nav>")
 
 
+def con_anuncios(texto):
+    """Huecos de anuncio dentro de una guía: tras la introducción y antes del 3.er y 6.º apartado
+    (si la guía es lo bastante larga). En la calculadora no se pone tras la introducción, para
+    que el anuncio no quede pegado al formulario."""
+    partes = re.split(r"(?=<h2[ >])", texto)   # partes[0] = introducción, partes[n] = apartado n
+    for n in (6, 3):                            # de atrás adelante para no mover los índices
+        if len(partes) > n + 1:
+            partes[n] = hueco("articulo") + partes[n]
+    texto = "".join(partes)
+    return texto if "<form" in texto else re.sub(r"</p>", "</p>" + hueco("articulo"), texto, count=1)
+
+
 def generar_guias(futuras, rutas):
     """Escribe guias/ y guias/<slug>/; devuelve sus entradas para el sitemap."""
     anio = str(date.today().year)
@@ -584,6 +718,7 @@ def generar_guias(futuras, rutas):
             + '</ul><p><a href="../">Ver todas las guías para corredores →</a></p></section>')
         texto, indice = con_indice(texto)
         minutos = max(1, round(len(re.sub(r"<[^>]+>", " ", texto).split()) / 200))
+        texto = con_anuncios(texto) + hueco()
         cuerpo = (f'<article class="guia"><p class="tema-guia">{e(g["tema"])}</p><h1>{g["icono"]} {e(g["titulo"])}</h1>'
                   f'<p class="fecha-guia">Equipo RunNear · actualizada el {e(fecha_larga(g["actualizada"]).split(", ")[1])}'
                   f" · {minutos} min de lectura</p>"
@@ -605,10 +740,11 @@ def generar_guias(futuras, rutas):
         entradas.append((SITIO_URL + ruta, date.today().isoformat() if "{{SAN_SILVESTRE}}" in marcas else g["actualizada"]))
 
     secciones = "".join(
-        f'<h2 id="{slug(tema)}">{e(tema)}</h2><ul class="tarjetas-guias">' + "".join(
+        (hueco() if n == 2 else "")             # un anuncio a mitad del índice
+        + f'<h2 id="{slug(tema)}">{e(tema)}</h2><ul class="tarjetas-guias">' + "".join(
             f'<li><a href="{g["slug"]}/"><span class="icono">{g["icono"]}</span><b>{e(g["titulo"])}</b>'
             f'<span class="sub">{e(g["resumen"])}</span></a></li>' for g in GUIAS if g["tema"] == tema) + "</ul>"
-        for tema in TEMAS)
+        for n, tema in enumerate(TEMAS))
     cuerpo = ("<h1>Guías para corredores</h1>"
               f'<p class="resumen">{len(GUIAS)} guías prácticas para empezar a correr, preparar tu 5K, 10K, '
               "media maratón o maratón, iniciarte en el trail, cuidar tu salud y disfrutar de las carreras "

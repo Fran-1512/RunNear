@@ -2,7 +2,7 @@
  * RunNear - Service worker (app instalable / funcionamiento sin conexión)
  *
  * Estrategias:
- *  - Página y datos (index, carreras.json, meta del mapa): primero red, si no hay
+ *  - Páginas y datos (mapa.html, carreras.json, meta del mapa): primero red, si no hay
  *    conexión se usa la última copia guardada.
  *  - Teselas del mapa detallado: primero caché (no cambian); las zonas ya vistas
  *    funcionan sin conexión. Se guardan como mucho MAX_TESELAS.
@@ -10,15 +10,14 @@
  *    instante y se actualiza en segundo plano.
  */
 
-const VERSION = "runnear-v1";
+const VERSION = "runnear-v2";
 const CACHE_APP = `${VERSION}-app`;
 const CACHE_TESELAS = "runnear-teselas";
 const MAX_TESELAS = 3000;
 
 // Lo imprescindible para abrir la app sin conexión
 const PRECARGA = [
-  "./",
-  "index.html",
+  "mapa.html",
   "carreras.json",
   "manifest.webmanifest",
   "mapa/mapa_base.json",
@@ -60,7 +59,8 @@ async function primeroRed(peticion) {
   } catch (err) {
     const guardada = await cache.match(peticion, { ignoreSearch: peticion.mode === "navigate" });
     if (guardada) return guardada;
-    if (peticion.mode === "navigate") return cache.match("index.html");
+    // Sin conexión y sin copia de esa página: se abre el mapa (lo que funciona sin red)
+    if (peticion.mode === "navigate") return cache.match("mapa.html");
     throw err;
   }
 }
@@ -107,7 +107,7 @@ async function cacheYActualizar(peticion) {
 // ==========================================================================
 
 self.addEventListener("push", evento => {
-  let aviso = { titulo: "RunNear", cuerpo: "", url: "./" };
+  let aviso = { titulo: "RunNear", cuerpo: "", url: "mapa.html" };
   try {
     aviso = { ...aviso, ...evento.data.json() };
   } catch (e) {
@@ -125,7 +125,7 @@ self.addEventListener("push", evento => {
 // Al tocar el aviso: se abre RunNear (o se reutiliza la ventana abierta) en esa carrera
 self.addEventListener("notificationclick", evento => {
   evento.notification.close();
-  const url = new URL((evento.notification.data && evento.notification.data.url) || "./", self.registration.scope).href;
+  const url = new URL((evento.notification.data && evento.notification.data.url) || "mapa.html", self.registration.scope).href;
   evento.waitUntil((async () => {
     const ventanas = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
     const abierta = ventanas.find(v => v.url.startsWith(self.registration.scope));

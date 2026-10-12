@@ -1043,6 +1043,15 @@ function renderizarListadoCarreras(carreras, mensajeVacio, contexto = {}) {
 }
 
 const TARJETAS_POR_TANDA = 40;
+const ANUNCIO_CADA = 10;
+
+function crearHuecoAnuncio() {
+  const hueco = document.createElement("div");
+  hueco.className = "anuncio";
+  hueco.dataset.tipo = "lista";
+  return hueco;
+}
+
 const listaPaginada = {
   carreras: [],
   mostradas: 0,
@@ -1061,9 +1070,15 @@ const listaPaginada = {
     if (viejo) viejo.remove();
     const fragmento = document.createDocumentFragment();
     const fin = Math.min(carreras.length, this.mostradas + TARJETAS_POR_TANDA);
-    for (let i = this.mostradas; i < fin; i++) fragmento.appendChild(crearTarjeta(carreras[i]));
+    const conAnuncios = window.RunNearAnuncios && window.RunNearAnuncios.activos;
+    for (let i = this.mostradas; i < fin; i++) {
+      fragmento.appendChild(crearTarjeta(carreras[i]));
+      // Un anuncio tras la 5.ª carrera y luego cada 10 (nunca al final de la lista)
+      if (conAnuncios && i % ANUNCIO_CADA === 4 && i < carreras.length - 1) fragmento.appendChild(crearHuecoAnuncio());
+    }
     this.mostradas = fin;
     container.appendChild(fragmento);
+    if (conAnuncios) window.RunNearAnuncios.activar(container);
 
     const quedan = carreras.length - this.mostradas;
     if (quedan <= 0) return;
