@@ -21,7 +21,7 @@
 (function () {
   const CLIENTE = "ca-pub-6802213588582157";
   // horizontal y lista: bloque "RunNear horizontal" (display adaptable); articulo: "RunNear guías"
-  const BLOQUES = { horizontal: "4127949208", articulo: "", lista: "4127949208" };
+  const BLOQUES = { horizontal: "4127949208", articulo: "2012087605", lista: "4127949208" };
 
   const local = ["localhost", "127.0.0.1"].includes(location.hostname);
   const probarEnLocal = local && /[?&]anuncios=google\b/.test(location.search);
