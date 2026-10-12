@@ -11,7 +11,7 @@ import urllib.request
 from ..comun import USER_AGENT, normalizar_provincia
 
 NOMBRE = "Propuestas de usuarios de RunNear"
-URL_BASE = "https://fran-1512.github.io/RunNear/"
+URL_BASE = "https://gorunnear.com/"
 SUPABASE_URL = "https://fndytkkukhmijrrikjyw.supabase.co"
 # Clave pública (la misma que usa la web): la vista solo muestra las propuestas aprobadas
 SUPABASE_CLAVE = "sb_publishable_MKC7ayO7IWHaAqPMtzFOBw_TP0pCSdT"

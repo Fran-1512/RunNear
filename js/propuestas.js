@@ -239,7 +239,7 @@ async function incorporarPropuestasAprobadas() {
       descripcion: p.descripcion || undefined,
       verificada_organizador: !!p.organizador,
       ubicacion: { lat: Number(p.lat), lng: Number(p.lng) },
-      fuente: { nombre: "Propuestas de usuarios de RunNear", url: "https://fran-1512.github.io/RunNear/" }
+      fuente: { nombre: "Propuestas de usuarios de RunNear", url: "https://gorunnear.com/" }
     });
     cambios = true;
   });

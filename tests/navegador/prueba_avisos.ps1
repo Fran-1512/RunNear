@@ -31,7 +31,7 @@ ok("carreras nuevas desactivadas por defecto", !claves.includes("nuevas"));
 const m1 = av.find(a => a.clave === "recordatorio:m1");
 ok("el recordatorio incluye la hora", m1.cuerpo.includes("10:00"), m1.cuerpo);
 ok("sin hora, lo indica", av.find(a => a.clave === "recordatorio:m2").cuerpo.includes("Consulta la hora"));
-ok("el enlace abre la ficha", m1.url === "https://fran-1512.github.io/RunNear/?carrera=m1", m1.url);
+ok("el enlace abre la ficha", m1.url === "https://gorunnear.com/?carrera=m1", m1.url);
 
 av = calcularAvisos({ favoritas: [], corridas: [], avisos: { nuevas: true }, ciudad: tomelloso, radio_km: 50 }, carreras, ["n1", "n2", "n3"], hoy, ayer, manana);
 ok("nuevas cerca: agrupa varias en un aviso", av.length === 1 && av[0].titulo.startsWith("🆕 2 carreras nuevas cerca de Tomelloso"), av.map(a => a.titulo).join(" | "));
@@ -50,7 +50,7 @@ ok("fechaMadrid da AAAA-MM-DD", /^\d{4}-\d{2}-\d{2}$/.test(fechaMadrid(0)), fech
 
 document.getElementById("resultado").textContent = r.join("\n");
 '@
-$html = "<!doctype html><meta charset=utf-8><body><pre id=resultado>ERROR SIN CAPTURAR</pre><script>window.onerror=(m,s,l)=>{document.getElementById('resultado').textContent='ERROR '+m+' linea '+l};`nconst WEB = 'https://fran-1512.github.io/RunNear/';`n" + $logica + "`n" + $pruebas + "`n</script>"
+$html = "<!doctype html><meta charset=utf-8><body><pre id=resultado>ERROR SIN CAPTURAR</pre><script>window.onerror=(m,s,l)=>{document.getElementById('resultado').textContent='ERROR '+m+' linea '+l};`nconst WEB = 'https://gorunnear.com/';`n" + $logica + "`n" + $pruebas + "`n</script>"
 $f = "$out\prueba_avisos.html"
 [IO.File]::WriteAllText($f, $html, (New-Object Text.UTF8Encoding $false))
 $chrome = "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"

@@ -15,7 +15,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import webpush from "npm:web-push@3.6.7";
 
-const WEB = "https://fran-1512.github.io/RunNear/";
+const WEB = "https://gorunnear.com/";
 
 // ---- LÓGICA (JavaScript puro, sin dependencias: se prueba aparte) ----
 

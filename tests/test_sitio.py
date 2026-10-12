@@ -55,6 +55,18 @@ class Seguridad(unittest.TestCase):
                          "&lt;img src=x onerror=&quot;alert(1)&quot;&gt;")
 
 
+class Direccion(unittest.TestCase):
+    def test_una_sola_direccion_publica(self):
+        """mapa.html y el resto del código usan la misma dirección que SITIO_URL (nada de la antigua)."""
+        with open(os.path.join(RAIZ, "mapa.html"), encoding="utf-8") as f:
+            mapa = f.read()
+        self.assertIn(f'<link rel="canonical" href="{generar.SITIO_URL}mapa.html">', mapa)
+        for ruta in ("mapa.html", "js/propuestas.js", "scraper/fuentes/propuestas.py",
+                     "supabase/functions/avisos/index.ts", "sitio/generar.py"):
+            with self.subTest(archivo=ruta), open(os.path.join(RAIZ, ruta), encoding="utf-8") as f:
+                self.assertNotIn("github.io/RunNear", f.read())
+
+
 class HoraOficial(unittest.TestCase):
     def test_verano_invierno_y_canarias(self):
         self.assertEqual(generar.desfase_horario("2026-07-15", "Madrid"), "+02:00")

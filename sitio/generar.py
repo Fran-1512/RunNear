@@ -11,9 +11,9 @@ es un mapa dibujado con JavaScript, que los buscadores apenas ven):
   sitemap.xml, robots.txt                    para los buscadores
 
 Se genera en cada publicación (GitHub Actions) a partir de carreras.json y NO se guarda en
-el repositorio (.gitignore). Todos los enlaces son relativos, así que funciona igual en
-fran-1512.github.io/RunNear/ que en un dominio propio: al cambiar de dirección solo hay
-que tocar SITIO_URL (enlaces canónicos y sitemap).
+el repositorio (.gitignore). Todos los enlaces son relativos, así que funciona en cualquier
+dirección: si cambiara, basta con tocar SITIO_URL (enlaces canónicos y sitemap) y las demás
+apariciones que señala tests/test_sitio.py.
 
 Uso (desde la carpeta del proyecto):
     py -m sitio.generar
@@ -40,7 +40,7 @@ if sys.platform.startswith("win"):
         pass
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITIO_URL = "https://fran-1512.github.io/RunNear/"   # cambiar al conectar el dominio propio
+SITIO_URL = "https://gorunnear.com/"   # dirección pública de la web (también en mapa.html)
 SALIDAS = ["carrera", "calendario", "guias", "sobre-runnear", "contacto", "cookies"]  # carpetas generadas (se borran y rehacen)
 
 # Páginas informativas (texto en sitio/paginas/<slug>.html; marcas {{R}}, {{N_CARRERAS}}, {{N_GUIAS}}).
