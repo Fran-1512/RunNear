@@ -13,7 +13,7 @@ Para cambiar una guía: editar su .html y, si cambia el contenido, la fecha "act
 Para añadir una: crear su .html y añadirla aquí (los enlaces se comprueban al generar).
 """
 
-TEMAS = ["Empezar a correr", "Entrenamiento", "Trail y montaña", "Salud y nutrición", "Carreras"]
+TEMAS = ["Empezar a correr", "Entrenamiento", "Material y compras", "Trail y montaña", "Salud y nutrición", "Carreras"]
 
 GUIAS = [
     # --- Empezar a correr --------------------------------------------------------------
@@ -99,6 +99,7 @@ GUIAS = [
     },
     {
         "slug": "plan-maraton",
+        "actualizada": "2026-10-13",
         "tema": "Empezar a correr",
         "titulo": "Cómo preparar tu primer maratón",
         "titulo_seo": "Cómo preparar tu primer maratón: plan de 16 semanas y claves para evitar el muro",
@@ -180,6 +181,7 @@ GUIAS = [
     },
     {
         "slug": "zonas-frecuencia-cardiaca",
+        "actualizada": "2026-10-13",
         "tema": "Entrenamiento",
         "titulo": "Entrenar por zonas de frecuencia cardiaca",
         "titulo_seo": "Zonas de frecuencia cardiaca para correr: cómo calcularlas y usarlas",
@@ -218,9 +220,113 @@ GUIAS = [
              "Son orientativas. Se basan en una fórmula muy usada (la de Peter Riegel) que funciona bien si has entrenado la distancia; en maratón suele ser optimista si no has hecho tiradas largas."),
         ],
     },
+    # --- Material y compras ---------------------------------------------------------
+    {
+        "slug": "reloj-gps-para-correr",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Material y compras",
+        "titulo": "Cómo elegir un reloj GPS para correr",
+        "titulo_seo": "Cómo elegir un reloj GPS para correr: qué funciones importan según tu nivel",
+        "descripcion": "Qué mirar al comprar un reloj GPS para running: precisión del GPS, batería, pulsómetro, entrenamientos y mapas. Qué modelo necesitas según tu nivel y presupuesto.",
+        "resumen": "GPS, batería, pulso, entrenamientos y mapas: qué necesitas según tu nivel y presupuesto.",
+        "icono": "⌚",
+        "relacionadas": ["pulsometro-pecho-o-muneca", "zonas-frecuencia-cardiaca", "auriculares-para-correr", "material-trail"],
+        "faq": [
+            ("¿Merece la pena un reloj GPS para empezar a correr?",
+             "No es imprescindible: una aplicación gratuita del móvil mide distancia, ritmo y tiempo. El reloj compensa cuando sigues un plan con series o ritmos, entrenas por pulsaciones o no quieres correr con el móvil."),
+            ("¿Cuánto cuesta un buen reloj para correr?",
+             "Como orientación, entre 100 y 200 € los de iniciación, 200-350 € los de gama media con entrenamientos estructurados y más de 300-500 € los pensados para maratón, trail y ultras."),
+            ("¿Qué es el GPS multibanda?",
+             "Es un GPS que usa dos frecuencias de señal y reduce los errores de distancia entre edificios altos, en bosques o en valles cerrados."),
+            ("¿Cuánta batería necesita un reloj para un maratón?",
+             "Con 10-20 horas de autonomía con el GPS activado es suficiente para entrenar y para un maratón; para trails largos y ultras conviene 30 horas o más."),
+        ],
+    },
+    {
+        "slug": "pulsometro-pecho-o-muneca",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Material y compras",
+        "titulo": "Pulsómetro de pecho o de muñeca",
+        "titulo_seo": "Pulsómetro de pecho o de muñeca: cuál es más preciso para correr",
+        "descripcion": "Diferencias entre el pulsómetro óptico de muñeca y la banda de pecho para correr: precisión en series y con frío, comodidad, precio y cuál te conviene.",
+        "resumen": "Precisión, comodidad y precio: cuándo basta el reloj y cuándo compensa una banda de pecho.",
+        "icono": "💓",
+        "relacionadas": ["reloj-gps-para-correr", "zonas-frecuencia-cardiaca", "tipos-de-entrenamiento", "correr-con-calor-y-frio"],
+        "faq": [
+            ("¿Es fiable el pulsómetro del reloj?",
+             "En rodajes a ritmo constante y con el reloj bien ajustado, sí. En series cortas, con frío o si el reloj se mueve, puede dar lecturas erróneas."),
+            ("¿Qué es más preciso, la banda de pecho o el pulsómetro de muñeca?",
+             "La banda de pecho, porque mide la actividad eléctrica del corazón. Es la opción recomendada para entrenar por zonas de forma rigurosa."),
+            ("¿La banda de pecho funciona con cualquier reloj?",
+             "No siempre: hay que comprobar que ambos usan la misma conexión (Bluetooth, ANT+ o las dos)."),
+        ],
+    },
+    {
+        "slug": "zapatillas-placa-de-carbono",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Material y compras",
+        "titulo": "Zapatillas con placa de carbono: ¿merecen la pena?",
+        "titulo_seo": "Zapatillas con placa de carbono: qué son y si merecen la pena para un corredor popular",
+        "descripcion": "Qué son las zapatillas con placa de carbono, cuánto ayudan de verdad, sus inconvenientes y para qué corredores merecen la pena. Cómo usarlas y alternativas más baratas.",
+        "resumen": "Qué ofrecen de verdad, sus inconvenientes y si te compensan según tu ritmo y objetivo.",
+        "icono": "🚀",
+        "relacionadas": ["elegir-zapatillas-running", "plan-maraton", "plan-media-maraton", "lesiones-frecuentes-al-correr"],
+        "faq": [
+            ("¿Las zapatillas de carbono hacen correr más rápido?",
+             "Los estudios con corredores entrenados encontraron una mejora de la economía de carrera en torno al 4 % de media, con mucha variación entre personas. El beneficio parece mayor a ritmos rápidos."),
+            ("¿Merecen la pena para un corredor popular?",
+             "Pueden merecer la pena para competir en media maratón o maratón buscando marca. Para empezar o para rodar a diario, es mejor una buena zapatilla de entrenamiento."),
+            ("¿Cuánto duran las zapatillas con placa de carbono?",
+             "Suelen durar menos kilómetros que una zapatilla de entrenamiento, porque sus espumas son muy ligeras. Por eso se suelen reservar para carreras y sesiones clave."),
+        ],
+    },
+    {
+        "slug": "auriculares-para-correr",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Material y compras",
+        "titulo": "Auriculares para correr",
+        "titulo_seo": "Auriculares para correr: conducción ósea, oído abierto o intraurales",
+        "descripcion": "Qué auriculares elegir para correr: conducción ósea, oído abierto o intraurales. Sujeción, resistencia al sudor, batería, seguridad y si se pueden usar en carreras.",
+        "resumen": "Conducción ósea, oído abierto o intraurales: sujeción, sudor, seguridad y reglamentos.",
+        "icono": "🎧",
+        "relacionadas": ["reloj-gps-para-correr", "ropa-para-correr", "dia-de-la-carrera", "iniciarse-en-el-trail"],
+        "faq": [
+            ("¿Qué auriculares son mejores para correr?",
+             "Para correr por la calle o carretera, los de conducción ósea o de oído abierto, porque dejan oír el entorno. Los intraurales suenan mejor, pero aíslan más."),
+            ("¿Se puede correr una carrera con auriculares?",
+             "Depende del reglamento de cada carrera: muchas los permiten o desaconsejan y algunas los prohíben. Hay que consultarlo en la web oficial."),
+            ("¿Qué protección contra el sudor necesitan?",
+             "Al menos IPX4; si corres mucho con lluvia o calor, mejor IPX5 o superior."),
+        ],
+    },
+    {
+        "slug": "ropa-para-correr",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Material y compras",
+        "titulo": "Ropa para correr según la temperatura",
+        "titulo_seo": "Qué ropa ponerse para correr según la temperatura: guía con tabla",
+        "descripcion": "Qué ropa ponerse para correr con calor, frío o lluvia, con una tabla por temperaturas. Tejidos técnicos, prendas básicas, complementos y cómo evitar rozaduras.",
+        "resumen": "Tabla de qué ponerse según los grados, tejidos técnicos y prendas básicas.",
+        "icono": "🧥",
+        "relacionadas": ["correr-con-calor-y-frio", "elegir-zapatillas-running", "material-trail", "dia-de-la-carrera"],
+        "faq": [
+            ("¿Qué ropa ponerse para correr con frío?",
+             "Por capas: una camiseta térmica, una segunda capa si hace mucho frío y un cortavientos, con mallas largas, guantes y gorro. Vístete como si hiciera unos 10 grados más."),
+            ("¿Por qué no correr con ropa de algodón?",
+             "Porque absorbe el sudor y lo retiene: pesa, roza y enfría al parar. Las prendas técnicas sacan el sudor y se secan rápido."),
+            ("¿A partir de qué temperatura se corre con mallas largas?",
+             "Como orientación, por debajo de unos 8 °C, aunque depende de cada persona, del viento y de la humedad."),
+        ],
+    },
     # --- Trail y montaña ---------------------------------------------------------------
     {
         "slug": "iniciarse-en-el-trail",
+        "actualizada": "2026-10-13",
         "tema": "Trail y montaña",
         "titulo": "Iniciarse en el trail running",
         "titulo_seo": "Iniciarse en el trail running: guía para tu primera carrera por montaña",
@@ -282,6 +388,7 @@ GUIAS = [
     # --- Salud y nutrición -------------------------------------------------------------
     {
         "slug": "alimentacion-para-corredores",
+        "actualizada": "2026-10-13",
         "tema": "Salud y nutrición",
         "titulo": "Alimentación para corredores",
         "titulo_seo": "Alimentación para corredores: qué comer antes, durante y después de correr",
@@ -342,6 +449,7 @@ GUIAS = [
     },
     {
         "slug": "correr-con-calor-y-frio",
+        "actualizada": "2026-10-13",
         "tema": "Salud y nutrición",
         "titulo": "Correr con calor y con frío",
         "titulo_seo": "Correr con calor, frío, lluvia o viento: ropa y consejos para cada tiempo",
@@ -358,6 +466,26 @@ GUIAS = [
              "No, si se adapta el ritmo, se bebe suficiente y se evitan las horas de más calor. Hay que parar ante síntomas como mareo, confusión o piel muy caliente."),
             ("¿Cuánto tarda el cuerpo en acostumbrarse al calor?",
              "Aproximadamente entre una y dos semanas de exposición progresiva."),
+        ],
+    },
+    {
+        "slug": "geles-y-nutricion-deportiva",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Salud y nutrición",
+        "titulo": "Geles, barritas y bebidas deportivas",
+        "titulo_seo": "Geles, barritas y bebidas isotónicas para correr: cuáles elegir y cuándo",
+        "descripcion": "Qué geles, barritas, isotónicas y sales usar al correr, cuándo hacen falta y cuántos tomar en una media maratón, un maratón o un trail. Cómo elegirlos y probarlos.",
+        "resumen": "Cuándo hacen falta, cuántos tomar según la carrera y cómo elegirlos.",
+        "icono": "⚡",
+        "relacionadas": ["alimentacion-para-corredores", "hidratacion-al-correr", "plan-maraton", "viajar-para-correr-un-maraton"],
+        "faq": [
+            ("¿Cuántos geles hay que tomar en una media maratón?",
+             "Si vas a estar más de hora y cuarto o una hora y media corriendo, uno o dos geles suelen bastar, siempre con agua y probados antes."),
+            ("¿Cuándo tomar el primer gel en un maratón?",
+             "Pronto, hacia el km 8-10, y después uno cada 30-45 minutos según su contenido, sin esperar a sentirte vacío."),
+            ("¿Los geles se toman con agua?",
+             "Los normales, sí: solos pueden sentar mal. Los isotónicos son más líquidos y se pueden tomar sin agua."),
         ],
     },
     # --- Carreras ----------------------------------------------------------------------
@@ -403,7 +531,8 @@ GUIAS = [
     },
     {
         "slug": "elegir-zapatillas-running",
-        "tema": "Carreras",
+        "actualizada": "2026-10-13",
+        "tema": "Material y compras",
         "titulo": "Cómo elegir zapatillas de running",
         "titulo_seo": "Cómo elegir zapatillas de running: guía para asfalto y trail",
         "descripcion": "Qué mirar al comprar zapatillas para correr: terreno, amortiguación, drop, talla, pisada y cuándo cambiarlas. Diferencias entre zapatillas de asfalto y de trail.",
@@ -441,6 +570,26 @@ GUIAS = [
              "Sí, y en las más populares las plazas se agotan semanas antes. Consulta la web oficial de cada carrera y no lo dejes para el último día."),
         ],
     },
+    {
+        "slug": "viajar-para-correr-un-maraton",
+        "publicada": "2026-10-13",
+        "actualizada": "2026-10-13",
+        "tema": "Carreras",
+        "titulo": "Viajar para correr un maratón o una media",
+        "titulo_seo": "Viajar para correr un maratón o una media: alojamiento, viaje, comida y maleta",
+        "descripcion": "Cómo organizar un viaje para correr un maratón o una media en otra ciudad: inscripción, alojamiento cerca de la salida, recoger el dorsal, comer fuera y lista para la maleta.",
+        "resumen": "Inscripción, alojamiento, dorsal, comida y lista para la maleta.",
+        "icono": "✈️",
+        "relacionadas": ["plan-maraton", "dia-de-la-carrera", "geles-y-nutricion-deportiva", "como-elegir-carrera"],
+        "faq": [
+            ("¿Cuándo reservar el hotel para un maratón?",
+             "En cuanto tengas el dorsal: los fines de semana de maratón los hoteles cercanos se llenan y suben de precio. Mejor con cancelación gratuita."),
+            ("¿Cuántos días antes llegar a un maratón?",
+             "Al menos el día anterior, mejor por la mañana o a mediodía, para recoger el dorsal en la feria del corredor y descansar."),
+            ("¿Llevar las zapatillas en la maleta o en el equipaje de mano?",
+             "En el equipaje de mano: si se pierde la maleta, casi todo se puede comprar allí menos tus zapatillas ya probadas."),
+        ],
+    },
 ]
 
 PUBLICADA = "2026-10-12"   # fecha de publicación y última revisión (común mientras no cambie ninguna)
@@ -450,8 +599,9 @@ for _g in GUIAS:
 
 # Guías que se recomiendan en las fichas de carreras y en los calendarios
 GUIA_SAN_SILVESTRE = "san-silvestre"
-GUIAS_GENERALES = ["dia-de-la-carrera", "calculadora-ritmo", "como-elegir-carrera"]
+# (las de "Material y compras" se enlazan desde muchas páginas: son las que más interesan a los anunciantes)
+GUIAS_GENERALES = ["dia-de-la-carrera", "calculadora-ritmo", "reloj-gps-para-correr", "como-elegir-carrera"]
 GUIAS_TRAIL = ["iniciarse-en-el-trail", "material-trail"]
-GUIAS_LARGAS = ["plan-media-maraton", "plan-maraton", "alimentacion-para-corredores"]
+GUIAS_LARGAS = ["plan-media-maraton", "plan-maraton", "geles-y-nutricion-deportiva"]
 GUIAS_DE_CALENDARIO = ["empezar-a-correr", "primera-carrera-5-km", "plan-10k", "dia-de-la-carrera",
-                       "como-elegir-carrera", "iniciarse-en-el-trail"]
+                       "reloj-gps-para-correr", "ropa-para-correr", "como-elegir-carrera", "iniciarse-en-el-trail"]
