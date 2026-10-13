@@ -219,6 +219,13 @@ function renderizarMarcadoresEnMapa(carreras) {
     const distStr = c.distancia_usuario_km !== null
       ? `A ${c.distancia_usuario_km} km de ti`
       : "";
+    // Carrera ya celebrada: el botón lleva a los resultados en vez de a la inscripción
+    const resultados = estaCelebrada(c) ? enlacesResultados(c).enlaces[0] : null;
+    const botonExterno = resultados
+      ? `<a href="${escapeHtml(urlSegura(resultados.url))}" target="_blank" rel="noopener noreferrer"
+           class="popup-btn popup-btn-resultados" title="${escapeHtml(resultados.texto)}">🏅 Resultados ↗</a>`
+      : `<a href="${escapeHtml(urlSegura(c.url_oficial))}" target="_blank" rel="noopener noreferrer"
+           class="popup-btn popup-btn-register">Inscripción ↗</a>`;
     return `
       <div class="popup-race-card">
         <div class="popup-tag-row">
@@ -237,9 +244,7 @@ function renderizarMarcadoresEnMapa(carreras) {
           <button class="popup-btn popup-btn-detail" data-id="${escapeHtml(c.id)}">
             Ver Ficha
           </button>
-          <a href="${escapeHtml(urlSegura(c.url_oficial))}" target="_blank" rel="noopener noreferrer" class="popup-btn popup-btn-register">
-            Inscripción ↗
-          </a>
+          ${botonExterno}
         </div>
       </div>
     `;

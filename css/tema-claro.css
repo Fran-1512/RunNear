@@ -103,6 +103,17 @@ body.tema-claro .leaflet-popup-tip {
   color: var(--text-main) !important;
 }
 
+/* Botón "Ver ficha" del globo: en oscuro es blanco sobre translúcido y sobre blanco no se veía */
+body.tema-claro .popup-btn-detail {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4338ca;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+body.tema-claro .popup-btn-resultados {
+  color: #b45309;
+}
+
 body.tema-claro .modal-overlay {
   background: rgba(15, 23, 42, 0.45);
 }
