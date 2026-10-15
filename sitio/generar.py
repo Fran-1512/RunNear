@@ -299,17 +299,25 @@ def datos_evento(c, url):
                          "addressRegion": c.get("provincia"), "addressCountry": "ES"}}
     if c.get("ubicacion"):
         lugar["geo"] = {"@type": "GeoCoordinates", "latitude": c["ubicacion"]["lat"], "longitude": c["ubicacion"]["lng"]}
+    web_oficial = url_segura(c.get("url_oficial")) or url
     datos = {
         "@context": "https://schema.org", "@type": "SportsEvent", "name": c["nombre"],
-        "startDate": inicio, "eventStatus": f"https://schema.org/{estado}",
+        # Las carreras populares duran unas horas: empiezan y terminan el mismo día
+        "startDate": inicio, "endDate": c["fecha"], "eventStatus": f"https://schema.org/{estado}",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": lugar, "url": url, "sport": "Atletismo",
         "description": descripcion_carrera(c),
         "image": [SITIO_URL + "iconos/compartir.jpg"],
+        # No sabemos el nombre exacto de la entidad organizadora: se identifica por la carrera y su web
+        "organizer": {"@type": "Organization", "name": c.get("organizador") or c["nombre"], "url": web_oficial},
+        "performer": {"@type": "PerformingGroup", "name": f"Corredores de {c['nombre']}"},
     }
     if c.get("precio_desde") is not None:
+        # validFrom: el día en que vimos publicado ese precio en su web de inscripción
         datos["offers"] = {"@type": "Offer", "price": c["precio_desde"], "priceCurrency": "EUR",
-                           "url": url_segura(c.get("url_oficial")) or url}
+                           "url": web_oficial, "validFrom": c.get("actualizado") or date.today().isoformat()}
+        if estado == "EventScheduled" and c["fecha"] >= date.today().isoformat():
+            datos["offers"]["availability"] = "https://schema.org/InStock"
     return datos
 
 

@@ -83,6 +83,27 @@ class AdSense(unittest.TestCase):
             self.assertIn(f'const CLIENTE = "{cuenta}";', f.read())
 
 
+class DatosParaGoogle(unittest.TestCase):
+    """Campos que Search Console pide en los eventos (SportsEvent) de cada ficha de carrera."""
+
+    def carrera(self, **extra):
+        return {"id": "x", "nombre": "10K Ciudad de Toledo", "fecha": "2099-05-10", "hora": "10:00",
+                "municipio": "Toledo", "provincia": "Toledo", "url_oficial": "https://10ktoledo.es",
+                "actualizado": "2099-01-15", **extra}
+
+    def test_campos_del_evento(self):
+        d = generar.datos_evento(self.carrera(precio_desde=12), "https://gorunnear.com/carrera/x/")
+        for campo in ("name", "startDate", "endDate", "location", "organizer", "performer", "offers", "eventStatus"):
+            self.assertIn(campo, d)
+        self.assertEqual(d["endDate"], "2099-05-10")
+        self.assertEqual(d["organizer"]["url"], "https://10ktoledo.es")
+        self.assertEqual(d["offers"]["validFrom"], "2099-01-15")
+        self.assertEqual(d["offers"]["availability"], "https://schema.org/InStock")
+
+    def test_sin_precio_no_se_inventa_oferta(self):
+        self.assertNotIn("offers", generar.datos_evento(self.carrera(), "https://gorunnear.com/carrera/x/"))
+
+
 class HoraOficial(unittest.TestCase):
     def test_verano_invierno_y_canarias(self):
         self.assertEqual(generar.desfase_horario("2026-07-15", "Madrid"), "+02:00")
