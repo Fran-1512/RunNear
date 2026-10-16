@@ -87,9 +87,17 @@
     "lat": 39.40525,
     "lng": -3.12548
   },
+  "Caravaca|Murcia": {
+    "lat": 38.1047,
+    "lng": -1.86112
+  },
   "Carmena|Toledo": {
     "lat": 39.92976,
     "lng": -4.40051
+  },
+  "Castalla|Alicante": {
+    "lat": 38.59572,
+    "lng": -0.67026
   },
   "Castellar d n'Hug|Barcelona": {
     "lat": 42.28534,

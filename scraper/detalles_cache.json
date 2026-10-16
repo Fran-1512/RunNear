@@ -2103,7 +2103,7 @@
   },
   "https://10k.vilafranca.cat": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://10kconcienciate.es/": {
@@ -2277,7 +2277,7 @@
     "version": 6
   },
   "https://albaceterunning.com/san-silvestre-2/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "17:00",
@@ -2545,7 +2545,7 @@
     "version": 6
   },
   "https://backyardultragrancanaria.com/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -2920,11 +2920,11 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/10k-y-5k-la-puebla-de-almoradiel-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 99,
+    "inscritos": 113,
     "plazas_max": null,
     "precio_desde": 15.0,
     "resultados": [],
@@ -2944,23 +2944,23 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/desafio-cucon-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": 1400,
     "estado": null,
     "hora": null,
-    "inscritos": 241,
+    "inscritos": 258,
     "plazas_max": null,
-    "precio_desde": 18.0,
+    "precio_desde": null,
     "resultados": [],
     "resultados_web": null,
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/legua-los-patos-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 19,
+    "inscritos": 21,
     "plazas_max": null,
     "precio_desde": 10.0,
     "resultados": [],
@@ -2968,7 +2968,7 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/milla-solidaria-puertollano": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -3018,7 +3018,7 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/ultra-trail-anillo-minero-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -3030,7 +3030,7 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/xxv-cross-santa-teresa-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -3047,11 +3047,11 @@
     "version": 6
   },
   "https://carreras.dxtchiprun.es/carrera/zenagas-trail-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 211,
+    "inscritos": 233,
     "plazas_max": null,
     "precio_desde": 8.0,
     "resultados": [],
@@ -3121,7 +3121,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/10k-la-solana-2026/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "11:00",
@@ -3218,7 +3218,7 @@
     "version": 6
   },
   "https://carrerasciudadreal.es/evento/yugo-10k-socuellamos-carrera-urbana-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -3746,7 +3746,7 @@
     "version": 6
   },
   "https://crono3.es/evento/10k-2a-carrera-benefica-latue-2026/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -3758,7 +3758,7 @@
     "version": 6
   },
   "https://crono3.es/evento/10k-de-alcazar-de-san-juan-2026/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -3770,7 +3770,7 @@
     "version": 6
   },
   "https://crono3.es/evento/28a-media-maraton-de-alcazar-de-san-juan-2026/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -3782,7 +3782,7 @@
     "version": 6
   },
   "https://crono3.es/evento/6k-solidarios-de-alcazar-de-san-juan-2026/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -4524,7 +4524,7 @@
     "version": 6
   },
   "https://cursasantgalderic.blogspot.com/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -4691,22 +4691,22 @@
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1121": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1123": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1166": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1167": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1170": {
@@ -4733,32 +4733,32 @@
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1179": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1181": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1186": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1188": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1189": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1190": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1191": {
@@ -4773,7 +4773,7 @@
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1207": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1212": {
@@ -4810,17 +4810,17 @@
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1289": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1307": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1310": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://deportes.dipualba.es/deportes/FichaPrueba/1311": {
@@ -5018,13 +5018,13 @@
     "version": 6
   },
   "https://dorsal1.com/producto/cxm-el-picon-de-beamud-x-circ-prov-cxm-dip-cuenca/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
     "inscritos": null,
     "plazas_max": null,
-    "precio_desde": 18.0,
+    "precio_desde": null,
     "resultados": [
       {
         "texto": "Descargar resultados - CXM EL PICON - BEAMUD",
@@ -5035,7 +5035,7 @@
     "version": 6
   },
   "https://dorsal1.com/producto/evento-dorsal-1-12/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -5047,7 +5047,7 @@
     "version": 6
   },
   "https://dorsal1.com/producto/evento-dorsal-1-13/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -5076,7 +5076,7 @@
     "version": 6
   },
   "https://dorsal1.com/producto/x-san-silvestre-paseo-de-zapateria-tarancon/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -5264,7 +5264,7 @@
     "version": 6
   },
   "https://eventos.runrunsports.com/inscripcion/i-maraton-imperial-de-toledo/modalidades": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -5305,7 +5305,7 @@
     "version": 6
   },
   "https://extremefilabrestraill.blogspot.com/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -5551,6 +5551,18 @@
   },
   "https://fartlecksport.com/centinela-running/": {
     "consultado": "2026-10-15",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://fartlecksport.com/cross-maria-huerva/": {
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -6193,7 +6205,7 @@
     "version": 6
   },
   "https://grupobrotons.com/event/xii-san-silvestre-nocturna-villa-de-el-campello-2027/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "17:00",
@@ -6385,7 +6397,7 @@
     "version": 6
   },
   "https://hostrailric.com": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -6394,6 +6406,23 @@
     "precio_desde": null,
     "resultados": [],
     "resultados_web": "https://hostrailric.com/classificacions/",
+    "version": 6
+  },
+  "https://huevosdeloarre.com/paleotrail/": {
+    "consultado": "2026-10-16",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [
+      {
+        "texto": "Clasificaciones / Galería",
+        "url": "https://huevosdeloarre.com/paleotrail/galeria-clasificaciones/"
+      }
+    ],
+    "resultados_web": null,
     "version": 6
   },
   "https://hyatlon.org/event/gran-canaria": {
@@ -7521,7 +7550,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/13o-cross-corto-popular-espada-toledana": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7581,7 +7610,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/ruta-091-ii-guadalajara": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7593,7 +7622,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/v-carrera-popular-talavera-la-nueva": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7605,7 +7634,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/vinedos-del-rio-tajo": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7629,7 +7658,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/xix-carrera-nocturna-de-toledo-gran-premio-santander": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7653,7 +7682,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/xliv-san-silvestre-toledana": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7665,7 +7694,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/xx-carrera-solidaria-memorial-ismael-araujo-martin": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -7677,7 +7706,7 @@
     "version": 6
   },
   "https://inscripciones.runrunsports.com/eventos/xxxviii-media-maraton-ciudad-de-talavera-memorial-anibal-arevalo": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -8548,7 +8577,7 @@
     "version": 6
   },
   "https://marato-formentera.com/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -8569,7 +8598,7 @@
     "version": 6
   },
   "https://maratoboumort.blogspot.com/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -8946,7 +8975,7 @@
     "version": 6
   },
   "https://mediamaratonazuqueca.es/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9252,6 +9281,18 @@
     "resultados_web": null,
     "version": 6
   },
+  "https://montureventos.com/eventos/__trashed-2/": {
+    "consultado": "2026-10-16",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 8.0,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
   "https://montureventos.com/eventos/__trashed-3/": {
     "consultado": "2026-10-15",
     "desnivel_positivo_m": null,
@@ -9277,7 +9318,7 @@
     "version": 6
   },
   "https://montureventos.com/eventos/vi-cxm-sabina-milenaria/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9330,7 +9371,7 @@
     "version": 6
   },
   "https://multiesport.es/event/2026-iv-edicion-alacera-trail/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9347,7 +9388,7 @@
     "version": 6
   },
   "https://multiesport.es/event/2026-ix-trail-puerta-del-infierno/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9443,7 +9484,7 @@
     "version": 6
   },
   "https://multiesport.es/event/2027-ii-10k-bombers-xativa/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9508,7 +9549,7 @@
     "version": 6
   },
   "https://multiesport.es/event/trail-benissoda-2027/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9556,7 +9597,7 @@
     "version": 6
   },
   "https://my.raceresult.com/362900/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9589,7 +9630,7 @@
     "version": 6
   },
   "https://my.raceresult.com/392373/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -9967,7 +10008,7 @@
     "version": 6
   },
   "https://puntallanacabratrail.com/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -10844,11 +10885,11 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/13ordm-carrera-popular-la-villa-de-don-fadrique-toledo": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "18:30",
-    "inscritos": 54,
+    "inscritos": 70,
     "plazas_max": null,
     "precio_desde": 8.0,
     "resultados": [],
@@ -10856,7 +10897,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/carrera-y-paseo-cruz-roja-toledo-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -10864,15 +10905,15 @@
     "plazas_max": null,
     "precio_desde": null,
     "resultados": [],
-    "resultados_web": null,
+    "resultados_web": "https://sportmaniacs.com/es/results",
     "version": 6
   },
   "https://sportmaniacs.com/es/races/el-privilegio-100-millas-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 154,
+    "inscritos": 161,
     "plazas_max": null,
     "precio_desde": 35.0,
     "resultados": [],
@@ -10892,7 +10933,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/ii-legua-urbana-de-yuncos": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -10904,7 +10945,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/iii-carrera-amp-marcha-solidaria-del-hospital-nacional-de-parapljicos": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -10928,11 +10969,11 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 160,
+    "inscritos": 185,
     "plazas_max": null,
     "precio_desde": 5.0,
     "resultados": [],
@@ -10976,7 +11017,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/lillo-christmas-race": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -10988,7 +11029,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/monttrail-los-yebenes-2027": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "09:00",
@@ -11000,7 +11041,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/trail-montatildea-pico-del-fraile-de-tejadillos": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "09:30",
@@ -11012,7 +11053,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/v-carrera-solidaria-ldquokilmetros-que-dan-vidardquo": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -11024,7 +11065,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/v-malagon-trail-bisabor-energy-2027": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "06:30",
@@ -11048,7 +11089,7 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/x-carrera-ldquoamafi-runrdquo-ix-ldquocanicross-amafirdquo-y-ldquov-marcha-senderista-amafirdquo-de-yepes": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -11060,11 +11101,11 @@
     "version": 6
   },
   "https://sportmaniacs.com/es/races/x-carrera-popular-xi-marcha-solidaria-por-la-diabetes": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 91,
+    "inscritos": 95,
     "plazas_max": null,
     "precio_desde": 10.0,
     "resultados": [],
@@ -11117,6 +11158,21 @@
     "precio_desde": null,
     "resultados": [],
     "resultados_web": null,
+    "version": 6
+  },
+  "https://survivor-race.com/carreras/survivor-alicante/": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-16",
+    "version": 6
+  },
+  "https://survivor-race.com/carreras/survivor-barcelona/": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-16",
+    "version": 6
+  },
+  "https://survivor-race.com/carreras/survivor-madrid-quijorna/": {
+    "bloqueado_robots": true,
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://t100triathlon.com/marbella/participate/": {
@@ -11556,7 +11612,7 @@
     "version": 6
   },
   "https://tripasioneventos.com/event/neblina-tres-valles/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -12501,13 +12557,13 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/10k-camargo-2027": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "09:00",
     "inscritos": null,
     "plazas_max": null,
-    "precio_desde": 13.0,
+    "precio_desde": 18.0,
     "resultados": [],
     "resultados_web": null,
     "version": 6
@@ -12645,7 +12701,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/40a-mitja-sant-cugat-2027": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "09:00",
@@ -12681,7 +12737,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/7-cross-popular-ana-lozano-maranchon": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:00",
@@ -12861,7 +12917,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/campo-de-criptana-en-marcha-contra-el-cancer-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:00",
@@ -12909,7 +12965,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/carrera-solidaria-contra-la-ela-fundacion-eurocaja-rural-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "14:00",
@@ -13281,7 +13337,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/i-carrera-popular-y-marcha-de-carmena": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -13425,7 +13481,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/iii-alustante-trail-hojas-rojas": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": 517,
     "estado": null,
     "hora": "09:00",
@@ -13437,7 +13493,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/iii-carrera-vertical-subida-a-las-antenas": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "16:00",
@@ -13461,7 +13517,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/iii-marcha-contra-el-cancer-torrijos-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -13533,7 +13589,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/iv-marcha-contra-el-cancer-la-puebla-de-almoradiel-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:00",
@@ -13701,13 +13757,13 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/maraton-alcarria": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "08:30",
     "inscritos": null,
     "plazas_max": null,
-    "precio_desde": 40.0,
+    "precio_desde": 50.0,
     "resultados": [],
     "resultados_web": null,
     "version": 6
@@ -13845,7 +13901,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/piedrabuena-en-marcha-contra-el-cancer-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "17:00",
@@ -13929,7 +13985,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/quijote-maraton-ciudad-real-2026": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "08:30",
@@ -14154,7 +14210,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/trail-duende-martinico-mondejar": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": 850,
     "estado": null,
     "hora": "09:30",
@@ -14262,7 +14318,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/v-10k-de-sarinena": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "18:00",
@@ -14274,7 +14330,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/v-cross-del-cordel-de-las-merinas": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:00",
@@ -14646,7 +14702,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/xiv-carrera-popular-de-san-bartolome-de-las-abiertas": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:00",
@@ -14694,7 +14750,7 @@
     "version": 6
   },
   "https://web.rockthesport.com/es/event/xix-media-maraton-comarca-jadraque": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": "10:30",
@@ -15007,7 +15063,7 @@
     "version": 6
   },
   "https://www.15kvalencia.es/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -15127,6 +15183,30 @@
     "inscritos": null,
     "plazas_max": null,
     "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://www.321go.es/Carrera/Detail/585-xxxiisansilvestrevillademieres": {
+    "consultado": "2026-10-16",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 5.0,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
+  "https://www.321go.es/Carrera/Detail/586-sansilvestrepraviana2026": {
+    "consultado": "2026-10-16",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": 6.0,
     "resultados": [],
     "resultados_web": null,
     "version": 6
@@ -15384,27 +15464,27 @@
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2107&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2108&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2109&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2116&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2118&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2120&arg_tipo=eventos&arg_year=2026&arg_month=9": {
@@ -15414,7 +15494,7 @@
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2121&arg_tipo=eventos&arg_year=2026&arg_month=11": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2123&arg_tipo=eventos&arg_year=2026&arg_month=11": {
@@ -15423,27 +15503,27 @@
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2124&arg_tipo=eventos&arg_year=2026&arg_month=12": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2125&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2126&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2129&arg_tipo=eventos&arg_year=2026&arg_month=10": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2130&arg_tipo=eventos&arg_year=2026&arg_month=11": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.atleticorenteria.com/": {
@@ -16134,6 +16214,18 @@
     "resultados_web": "https://www.carreramonumentalsegovia.com/histórico-de-resultados",
     "version": 6
   },
+  "https://www.carrerapopularalcantarilla.com/": {
+    "consultado": "2026-10-16",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": "https://www.carrerapopularalcantarilla.com/amigs/",
+    "version": 6
+  },
   "https://www.carrerareyesmagos.es": {
     "consultado": "2026-10-15",
     "desnivel_positivo_m": null,
@@ -16714,7 +16806,7 @@
     "version": 4
   },
   "https://www.clubatletismolaesperanza.es/lamediadeguada/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -18498,7 +18590,7 @@
     "version": 6
   },
   "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7608063": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -18562,7 +18654,7 @@
   },
   "https://www.facebook.com/Los102delacomarca/": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.fdmvalencia.es/es/eventos/carrera-por-la-solidaridad-2026/": {
@@ -19100,7 +19192,7 @@
   },
   "https://www.inscripcionesweb.es/es/evento/aralba.zhtm": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.inscripcionesweb.es/es/evento/corre-con-tu-medico.zhtm": {
@@ -19110,7 +19202,7 @@
   },
   "https://www.inscripcionesweb.es/es/evento/domund.zhtm": {
     "bloqueado_robots": true,
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "version": 6
   },
   "https://www.inscripcions.cat/cursacamarasa2026/": {
@@ -19616,7 +19708,7 @@
     "version": 6
   },
   "https://www.lineadesalida.net/carreras/i-mar-menor-backyard-ultra": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -20915,7 +21007,7 @@
     "version": 6
   },
   "https://www.subidacastilloportezuelo.com/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": 500,
     "estado": null,
     "hora": null,
@@ -20981,7 +21073,7 @@
     "version": 6
   },
   "https://www.timingsys.com/event/770": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -20998,23 +21090,23 @@
     "version": 6
   },
   "https://www.timingsys.com/event/771": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 191,
+    "inscritos": 250,
     "plazas_max": null,
-    "precio_desde": 15.0,
+    "precio_desde": null,
     "resultados": [],
     "resultados_web": null,
     "version": 6
   },
   "https://www.timingsys.com/event/772": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 507,
+    "inscritos": 563,
     "plazas_max": null,
     "precio_desde": 15.0,
     "resultados": [],
@@ -21022,11 +21114,11 @@
     "version": 6
   },
   "https://www.timingsys.com/event/773": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 33,
+    "inscritos": 37,
     "plazas_max": null,
     "precio_desde": 15.0,
     "resultados": [],
@@ -21034,11 +21126,11 @@
     "version": 6
   },
   "https://www.timingsys.com/event/774": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
-    "inscritos": 102,
+    "inscritos": 123,
     "plazas_max": null,
     "precio_desde": 13.0,
     "resultados": [],
@@ -21046,7 +21138,7 @@
     "version": 6
   },
   "https://www.timingsys.com/event/793": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -21070,7 +21162,7 @@
     "version": 6
   },
   "https://www.timingsys.com/event/800": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -21291,7 +21383,7 @@
     "version": 6
   },
   "https://www.trencacims.com/": {
-    "consultado": "2026-10-13",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
@@ -21531,8 +21623,20 @@
     "resultados_web": null,
     "version": 6
   },
+  "https://www.zaragozamaraton.com/": {
+    "consultado": "2026-10-16",
+    "desnivel_positivo_m": null,
+    "estado": null,
+    "hora": null,
+    "inscritos": null,
+    "plazas_max": null,
+    "precio_desde": null,
+    "resultados": [],
+    "resultados_web": null,
+    "version": 6
+  },
   "https://www.zonavipevents.com/marato-del-mediterrani/": {
-    "consultado": "2026-10-11",
+    "consultado": "2026-10-16",
     "desnivel_positivo_m": null,
     "estado": null,
     "hora": null,
