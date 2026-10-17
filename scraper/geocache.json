@@ -31,6 +31,10 @@
     "lat": 38.34364,
     "lng": -0.48817
   },
+  "Almagro|Ciudad Real": {
+    "lat": 38.88824,
+    "lng": -3.71182
+  },
   "Almodóvar del Campo|Ciudad Real": {
     "lat": 38.7084,
     "lng": -4.17606
@@ -228,6 +232,10 @@
     "lat": 37.67462,
     "lng": -4.93253
   },
+  "La Cartuja|Zaragoza": {
+    "lat": 41.60754,
+    "lng": -0.83035
+  },
   "La Mata|Toledo": {
     "lat": 39.9426,
     "lng": -4.43842
@@ -327,6 +335,10 @@
   "Millares|Valencia": {
     "lat": 39.23754,
     "lng": -0.77361
+  },
+  "Mohedas de la Jara|Toledo": {
+    "lat": 39.6042,
+    "lng": -5.14401
   },
   "Molina de Aragón|Guadalajara": {
     "lat": 40.84408,
@@ -472,6 +484,10 @@
   "Talavera la Nueva|Toledo": {
     "lat": 39.93528,
     "lng": -4.89177
+  },
+  "Tarancón|Cuenca": {
+    "lat": 40.00861,
+    "lng": -3.01022
   },
   "Tejadillos|Cuenca": {
     "lat": 40.14014,
