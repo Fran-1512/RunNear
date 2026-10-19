@@ -256,6 +256,10 @@
     "lat": 39.61803,
     "lng": -3.21823
   },
+  "Lagartera|Toledo": {
+    "lat": 39.90653,
+    "lng": -5.20096
+  },
   "Las Palmas|Las Palmas": {
     "lat": 28.12887,
     "lng": -15.4349
@@ -315,6 +319,10 @@
   "Malagón|Ciudad Real": {
     "lat": 39.16891,
     "lng": -3.85145
+  },
+  "Malpartida de Plasencia|Cáceres": {
+    "lat": 39.98116,
+    "lng": -6.04378
   },
   "Maranchón|Guadalajara": {
     "lat": 41.0465,
@@ -403,6 +411,10 @@
   "Orendaín|Gipuzkoa": {
     "lat": 43.0795,
     "lng": -2.11414
+  },
+  "Orihuela|Alicante": {
+    "lat": 38.02756,
+    "lng": -0.9131
   },
   "Oropesa|Toledo": {
     "lat": 39.91723,
