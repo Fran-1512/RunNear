@@ -117,6 +117,30 @@ class Fusion(unittest.TestCase):
         self.assertTrue(fusion.es_carrera_a_pie("Trail de Yeste"))
 
 
+class FuenteQueFalla(unittest.TestCase):
+    """Si una fuente falla o devuelve de pronto mucho menos, se usan sus carreras de ayer
+    (el 19/10/2026 Running.life devolvió 248 carreras en vez de ~1.500)."""
+
+    def lista(self, n):
+        return [{"id": f"c{i}", "nombre": f"Carrera {i}", "fecha": "2099-01-01", "municipio": "Toledo"}
+                for i in range(n)]
+
+    def test_caida_a_medias_usa_las_de_ayer(self):
+        ayer = self.lista(1500)
+        self.assertIs(ejecutar.elegir_carreras("X", self.lista(248), ayer, "2000-01-01"), ayer)
+
+    def test_error_usa_las_de_ayer(self):
+        ayer = self.lista(100)
+        self.assertIs(ejecutar.elegir_carreras("X", None, ayer, "2000-01-01"), ayer)
+
+    def test_dia_normal_usa_las_de_hoy(self):
+        hoy = self.lista(1450)
+        self.assertEqual(len(ejecutar.elegir_carreras("X", hoy, self.lista(1500), "2000-01-01")), 1450)
+
+    def test_fuente_pequena_sin_ayer_que_falla(self):
+        self.assertIsNone(ejecutar.elegir_carreras("X", None, [], "2000-01-01"))
+
+
 class ConservarCelebradas(unittest.TestCase):
     """Las carreras de los últimos 14 días se conservan para "Resultados" aunque la fuente ya no las dé."""
 

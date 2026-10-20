@@ -332,7 +332,7 @@ def descripcion_carrera(c):
     return " ".join(partes)
 
 
-def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia):
+def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia, migas_zona):
     url = SITIO_URL + ruta
     hoy = date.today().isoformat()
     celebrada = c["fecha"] < hoy
@@ -403,10 +403,7 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia):
 {bloque_guias("../../", guias_para_carrera(c))}
 """
     titulo = f"{c['nombre']} · {fecha_larga(c['fecha'])} · {c.get('municipio')} | RunNear"
-    migas = [("RunNear", ""), ("Calendario", "calendario/")]
-    if c.get("comunidad"):
-        migas.append((c["comunidad"], f"calendario/{slug(c['comunidad'])}/"))
-    migas += [(c.get("provincia"), url_provincia), (c["nombre"], None)]
+    migas = [("RunNear", ""), ("Calendario", "calendario/")] + migas_zona + [(c["nombre"], None)]
     return pagina(titulo, descripcion_carrera(c)[:300], ruta, 2, cuerpo, migas, [datos_evento(c, url)])
 
 
@@ -487,6 +484,18 @@ def generar():
         comunidad = COMUNIDAD_DE[p]
         return f"calendario/{slug(comunidad)}/" + ("" if n_provincias[comunidad] == 1 else f"{slug(p)}/")
 
+    def migas_zona(p):
+        """Calendarios de comunidad y provincia que EXISTEN para la provincia de una carrera.
+        Solo hay calendario de una zona si tiene carreras próximas: si una fuente falla y una
+        provincia se queda sin ellas, sus fichas no deben enlazar a una página que no existe."""
+        comunidad = COMUNIDAD_DE[p]
+        if comunidad not in por_comunidad:
+            return []
+        zona = [(comunidad, f"calendario/{slug(comunidad)}/")]
+        if n_provincias[comunidad] > 1 and p in por_provincia:
+            zona.append((p, ruta_provincia(p)))
+        return zona
+
     sitemap = [(SITIO_URL, hoy), (SITIO_URL + "calendario/", hoy), (SITIO_URL + "legal.html", hoy)]
 
     # 1) Carreras
@@ -501,7 +510,7 @@ def generar():
         cerca_ids = {x["id"] for x, _, _ in cercanas}
         misma = [(x, rutas[x["id"]].split("/")[1], 0) for x in sorted(por_provincia.get(c["provincia"], []), key=lambda x: x["fecha"])
                  if x["id"] != c["id"] and x["id"] not in cerca_ids][:8]
-        escribir(ruta, pagina_carrera(c, ruta, cercanas, misma, ruta_provincia(c["provincia"])))
+        escribir(ruta, pagina_carrera(c, ruta, cercanas, misma, ruta_provincia(c["provincia"]), migas_zona(c["provincia"])))
         sitemap.append((SITIO_URL + ruta, c.get("actualizado") or hoy))
 
     # 2) Provincias

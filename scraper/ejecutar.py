@@ -81,11 +81,41 @@ def conservar_celebradas(resultado, desde, hoy):
     return añadidas
 
 
+def carreras_anteriores_por_fuente(desde):
+    """{fuente: [carreras]} del carreras.json anterior, con fecha desde `desde` (para sustituir a
+    una fuente que hoy falla)."""
+    try:
+        with open(SALIDA, encoding="utf-8") as f:
+            anteriores = json.load(f)
+    except (OSError, ValueError):
+        return {}
+    por_fuente = {}
+    for c in anteriores:
+        if (c.get("fecha") or "") >= desde:
+            por_fuente.setdefault((c.get("fuente") or {}).get("nombre"), []).append(c)
+    return por_fuente
+
+
+def elegir_carreras(nombre, carreras, previas, desde):
+    """Carreras de una fuente que se usarán hoy (o None si no hay ninguna que usar).
+    Si la fuente falla (carreras=None) o devuelve de pronto mucho menos de lo normal (web caída a
+    medias, cambio en su página...), se usan sus carreras de ayer para no vaciar la web."""
+    futuras = [c for c in carreras or [] if c.get("fecha") and c["fecha"] >= desde and c.get("municipio")]
+    if len(previas) >= 30 and len(futuras) < 0.6 * len(previas):
+        print(f"[{nombre}] AVISO: {len(futuras)} carreras frente a {len(previas)} ayer; se conservan las de ayer")
+        return previas
+    if carreras is None:
+        return None
+    print(f"[{nombre}] {len(carreras)} carreras, {len(futuras)} próximas o de los últimos {DIAS_RESULTADOS} días")
+    return futuras
+
+
 def main():
     hoy = date.today().isoformat()
     # Se conservan también las carreras recién celebradas, para la sección "Resultados"
     desde = (date.today() - timedelta(days=DIAS_RESULTADOS)).isoformat()
     listas = []
+    anteriores = carreras_anteriores_por_fuente(desde)
 
     for adaptador in ADAPTADORES:
         print(f"[{adaptador.NOMBRE}] descargando...")
@@ -93,10 +123,11 @@ def main():
             carreras = adaptador.obtener_carreras()
         except Exception as e:
             print(f"[{adaptador.NOMBRE}] ERROR: {e}")
+            carreras = None
+        futuras = elegir_carreras(adaptador.NOMBRE, carreras, anteriores.get(adaptador.NOMBRE, []), desde)
+        if futuras is None:
             continue
-        futuras = [c for c in carreras if c.get("fecha") and c["fecha"] >= desde and c.get("municipio")]
-        print(f"[{adaptador.NOMBRE}] {len(carreras)} carreras, {len(futuras)} próximas o de los últimos {DIAS_RESULTADOS} días")
-        if not carreras:
+        if not futuras:
             print(f"[{adaptador.NOMBRE}] AVISO: 0 resultados, revisar el adaptador")
         # Correcciones antes de unir, para que la detección de duplicados use datos buenos
         aplicar_correcciones(futuras)
