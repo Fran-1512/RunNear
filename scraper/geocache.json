@@ -159,6 +159,10 @@
     "lat": 40.7041,
     "lng": -3.42964
   },
+  "El Casar|Toledo": {
+    "lat": 39.7764,
+    "lng": -3.59614
+  },
   "El Provencio|Cuenca": {
     "lat": 39.37591,
     "lng": -2.57256
@@ -260,6 +264,10 @@
     "lat": 39.90653,
     "lng": -5.20096
   },
+  "Landete|Cuenca": {
+    "lat": 39.90758,
+    "lng": -1.3689
+  },
   "Las Palmas|Las Palmas": {
     "lat": 28.12887,
     "lng": -15.4349
@@ -267,6 +275,10 @@
   "Las Rozas|Madrid": {
     "lat": 40.49331,
     "lng": -3.87584
+  },
+  "Las Ventas de Retamosa|Toledo": {
+    "lat": 40.15496,
+    "lng": -4.11423
   },
   "Lavern|Barcelona": {
     "lat": 41.39059,
@@ -307,6 +319,10 @@
   "Luciana|Ciudad Real": {
     "lat": 38.98444,
     "lng": -4.29257
+  },
+  "Lucillos|Toledo": {
+    "lat": 39.98493,
+    "lng": -4.61176
   },
   "Luintra|Ourense": {
     "lat": 42.41069,
@@ -472,6 +488,10 @@
   "San Bartolomé de las Abiertas|Toledo": {
     "lat": 39.8284,
     "lng": -4.71871
+  },
+  "San Sebastian|Gipuzkoa": {
+    "lat": 43.32242,
+    "lng": -1.98389
   },
   "Sevilla|Sevilla": {
     "lat": 37.38863,
