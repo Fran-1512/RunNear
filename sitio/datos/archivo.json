@@ -310,12 +310,12 @@
     "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1792272814_8566$636B1.pdf"
    },
    {
-    "texto": "CLASIFICACION GENERAL",
-    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1792272844_8YDQ97Q63J.pdf"
+    "texto": "CLASIFICACION GENERAL 10K POPULAR",
+    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1792343068_44R2362Y7I.pdf"
    },
    {
-    "texto": "CLASIFICACION LOCAL",
-    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1792272862_97W36325FA.pdf"
+    "texto": "CLASIFICACION GENERAL",
+    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1792272844_8YDQ97Q63J.pdf"
    }
   ],
   "tipo": "popular",
@@ -528,7 +528,7 @@
   "id": "rl-5km-granadilla-de-abona",
   "municipio": "Granadilla",
   "nombre": "5km Granadilla de Abona",
-  "precio_desde": 5.0,
+  "precio_desde": 8.0,
   "provincia": "Santa Cruz de Tenerife",
   "tipo": "popular",
   "ubicacion": {
@@ -727,6 +727,7 @@
   "id": "rl-alto-porma-trail",
   "municipio": "Puebla de Lillo",
   "nombre": "Alto Porma Trail",
+  "precio_desde": 15.0,
   "provincia": "León",
   "tipo": "trail",
   "ubicacion": {
@@ -778,6 +779,29 @@
   "municipio": "Matalascañas",
   "nombre": "Andalucía Desafío Doñana",
   "provincia": "Huelva",
+  "resultados": [
+   {
+    "texto": "Clasificación General Masculina",
+    "url": "https://triatlonandalucia.org/wp-content/uploads/2025/12/2026_10_17_Matalascanas_General_Masculino.pdf"
+   },
+   {
+    "texto": "Clasificación General Femenina",
+    "url": "https://triatlonandalucia.org/wp-content/uploads/2025/12/2026_10_17_Matalascanas_General_Femenino.pdf"
+   },
+   {
+    "texto": "Clasificación por Categorías Masculinas",
+    "url": "https://triatlonandalucia.org/wp-content/uploads/2025/12/2026_10_17_Matalascanas_Categorias_Masculino.pdf"
+   },
+   {
+    "texto": "Clasificación por Categorías Femeninas",
+    "url": "https://triatlonandalucia.org/wp-content/uploads/2025/12/2026_10_17_Matalascanas_Categorias_Femenino.pdf"
+   },
+   {
+    "texto": "Clasificación por Clubes Masculinos",
+    "url": "https://triatlonandalucia.org/wp-content/uploads/2025/12/2026_10_17_Matalascanas_Clubes_Masculino.pdf"
+   }
+  ],
+  "resultados_web": "https://triatlonandalucia.org/competiciones-fatri/resultados/?_sft_temporada=2026",
   "tipo": "trail",
   "ubicacion": {
    "lat": 36.99706,
@@ -1354,7 +1378,7 @@
   "municipio": "Casco Antiguo-Santa Cruz",
   "nombre": "Carrera Alicante-Empresas",
   "provincia": "Alicante",
-  "resultados_web": "https://carreraalicanteempresas.es/clasificaciones-2025/",
+  "resultados_web": "https://carreraalicanteempresas.es/clasificaciones-2026/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.34654,
@@ -1406,6 +1430,12 @@
   "municipio": "Chiclana de la Frontera",
   "nombre": "Carrera Atlética Chiclana - Sancti Petri",
   "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIONES",
+    "url": "https://gesconchip.es/clasificaciones/xxiii-carrera-atletica-chiclana-sancti-petri/11-k-4/general"
+   }
+  ],
   "resultados_web": "https://gesconchip.es/resultados",
   "tipo": "popular",
   "ubicacion": {
@@ -1845,7 +1875,6 @@
   "municipio": "Alcázar de San Juan",
   "nombre": "Carrera Mini – Alcazar S. Juan 2026",
   "provincia": "Ciudad Real",
-  "resultados_web": "https://crono3.es/resultados/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.38998,
@@ -2488,6 +2517,12 @@
   "municipio": "Oliva de la Frontera",
   "nombre": "Carrera Popular “Villa de Oliva”",
   "provincia": "Badajoz",
+  "resultados": [
+   {
+    "texto": "👉 CLASIFICACIÓN GENERAL 10K – pdf 👈",
+    "url": "https://www.pulsaciones.net/wp-content/uploads/2026/10/10kms-CLASIFICACION-GENERAL-VILLA-DE-OLIVA-2026.pdf"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.27687,
@@ -3371,6 +3406,7 @@
   "municipio": "Toledo",
   "nombre": "Carrera y Paseo Cruz Roja Toledo 2026",
   "provincia": "Toledo",
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.85589,
@@ -3786,7 +3822,7 @@
   "resultados": [
    {
     "texto": "Classificació provisional lliga 2026",
-    "url": "https://gesport.cat/wp-content/uploads/2026/10/Classificacio-Lliga-despres-de-Canet-2.pdf"
+    "url": "https://gesport.cat/wp-content/uploads/2026/11/Classificacio-Lliga-despres-de-Tordera-2.pdf"
    }
   ],
   "tipo": "popular",
@@ -4024,6 +4060,16 @@
   "municipio": "Coria",
   "nombre": "Cross Nocturno 10K Ciudad de Coria",
   "provincia": "Cáceres",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIÓN GENERAL 5K – pdf 👈",
+    "url": "https://www.pulsaciones.net/wp-content/uploads/2026/10/CLASIFICACION-CROSS-NOCTURNO-CORIA-2026-5K.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN GENERAL 10K – pdf 👈",
+    "url": "https://www.pulsaciones.net/wp-content/uploads/2026/10/CLASIFICACION-CROSS-NOCTURNO-CORIA-2026-10K.pdf"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.98803,
@@ -4213,6 +4259,12 @@
   "nombre": "Cross Tudela de Duero Memorial Daniel González de Lucas",
   "precio_desde": 9.0,
   "provincia": "Valladolid",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripciones.runvasport.es/inscripcion/xii-cross-tudela-de-duero-memorial-daniel-gonzalez-de-lucas/clasificaciones/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 41.58433,
@@ -4886,8 +4938,8 @@
     "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/7c7884a1b53a1f234c00fd7797e6b88f"
    },
    {
-    "texto": "CLASIFICACION FEDERADOS",
-    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/894e6b3059206c1c173816fb2d8ed1af"
+    "texto": "CLASIFICACION FEDERADOS DESAFIO CUCON 2026",
+    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/b0b21af915e07f880ce1e83dc7a7bf26"
    }
   ],
   "tipo": "trail",
@@ -4943,6 +4995,7 @@
   "municipio": "Arcos de la Frontera",
   "nombre": "Desafío Sierra de Cádiz",
   "provincia": "Cádiz",
+  "resultados_web": "https://www.runnink.com/clasificaciones/",
   "tipo": "trail",
   "ubicacion": {
    "lat": 36.756,
@@ -5409,7 +5462,19 @@
   "id": "clm-5bc24eb5",
   "municipio": "Ruidera",
   "nombre": "Inforun VI Carrera Solidaria Ruidera 26",
+  "precio_desde": 5.0,
   "provincia": "Ciudad Real",
+  "resultados": [
+   {
+    "texto": "Ver clasificaciones",
+    "url": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26/6ad34e37-f684-4b2b-869b-48ffac1f1899/rankings"
+   },
+   {
+    "texto": "Ver clasificaciones",
+    "url": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26/6ad34e37-63a0-45f9-8ea2-4c46ac1f0488/rankings"
+   }
+  ],
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.97739,
@@ -6552,6 +6617,12 @@
   "municipio": "Santa Marta de Tormes",
   "nombre": "Medio Maratón Diputación de Salamanca",
   "provincia": "Salamanca",
+  "resultados": [
+   {
+    "texto": "MEDIA MARATÓN (Nacidos en 2008 y anteriores) Resultados",
+    "url": "https://www.orycronsport.com/competiciones/42137/resultados"
+   }
+  ],
   "resultados_web": "https://www.orycronsport.com/competiciones/42149/resultados",
   "tipo": "popular",
   "ubicacion": {
@@ -7308,6 +7379,7 @@
   "municipio": "Caprés",
   "nombre": "Ruta de las Canteras Murcia Trail",
   "provincia": "Murcia",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1243398&p=1243401",
   "tipo": "trail",
   "ubicacion": {
    "lat": 38.23103,
@@ -7333,6 +7405,16 @@
   "municipio": "Quilós",
   "nombre": "Ruta Quilós Entreviñas & Montaña",
   "provincia": "León",
+  "resultados": [
+   {
+    "texto": "III RUTA QUILÓS ENTEVIÑAS Y MONTAÑA",
+    "url": "https://www.carrerasconencanto.com/resultados-2026/iii-ruta-quilós-enteviñas-y-montaña/"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.carrerasconencanto.com/app/download/9593576075/Clasif.+general+Trail.pdf?t=1792334231"
+   }
+  ],
   "resultados_web": "https://www.carrerasconencanto.com/resultados-2026/",
   "tipo": "trail",
   "ubicacion": {
@@ -7502,6 +7584,12 @@
   "municipio": "Quesada",
   "nombre": "Sierra Cazorla Trails",
   "provincia": "Jaén",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://time2run.es/documentos/Campeonato-clubes-Jaen-2026.pdf"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.84461,
@@ -7737,6 +7825,7 @@
   "nombre": "Trail de Calar de la Santa",
   "precio_desde": 20.0,
   "provincia": "Murcia",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1224517&p=1239893",
   "tipo": "trail",
   "ubicacion": {
    "lat": 38.18932,
@@ -7796,7 +7885,7 @@
  },
  "carrera/trail-del-bisaura-sant-quirze-de-besora/": {
   "comunidad": "Cataluña",
-  "desnivel_positivo_m": 1995,
+  "desnivel_positivo_m": 2800,
   "distancia_km": 45.0,
   "distancias_km": [
    45.0
@@ -7814,7 +7903,7 @@
   "nombre": "Trail del Bisaura",
   "precio_desde": 10.0,
   "provincia": "Barcelona",
-  "resultados_web": "https://www.traildelbisaura.com/es/pages/resultados-2025",
+  "resultados_web": "https://www.traildelbisaura.com/es/pages/resultados-2026",
   "tipo": "trail",
   "ubicacion": {
    "lat": 42.1,
@@ -8049,10 +8138,12 @@
   "fuentes": [
    "Carreras CLM"
   ],
+  "hora": "09:30",
   "id": "clm-c0e0f733",
   "municipio": "Tejadillos",
   "nombre": "Trail Montaña Pico del Fraile de Tejadillos",
   "provincia": "Cuenca",
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "trail",
   "ubicacion": {
    "lat": 40.14014,
