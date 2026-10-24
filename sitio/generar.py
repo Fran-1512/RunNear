@@ -21,17 +21,18 @@ Uso (desde la carpeta del proyecto):
 
 import functools
 import hashlib
-import html
 import json
 import math
 import os
 import re
 import shutil
 import sys
-import unicodedata
 from collections import defaultdict
 from datetime import date, timedelta
 
+from sitio.formato import (DIAS, MESES, dia_y_mes, distancias_texto, e, enumerar, fecha_larga, km_texto,
+                           lista_km, precio_texto, slug, tipo_texto, url_segura)
+from sitio import historial, textos
 from sitio.guias import (GUIAS, GUIA_SAN_SILVESTRE, GUIAS_DE_CALENDARIO, GUIAS_GENERALES, GUIAS_LARGAS,
                          GUIAS_TRAIL, TEMAS)
 
@@ -64,27 +65,12 @@ PAGINAS_FIJAS = [
                     "cómo borrar o bloquear estos datos."},
 ]
 
-DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
-         "septiembre", "octubre", "noviembre", "diciembre"]
 COMUNIDAD_DE = {}  # provincia -> comunidad (se rellena con scraper.comun)
 
 
 # ---------------------------------------------------------------------------
 # Utilidades
 # ---------------------------------------------------------------------------
-
-def e(texto):
-    """Escapa texto para HTML."""
-    return html.escape(str(texto if texto is not None else ""), quote=True)
-
-
-def slug(texto):
-    # NFKD también convierte "28ª" / "5º" en "28a" / "5o", para poder quitar el número de edición
-    t = unicodedata.normalize("NFKD", str(texto or ""))
-    t = "".join(ch for ch in t if unicodedata.category(ch) != "Mn").lower()
-    return re.sub(r"[^a-z0-9]+", "-", t).strip("-")[:80] or "carrera"
-
 
 ROMANOS = re.compile(r"\b(?=[ivxlcdm]+\b)m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})\b")
 
@@ -101,34 +87,6 @@ def slug_evento(c):
     base = slug(t) or "carrera"
     pueblo = slug(c.get("municipio"))
     return base if pueblo and pueblo in base else f"{base}-{pueblo}"[:90].strip("-")
-
-
-def fecha_larga(iso):
-    d = date.fromisoformat(iso)
-    return f"{DIAS[d.weekday()]}, {d.day} de {MESES[d.month - 1]} de {d.year}"
-
-
-def url_segura(url):
-    """La URL solo si es http(s): un enlace "javascript:" de una fuente podría ejecutar código."""
-    url = str(url or "").strip()
-    return url if re.match(r"https?://", url, re.I) else None
-
-
-def km_texto(km):
-    return f"{km:g}".replace(".", ",") + " km"
-
-
-def distancias_texto(c):
-    lista = c.get("distancias_km") or ([c["distancia_km"]] if c.get("distancia_km") else [])
-    return " / ".join(km_texto(k) for k in lista) if lista else "Distancia por confirmar"
-
-
-def precio_texto(p):
-    return (f"{p:g}".replace(".", ",") if float(p).is_integer() else f"{p:.2f}".replace(".", ",")) + " €"
-
-
-def tipo_texto(c):
-    return "Trail / montaña" if c.get("tipo") == "trail" else "Asfalto (carrera popular)"
 
 
 def haversine(a, b):
@@ -192,10 +150,11 @@ def hueco(tipo="horizontal"):
 # ---------------------------------------------------------------------------
 
 def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructurados=None, imagen=None,
-           tipo_og="website", cabeza=""):
+           tipo_og="website", cabeza="", indexar=True):
     """ruta: dirección relativa de la página (para el enlace canónico), p. ej. 'carrera/x/'.
     migas: [(texto, ruta relativa a la raíz o None si es la página actual)]; None en la portada.
-    cabeza: HTML extra para el <head>."""
+    cabeza: HTML extra para el <head>. indexar=False: Google puede leerla y seguir sus enlaces,
+    pero no la mete en el buscador (y no va en el sitemap)."""
     r = relativo(profundidad)
     canonica = SITIO_URL + ruta
     migas_html = " › ".join(
@@ -214,6 +173,7 @@ def pagina(titulo, descripcion, ruta, profundidad, cuerpo, migas, datos_estructu
 <meta http-equiv="Content-Security-Policy" content="{CSP}">
 <meta name="google-adsense-account" content="{ADSENSE_CUENTA}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{'' if indexar else '<meta name="robots" content="noindex, follow">'}
 <title>{e(titulo)}</title>
 <meta name="description" content="{e(descripcion)}">
 <link rel="canonical" href="{e(canonica)}">
@@ -332,10 +292,26 @@ def descripcion_carrera(c):
     return " ".join(partes)
 
 
-def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia, migas_zona):
+def enlaces_de_resultados(c):
+    """[(texto, url)] de las clasificaciones de una carrera (sin repetir textos)."""
+    enlaces = [(r.get("texto") or "Resultados", url_segura(r["url"])) for r in c.get("resultados") or []
+               if isinstance(r, dict) and url_segura(r.get("url"))]
+    repetidos = {t for t, _ in enlaces if sum(1 for x, _ in enlaces if x == t) > 1}
+    enlaces = [(f"{t} · {u.rstrip('/').rsplit('/', 1)[-1]}" if t in repetidos else t, u) for t, u in enlaces]
+    if url_segura(c.get("resultados_web")):
+        enlaces.append(("Todas las clasificaciones", url_segura(c["resultados_web"])))
+    return enlaces
+
+
+def pagina_carrera(c, ruta, contexto):
+    """Ficha de una carrera. contexto: cercanas, misma_provincia, url_provincia, migas_zona, finde
+    (otras carreras ese fin de semana en la comunidad), n_provincia, mes_ruta, anterior (edición
+    anterior guardada en el archivo) y archivada (carrera pasada que ya no está en carreras.json).
+    Devuelve (html, indexar)."""
     url = SITIO_URL + ruta
     hoy = date.today().isoformat()
     celebrada = c["fecha"] < hoy
+    archivada = contexto.get("archivada", False)
     filas = [("📅 Fecha", fecha_larga(c["fecha"]).capitalize())]
     if c.get("hora"):
         filas.append(("🕘 Salida", c["hora"]))
@@ -355,25 +331,37 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia, migas_zona
     aviso = ""
     if c.get("estado"):
         aviso = f'<p class="aviso">⚠️ Según su web de inscripción, esta carrera está <b>{e(c["estado"])}</b>.</p>'
+    elif archivada:
+        aviso = (f'<p class="aviso">🏅 Esta carrera se celebró el {e(fecha_larga(c["fecha"]))}. Aún no conocemos la '
+                 "fecha de la próxima edición: cuando se publique, la verás en esta misma página.</p>")
     elif celebrada:
         aviso = '<p class="aviso">🏅 Esta carrera ya se ha celebrado. Consulta los resultados en su web oficial.</p>'
 
-    enlaces_resultados = ""
-    if celebrada:
-        enlaces = [(r.get("texto") or "Resultados", url_segura(r["url"])) for r in c.get("resultados") or []
-                   if isinstance(r, dict) and url_segura(r.get("url"))]
-        repetidos = {t for t, _ in enlaces if sum(1 for x, _ in enlaces if x == t) > 1}
-        enlaces = [(f"{t} · {u.rstrip('/').rsplit('/', 1)[-1]}" if t in repetidos else t, u) for t, u in enlaces]
-        if url_segura(c.get("resultados_web")):
-            enlaces.append(("Todas las clasificaciones", url_segura(c["resultados_web"])))
-        if enlaces:
-            enlaces_resultados = "<h2>Resultados</h2><ul>" + "".join(
-                f'<li><a href="{e(u)}" rel="nofollow noopener" target="_blank">{e(t)} ↗</a></li>'
-                for t, u in enlaces) + "</ul>"
+    enlaces = enlaces_de_resultados(c) if celebrada else []
+    bloque_resultados = ("<h2>Resultados</h2><ul>" + "".join(
+        f'<li><a href="{e(u)}" rel="nofollow noopener" target="_blank">{e(t)} ↗</a></li>' for t, u in enlaces)
+        + "</ul>") if enlaces else ""
+
+    anterior = contexto.get("anterior")
+    bloque_anterior = ""
+    if anterior:
+        enlaces_ant = enlaces_de_resultados(anterior)
+        bloque_anterior = (f"<h2>Edición anterior</h2><p>La edición de {e(anterior['fecha'][:4])} se celebró el "
+                           f"{e(fecha_larga(anterior['fecha']))}"
+                           + (f" con {e(distancias_texto(anterior))}" if lista_km(anterior) else "") + ".</p>"
+                           + ("<ul>" + "".join(f'<li><a href="{e(u)}" rel="nofollow noopener" target="_blank">'
+                                               f"Resultados {e(anterior['fecha'][:4])}: {e(t)} ↗</a></li>"
+                                               for t, u in enlaces_ant) + "</ul>" if enlaces_ant else ""))
 
     fuentes = c.get("fuentes") or [c.get("fuente", {}).get("nombre")]
     origen = ("Datos facilitados por la organización de la carrera." if c.get("verificada_organizador")
               else f"Datos recopilados de {e(', '.join(f for f in fuentes if f))}.")
+
+    parrafos = textos.parrafos_carrera(c, hoy, contexto.get("n_provincia", 0), len(contexto.get("finde", [])),
+                                       contexto.get("mes_ruta"))
+    if c.get("descripcion"):
+        parrafos.append(e(c["descripcion"]))
+    preguntas = textos.preguntas_carrera(c, hoy)
 
     def lista(carreras, con_distancia=False):
         return "<ul class=\"lista-carreras\">" + "".join(
@@ -381,6 +369,8 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia, migas_zona
             f'{e(x.get("municipio"))}{(f" · a {d:.0f} km" if d >= 1 else " · en la misma localidad") if con_distancia else ""}</span></li>'
             for x, r, d in carreras) + "</ul>"
 
+    cercanas, misma, finde = contexto.get("cercanas", []), contexto.get("misma_provincia", []), contexto.get("finde", [])
+    mapa = "../../mapa.html" if archivada else f"../../mapa.html?carrera={e(c['id'])}"
     cuerpo = f"""
 <article class="carrera">
   <p class="etiqueta {'trail' if c.get('tipo') == 'trail' else 'asfalto'}">{'⛰️ Trail' if c.get('tipo') == 'trail' else '🏃 Asfalto'}</p>
@@ -390,21 +380,28 @@ def pagina_carrera(c, ruta, cercanas, misma_provincia, url_provincia, migas_zona
   <dl class="datos">{''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in filas)}</dl>
   <p class="acciones">
     <a class="boton principal" href="{e(url_segura(c.get('url_oficial')) or '#')}" rel="noopener" target="_blank">{'Ver en la web oficial' if celebrada else 'Inscripción en la web oficial'} ↗</a>
-    <a class="boton" href="../../mapa.html?carrera={e(c['id'])}">📍 Ver en el mapa</a>
+    <a class="boton" href="{mapa}">📍 {'Carreras en el mapa' if archivada else 'Ver en el mapa'}</a>
   </p>
-  {f'<h2>Sobre la carrera</h2><p>{e(c["descripcion"])}</p>' if c.get("descripcion") else ''}
-  {enlaces_resultados}
+  {bloque_resultados}
+  <h2>Sobre la carrera</h2>
+  {''.join(f'<p>{p}</p>' for p in parrafos)}
+  {bloque_anterior}
+  <section class="faq"><h2>Preguntas frecuentes</h2>{''.join(f'<details><summary>{p}</summary><p>{r}</p></details>' for p, r in preguntas)}</section>
   <p class="origen">{origen} Confirma fecha, horario y condiciones en la web oficial antes de inscribirte.</p>
 </article>
 {hueco()}
+{f'<section><h2>Ese mismo fin de semana en {e(c.get("comunidad"))}</h2>{lista(finde)}</section>' if finde else ''}
 {f'<section><h2>Carreras cerca</h2>{lista(cercanas, True)}</section>' if cercanas else ''}
-{f'<section><h2>Más carreras en {e(c.get("provincia"))}</h2>{lista(misma_provincia)}<p><a href="../../{e(url_provincia)}">Ver todo el calendario de {e(c.get("provincia"))} →</a></p></section>' if misma_provincia else ''}
-{hueco() if cercanas or misma_provincia else ''}
+{f'<section><h2>Más carreras en {e(c.get("provincia"))}</h2>{lista(misma)}<p><a href="../../{e(contexto["url_provincia"])}">Ver todo el calendario de {e(c.get("provincia"))} →</a></p></section>' if misma else ''}
+{hueco() if cercanas or misma or finde else ''}
 {bloque_guias("../../", guias_para_carrera(c))}
 """
-    titulo = f"{c['nombre']} · {fecha_larga(c['fecha'])} · {c.get('municipio')} | RunNear"
-    migas = [("RunNear", ""), ("Calendario", "calendario/")] + migas_zona + [(c["nombre"], None)]
-    return pagina(titulo, descripcion_carrera(c)[:300], ruta, 2, cuerpo, migas, [datos_evento(c, url)])
+    # Se indexa si tiene datos suficientes; una carrera pasada, solo si enlaza a sus resultados
+    indexar = not textos.es_pobre(c) and (not archivada or bool(enlaces))
+    titulo = contexto.get("titulo") or textos.titulo_ficha(c, hoy)
+    migas = [("RunNear", ""), ("Calendario", "calendario/")] + contexto.get("migas_zona", []) + [(c["nombre"], None)]
+    return pagina(titulo, descripcion_carrera(c)[:300], ruta, 2, cuerpo, migas, [datos_evento(c, url)],
+                  indexar=indexar), indexar
 
 
 # ---------------------------------------------------------------------------
@@ -442,6 +439,31 @@ def resumen_zona(nombre, carreras, articulo="en"):
             "Puedes verlas también en el mapa, con la distancia a la que te quedan.")
 
 
+def calcular_rutas(carreras):
+    """{id: 'carrera/<slug>/'}: dirección de cada carrera, estable entre ediciones (sin año ni número
+    de edición); si dos coinciden, la segunda lleva además la fecha."""
+    rutas, usadas = {}, set()
+    for c in sorted(carreras, key=lambda x: (x["fecha"], x["id"])):
+        s = slug_evento(c)
+        if s in usadas:
+            s = f"{s}-{c['fecha']}"
+        usadas.add(s)
+        rutas[c["id"]] = f"carrera/{s}/"
+    return rutas
+
+
+def fin_de_semana(iso):
+    """Clave del fin de semana de una fecha: el sábado si cae en sábado o domingo; si no, el propio día."""
+    d = date.fromisoformat(iso)
+    return (d - timedelta(days=d.weekday() - 5)).isoformat() if d.weekday() >= 5 else iso
+
+
+def ruta_mes(mes):
+    """'2026-11' -> 'calendario/noviembre-2026/'"""
+    anio, m = mes.split("-")
+    return f"calendario/{MESES[int(m) - 1]}-{anio}/"
+
+
 def generar():
     sys.path.insert(0, RAIZ)
     from scraper.comun import PROVINCIAS
@@ -459,20 +481,25 @@ def generar():
         if os.path.exists(destino):
             shutil.rmtree(destino)
 
-    # Dirección de cada carrera (estable entre ediciones; si coinciden, se añade la fecha)
-    rutas, usadas = {}, set()
-    for c in sorted(carreras, key=lambda x: (x["fecha"], x["id"])):
-        s = slug_evento(c)
-        if s in usadas:
-            s = f"{s}-{c['fecha']}"
-        usadas.add(s)
-        rutas[c["id"]] = f"carrera/{s}/"
+    rutas = calcular_rutas(carreras)
+
+    # Carreras pasadas que ya no están en carreras.json: su ficha sigue publicada
+    archivo = historial.actualizar_archivo(historial.cargar_archivo(), carreras, rutas, hoy)
+    rutas_actuales = set(rutas.values())
+    archivadas = [(r, c) for r, c in sorted(archivo.items())
+                  if r not in rutas_actuales and c.get("provincia") in COMUNIDAD_DE]
+    fechas = historial.Fechas(hoy)
 
     futuras = [c for c in carreras if c["fecha"] >= hoy]
     por_provincia, por_comunidad = defaultdict(list), defaultdict(list)
+    por_finde = defaultdict(list)          # (comunidad, fin de semana) -> carreras
     for c in futuras:
         por_provincia[c["provincia"]].append(c)
         por_comunidad[c["comunidad"]].append(c)
+        por_finde[(c["comunidad"], fin_de_semana(c["fecha"]))].append(c)
+    # Páginas por mes: los meses con carreras próximas (como mucho, un año)
+    meses = sorted({c["fecha"][:7] for c in futuras})[:13]
+    rutas_mes = {m: ruta_mes(m) for m in meses}
 
     n_provincias = defaultdict(int)
     for comunidad in COMUNIDAD_DE.values():
@@ -496,22 +523,51 @@ def generar():
             zona.append((p, ruta_provincia(p)))
         return zona
 
-    sitemap = [(SITIO_URL, hoy), (SITIO_URL + "calendario/", hoy), (SITIO_URL + "legal.html", hoy)]
+    sitemap = []
+    titulos = set()
 
-    # 1) Carreras
+    def titulo_unico(titulo):
+        """Dos carreras con el mismo nombre, pueblo y día tendrían el mismo título: se numeran."""
+        base, n = titulo, 2
+        while titulo in titulos:
+            titulo = base.replace(" | RunNear", f" ({n}) | RunNear")
+            n += 1
+        titulos.add(titulo)
+        return titulo
+
+    # 1) Carreras (las actuales y las pasadas del archivo)
     con_ubicacion = [c for c in futuras if c.get("ubicacion")]
-    for c in carreras:
-        ruta = rutas[c["id"]]
+    for c, ruta, archivada in ([(c, rutas[c["id"]], False) for c in carreras]
+                               + [(c, r, True) for r, c in archivadas]):
         cercanas = []
         if c.get("ubicacion"):
             dist = sorted(((x, haversine(c["ubicacion"], x["ubicacion"])) for x in con_ubicacion if x["id"] != c["id"]),
                           key=lambda p: p[1])
             cercanas = [(x, rutas[x["id"]].split("/")[1], d) for x, d in dist[:6] if d <= 60]
-        cerca_ids = {x["id"] for x, _, _ in cercanas}
+        finde = [(x, rutas[x["id"]].split("/")[1], 0)
+                 for x in sorted(por_finde.get((c["comunidad"], fin_de_semana(c["fecha"])), []), key=lambda x: x["fecha"])
+                 if x["id"] != c["id"]][:8] if c["fecha"] >= hoy else []
+        ya = {x["id"] for x, _, _ in cercanas + finde}
         misma = [(x, rutas[x["id"]].split("/")[1], 0) for x in sorted(por_provincia.get(c["provincia"], []), key=lambda x: x["fecha"])
-                 if x["id"] != c["id"] and x["id"] not in cerca_ids][:8]
-        escribir(ruta, pagina_carrera(c, ruta, cercanas, misma, ruta_provincia(c["provincia"]), migas_zona(c["provincia"])))
-        sitemap.append((SITIO_URL + ruta, c.get("actualizado") or hoy))
+                 if x["id"] != c["id"] and x["id"] not in ya][:8]
+        previa = archivo.get(ruta)
+        anterior = previa if previa and previa["id"] != c["id"] and previa["fecha"] < c["fecha"] else None
+        contexto = {
+            "cercanas": cercanas, "misma_provincia": misma, "finde": finde, "anterior": anterior,
+            "url_provincia": ruta_provincia(c["provincia"]), "migas_zona": migas_zona(c["provincia"]),
+            "n_provincia": max(0, len(por_provincia.get(c["provincia"], [])) - (1 if c["fecha"] >= hoy else 0)),
+            "mes_ruta": rutas_mes.get(c["fecha"][:7]), "archivada": archivada,
+            "titulo": titulo_unico(textos.titulo_ficha(c, hoy)),
+        }
+        contenido, indexar = pagina_carrera(c, ruta, contexto)
+        escribir(ruta, contenido)
+        if indexar:
+            datos = {k: v for k, v in c.items() if k != "actualizado"}
+            sitemap.append((SITIO_URL + ruta, fechas.fecha(ruta, historial.huella(
+                VERSION_FICHAS, datos, archivada, anterior and anterior["id"]))))
+
+    def huella_lista(lista):
+        return historial.huella(VERSION_CALENDARIOS, [(c["id"], c["fecha"], c["nombre"]) for c in lista])
 
     # 2) Provincias
     for p, lista in por_provincia.items():
@@ -527,12 +583,13 @@ def generar():
                   + (f"<section><h2>Otras provincias de {e(comunidad)}</h2><ul class=\"zonas\">"
                      + "".join(f'<li><a href="../{slug(x)}/">{e(x)} <span>{len(por_provincia[x])}</span></a></li>' for x in vecinas)
                      + "</ul></section>" if vecinas else "")
+                  + bloque_meses("../../../", rutas_mes)
                   + bloque_guias("../../../", GUIAS_DE_CALENDARIO, "Guías para preparar tu carrera"))
         titulo = f"Carreras populares y trail en {p} {date.today().year} · Calendario | RunNear"
         desc = f"Calendario de carreras populares y trail en {p}: {len(lista)} próximas carreras con fecha, distancias, precio e inscripción."
         migas = [("RunNear", ""), ("Calendario", "calendario/"), (comunidad, f"calendario/{slug(comunidad)}/"), (p, None)]
         escribir(ruta, pagina(titulo, desc, ruta, 3, cuerpo, migas))
-        sitemap.append((SITIO_URL + ruta, hoy))
+        sitemap.append((SITIO_URL + ruta, fechas.fecha(ruta, huella_lista(lista))))
 
     # 3) Comunidades
     for comunidad, lista in por_comunidad.items():
@@ -546,19 +603,24 @@ def generar():
                   f'<p class="resumen">{e(resumen_zona(comunidad, lista))}</p>{zonas}'
                   f'<p class="acciones"><a class="boton principal" href="../../mapa.html">📍 Ver en el mapa</a></p>'
                   + tabla_por_meses(lista, rutas, "../../") + hueco()
+                  + bloque_meses("../../", rutas_mes)
                   + bloque_guias("../../", GUIAS_DE_CALENDARIO, "Guías para preparar tu carrera"))
         titulo = f"Carreras populares y trail en {comunidad} {date.today().year} · Calendario | RunNear"
         desc = f"Calendario de carreras en {comunidad}: {len(lista)} próximas carreras populares y de trail por provincias, con fechas y distancias."
         escribir(ruta, pagina(titulo, desc, ruta, 2, cuerpo, [("RunNear", ""), ("Calendario", "calendario/"), (comunidad, None)]))
-        sitemap.append((SITIO_URL + ruta, hoy))
+        sitemap.append((SITIO_URL + ruta, fechas.fecha(ruta, huella_lista(lista))))
 
-    # 4) España
+    # 4) Por fechas: este fin de semana y cada mes
+    sitemap += generar_fechas(futuras, rutas, rutas_mes, fechas, huella_lista)
+
+    # 5) España
     comunidades = sorted(por_comunidad, key=lambda x: x)
     cuerpo = ("<h1>Calendario de carreras populares y trail en España</h1>"
               f'<p class="resumen">{e(resumen_zona("España", futuras, "en toda"))}</p>'
               "<h2>Por comunidades</h2><ul class=\"zonas grande\">"
               + "".join(f'<li><a href="{slug(x)}/">{e(x)} <span>{len(por_comunidad[x])}</span></a></li>' for x in comunidades)
               + "</ul>"
+              + bloque_meses("../", rutas_mes, fin_de_semana_tambien=True)
               + "<h2>Próximas carreras</h2>"
               + tabla_por_meses(sorted(futuras, key=lambda x: x["fecha"])[:40], rutas, "../")
               + '<p class="acciones"><a class="boton principal" href="../mapa.html">📍 Ver todas en el mapa</a></p>'
@@ -566,21 +628,26 @@ def generar():
               + bloque_guias("../", GUIAS_DE_CALENDARIO, "Guías para corredores"))
     escribir("calendario/", pagina(
         f"Calendario de carreras populares y trail en España {date.today().year} | RunNear",
-        f"Calendario de {len(futuras)} carreras populares y de trail en España por comunidades y provincias, con fechas, distancias y enlace a la inscripción.",
+        f"Calendario de {len(futuras)} carreras populares y de trail en España por comunidades, provincias y meses, con fechas, distancias y enlace a la inscripción.",
         "calendario/", 1, cuerpo, [("RunNear", ""), ("Calendario", None)]))
+    sitemap.insert(0, (SITIO_URL + "calendario/", fechas.fecha("calendario/", huella_lista(futuras))))
 
-    # 5) Guías
+    # 6) Guías
     sitemap += generar_guias(futuras, rutas)
 
-    # 6) Portada (lo primero que se ve al entrar en la web) y páginas informativas
-    generar_portada(futuras, rutas, por_comunidad)
+    # 7) Portada (lo primero que se ve al entrar en la web) y páginas informativas
+    generar_portada(futuras, rutas, por_comunidad, rutas_mes)
     sitemap += generar_paginas_fijas(len(futuras))
-    sitemap.insert(1, (SITIO_URL + "mapa.html", hoy))
+    sitemap = [(SITIO_URL, hoy), (SITIO_URL + "mapa.html", hoy), (SITIO_URL + "legal.html", "2026-10-13")] + sitemap
 
-    # 7) Lista de provincias para la web (una sola fuente: scraper/comun.py)
+    # 8) Lista de provincias para la web (una sola fuente: scraper/comun.py)
     escribir_provincias_js()
 
-    # 8) Para los buscadores
+    # 9) Memoria para la próxima vez: carreras pasadas y fechas reales de cambio
+    historial.guardar_archivo(archivo)
+    fechas.guardar()
+
+    # 10) Para los buscadores
     with open(os.path.join(RAIZ, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
         for url, fecha in sitemap:
@@ -589,9 +656,108 @@ def generar():
     with open(os.path.join(RAIZ, "robots.txt"), "w", encoding="utf-8") as f:
         f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITIO_URL}sitemap.xml\n")
 
-    print(f"OK: {len(carreras)} páginas de carreras, "
-          f"{sum(1 for p in por_provincia if n_provincias[COMUNIDAD_DE[p]] > 1)} de provincias, "
-          f"{len(por_comunidad)} de comunidades, {len(GUIAS)} guías y el sitemap ({len(sitemap)} direcciones)")
+    n_fichas = len(carreras) + len(archivadas)
+    n_indexadas = sum(1 for u, _ in sitemap if "/carrera/" in u)
+    print(f"OK: {n_fichas} fichas de carreras ({len(archivadas)} ya pasadas del archivo; {n_indexadas} indexables), "
+          f"{sum(1 for p in por_provincia if n_provincias[COMUNIDAD_DE[p]] > 1)} provincias, "
+          f"{len(por_comunidad)} comunidades, {len(rutas_mes)} meses, {len(GUIAS)} guías; sitemap: {len(sitemap)} direcciones")
+
+
+# Si cambia la plantilla de las fichas o de los calendarios, subir el número: su fecha en el
+# sitemap pasa a hoy (el contenido ha cambiado de verdad)
+VERSION_FICHAS = 2
+VERSION_CALENDARIOS = 2
+
+
+def bloque_meses(prefijo, rutas_mes, fin_de_semana_tambien=False):
+    """Enlaces a las páginas por fecha (meses y, opcionalmente, este fin de semana)."""
+    enlaces = ([f'<li><a href="{prefijo}calendario/fin-de-semana/">Este fin de semana</a></li>']
+               if fin_de_semana_tambien else [])
+    enlaces += [f'<li><a href="{prefijo}{r}">{MESES[int(m[5:]) - 1].capitalize()} {m[:4]}</a></li>'
+                for m, r in rutas_mes.items()]
+    return f'<section><h2>Carreras por fechas</h2><ul class="zonas">{"".join(enlaces)}</ul></section>' if enlaces else ""
+
+
+def tabla_por_comunidades(carreras, rutas, prefijo, con_dia_semana=False):
+    """Carreras agrupadas por comunidad (para las páginas por fecha), con un anuncio cada 3 comunidades."""
+    grupos = defaultdict(list)
+    for c in sorted(carreras, key=lambda x: (x["fecha"], x["nombre"])):
+        grupos[c["comunidad"]].append(c)
+    bloques = []
+    for n, (comunidad, lista) in enumerate(sorted(grupos.items(), key=lambda g: (-len(g[1]), g[0]))):
+        if n and n % 3 == 0:
+            bloques.append(hueco())
+        filas = "".join(
+            f'<tr><td class="f">{(DIAS[date.fromisoformat(c["fecha"]).weekday()][:3] + " ") if con_dia_semana else ""}'
+            f'{date.fromisoformat(c["fecha"]).day} {MESES[int(c["fecha"][5:7]) - 1][:3]}</td>'
+            f'<td><a href="{prefijo}{e(rutas[c["id"]])}">{e(c["nombre"])}</a>'
+            f'<span class="sub">{e(c.get("municipio"))} ({e(c.get("provincia"))}) · {e(distancias_texto(c))}</span></td>'
+            f'<td class="t">{"⛰️" if c.get("tipo") == "trail" else "🏃"}</td></tr>'
+            for c in lista)
+        bloques.append(f'<h2 id="{slug(comunidad)}">{e(comunidad)} <small>({len(lista)})</small></h2>'
+                       f'<table class="calendario"><tbody>{filas}</tbody></table>')
+    return "".join(bloques)
+
+
+def generar_fechas(futuras, rutas, rutas_mes, fechas, huella_lista):
+    """calendario/fin-de-semana/ y calendario/<mes>-<año>/: lo que la gente busca por fecha
+    ("carreras este fin de semana", "carreras 22 de noviembre"). Devuelve sus entradas del sitemap."""
+    entradas = []
+    hoy = date.today()
+    sabado = hoy + timedelta(days=(5 - hoy.weekday()) % 7) if hoy.weekday() != 6 else hoy - timedelta(days=1)
+    domingo = sabado + timedelta(days=1)
+    finde = [c for c in futuras if sabado.isoformat() <= c["fecha"] <= domingo.isoformat()]
+    trail = sum(1 for c in finde if c.get("tipo") == "trail")
+    dias = (f"{sabado.day} y {domingo.day} de {MESES[domingo.month - 1]}" if sabado.month == domingo.month
+            else f"{dia_y_mes(sabado.isoformat())} y {dia_y_mes(domingo.isoformat())}")
+    ruta = "calendario/fin-de-semana/"
+    cuerpo = (f"<h1>Carreras este fin de semana en España</h1>"
+              f'<p class="resumen">El sábado y el domingo ({dias}) se corren {len(finde)} carreras populares y de '
+              f"trail en España: {len(finde) - trail} de asfalto y {trail} de montaña. Aquí las tienes todas por "
+              "comunidades, con su distancia y el enlace a cada una. Se actualiza cada día.</p>"
+              '<p class="acciones"><a class="boton principal" href="../../mapa.html">📍 Ver las que tienes cerca en el mapa</a></p>'
+              + (tabla_por_comunidades(finde, rutas, "../../", con_dia_semana=True)
+                 or "<p>Todavía no hay carreras publicadas para este fin de semana.</p>")
+              + hueco() + bloque_meses("../../", rutas_mes)
+              + bloque_guias("../../", ["dia-de-la-carrera", "calculadora-ritmo", "ropa-para-correr"],
+                             "Prepara tu carrera"))
+    escribir(ruta, pagina(f"Carreras este fin de semana ({dias}) en España | RunNear",
+                          f"Las {len(finde)} carreras populares y de trail de este fin de semana ({dias}) en España, "
+                          "por comunidades, con distancias e inscripción.",
+                          ruta, 2, cuerpo, [("RunNear", ""), ("Calendario", "calendario/"), ("Este fin de semana", None)]))
+    entradas.append((SITIO_URL + ruta, fechas.fecha(ruta, huella_lista(finde))))
+
+    lista_meses = list(rutas_mes.items())
+    for i, (mes, ruta) in enumerate(lista_meses):
+        anio, m = mes.split("-")
+        nombre_mes = MESES[int(m) - 1]
+        delmes = [c for c in futuras if c["fecha"][:7] == mes]
+        trail = sum(1 for c in delmes if c.get("tipo") == "trail")
+        comunidades = defaultdict(int)
+        for c in delmes:
+            comunidades[c["comunidad"]] += 1
+        top = [f"{x} ({n})" for x, n in sorted(comunidades.items(), key=lambda x: -x[1])[:3]]
+        navegacion = ""
+        if i:
+            navegacion += f'<a href="../{lista_meses[i - 1][1].split("/")[1]}/">← {MESES[int(lista_meses[i - 1][0][5:]) - 1].capitalize()}</a> '
+        if i + 1 < len(lista_meses):
+            navegacion += f'<a href="../{lista_meses[i + 1][1].split("/")[1]}/">{MESES[int(lista_meses[i + 1][0][5:]) - 1].capitalize()} →</a>'
+        cuerpo = (f"<h1>Carreras populares y trail en {nombre_mes} de {anio}</h1>"
+                  f'<p class="resumen">En {nombre_mes} de {anio} hay {len(delmes)} carreras '
+                  f"{'próximas ' if mes == hoy.isoformat()[:7] else ''}en España: {len(delmes) - trail} de asfalto y "
+                  f"{trail} de trail. Las comunidades con más carreras son {enumerar(top)}. Aquí las tienes todas "
+                  "por comunidades y días.</p>"
+                  + (f'<p class="acciones">{navegacion}</p>' if navegacion else "")
+                  + tabla_por_comunidades(delmes, rutas, "../../")
+                  + hueco() + bloque_meses("../../", rutas_mes, fin_de_semana_tambien=True)
+                  + bloque_guias("../../", GUIAS_DE_CALENDARIO, "Guías para preparar tu carrera"))
+        escribir(ruta, pagina(f"Carreras populares en {nombre_mes} de {anio}: calendario de España | RunNear",
+                              f"Calendario de las {len(delmes)} carreras populares y de trail de {nombre_mes} de {anio} "
+                              "en España, por comunidades y días, con distancias e inscripción.",
+                              ruta, 2, cuerpo,
+                              [("RunNear", ""), ("Calendario", "calendario/"), (f"{nombre_mes.capitalize()} {anio}", None)]))
+        entradas.append((SITIO_URL + ruta, fechas.fecha(ruta, huella_lista(delmes))))
+    return entradas
 
 
 # ---------------------------------------------------------------------------
@@ -602,7 +768,7 @@ GUIAS_PORTADA = ["empezar-a-correr", "primera-carrera-5-km", "plan-10k", "calcul
                  "iniciarse-en-el-trail", "alimentacion-para-corredores"]
 
 
-def generar_portada(futuras, rutas, por_comunidad):
+def generar_portada(futuras, rutas, por_comunidad, rutas_mes):
     hoy = date.today()
     sabado = hoy + timedelta(days=(5 - hoy.weekday()) % 7) if hoy.weekday() != 6 else hoy - timedelta(days=1)
     finde = sorted((c for c in futuras if sabado.isoformat() <= c["fecha"] <= (sabado + timedelta(days=1)).isoformat()),
@@ -642,7 +808,8 @@ def generar_portada(futuras, rutas, por_comunidad):
         bloque_finde = (f"<section><h2>Este fin de semana: {len(finde)} carreras</h2>"
                         f'<p class="resumen">Carreras del {sabado.day} y {(sabado + timedelta(days=1)).day} de '
                         f"{MESES[sabado.month - 1]} en toda España.{mas}</p>{lista_finde}"
-                        '<p><a href="mapa.html">Ver las que tienes más cerca en el mapa →</a></p></section>')
+                        '<p><a href="calendario/fin-de-semana/">Ver las ' + str(len(finde)) + ' carreras del fin de semana →</a> · '
+                        '<a href="mapa.html">Las que tienes más cerca, en el mapa →</a></p></section>')
     else:
         bloque_finde = ""
 
@@ -657,6 +824,7 @@ def generar_portada(futuras, rutas, por_comunidad):
         + "<section><h2>Carreras por comunidades</h2><ul class=\"zonas grande\">"
         + "".join(f'<li><a href="calendario/{slug(x)}/">{e(x)} <span>{len(por_comunidad[x])}</span></a></li>'
                   for x in sorted(por_comunidad)) + "</ul></section>"
+        + bloque_meses("", rutas_mes, fin_de_semana_tambien=True)
         + hueco()
         + '<section><h2>Guías para corredores</h2><ul class="tarjetas-guias">' + "".join(
             f'<li><a href="guias/{s}/"><span class="icono">{por_slug[s]["icono"]}</span><b>{e(por_slug[s]["titulo"])}</b>'

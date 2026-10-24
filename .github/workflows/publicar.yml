@@ -99,6 +99,22 @@ jobs:
       - name: Revisar las páginas generadas
         run: python tests/comprobar_paginas.py
 
+      # Memoria de las páginas: carreras ya celebradas (para que su ficha no desaparezca) y
+      # fecha del último cambio real de cada página (la que se da a Google en el sitemap)
+      - name: Guardar el archivo de carreras y las fechas de las páginas
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitio/datos/archivo.json sitio/datos/fechas.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el archivo"
+          else
+            git commit -m "Actualizar archivo de páginas $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

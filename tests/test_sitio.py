@@ -7,10 +7,11 @@ horaria, enlaces entre guías, huecos de anuncios y la lista de provincias de la
 
 import os
 import re
+import tempfile
 import unittest
 
 from scraper.comun import PROVINCIAS
-from sitio import generar
+from sitio import generar, historial, textos
 from sitio.guias import GUIAS, GUIAS_DE_CALENDARIO, GUIAS_GENERALES, GUIAS_LARGAS, GUIAS_TRAIL, TEMAS
 
 RAIZ = generar.RAIZ
@@ -167,6 +168,89 @@ class ProvinciasDeLaWeb(unittest.TestCase):
         with open(os.path.join(RAIZ, "js", "provincias.js"), encoding="utf-8") as f:
             self.assertEqual(f.read(), esperado)
         self.assertEqual(len(re.findall(r'^  "', esperado, flags=re.M)), 52)
+
+
+class TextosDeLasFichas(unittest.TestCase):
+    def carrera(self, **extra):
+        c = {"id": "x1", "nombre": "Cross de Tineo", "fecha": "2026-11-08", "municipio": "Tineo",
+             "provincia": "Asturias", "comunidad": "Asturias", "tipo": "popular", "distancias_km": [5, 10]}
+        c.update(extra)
+        return c
+
+    def test_articulo_segun_el_nombre(self):
+        casos = {"Cross de Tineo": ("el", "del"), "XXI Carrera de Tomelloso": ("la", "de la"),
+                 "28ª Media Maratón de Alcázar": ("la", "de la"), "Maratón de Valencia": ("el", "del"),
+                 "La Transmontgrí": ("", "de")}
+        for nombre, (el, del_) in casos.items():
+            with self.subTest(nombre=nombre):
+                c = self.carrera(nombre=nombre)
+                self.assertEqual(textos.articulo(c), el)
+                self.assertEqual(textos.articulo(c, "de"), del_)
+        self.assertEqual(textos.con_articulo(self.carrera(nombre="La Transmontgrí")), "La Transmontgrí")
+
+    def test_sin_distancias_no_se_indexa(self):
+        self.assertTrue(textos.es_pobre(self.carrera(distancias_km=[])))
+        self.assertFalse(textos.es_pobre(self.carrera()))
+
+    def test_titulo_segun_si_ya_se_celebro(self):
+        c = self.carrera()
+        self.assertEqual(textos.titulo_ficha(c, "2026-10-24"),
+                         "Cross de Tineo 2026: 8 de noviembre en Tineo · Inscripción | RunNear")
+        self.assertIn("resultados", textos.titulo_ficha(self.carrera(resultados_web="https://a.es"), "2026-12-01"))
+        self.assertNotIn("Inscripción", textos.titulo_ficha(c, "2026-12-01"))
+
+    def test_textos_sin_huecos_vacios(self):
+        for c in (self.carrera(), self.carrera(distancias_km=[42.195], precio_desde=30, hora="09:00", desnivel_positivo_m=800)):
+            for hoy in ("2026-10-24", "2026-12-01"):
+                texto = " ".join(textos.parrafos_carrera(c, hoy, 3, 2, "calendario/noviembre-2026/")
+                                 + [p + r for p, r in textos.preguntas_carrera(c, hoy)])
+                with self.subTest(hoy=hoy, km=c["distancias_km"]):
+                    self.assertNotIn("None", texto)
+                    self.assertNotIn("{", texto)
+                    self.assertNotIn("  ", texto)
+
+
+class ArchivoDeCarreras(unittest.TestCase):
+    def test_guarda_la_edicion_mas_reciente_y_caduca(self):
+        vieja = {"id": "a", "nombre": "Cross", "fecha": "2025-11-01"}
+        nueva = {"id": "b", "nombre": "Cross", "fecha": "2026-10-01"}
+        futura = {"id": "c", "nombre": "Otra", "fecha": "2026-12-01"}
+        rutas = {"a": "carrera/cross/", "b": "carrera/cross/", "c": "carrera/otra/"}
+        archivo = historial.actualizar_archivo({}, [nueva, vieja, futura], rutas, "2026-10-24")
+        self.assertEqual(list(archivo), ["carrera/cross/"])
+        self.assertEqual(archivo["carrera/cross/"]["id"], "b")
+        historial.actualizar_archivo(archivo, [], {}, "2027-11-10")   # más de 400 días después
+        self.assertEqual(archivo, {})
+
+    def test_la_fecha_solo_cambia_si_cambia_la_pagina(self):
+        with tempfile.TemporaryDirectory() as carpeta:
+            original = historial.FECHAS
+            historial.FECHAS = os.path.join(carpeta, "fechas.json")
+            try:
+                ayer = historial.Fechas("2026-10-23")
+                self.assertEqual(ayer.fecha("carrera/x/", "h1"), "2026-10-23")
+                ayer.guardar()
+                hoy = historial.Fechas("2026-10-24")
+                self.assertEqual(hoy.fecha("carrera/x/", "h1"), "2026-10-23")
+                self.assertEqual(hoy.fecha("carrera/y/", "h2"), "2026-10-24")
+                otro = historial.Fechas("2026-10-25")
+                self.assertEqual(otro.fecha("carrera/x/", "cambiada"), "2026-10-25")
+            finally:
+                historial.FECHAS = original
+
+
+class Calendarios(unittest.TestCase):
+    def test_fin_de_semana_y_mes(self):
+        self.assertEqual(generar.fin_de_semana("2026-10-24"), "2026-10-24")   # sábado
+        self.assertEqual(generar.fin_de_semana("2026-10-25"), "2026-10-24")   # domingo
+        self.assertEqual(generar.fin_de_semana("2026-10-22"), "2026-10-22")   # jueves
+        self.assertEqual(generar.ruta_mes("2026-11"), "calendario/noviembre-2026/")
+
+    def test_direcciones_repetidas_llevan_fecha(self):
+        a = {"id": "1", "nombre": "Cross de Tineo", "municipio": "Tineo", "fecha": "2026-11-01"}
+        b = {"id": "2", "nombre": "Cross de Tineo 2026", "municipio": "Tineo", "fecha": "2026-12-01"}
+        self.assertEqual(generar.calcular_rutas([b, a]),
+                         {"1": "carrera/cross-de-tineo/", "2": "carrera/cross-de-tineo-2026-12-01/"})
 
 
 if __name__ == "__main__":

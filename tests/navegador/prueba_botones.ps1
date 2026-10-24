@@ -15,12 +15,21 @@ const espera = ms => new Promise(r => setTimeout(r, ms));
 window.addEventListener("load", () => setTimeout(async () => {
   try {
     // 1. Globo de una carrera en el mapa -> botón "Ver ficha"
-    const c = AppState.races.find(x => x.ubicacion && x.ubicacion.lat && AppState.mapMarkers[x.id]);
+    const c = AppState.races.find(x => x.ubicacion && x.ubicacion.lat && AppState.mapMarkers[x.id] &&
+                                   AppState.clusterGroup.hasLayer(AppState.mapMarkers[x.id]));
     const marcador = AppState.mapMarkers[c.id];
+    // Sin animaciones (en Chrome sin ventana no siempre terminan): acercar del todo y abrir el globo
+    AppState.map.setView(marcador.getLatLng(), AppState.map.getMaxZoom(), { animate: false });
+    await espera(500);
     AppState.clusterGroup.zoomToShowLayer(marcador, () => marcador.openPopup());
-    await espera(1500);
-    const boton = document.querySelector(".leaflet-popup .popup-btn-detail");
-    comprobar("el globo tiene el botón Ver ficha sin onclick", !!boton && !boton.hasAttribute("onclick"));
+    let boton = null;
+    for (let i = 0; i < 25 && !boton; i++) {
+      await espera(200);
+      if (i === 10) marcador.openPopup();
+      boton = document.querySelector(".leaflet-popup .popup-btn-detail");
+    }
+    comprobar("el globo tiene el botón Ver ficha sin onclick", !!boton && !boton.hasAttribute("onclick"),
+              boton ? "" : `globos abiertos: ${document.querySelectorAll(".leaflet-popup").length}, carrera ${c.id}, en el mapa: ${AppState.map.hasLayer(marcador)}`);
     boton.click();
     await espera(300);
     const modal = document.getElementById("race-detail-modal");
