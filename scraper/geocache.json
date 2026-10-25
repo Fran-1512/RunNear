@@ -360,6 +360,10 @@
     "lat": 39.23754,
     "lng": -0.77361
   },
+  "Mirandilla|Badajoz": {
+    "lat": 39.00082,
+    "lng": -6.28981
+  },
   "Mohedas de la Jara|Toledo": {
     "lat": 39.6042,
     "lng": -5.14401
@@ -375,6 +379,10 @@
   "Monreal del Campo|Zaragoza": {
     "lat": 41.57113,
     "lng": -0.95135
+  },
+  "Monzón|Zaragoza": {
+    "lat": 41.14815,
+    "lng": -0.66735
   },
   "Moral de Calatrava|Ciudad Real": {
     "lat": 38.82939,
@@ -509,6 +517,10 @@
     "lat": 39.2834,
     "lng": -2.79046
   },
+  "Sonseca|Toledo": {
+    "lat": 39.67979,
+    "lng": -3.97761
+  },
   "Talavera de la Reina|Toledo": {
     "lat": 39.95224,
     "lng": -4.89018
@@ -572,6 +584,10 @@
   "Villanueva De Alcardete|Toledo": {
     "lat": 39.69583,
     "lng": -3.03921
+  },
+  "Villanueva de Gallego|Zaragoza": {
+    "lat": 41.78603,
+    "lng": -0.85652
   },
   "Villanueva de la Torre|Guadalajara": {
     "lat": 40.59265,
