@@ -1337,6 +1337,12 @@
   "nombre": "Astu Trail Astudillo",
   "precio_desde": 11.0,
   "provincia": "Palencia",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripciones.runvasport.es/inscripcion/astu-trail-astudillo-2/clasificaciones/"
+   }
+  ],
   "tipo": "trail",
   "ubicacion": {
    "lat": 42.19256,
@@ -1364,6 +1370,12 @@
   "nombre": "Ataungo Hiru Auzoetako Korrikaldia - Mantzaren Oroimenezkoa",
   "precio_desde": 15.0,
   "provincia": "Gipuzkoa",
+  "resultados": [
+   {
+    "texto": "Emaitzak",
+    "url": "https://inscripcion.kirolprobak.com/inscripcion/ataungo-hiru-auzotako-korrikaldia-xlv-mantzaren-oroimenezkoa/clasificaciones/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 43.00795,
@@ -1837,6 +1849,12 @@
   "nombre": "Caravaca Experience",
   "precio_desde": 7.0,
   "provincia": "Murcia",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://www.lineadesalida.net/resultados/caravaca-experience-2026"
+   }
+  ],
   "resultados_web": "https://www.lineadesalida.net/noticias/clasificaciones-iv-carrera-solidaria-run-to-help",
   "tipo": "popular",
   "ubicacion": {
@@ -2441,7 +2459,7 @@
   "id": "rl-carrera-de-empresas-de-la-rioja",
   "municipio": "Logroño",
   "nombre": "Carrera de Empresas de La Rioja",
-  "precio_desde": 30.0,
+  "precio_desde": 15.0,
   "provincia": "La Rioja",
   "tipo": "popular",
   "ubicacion": {
@@ -2752,27 +2770,27 @@
   "resultados": [
    {
     "texto": "CLASIFICACIÓN GENERAL 10 Km",
+    "url": "https://22q.es/docs/files/132_10k-general.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN GENERAL 5 Km",
+    "url": "https://22q.es/docs/files/133_5k-general.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN POR CATEGORÍAS 10 Km",
+    "url": "https://22q.es/docs/files/134_10k-categorias.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN POR CATEGORÍAS 5 Km",
+    "url": "https://22q.es/docs/files/135_5k-categorias.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN GENERAL 10 Km",
     "url": "https://22q.es/docs/files/121_10k-general.pdf"
    },
    {
     "texto": "CLASIFICACIÓN GENERAL 5 Km",
     "url": "https://22q.es/docs/files/123_5k-general.pdf"
-   },
-   {
-    "texto": "CLASIFICACIÓN POR CATEGORÍAS 10 Km",
-    "url": "https://22q.es/docs/files/122_10k-categorias.pdf"
-   },
-   {
-    "texto": "CLASIFICACIÓN POR CATEGORÍAS 5 Km",
-    "url": "https://22q.es/docs/files/124_5k-categorias.pdf"
-   },
-   {
-    "texto": "CLASIFICACIÓN GENERAL 10 Km",
-    "url": "https://22q.es/landing-VI-carrera/10K_General_22Q24.pdf"
-   },
-   {
-    "texto": "CLASIFICACIÓN GENERAL 5 Km",
-    "url": "https://22q.es/landing-VI-carrera/5K_General_22Q24.pdf"
    }
   ],
   "tipo": "popular",
@@ -3058,6 +3076,7 @@
   "nombre": "Carrera Popular 5k Y 10k Redován",
   "precio_desde": 12.0,
   "provincia": "Alicante",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1224164&p=1248435",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.11386,
@@ -3083,6 +3102,12 @@
   "municipio": "Madrid",
   "nombre": "Carrera Popular AESAN",
   "provincia": "Madrid",
+  "resultados": [
+   {
+    "texto": "Consulta los resultados aquí",
+    "url": "https://carrerapopularaesan.com/wp-content/uploads/2026/10/01_5_KM_catCarrera_v01.pdf"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.51907,
@@ -3109,6 +3134,12 @@
   "nombre": "Carrera Popular Arrabal de San Nicolás",
   "precio_desde": 5.0,
   "provincia": "Ávila",
+  "resultados": [
+   {
+    "texto": "CARRERA ABSOLUTA 8KM Resultados",
+    "url": "https://www.orycronsport.com/competiciones/42139/resultados"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.65669,
@@ -3194,6 +3225,32 @@
   "nombre": "Carrera Popular Ciudad de Aguilar",
   "precio_desde": 5.0,
   "provincia": "Córdoba",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIÓN XXIX CARRERA POPULAR CIUDAD DE AGUILAR SUB16 F",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-XXIX-CARRERA-POPULAR-CIUDAD-DE-AGUILAR-SUB16-FEMENINA.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN XXIX CARRERA POPULAR CIUDAD DE AGUILAR SUB14 F",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-XXIX-CARRERA-POPULAR-CIUDAD-DE-AGUILAR-SUB14-FEMENINA.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN XXIX CARRERA POPULAR CIUDAD DE AGUILAR SUB12 F",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-XXIX-CARRERA-POPULAR-CIUDAD-DE-AGUILAR-SUB12-FEMENINA.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN XXIX CARRERA POPULAR CIUDAD DE AGUILAR SUB10 F",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-XXIX-CARRERA-POPULAR-CIUDAD-DE-AGUILAR-SUB10-FEMENINA.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN XXIX CARRERA POPULAR CIUDAD DE AGUILAR SUB8 FE",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-XXIX-CARRERA-POPULAR-CIUDAD-DE-AGUILAR-SUB8-FEMENINA.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN XXIX CARRERA POPULAR CIUDAD DE AGUILAR SUB8 MA",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-XXIX-CARRERA-POPULAR-CIUDAD-DE-AGUILAR-SUB8-MASCULINO.pdf"
+   }
+  ],
   "resultados_web": "https://deportime.es/resultados/",
   "tipo": "popular",
   "ubicacion": {
@@ -3644,6 +3701,7 @@
   "nombre": "Carrera Popular DM",
   "precio_desde": 6.0,
   "provincia": "Cantabria",
+  "resultados_web": "https://carrerapopular.eldiariomontanes.es/clasificaciones/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 43.46363,
@@ -3837,6 +3895,12 @@
   "municipio": "Ubrique",
   "nombre": "Carrera Popular Nutrias Pantaneras",
   "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "Clasificación y Fotos",
+    "url": "https://crono.sesca.es/carrera/carrera-clasificacion/?idCarrera=887"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 36.67708,
@@ -4029,6 +4093,7 @@
   "nombre": "Carrera Popular Ruta de las Norias",
   "precio_desde": 5.0,
   "provincia": "Murcia",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1239406&p=1239409",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.20409,
@@ -4081,6 +4146,12 @@
   "municipio": "Tomares",
   "nombre": "Carrera Popular Solidaria Ciudad de Tomares",
   "provincia": "Sevilla",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIONES",
+    "url": "https://gesconchip.es/clasificaciones/xii-carrera-popular-solidaria-ciudad-de-tomares/10-k-13/general"
+   }
+  ],
   "resultados_web": "https://gesconchip.es/resultados",
   "tipo": "popular",
   "ubicacion": {
@@ -4124,6 +4195,7 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "12:10",
   "id": "rl-carrera-popular-valle-de-santa-ana",
   "municipio": "Valle de Santa Ana",
   "nombre": "Carrera Popular Valle de Santa Ana",
@@ -4210,6 +4282,10 @@
   "nombre": "Carrera Popular Villa de Gerena",
   "provincia": "Sevilla",
   "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripciones.tecnocrono.com/inscripcion/xxii-carrera-popular-villa-de-gerena/clasificaciones/"
+   },
    {
     "texto": "Clasificaciones 2025",
     "url": "https://inscripciones.tecnocrono.com/inscripcion/xxii-carrera-popular-villa-de-gerena/sec_pers_2/"
@@ -5612,6 +5688,7 @@
   "nombre": "Congost Trail Challenge",
   "precio_desde": 19.0,
   "provincia": "Barcelona",
+  "resultados_web": "https://www.congosttrailchallenge.cat/classificacions-2026",
   "tipo": "trail",
   "ubicacion": {
    "lat": 41.76839,
@@ -6718,6 +6795,32 @@
   "municipio": "Huelma",
   "nombre": "Cross Villa de Huelma",
   "provincia": "Jaén",
+  "resultados": [
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/xvi-cross-villa-de-huelma/6addfa98-0f9c-48d5-a007-4635ac1f1013/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/xvi-cross-villa-de-huelma/6addfa98-5ec0-4fd5-a477-46e5ac1f0166/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/xvi-cross-villa-de-huelma/6addfa98-ed74-40a9-98c5-476fac1f0166/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/xvi-cross-villa-de-huelma/6addfa98-1ae0-45b6-9565-bb9eac1f2575/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/xvi-cross-villa-de-huelma/6addfa98-1c20-4fd2-98d1-bb9dac1f2575/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/xvi-cross-villa-de-huelma/6addfa98-7110-4007-bac4-4354ac1f1013/rankings"
+   }
+  ],
   "resultados_web": "https://sportmaniacs.com/en/results",
   "tipo": "popular",
   "ubicacion": {
@@ -7619,6 +7722,12 @@
   "nombre": "CxM El Ronquillo",
   "precio_desde": 15.0,
   "provincia": "Sevilla",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripciones.tecnocrono.com/inscripcion/iv-cxm-el-ronquillo/clasificaciones/"
+   }
+  ],
   "tipo": "trail",
   "ubicacion": {
    "lat": 37.72611,
@@ -7852,6 +7961,12 @@
   "nombre": "Deustuko Kilometro Bertikala",
   "precio_desde": 10.0,
   "provincia": "Bizkaia",
+  "resultados": [
+   {
+    "texto": "Emaitzak",
+    "url": "https://inscripcion.kirolprobak.com/inscripcion/deustuko-iv-kilometro-bertikala/clasificaciones/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 43.26301,
@@ -8104,7 +8219,26 @@
   "id": "rl-entre-pontes-gondomar",
   "municipio": "Gondomar",
   "nombre": "Entre Pontes - Gondomar",
+  "precio_desde": 5.0,
   "provincia": "Pontevedra",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=574"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=538"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=577"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=591"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 42.11155,
@@ -8475,6 +8609,12 @@
   "municipio": "Polop",
   "nombre": "H6 Hyatlón La Nucía Arena",
   "provincia": "Alicante",
+  "resultados": [
+   {
+    "texto": "Resultados La Nucia H6 La Nucía arrow_forward",
+    "url": "https://hyatlon.org/event/la-nucia/resultados"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.62211,
@@ -9715,6 +9855,12 @@
   "nombre": "Marcha-Carrera Por El Autismo",
   "precio_desde": 5.0,
   "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIONES",
+    "url": "https://gesconchip.es/clasificaciones/ix-marcha-carrera-por-el-autismo/6-2-km-1/general"
+   }
+  ],
   "resultados_web": "https://gesconchip.es/resultados",
   "tipo": "popular",
   "ubicacion": {
@@ -10314,6 +10460,7 @@
   "nombre": "Media Maratón Murcia",
   "precio_desde": 5.0,
   "provincia": "Murcia",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1246362&p=1246365",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.98318,
@@ -10432,6 +10579,20 @@
   "municipio": "Montehermoso",
   "nombre": "Media Maratón Villa de Montehermoso",
   "provincia": "Cáceres",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIÓN GENERAL 21 KMS – pdf 👈",
+    "url": "https://www.pulsaciones.net/wp-content/uploads/2026/10/CLASIFICACION-GENERAL-MEDIA-MARATON-VILLA-DE-MONTEHERMOSO-2026.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN GENERAL 10 KMS – pdf 👈",
+    "url": "https://www.pulsaciones.net/wp-content/uploads/2026/10/CLASIFICACION-GENERAL-10-K-VILLA-DE-MONTEHERMOSO.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN ON-LINE",
+    "url": "https://sportmaniacs.com/es/races/v-media-maraton-ldquovilla-de-montehermosordquo-2026"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.08779,
@@ -10840,6 +11001,7 @@
   "municipio": "Puerto Lumbreras",
   "nombre": "Milla Urbana de Puerto Lumbreras",
   "provincia": "Murcia",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1253035&p=1256932",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.5623,
@@ -11287,6 +11449,12 @@
   "nombre": "Pozo Estrecho y La Palma - En Marcha Contra el Cáncer",
   "precio_desde": 8.0,
   "provincia": "Murcia",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://www.lineadesalida.net/resultados/pozo-estrecho-y-la-palma-en-marcha-contra-el-cancer-2026"
+   }
+  ],
   "resultados_web": "https://www.lineadesalida.net/noticias/clasificaciones-iv-carrera-solidaria-run-to-help",
   "tipo": "popular",
   "ubicacion": {
@@ -11857,6 +12025,16 @@
   "municipio": "Pulpí",
   "nombre": "San Juan de Los Terreros",
   "provincia": "Almería",
+  "resultados": [
+   {
+    "texto": "VER",
+    "url": "https://rankings.cruzandolameta.es/pulpi-circuito-de-carreras-populares-diputacion-de-almeria-2026-absoluta"
+   },
+   {
+    "texto": "VER",
+    "url": "https://www.cruzandolameta.es/media/competiciones/clasificaciones/EQUIPOS_PULPI_SQEKCoB.pdf"
+   }
+  ],
   "resultados_web": "https://www.cruzandolameta.es/clasificaciones/carreras-live/",
   "tipo": "popular",
   "ubicacion": {
@@ -12232,6 +12410,32 @@
   "municipio": "Alajeró",
   "nombre": "Trail Alajero",
   "provincia": "Santa Cruz de Tenerife",
+  "resultados": [
+   {
+    "texto": "Español",
+    "url": "https://inscripciones.conchipcanarias.com/inscripcion/ix-trail-alajero-2026/clasificaciones/?lang=es"
+   },
+   {
+    "texto": "Català",
+    "url": "https://inscripciones.conchipcanarias.com/inscripcion/ix-trail-alajero-2026/clasificaciones/?lang=ca"
+   },
+   {
+    "texto": "Galego",
+    "url": "https://inscripciones.conchipcanarias.com/inscripcion/ix-trail-alajero-2026/clasificaciones/?lang=gl"
+   },
+   {
+    "texto": "Euskara",
+    "url": "https://inscripciones.conchipcanarias.com/inscripcion/ix-trail-alajero-2026/clasificaciones/?lang=eu"
+   },
+   {
+    "texto": "English",
+    "url": "https://inscripciones.conchipcanarias.com/inscripcion/ix-trail-alajero-2026/clasificaciones/?lang=en"
+   },
+   {
+    "texto": "Français",
+    "url": "https://inscripciones.conchipcanarias.com/inscripcion/ix-trail-alajero-2026/clasificaciones/?lang=fr"
+   }
+  ],
   "tipo": "trail",
   "ubicacion": {
    "lat": 28.06336,
@@ -12286,6 +12490,16 @@
   "nombre": "Trail Batalla de Bailén",
   "precio_desde": 15.0,
   "provincia": "Jaén",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIÓN GENERAL I TRAIL BATALLA DE BAILEN",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/GLASIFICACION-GENERAL-I-TRAIL-BATALLA-DE-BAILEN.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN POR CATEGORÍAS I TRAIL BATALLA DE BAILEN",
+    "url": "https://deportime.es/wp-content/uploads/2026/09/CLASIFICACION-POR-CATEGORIAS-I-TRAIL-BATALLA-DE-BAILEN.pdf"
+   }
+  ],
   "resultados_web": "https://deportime.es/resultados/",
   "tipo": "trail",
   "ubicacion": {
@@ -13549,6 +13763,7 @@
   "municipio": "Segovia",
   "nombre": "Trofeo de Orientación Ciudad de Segovia",
   "provincia": "Segovia",
+  "resultados_web": "https://segoviaorientacion.com/segovia-city-race/results-photos/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.9429,
@@ -13704,6 +13919,12 @@
   "municipio": "Valencia",
   "nombre": "Valencia Half Marathon",
   "provincia": "Valencia",
+  "resultados": [
+   {
+    "texto": "Clasificaciones Medio Maratón 2026",
+    "url": "https://www.valenciaciudaddelrunning.com/medio/clasificaciones-medio-maraton-2026/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.46991,
