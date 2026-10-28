@@ -447,6 +447,20 @@
   "nombre": "10K Socuellamos Carrera Urbana 2026",
   "precio_desde": 10.0,
   "provincia": "Ciudad Real",
+  "resultados": [
+   {
+    "texto": "General",
+    "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Socuellamos-General-2026.pdf"
+   },
+   {
+    "texto": "Clubes",
+    "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Socuellamos-Clubes-2026.pdf"
+   },
+   {
+    "texto": "Categorías",
+    "url": "https://carrerasciudadreal.es/wp-content/uploads/2026/10/Socuellamos-Categorias-2026.pdf"
+   }
+  ],
   "resultados_web": "https://carrerasciudadreal.es/clasificacion/",
   "tipo": "popular",
   "ubicacion": {
@@ -8796,19 +8810,7 @@
   "id": "clm-5bc24eb5",
   "municipio": "Ruidera",
   "nombre": "Inforun VI Carrera Solidaria Ruidera 26",
-  "precio_desde": 5.0,
   "provincia": "Ciudad Real",
-  "resultados": [
-   {
-    "texto": "Ver clasificaciones",
-    "url": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26/6ad34e37-f684-4b2b-869b-48ffac1f1899/rankings"
-   },
-   {
-    "texto": "Ver clasificaciones",
-    "url": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26/6ad34e37-63a0-45f9-8ea2-4c46ac1f0488/rankings"
-   }
-  ],
-  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.97739,
