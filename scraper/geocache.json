@@ -155,6 +155,10 @@
     "lat": 39.0722,
     "lng": -3.61436
   },
+  "Eivissa|Baleares": {
+    "lat": 38.91007,
+    "lng": 1.43045
+  },
   "El Carpio de Tajo|Toledo": {
     "lat": 39.88742,
     "lng": -4.45428
@@ -227,6 +231,10 @@
   "Huesca|Zaragoza": {
     "lat": 42.13275,
     "lng": -0.40985
+  },
+  "Irún|Gipuzkoa": {
+    "lat": 43.33832,
+    "lng": -1.78881
   },
   "Jadraque|Guadalajara": {
     "lat": 40.92638,
