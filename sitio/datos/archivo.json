@@ -1784,12 +1784,39 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "09:00",
   "id": "rl-campeonato-de-la-region-de-murcia-de-campo-a-traves-por-relevos",
   "municipio": "San Pedro del Pinatar",
   "nombre": "Campeonato de la Región de Murcia de Campo a Través por Relevos",
   "precio_desde": 24.0,
   "provincia": "Murcia",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1271657&p=1274062",
+  "resultados": [
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/a67e12e24b385e293630de6b212a23ac.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/7281cabfc159c748dcf02b4a6a98ece9.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/1b1d71f3b9f5a0b140ce6ea84da4aa8b.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/e9aa84ae922b3d646870a914e741887a.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/0759007e27450abbaf16974ec466cc13.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/2860bb349bdd3f0fa60c412b18d74077.pdf"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.83547,
@@ -12289,6 +12316,32 @@
    "lng": -5.45483
   },
   "url_oficial": "https://runnerreg.co/race/sobrescobio-skyrace-2026"
+ },
+ "carrera/sokolsky-beh-republiky-cabo-roig-la-zenia/": {
+  "comunidad": "Comunidad Valenciana",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-10-28",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-sokolsky-beh-republiky-cabo-roig",
+  "municipio": "La Zenia",
+  "nombre": "Sokolský běh republiky – Cabo Roig",
+  "precio_desde": 5.0,
+  "provincia": "Alicante",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.92546,
+   "lng": -0.72876
+  },
+  "url_oficial": "https://www.behrepubliky.cz/propozice/cabo-roig"
  },
  "carrera/survivor-madrid-quijorna/": {
   "comunidad": "Comunidad de Madrid",
