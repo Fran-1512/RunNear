@@ -155,6 +155,10 @@
     "lat": 39.0722,
     "lng": -3.61436
   },
+  "Donostia|Gipuzkoa": {
+    "lat": 43.32242,
+    "lng": -1.98389
+  },
   "Eivissa|Baleares": {
     "lat": 38.91007,
     "lng": 1.43045
@@ -255,6 +259,10 @@
   "La Mata|Toledo": {
     "lat": 39.9426,
     "lng": -4.43842
+  },
+  "La Muela|Zaragoza": {
+    "lat": 41.58047,
+    "lng": -1.1162
   },
   "La Puebla de Almoradiel|Toledo": {
     "lat": 39.59827,
