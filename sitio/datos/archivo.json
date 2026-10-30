@@ -661,11 +661,34 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "19:00",
   "id": "rl-5k-ciudad-de-elda-gran-premio-egari",
   "municipio": "Elda",
   "nombre": "5K Ciudad de Elda Gran Premio Egari",
   "provincia": "Alicante",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1236541&p=1243512",
+  "resultados": [
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/3ee67640166fe373e10ca8ed3ea72dc0.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/e6312ee2cf8b574ffe8518df96e142b9.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/3501c1972891e6460b8f60c84c796d1f.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/3782e7fbc85f710f34b7def9b558b2c2.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/f3c4990002d83ee89ab483dac5becfa6.pdf"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.47651,
@@ -3112,12 +3135,13 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "09:30",
   "id": "rl-carrera-popular-5k-y-10k-redovan",
   "municipio": "Redován",
   "nombre": "Carrera Popular 5k Y 10k Redován",
   "precio_desde": 12.0,
   "provincia": "Alicante",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1224164&p=1248435",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.11386,
@@ -4129,12 +4153,19 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "10:00",
   "id": "rl-carrera-popular-ruta-de-las-norias",
   "municipio": "Abarán",
   "nombre": "Carrera Popular Ruta de las Norias",
-  "precio_desde": 5.0,
+  "precio_desde": 11.0,
   "provincia": "Murcia",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1239406&p=1239409",
+  "resultados": [
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/b7b98628698e484c859320786978d111.pdf"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.20409,
@@ -7483,6 +7514,12 @@
   "municipio": "Igualada",
   "nombre": "Cursa Popular Igualada",
   "provincia": "Barcelona",
+  "resultados": [
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/48a-cursa-popular-igualada-2026/6addda6f-e5dc-4981-b10b-3242ac1f2575/rankings"
+   }
+  ],
   "resultados_web": "https://sportmaniacs.com/en/results",
   "tipo": "popular",
   "ubicacion": {
@@ -7767,6 +7804,10 @@
    {
     "texto": "Resultados",
     "url": "https://inscripciones.tecnocrono.com/inscripcion/iv-cxm-el-ronquillo/clasificaciones/"
+   },
+   {
+    "texto": "Clasificaciones",
+    "url": "https://inscripciones.tecnocrono.com/inscripcion/iv-cxm-el-ronquillo/sec_pers_1/"
    }
   ],
   "tipo": "trail",
@@ -8265,6 +8306,10 @@
   "resultados": [
    {
     "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=582"
+   },
+   {
+    "texto": "Resultados",
     "url": "https://www.321go.es/Carrera/Results?idCarrera=574"
    },
    {
@@ -8274,10 +8319,6 @@
    {
     "texto": "Resultados",
     "url": "https://www.321go.es/Carrera/Results?idCarrera=577"
-   },
-   {
-    "texto": "Resultados",
-    "url": "https://www.321go.es/Carrera/Results?idCarrera=591"
    }
   ],
   "tipo": "popular",
@@ -8677,11 +8718,13 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "08:00",
   "id": "rl-herox-challenge-formentera-del-segura",
   "municipio": "Formentera del Segura",
   "nombre": "HeroX Challenge Formentera del Segura",
   "precio_desde": 35.0,
   "provincia": "Alicante",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.08525,
@@ -10484,12 +10527,13 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "09:00",
   "id": "rl-media-maraton-murcia",
   "municipio": "San Pedro",
   "nombre": "Media Maratón Murcia",
   "precio_desde": 5.0,
   "provincia": "Murcia",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1246362&p=1246365",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.98318,
@@ -11001,10 +11045,12 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "18:00",
   "id": "rl-milla-urbana-alhama-de-murcia-circuito-no-homologado",
   "municipio": "Alhama de Murcia",
   "nombre": "Milla Urbana Alhama de Murcia Circuito No Homologado",
   "provincia": "Murcia",
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.8493,
@@ -11026,11 +11072,38 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "17:00",
   "id": "rl-milla-urbana-de-puerto-lumbreras",
   "municipio": "Puerto Lumbreras",
   "nombre": "Milla Urbana de Puerto Lumbreras",
   "provincia": "Murcia",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1253035&p=1256932",
+  "resultados": [
+   {
+    "texto": "Reglamento ↗",
+    "url": "https://alcanzatumeta.es/uploads/Reglamento/0ad2cd718d6ca088fe4c22bd0adfe3df.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/8c4fbbb0c964384b5134c5600613bced.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/4320bbff4aabd5aff8b054e67cf932b8.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/c5baa4d1e144c6fd0c24e1cff95c7a52.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/10aff07216e4997ada3501191f0f885a.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/e0d7227c782edee7cd541da6ddbf4440.pdf"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.5623,
@@ -11537,6 +11610,12 @@
   "municipio": "Santa Fe",
   "nombre": "Prueba de Fondo \"La Hispanidad\"",
   "provincia": "Granada",
+  "resultados": [
+   {
+    "texto": "VER",
+    "url": "https://www.cruzandolameta.es/clasificaciones/v2/resultados/xx-prueba-de-fondo-la-hispanidad---2488/7969/"
+   }
+  ],
   "resultados_web": "https://www.cruzandolameta.es/clasificaciones/carreras-live/",
   "tipo": "popular",
   "ubicacion": {
@@ -11935,11 +12014,39 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "09:00",
   "id": "rl-ruta-de-las-canteras-murcia-trail",
   "municipio": "Caprés",
   "nombre": "Ruta de las Canteras Murcia Trail",
+  "precio_desde": 23.0,
   "provincia": "Murcia",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1243398&p=1243401",
+  "resultados": [
+   {
+    "texto": "Reglamento ↗",
+    "url": "https://alcanzatumeta.es/uploads/Reglamento/626ed6ad952212c975c6683386da8ecb.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/a2f8026f561d404189380ae747c1d3cf.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/e51c1c9ae19a69f4efc7f96a4bae6409.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/2e38e01d484dd06045462b610a1c63df.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/5f1dc44082e5cf63789a4d58425a667f.pdf"
+   },
+   {
+    "texto": "Clasificación (PDF)",
+    "url": "https://alcanzatumeta.es/uploads/resultados/82b29773068fb472f18ee09b2b484c60.pdf"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "trail",
   "ubicacion": {
    "lat": 38.23103,
@@ -12740,12 +12847,23 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "09:30",
   "id": "rl-trail-de-calar-de-la-santa",
   "municipio": "Moratalla",
   "nombre": "Trail de Calar de la Santa",
-  "precio_desde": 20.0,
+  "precio_desde": 23.0,
   "provincia": "Murcia",
-  "resultados_web": "http://www.alcanzatumeta.es/resultados-express.php?e=1224517&p=1239893",
+  "resultados": [
+   {
+    "texto": "Autorización para menores Calar de la Santa 2026",
+    "url": "http://www.alcanzatumeta.es/uploads/8d3f55f44e2469571d73796b681e985ec6b9a1c7.pdf"
+   },
+   {
+    "texto": "Ficha Técnica Trail Calar de la Santa 2026",
+    "url": "http://www.alcanzatumeta.es/uploads/380db62b46e6848467da255ee169fb5b50f80dc6.pdf"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
   "tipo": "trail",
   "ubicacion": {
    "lat": 38.18932,
