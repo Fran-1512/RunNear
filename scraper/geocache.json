@@ -19,6 +19,10 @@
     "lat": 38.66475,
     "lng": -2.49108
   },
+  "Alcaudete de la Jara|Toledo": {
+    "lat": 39.78848,
+    "lng": -4.87009
+  },
   "Alcázar de San Juan|Ciudad Real": {
     "lat": 39.38998,
     "lng": -3.21014
@@ -83,9 +87,17 @@
     "lat": 41.52323,
     "lng": -1.60075
   },
+  "Brihuega|Guadalajara": {
+    "lat": 40.75925,
+    "lng": -2.87035
+  },
   "Broto|Huesca": {
     "lat": 42.6033,
     "lng": -0.12184
+  },
+  "Calera y Chozas|Toledo": {
+    "lat": 39.88146,
+    "lng": -4.97862
   },
   "Campo de Criptana|Ciudad Real": {
     "lat": 39.40525,
@@ -130,6 +142,10 @@
   "Ciudad Real|Ciudad Real": {
     "lat": 38.98542,
     "lng": -3.92851
+  },
+  "Consuegra|Toledo": {
+    "lat": 39.46092,
+    "lng": -3.60708
   },
   "Coria|Cáceres": {
     "lat": 39.98316,
@@ -192,6 +208,10 @@
     "lat": 40.28248,
     "lng": -3.79234
   },
+  "Gamonal|Toledo": {
+    "lat": 39.96093,
+    "lng": -4.95972
+  },
   "Gandia|Valencia": {
     "lat": 38.96759,
     "lng": -0.18034
@@ -235,6 +255,10 @@
   "Huesca|Zaragoza": {
     "lat": 42.13275,
     "lng": -0.40985
+  },
+  "Illescas|Toledo": {
+    "lat": 40.12484,
+    "lng": -3.84927
   },
   "Irún|Gipuzkoa": {
     "lat": 43.33832,
@@ -423,6 +447,10 @@
   "Málaga|Málaga": {
     "lat": 36.76479,
     "lng": -4.4422
+  },
+  "Méntrida|Toledo": {
+    "lat": 40.2379,
+    "lng": -4.19455
   },
   "Navamorcuende|Toledo": {
     "lat": 40.15754,
