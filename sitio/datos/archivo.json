@@ -3069,6 +3069,31 @@
   },
   "url_oficial": "https://inscripciones.runrunsports.com/eventos/xix-carrera-nocturna-de-toledo-gran-premio-santander"
  },
+ "carrera/carrera-nocturna-los-lagos-alginet/": {
+  "comunidad": "Comunidad Valenciana",
+  "distancia_km": 8.2,
+  "distancias_km": [
+   8.2
+  ],
+  "fecha": "2026-10-30",
+  "fuente": {
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
+  },
+  "fuentes": [
+   "carreraspopulares.com"
+  ],
+  "id": "cp-carrera-nocturna-los-lagos",
+  "municipio": "Alginet",
+  "nombre": "II Carrera Nocturna los Lagos",
+  "provincia": "Valencia",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.26511,
+   "lng": -0.47169
+  },
+  "url_oficial": "https://carreraspopulares.com/carrera/carrera-nocturna-los-lagos"
+ },
  "carrera/carrera-nocturna-running-alcolea-cordoba/": {
   "comunidad": "Andalucía",
   "distancia_km": 6.0,
@@ -5072,6 +5097,40 @@
   },
   "url_oficial": "https://carreraspopulares.com/carrera/carrera-solidaria-ruta-091-madrid"
  },
+ "carrera/carrera-solidaria-ruta-091-torremolinos/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-10-30",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "18:30",
+  "id": "rl-carrera-solidaria-ruta-091-torremolinos",
+  "municipio": "Torremolinos",
+  "nombre": "Carrera Solidaria Ruta 091 Torremolinos",
+  "plazas_max": 1000,
+  "precio_desde": 10.0,
+  "provincia": "Málaga",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://ruta091.es/resultados"
+   }
+  ],
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 36.62255,
+   "lng": -4.49948
+  },
+  "url_oficial": "https://ruta091.es/carrera/carrera-solidaria-ruta-091-torremolinos-2026"
+ },
  "carrera/carrera-trail-ciudad-de-chinchilla-chinchilla-de-monte-aragon/": {
   "circuito": "Circuito Trail Albacete 2026",
   "comunidad": "Castilla-La Mancha",
@@ -5714,6 +5773,27 @@
    "lng": 2.51369
   },
   "url_oficial": "https://web.rockthesport.com/es/event/cims-dels-tres-turons-2026"
+ },
+ "carrera/circuit-caixa-popular-safor-valldigna-benirredra/": {
+  "comunidad": "Comunidad Valenciana",
+  "fecha": "2026-10-30",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-circuit-caixa-popular-safor-valldigna",
+  "municipio": "Benirredrá",
+  "nombre": "Circuit Caixa Popular Safor Valldigna",
+  "provincia": "Valencia",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.96123,
+   "lng": -0.1928
+  },
+  "url_oficial": "https://circuitsaforvalldigna.com/"
  },
  "carrera/circuito-diputacion-de-sevilla-de-campo-a-traves-mairena-del-alcor/": {
   "comunidad": "Andalucía",
@@ -8880,7 +8960,19 @@
   "id": "clm-5bc24eb5",
   "municipio": "Ruidera",
   "nombre": "Inforun VI Carrera Solidaria Ruidera 26",
+  "precio_desde": 5.0,
   "provincia": "Ciudad Real",
+  "resultados": [
+   {
+    "texto": "Ver clasificaciones",
+    "url": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26/6ad34e37-f684-4b2b-869b-48ffac1f1899/rankings"
+   },
+   {
+    "texto": "Ver clasificaciones",
+    "url": "https://sportmaniacs.com/es/races/inforun-vi-carrera-solidaria-ruidera-26/6ad34e37-63a0-45f9-8ea2-4c46ac1f0488/rankings"
+   }
+  ],
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.97739,
@@ -9784,6 +9876,31 @@
    "lng": -3.77588
   },
   "url_oficial": "https://xn--madridcorreenespaol-c4b.es/index.php#inicio"
+ },
+ "carrera/mallorca-by-utmb/": {
+  "comunidad": "Baleares",
+  "distancia_km": 161.0,
+  "distancias_km": [
+   161.0
+  ],
+  "fecha": "2026-10-30",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-mallorca-by-utmb",
+  "municipio": "Mallorca",
+  "nombre": "Mallorca by Utmb",
+  "provincia": "Baleares",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.69526,
+   "lng": 3.01757
+  },
+  "url_oficial": "https://mallorca.utmb.world/"
  },
  "carrera/mallorca-en-marcha-contra-el-cancer-palma/": {
   "comunidad": "Baleares",
@@ -11147,6 +11264,33 @@
    "lng": -5.98127
   },
   "url_oficial": "https://inscripciones.croniussport.es/inscripcion/4o-v-millas-ilipense-de-alcala-del-rio/"
+ },
+ "carrera/minze-dark-horse-las-rosas/": {
+  "comunidad": "Canarias",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-10-30",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "20:00",
+  "id": "rl-minze-dark-horse",
+  "municipio": "Las Rosas",
+  "nombre": "Minze Dark Horse",
+  "precio_desde": 25.0,
+  "provincia": "Santa Cruz de Tenerife",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 28.02411,
+   "lng": -16.65629
+  },
+  "url_oficial": "https://web.rockthesport.com/es/event/minze-dark-horse"
  },
  "carrera/mitja-marato-costa-barcelona-maresme-pineda-de-mar/": {
   "comunidad": "Cataluña",
@@ -14023,6 +14167,31 @@
    "lng": -2.49628
   },
   "url_oficial": "https://web.rockthesport.com/es/event/v-txara-lasterketak-2026"
+ },
+ "carrera/ultra-de-los-castillos-la-parra/": {
+  "comunidad": "Extremadura",
+  "distancia_km": 100.0,
+  "distancias_km": [
+   100.0
+  ],
+  "fecha": "2026-10-30",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-ultra-de-los-castillos",
+  "municipio": "La Parra",
+  "nombre": "Ultra de los Castillos",
+  "provincia": "Badajoz",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 38.52163,
+   "lng": -6.62321
+  },
+  "url_oficial": "https://vueltasalacabeza.es/ultra-de-los-castillos/"
  },
  "carrera/unique-trail-lanzarote-orzola/": {
   "comunidad": "Canarias",
