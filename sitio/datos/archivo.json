@@ -1135,6 +1135,31 @@
   },
   "url_oficial": "https://web.rockthesport.com/es/event/algeciras-en-marcha-contra-el-cancer-de-mama"
  },
+ "carrera/almijara-trail-playa-de-burriana/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 23.0,
+  "distancias_km": [
+   23.0
+  ],
+  "fecha": "2026-11-02",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-almijara-trail",
+  "municipio": "Playa de Burriana",
+  "nombre": "Almijara Trail",
+  "provincia": "Málaga",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 36.75012,
+   "lng": -3.86696
+  },
+  "url_oficial": "https://web.faalive.com/ch/2026/14196/"
+ },
  "carrera/alto-porma-trail-puebla-de-lillo/": {
   "comunidad": "Castilla y León",
   "distancia_km": 18.0,
@@ -5791,6 +5816,12 @@
   "nombre": "XIV Carrera Subida Al Cerro de la Degollá",
   "precio_desde": 18.0,
   "provincia": "Cuenca",
+  "resultados": [
+   {
+    "texto": "Descargar resultados",
+    "url": "https://dorsal1.com/wp-content/uploads/2026/11/CLAS-2026-CXM-PRIEGO.pdf"
+   }
+  ],
   "resultados_web": "https://dorsal1.com/resultados/",
   "tipo": "popular",
   "ubicacion": {
@@ -9290,6 +9321,31 @@
    "lng": -0.41841
   },
   "url_oficial": "https://www.fdmvalencia.es/es/eventos/dogfy-run-solidaria-2026/"
+ },
+ "carrera/dual-run-monachil-academia-puerta-real/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 10.0,
+  "distancias_km": [
+   10.0
+  ],
+  "fecha": "2026-11-02",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-dual-run-monachil-academia-puerta-real",
+  "municipio": "Monachil",
+  "nombre": "Dual Run Monachil Academia Puerta Real",
+  "provincia": "Granada",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.13224,
+   "lng": -3.54054
+  },
+  "url_oficial": "https://dualrun.es/monachil-granada"
  },
  "carrera/dubra-trail-subida-o-castelo-de-portomeiro-valle-del-dubra/": {
   "comunidad": "Galicia",
