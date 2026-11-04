@@ -1817,6 +1817,12 @@
   "nombre": "Beñat Elzo Mendi Lasterketa",
   "precio_desde": 22.0,
   "provincia": "Gipuzkoa",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripcion.kirolprobak.com/inscripcion/xi-benat-elzo-mendi-lasterketa/clasificaciones/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 43.37084,
@@ -2668,6 +2674,12 @@
   "plazas_max": 150,
   "precio_desde": 5.0,
   "provincia": "Murcia",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://www.lineadesalida.net/resultados/iv-carrera-cofrade-cuatro-millas"
+   }
+  ],
   "resultados_web": "https://www.lineadesalida.net/noticias/clasificaciones-iv-carrera-solidaria-run-to-help",
   "tipo": "popular",
   "ubicacion": {
@@ -3898,6 +3910,7 @@
   "nombre": "Carrera Popular de la Salchicha",
   "precio_desde": 7.0,
   "provincia": "Valladolid",
+  "resultados_web": "https://inscripciones.runvasport.es/inscripcion/15a-carrera-popular-de-la-salchicha/clasificaciones/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 41.65762,
@@ -4660,6 +4673,12 @@
   "nombre": "Carrera Popular Ruta de los Lagares Rupestres",
   "precio_desde": 5.0,
   "provincia": "Salamanca",
+  "resultados": [
+   {
+    "texto": "CARRERA ABSOLUTA Resultados",
+    "url": "https://www.orycronsport.com/competiciones/52154/resultados"
+   }
+  ],
   "resultados_web": "https://www.orycronsport.com/competiciones/52155/resultados",
   "tipo": "popular",
   "ubicacion": {
@@ -5446,6 +5465,12 @@
   "nombre": "Carrera Solidaria Desafío ELA - Tarifa",
   "precio_desde": 10.0,
   "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "TROFEOS",
+    "url": "https://www.cronofinisher.com/images/biblioteca_eventos/741/trofeos.pdf"
+   }
+  ],
   "resultados_web": "https://www.cronofinisher.com/resultados/",
   "tipo": "trail",
   "ubicacion": {
@@ -9671,7 +9696,26 @@
   "id": "rl-entre-pontes-cerdedo-cotobade",
   "municipio": "Cerdedo",
   "nombre": "Entre Pontes - Cerdedo-Cotobade",
+  "precio_desde": 5.0,
   "provincia": "Pontevedra",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=566"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=581"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=582"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=574"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 42.53219,
@@ -11244,20 +11288,16 @@
   "provincia": "Sevilla",
   "resultados": [
    {
+    "texto": "Resultados",
+    "url": "https://my.raceresult.com/362900/home"
+   },
+   {
     "texto": "Participants",
     "url": "https://my.raceresult.com/362900/participants"
    },
    {
     "texto": "Results",
     "url": "https://my.raceresult.com/362900/results"
-   },
-   {
-    "texto": "Reviews",
-    "url": "https://my.raceresult.com/362900/reviews"
-   },
-   {
-    "texto": "Contact",
-    "url": "https://my.raceresult.com/362900/contact"
    }
   ],
   "resultados_web": "https://my.raceresult.com/",
@@ -16868,8 +16908,28 @@
   "provincia": "León",
   "resultados": [
    {
+    "texto": "X VILLABLINO TRAIL",
+    "url": "https://www.carrerasconencanto.com/resultados-2026/x-villablino-trail/"
+   },
+   {
     "texto": "IX VILLABLINO TRAIL",
     "url": "https://www.carrerasconencanto.com/resultados-2025/ix-villablino-trail/"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.carrerasconencanto.com/app/download/9595121675/Clasificacion+general.pdf?t=1793606302"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.carrerasconencanto.com/app/download/9595121875/Clasificacion+por+categorias.pdf?t=1793606315"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.carrerasconencanto.com/app/download/9595122075/Clasificacion+por+equipos.pdf?t=1793549347"
+   },
+   {
+    "texto": "Resultados",
+    "url": "https://www.carrerasconencanto.com/app/download/9595122175/Clasificaci%C3%B3n+locales.pdf?t=1793549347"
    }
   ],
   "resultados_web": "https://www.carrerasconencanto.com/resultados-2026/",
