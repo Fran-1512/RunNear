@@ -3450,6 +3450,10 @@
   "provincia": "Alicante",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=X%20Carrera%20Popular%20Villa%20de%20Redov%C3%A1n%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fx-carrera-popular-villa-de-redovan"
+   },
+   {
     "texto": "Clasificaci n 10K",
     "url": "https://alcanzatumeta.es/uploads/resultados/0ca0c1b3d07db6114ba241d8ea15d9f997f6ddea.pdf"
    },
@@ -4638,12 +4642,20 @@
   "provincia": "Murcia",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=XIX%20Carrera%20Popular%20Ruta%20de%20las%20Norias%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fxix-carrera-popular-ruta-de-las-norias-2026"
+   },
+   {
     "texto": "Reglamento ↗",
     "url": "https://alcanzatumeta.es/uploads/Reglamento/3a65520ed4f918077537057c35dfb786.pdf"
    },
    {
     "texto": "abaran",
     "url": "https://alcanzatumeta.es/uploads/resultados/b7b98628698e484c859320786978d111.pdf"
+   },
+   {
+    "texto": "Running Challenge 2026 Platinum",
+    "url": "http://www.alcanzatumeta.es/resultados-liga?l=rch&t=2026&c=platinum"
    }
   ],
   "resultados_web": "http://www.alcanzatumeta.es/resultados",
@@ -8462,6 +8474,7 @@
   "id": "rl-cursa-des-teix",
   "municipio": "Valldemosa",
   "nombre": "Cursa des Teix",
+  "plazas_max": 3000,
   "provincia": "Baleares",
   "resultados": [
    {
@@ -8469,6 +8482,7 @@
     "url": "https://www.elitechip.net/index.php?zwshow=results"
    }
   ],
+  "resultados_web": "https://www.elitechip.net/es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.71145,
@@ -10132,7 +10146,7 @@
   "provincia": "Alicante",
   "resultados": [
    {
-    "texto": "Resultados La Nucia H6 La Nucía arrow_forward",
+    "texto": "Ver resultados arrow_forward",
     "url": "https://hyatlon.org/event/la-nucia/resultados"
    }
   ],
@@ -10192,6 +10206,10 @@
   "provincia": "Alicante",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=HeroX%20Challenge%20Formentera%20de%20Segura%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fherox-challenge-formentera-de-segura-2026"
+   },
+   {
     "texto": "HEROX CHALLENGE INDIVIDUAL",
     "url": "https://alcanzatumeta.es/uploads/resultados/0ef50e9536f550ce1b9db07ad86a3632.pdf"
    },
@@ -10210,10 +10228,6 @@
    {
     "texto": "HEROX CHALLENGE PAREJAS FEMENINO",
     "url": "https://alcanzatumeta.es/uploads/resultados/9d98cf2466e23e7f7c46c81fdf1a6159.pdf"
-   },
-   {
-    "texto": "SPRINT HEROX INDIVIDUAL",
-    "url": "https://alcanzatumeta.es/uploads/resultados/3b4353d47fa41147cc4a1267444554d0.pdf"
    }
   ],
   "resultados_web": "http://www.alcanzatumeta.es/resultados",
@@ -11535,6 +11549,7 @@
   "id": "rl-mallorca-en-marcha-contra-el-cancer",
   "municipio": "Palma",
   "nombre": "Mallorca en Marcha contra el Cancer",
+  "plazas_max": 3000,
   "provincia": "Baleares",
   "resultados": [
    {
@@ -11542,6 +11557,7 @@
     "url": "https://www.elitechip.net/index.php?zwshow=results"
    }
   ],
+  "resultados_web": "https://www.elitechip.net/es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.5696,
@@ -12290,6 +12306,7 @@
   "id": "rl-mitja-marato-menorca",
   "municipio": "Ciudadela de Menorca",
   "nombre": "Media Maratón Menorca",
+  "plazas_max": 3000,
   "provincia": "Baleares",
   "resultados": [
    {
@@ -12297,6 +12314,7 @@
     "url": "https://www.elitechip.net/index.php?zwshow=results"
    }
   ],
+  "resultados_web": "https://www.elitechip.net/es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.99912,
@@ -12326,6 +12344,10 @@
   "provincia": "Murcia",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=Media%20Marat%C3%B3n%20AZUD%20Murcia%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fmedia-maraton-azud-murcia-2026"
+   },
+   {
     "texto": "mmazud 26 22k",
     "url": "https://alcanzatumeta.es/uploads/resultados/20a748f7573759cc7eac10d78b01e836.pdf"
    },
@@ -12344,10 +12366,6 @@
    {
     "texto": "mmazud 26 peques",
     "url": "https://alcanzatumeta.es/uploads/resultados/c68df5c904affaa0eea7a1d96294573c.pdf"
-   },
-   {
-    "texto": "Reglamento ↗",
-    "url": "https://alcanzatumeta.es/uploads/Reglamento/58d41aaf43366c8e55c317d3f354f004.pdf"
    }
   ],
   "resultados_web": "http://www.alcanzatumeta.es/resultados",
@@ -14585,6 +14603,10 @@
   "provincia": "Murcia",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=II%20Subida%20al%20Mingrano%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fii-subida-al-mingrano"
+   },
+   {
     "texto": "Reglamento ↗",
     "url": "https://alcanzatumeta.es/uploads/Reglamento/5e79f1248866fde29a7c44127a5746c5.pdf"
    }
@@ -14725,6 +14747,32 @@
    "lng": -17.8448
   },
   "url_oficial": "https://inscripciones.chronotrackcanarias.com/inscripcion/teneguia-trail-2026/"
+ },
+ "carrera/the-challenge-gran-canaria-tejeda/": {
+  "comunidad": "Canarias",
+  "distancia_km": 260.0,
+  "distancias_km": [
+   260.0
+  ],
+  "fecha": "2026-11-04",
+  "fuente": {
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
+  },
+  "fuentes": [
+   "carreraspopulares.com",
+   "Running.life"
+  ],
+  "id": "cp-challenge-gran-canaria",
+  "municipio": "Tejeda",
+  "nombre": "360º THE CHALLENGE GRAN CANARIA",
+  "provincia": "Las Palmas",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 27.99538,
+   "lng": -15.61537
+  },
+  "url_oficial": "https://carreraspopulares.com/carrera/challenge-gran-canaria"
  },
  "carrera/tolosa-herri-krosa/": {
   "comunidad": "País Vasco",
