@@ -2676,11 +2676,11 @@
   "provincia": "Murcia",
   "resultados": [
    {
-    "texto": "Resultados",
+    "texto": "Clasificaciones",
     "url": "https://www.lineadesalida.net/resultados/iv-carrera-cofrade-cuatro-millas"
    }
   ],
-  "resultados_web": "https://www.lineadesalida.net/noticias/clasificaciones-iv-carrera-solidaria-run-to-help",
+  "resultados_web": "https://www.lineadesalida.net/resultadosLiga/ii-carthago-running-league",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.61569,
@@ -8395,6 +8395,7 @@
     "url": "https://www.elitechip.net/index.php?zwshow=results"
    }
   ],
+  "resultados_web": "https://www.elitechip.net/es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.33845,
