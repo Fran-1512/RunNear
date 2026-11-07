@@ -380,6 +380,10 @@
     "lat": 40.41678,
     "lng": -3.70351
   },
+  "Madrid|Toledo": {
+    "lat": 40.15119,
+    "lng": -3.91103
+  },
   "Malagón|Ciudad Real": {
     "lat": 39.16891,
     "lng": -3.85145
@@ -484,6 +488,10 @@
     "lat": 39.94474,
     "lng": -3.98725
   },
+  "Ondara|Alicante": {
+    "lat": 38.82778,
+    "lng": 0.01701
+  },
   "Orendaín|Gipuzkoa": {
     "lat": 43.0795,
     "lng": -2.11414
@@ -524,6 +532,10 @@
   "Puertollano|Ciudad Real": {
     "lat": 38.68522,
     "lng": -4.11117
+  },
+  "Reus|Tarragona": {
+    "lat": 41.15556,
+    "lng": 1.10761
   },
   "Ribes de Freser|Girona": {
     "lat": 42.30573,
