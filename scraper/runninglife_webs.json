@@ -31,6 +31,10 @@
   "consultado": "2026-10-11",
   "url": "https://www.9hsports.cat/ca/informacio_cursa/1196"
  },
+ "rl-100x100half-berga": {
+  "consultado": "2026-11-08",
+  "url": "https://100x100half.com/es/berga"
+ },
  "rl-100x100half-empuriabrava": {
   "consultado": "2026-11-07",
   "url": "https://100x100half.com/es/empuriabrava"
@@ -42,6 +46,10 @@
  "rl-100x100half-platja-daro": {
   "consultado": "2026-11-07",
   "url": "https://100x100half.com/es/platja-daro"
+ },
+ "rl-100x100half-sant-feliu-de-guixols": {
+  "consultado": "2026-11-08",
+  "url": "https://100x100half.com/es/sant-feliu-de-guixols"
  },
  "rl-101-km-la-legion-ronda": {
   "consultado": "2026-11-02",
@@ -923,6 +931,10 @@
   "consultado": "2026-10-11",
   "url": "https://web.faalive.com/ch/2026/14430/"
  },
+ "rl-canfranc-canfranc": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/canfranc-canfranc-2027"
+ },
  "rl-canicross-de-creixell": {
   "consultado": "2026-10-15",
   "url": "https://cronocheck.com/x-canicross-creixell-2026"
@@ -1255,6 +1267,10 @@
   "consultado": "2026-10-11",
   "url": "https://fartlecksport.com/carrera-lobos-chiprana/"
  },
+ "rl-carrera-de-los-almendros-en-flor": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/iii-marcha-y-carrera-de-los-almendros-en-flor"
+ },
  "rl-carrera-de-montana-guia-de-isora": {
   "consultado": "2026-10-11",
   "url": "https://www.canaryrun.com/carrera/carrera-de-montana-guia-de-isora-2027/"
@@ -1262,6 +1278,10 @@
  "rl-carrera-de-montana-jarindo-albertia-mendi-lasterketa": {
   "consultado": "2026-10-11",
   "url": "https://web.rockthesport.com/es/event/xiii-carrera-jarindo-albertia"
+ },
+ "rl-carrera-de-navidad-alerre": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/iv-carrera-navidad-de-alerre"
  },
  "rl-carrera-de-navidad-callosa-de-segura": {
   "consultado": "2026-10-11",
@@ -1398,6 +1418,14 @@
  "rl-carrera-hazvisible22q": {
   "consultado": "2026-10-11",
   "url": "https://22q.es/contenido/56-VI-carrera-hazvisible22q.html"
+ },
+ "rl-carrera-hibrida-alhaurin-el-grande": {
+  "consultado": "2026-11-08",
+  "url": "https://gesconchip.es/prueba/informacion/i-carrera-hibrida-alhaurin-el-grande"
+ },
+ "rl-carrera-intercampus": {
+  "consultado": "2026-11-08",
+  "url": "https://intercampus.uc3m.es/"
  },
  "rl-carrera-intersocial-de-montana-de-semed": {
   "consultado": "2026-10-11",
@@ -1839,6 +1867,10 @@
   "consultado": "2026-10-11",
   "url": "https://www.dorsalchip.es/carrera/2026/11/21/VII_Carrera_contra_la_violencia_de_genero_San_Roque.aspx"
  },
+ "rl-carrera-popular-san-silvestre-canada-rosal": {
+  "consultado": "2026-11-08",
+  "url": "https://masatletismo.com/2026/11/04/2026-12-31-inscripciones-abiertas-para-la-ii-carrera-popular-san-sivestre-canada-rosal-sevilla/"
+ },
  "rl-carrera-popular-sancho-abarca": {
   "consultado": "2026-11-02",
   "url": "https://web.rockthesport.com/es/event/xxvii-carrera-popular-sancho-abarca"
@@ -1891,6 +1923,10 @@
   "consultado": "2026-10-11",
   "url": "https://sportmaniacs.com/en/races/xxvii-carrera-popular-valle-de-santa-ana-2026"
  },
+ "rl-carrera-popular-vejer-de-la-frontera": {
+  "consultado": "2026-11-08",
+  "url": "https://crono.sesca.es/carrera/?idCarrera=922&amp;nombre=-xxix-carrera-popular-vejer-de-la-frontera"
+ },
  "rl-carrera-popular-villa-de-andosilla": {
   "consultado": "2026-10-11",
   "url": "https://web.rockthesport.com/es/event/carrera-popular-villa-de-andosilla-2026"
@@ -1902,6 +1938,10 @@
  "rl-carrera-popular-villa-de-ayora": {
   "consultado": "2026-10-11",
   "url": "https://multiesport.es/event/2026-xxxvi-carrera-popular-villa-de-ayora/"
+ },
+ "rl-carrera-popular-villa-de-canena": {
+  "consultado": "2026-11-08",
+  "url": "https://deportime.es/events/iv-carrera-popular-villa-de-canena-466/"
  },
  "rl-carrera-popular-villa-de-casabermeja": {
   "consultado": "2026-10-11",
@@ -2070,6 +2110,10 @@
  "rl-carrera-solidaria-caritas-alzira": {
   "consultado": "2026-10-29",
   "url": "https://www.runatica.com/event/carrera-solidaria-caritas-santo-sepulcro-alzira-2026"
+ },
+ "rl-carrera-solidaria-central-optica": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/xii-carrera-solidaria-central-optica"
  },
  "rl-carrera-solidaria-contra-el-cancer": {
   "consultado": "2026-10-11",
@@ -2551,6 +2595,10 @@
   "consultado": "2026-10-11",
   "url": "https://www.aprenemautisme.org/correblau/"
  },
+ "rl-correndo-entre-auga-mondariz-balneario": {
+  "consultado": "2026-11-08",
+  "url": "https://www.carreirasgalegas.com/events/iii-correndo-entre-auga-mondariz-balneario/Kmn2NGmY"
+ },
  "rl-correndo-no-camino": {
   "consultado": "2026-10-27",
   "url": "https://www.correndonocamino.com"
@@ -2703,6 +2751,10 @@
   "consultado": "2026-10-15",
   "url": "https://web.faalive.com/ch/2026/14429/"
  },
+ "rl-cross-batalla-de-munda": {
+  "consultado": "2026-11-08",
+  "url": "https://carreraspopulares.com/carrera/cross-batalla-de-munda"
+ },
  "rl-cross-beach-hondartzako-krosa": {
   "consultado": "2026-10-31",
   "url": "https://atleticosansebastian.com/eventos-deportivos/cross-beach-donostia/"
@@ -2766,6 +2818,10 @@
  "rl-cross-de-la-artilleria": {
   "consultado": "2026-10-11",
   "url": "https://www.lineadesalida.net/carreras/xxiii-cross-de-artilleria"
+ },
+ "rl-cross-de-la-ballena": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/xi-cross-de-la-ballena"
  },
  "rl-cross-de-la-castana": {
   "consultado": "2026-10-11",
@@ -2906,6 +2962,10 @@
  "rl-cross-nacional-ayuntamiento-de-cantimpalos": {
   "consultado": "2026-10-11",
   "url": "https://crosscantimpalos.com"
+ },
+ "rl-cross-navidad": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/cross-navidad-2026"
  },
  "rl-cross-navideno-camino-la-vega": {
   "consultado": "2026-10-21",
@@ -3122,6 +3182,10 @@
  "rl-cursa-atletica-run-run-la-vall-del-terri": {
   "consultado": "2026-10-11",
   "url": "https://cursesplaestany.cat/cursa-atletica-run-run-la-vall-terri/"
+ },
+ "rl-cursa-atletica-sant-silvestre-vilafranquina": {
+  "consultado": "2026-11-08",
+  "url": "https://www.weevens.com/esdeveniments/xxv-sant-silvestre-muntanya-penedes/"
  },
  "rl-cursa-balafia": {
   "consultado": "2026-11-05",
@@ -3363,6 +3427,10 @@
   "consultado": "2026-10-11",
   "url": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7566121"
  },
+ "rl-cursa-ens-mou-cardedeu": {
+  "consultado": "2026-11-08",
+  "url": "https://ensmou.vivelloc.cat/"
+ },
  "rl-cursa-entrepobles-la-garrotxa": {
   "consultado": "2026-10-11",
   "url": "https://www.entrepobles.run/cursa-garrotxa/"
@@ -3450,6 +3518,10 @@
  "rl-cursa-mar-i-murtra": {
   "consultado": "2026-10-11",
   "url": "https://www.fondistesblanes.cat/CURSA-MAR-i-MURTRA/INSCRIPCIONS/"
+ },
+ "rl-cursa-medijocs": {
+  "consultado": "2026-11-08",
+  "url": "https://medijocs.comb.cat/cursaatletica.htm"
  },
  "rl-cursa-memorial-antoni-camarasa": {
   "consultado": "2026-10-11",
@@ -4239,6 +4311,10 @@
   "consultado": "2026-10-11",
   "url": "https://www.laufcoaches.com/gr221-trans-mallorca"
  },
+ "rl-gr322-nafarroa-xtrem-nx35": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/gr322-nafarroa-xtrem-2027"
+ },
  "rl-gran-canaria-backyard-ultra": {
   "consultado": "2026-10-11",
   "url": "https://backyardultragrancanaria.com/"
@@ -4691,6 +4767,10 @@
   "consultado": "2026-10-15",
   "url": "https://www.admalonda.es/"
  },
+ "rl-la-mes-freda": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/la-mes-freda-2026"
+ },
  "rl-la-milla-5kongres": {
   "consultado": "2026-10-11",
   "url": "https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1232"
@@ -4734,6 +4814,10 @@
  "rl-la-pota-roja-cervello": {
   "consultado": "2026-10-11",
   "url": "https://lapotaroja.com"
+ },
+ "rl-la-ribalera": {
+  "consultado": "2026-11-08",
+  "url": "https://www.laribalera.cat/"
  },
  "rl-la-romanica-navas": {
   "consultado": "2026-10-11",
@@ -4882,6 +4966,10 @@
  "rl-lizuniako-egoera": {
   "consultado": "2026-10-11",
   "url": "https://pb-organisation.com/evenements/lizuniako-egoera/"
+ },
+ "rl-llanera-race": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/llanera-race"
  },
  "rl-llanera10k": {
   "consultado": "2026-10-11",
@@ -5667,6 +5755,10 @@
   "consultado": "2026-10-11",
   "url": "https://gesconchip.es/prueba/informacion/i-mountain-festival-benahavis"
  },
+ "rl-mtri-castellon": {
+  "consultado": "2026-11-08",
+  "url": "https://www.endu.net/it/events/mtri-castellon"
+ },
  "rl-mtri-valencia": {
   "consultado": "2026-11-01",
   "url": "https://www.fdmvalencia.es/es/eventos/mtri-valencia-2027/"
@@ -6019,6 +6111,10 @@
   "consultado": "2026-10-11",
   "url": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7566136"
  },
+ "rl-pujada-a-la-penya-el-frare": {
+  "consultado": "2026-11-08",
+  "url": "https://www.instagram.com/cemlesllebres"
+ },
  "rl-pujada-a-la-seu-vella": {
   "consultado": "2026-10-11",
   "url": "https://www.pujadaseuvella.com/"
@@ -6094,6 +6190,10 @@
  "rl-riano-trail-run": {
   "consultado": "2026-10-11",
   "url": "https://web.rockthesport.com/es/event/riano-trail-run-2027"
+ },
+ "rl-rincon-de-olivedo-en-marcha-contra-el-cancer": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/rincon-de-olivedo-en-marcha-contra-el-cancer-2026"
  },
  "rl-road-navalcarnero-25": {
   "consultado": "2026-10-15",
@@ -6186,6 +6286,10 @@
  "rl-salmon-trail-cornellana": {
   "consultado": "2026-11-03",
   "url": "https://web.rockthesport.com/es/event/salmon-trail-cornellana"
+ },
+ "rl-salomon-run-barcelona": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/salomon-run-barcelona-2027"
  },
  "rl-salomon-ultra-pirineu": {
   "consultado": "2026-10-29",
@@ -6287,6 +6391,10 @@
   "consultado": "2026-10-15",
   "url": "https://web.rockthesport.com/es/event/san-silvestre-burriana-26"
  },
+ "rl-san-silvestre-cadaques": {
+  "consultado": "2026-11-08",
+  "url": "https://curses.cat/santsilvestrecadaques2026/"
+ },
  "rl-san-silvestre-candelaria": {
   "consultado": "2026-10-24",
   "url": "https://inscripciones.chronotrackcanarias.com/inscripcion/xiii-san-silvestre-candelaria/"
@@ -6294,6 +6402,10 @@
  "rl-san-silvestre-casarena": {
   "consultado": "2026-11-03",
   "url": "https://youevent.es/sport/Tabla_FichaEventoDeportivo.asp?id_competicion=8985"
+ },
+ "rl-san-silvestre-cascajuela-villalmanzo": {
+  "consultado": "2026-11-08",
+  "url": "https://idjinscripciones.burgos.es/inscripcion/xi-san-silvestre-cascajuela-2026/"
  },
  "rl-san-silvestre-chiclanera": {
   "consultado": "2026-10-11",
@@ -6358,6 +6470,10 @@
  "rl-san-silvestre-de-guadajira-cruzando-el-camino-real": {
   "consultado": "2026-10-21",
   "url": "https://www.cronofinisher.com/evento/san-silvestre-de-guadajira-cruzando-el-camino-real-5-km/"
+ },
+ "rl-san-silvestre-de-herrera": {
+  "consultado": "2026-11-08",
+  "url": "https://www.corredorespopulares.es/inscripcion/herrera_san_silvestre/index.php"
  },
  "rl-san-silvestre-de-hortaleza": {
   "consultado": "2026-10-11",
@@ -6471,6 +6587,10 @@
   "consultado": "2026-10-21",
   "url": "https://youevent.es/sport/Tabla_FichaEventoDeportivo.asp?id_competicion=8927"
  },
+ "rl-san-silvestre-marchamalo": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/vi-san-silvestre-marchamalo-2026"
+ },
  "rl-san-silvestre-mengibarena-memorial-ruben": {
   "consultado": "2026-11-01",
   "url": "https://deportime.es/events/xii-san-silvestre-mengibarena-memorial-ruben/"
@@ -6522,6 +6642,10 @@
  "rl-san-silvestre-santander": {
   "consultado": "2026-10-21",
   "url": "https://www.gedsports.com/race/san-silvestre-santander-2026"
+ },
+ "rl-san-silvestre-segura-de-la-sierra": {
+  "consultado": "2026-11-08",
+  "url": "https://deportime.es/events/iv-san-silvestre-2026-segura-de-la-sierra/"
  },
  "rl-san-silvestre-sevillana": {
   "consultado": "2026-10-20",
@@ -6623,6 +6747,10 @@
   "consultado": "2026-10-11",
   "url": "https://cronorunner.com/evento.php?ref=623-2223"
  },
+ "rl-sansilbestrail": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/sansilbestrail-nx-2026"
+ },
  "rl-sant-antoni-camina-amb-el-cancer": {
   "consultado": "2026-10-11",
   "url": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7596064"
@@ -6662,6 +6790,10 @@
  "rl-sant-silvestre-del-vendrell": {
   "consultado": "2026-10-11",
   "url": "https://www.runnerselvendrell.cat/?page_id=6420"
+ },
+ "rl-sant-silvestre-laleixar": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/sant-silvestre-laleixar-2026"
  },
  "rl-sant-silvestre-llorencina": {
   "consultado": "2026-10-11",
@@ -7203,6 +7335,10 @@
   "consultado": "2026-10-11",
   "url": "https://amidasports.com/trail-dos-aguas-2026/"
  },
+ "rl-trail-el-arcedianu-20k": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/arcedianu"
+ },
  "rl-trail-el-mazucu-rebulle": {
   "consultado": "2026-10-11",
   "url": "https://inscripciones.empa-t.com/inscripcion/trail-el-mazucu-rebulle-2026/"
@@ -7258,6 +7394,10 @@
  "rl-trail-hinojos-tu-huella-en-donana": {
   "consultado": "2026-10-11",
   "url": "https://www.corredorespopulares.es/inscripcion/hinojos_trail/index.php"
+ },
+ "rl-trail-hiru-herri": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/hiru-herri-trail-2027"
  },
  "rl-trail-i-marxa-a-peu-vila-de-calig": {
   "consultado": "2026-10-11",
@@ -7406,6 +7546,10 @@
  "rl-trail-nocturno-castil-de-campos": {
   "consultado": "2026-10-11",
   "url": "https://www.dorsalchip.es/carrera/2027/7/31/XV_CxM_y_V_TRAIL_NOCTURNO.aspx"
+ },
+ "rl-trail-nocturno-tegueste": {
+  "consultado": "2026-11-08",
+  "url": "https://inscripciones.chronotrackcanarias.com/inscripcion/trail-nocturno-tegueste-2027/"
  },
  "rl-trail-pajarero": {
   "consultado": "2026-10-11",
@@ -7606,6 +7750,10 @@
  "rl-trail-valle-samuno": {
   "consultado": "2026-10-11",
   "url": "https://www.xn--trailvallesamuo-crb.es/"
+ },
+ "rl-trail-vielha-molieres-3010": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/trail-vielha-molieres-3010-"
  },
  "rl-trail-villa-de-el-bosque": {
   "consultado": "2026-10-11",
@@ -8038,6 +8186,10 @@
  "rl-vuelta-al-santuario-virgen-de-la-esperanza-y-ruta-senderista": {
   "consultado": "2026-10-11",
   "url": "http://www.alcanzatumeta.es/x-vuelta-al-santuario-virgen-de-la-esperanza-y-ruta-senderista-2026"
+ },
+ "rl-vuelta-pedestre-a-tres-cantos": {
+  "consultado": "2026-11-08",
+  "url": "https://web.rockthesport.com/es/event/-xxxi-vuelta-pedestre-a-tres-cantos-"
  },
  "rl-vulcan-race-garachico": {
   "consultado": "2026-10-11",
