@@ -407,17 +407,18 @@
   "distancias_km": [
    10.0
   ],
-  "fecha": "2026-10-17",
+  "fecha": "2026-11-07",
   "fuente": {
-   "nombre": "Running.life",
-   "url": "https://running.life"
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
   },
   "fuentes": [
+   "carreraspopulares.com",
    "Running.life"
   ],
-  "id": "rl-10k-popular-de-naquera",
+  "id": "cp-10k-naquera",
   "municipio": "Náquera",
-  "nombre": "10K Popular de Náquera",
+  "nombre": "10K Popular de Naquera",
   "provincia": "Valencia",
   "tipo": "popular",
   "ubicacion": {
@@ -626,6 +627,33 @@
    "lng": -5.98446
   },
   "url_oficial": "https://15ksevillaexperience.com/"
+ },
+ "carrera/24-horas-backgreen-dalias/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "09:00",
+  "id": "rl-24-horas-backgreen",
+  "municipio": "Dalías",
+  "nombre": "24 Horas Backgreen",
+  "provincia": "Almería",
+  "resultados_web": "https://www.cruzandolameta.es/clasificaciones/carreras-live/",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 36.82152,
+   "lng": -2.87084
+  },
+  "url_oficial": "https://www.cruzandolameta.es/ver/24-horas-backgreen-contralaleucemiainfantil-2026---2633/"
  },
  "carrera/24-horas-de-la-tapia-casa-de-campo/": {
   "comunidad": "Comunidad de Madrid",
@@ -1373,6 +1401,33 @@
   },
   "url_oficial": "https://web.rockthesport.com/es/event/aramotz-mendi-lasterketa-2026"
  },
+ "carrera/argente-trail-race/": {
+  "comunidad": "Aragón",
+  "distancia_km": 21.0,
+  "distancias_km": [
+   21.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "10:30",
+  "id": "rl-argente-trail-race",
+  "municipio": "Argente",
+  "nombre": "Argente Trail Race",
+  "precio_desde": 20.0,
+  "provincia": "Teruel",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 40.68847,
+   "lng": -1.1629
+  },
+  "url_oficial": "https://web.rockthesport.com/es/event/ii-argente-trail-race-2026"
+ },
  "carrera/argitxo-trail-hernani/": {
   "comunidad": "País Vasco",
   "distancia_km": 7.0,
@@ -1399,6 +1454,33 @@
    "lng": -1.97685
   },
   "url_oficial": "https://web.rockthesport.com/es/event/argitxo-trail-2026"
+ },
+ "carrera/arico-trail-arico-viejo/": {
+  "comunidad": "Canarias",
+  "distancia_km": 24.0,
+  "distancias_km": [
+   24.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "08:00",
+  "id": "rl-arico-trail",
+  "municipio": "Arico Viejo",
+  "nombre": "Arico Trail",
+  "provincia": "Santa Cruz de Tenerife",
+  "resultados_web": "https://tripasioneventos.com/eventos/",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 28.18263,
+   "lng": -16.47983
+  },
+  "url_oficial": "https://tripasioneventos.com/event/arico-trail/"
  },
  "carrera/arnedo-en-marcha-contra-el-cancer/": {
   "comunidad": "La Rioja",
@@ -1797,6 +1879,33 @@
   },
   "url_oficial": "https://olarivers.com/eventos/v-becerro-trail/"
  },
+ "carrera/bee-backyard-trail-los-berrocales-paracuellos-de-jarama/": {
+  "comunidad": "Comunidad de Madrid",
+  "distancia_km": 7.0,
+  "distancias_km": [
+   7.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "07:00",
+  "id": "rl-bee-backyard-trail-los-berrocales",
+  "municipio": "Paracuellos de Jarama",
+  "nombre": "Bee Backyard Trail Los Berrocales",
+  "precio_desde": 50.0,
+  "provincia": "Madrid",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 40.5056,
+   "lng": -3.53021
+  },
+  "url_oficial": "https://web.rockthesport.com/es/event/2026-bee-backyard-trail-los-berrocales"
+ },
  "carrera/benat-elzo-mendi-lasterketa-hondarribia/": {
   "comunidad": "País Vasco",
   "distancia_km": 11.0,
@@ -1931,6 +2040,28 @@
   },
   "url_oficial": "https://carreraspopulares.com/carrera/bilbao-night-running-fest"
  },
+ "carrera/binter-nightrun-las-palmas-de/": {
+  "comunidad": "Canarias",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
+  },
+  "fuentes": [
+   "carreraspopulares.com",
+   "Running.life"
+  ],
+  "id": "cp-binter-nightrun-las-palmas-de-gran-canaria",
+  "municipio": "Las Palmas",
+  "nombre": "Binter Nightrun las Palmas de",
+  "provincia": "Las Palmas",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 28.12355,
+   "lng": -15.43626
+  },
+  "url_oficial": "https://carreraspopulares.com/carrera/binter-nightrun-las-palmas-de-gran-canaria"
+ },
  "carrera/borriquin-trail-los-barrios/": {
   "comunidad": "Andalucía",
   "distancia_km": 13.0,
@@ -1987,6 +2118,31 @@
    "lng": 2.16836
   },
   "url_oficial": "https://carreraspopulares.com/carrera/brama-stage-run"
+ },
+ "carrera/burbia-trail/": {
+  "comunidad": "Castilla y León",
+  "distancia_km": 17.0,
+  "distancias_km": [
+   17.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-burbia-trail",
+  "municipio": "Burbia",
+  "nombre": "Burbia Trail",
+  "provincia": "León",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 42.79314,
+   "lng": -6.7755
+  },
+  "url_oficial": "https://www.deporticket.com/web-evento/13962-i-burbia-trail"
  },
  "carrera/burgos-21k-tras-las-huellas-del-cid/": {
   "comunidad": "Castilla y León",
@@ -2135,11 +2291,31 @@
   "provincia": "Murcia",
   "resultados": [
    {
-    "texto": "Resultados",
+    "texto": "Clasificaciones",
     "url": "https://www.lineadesalida.net/resultados/caravaca-experience-2026"
+   },
+   {
+    "texto": "Liga de Carreras Por Montaña FMRM 2026 - Extreme",
+    "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-extreme"
+   },
+   {
+    "texto": "Liga de Carreras Por Montaña FMRM 2026 - Dúo Extreme",
+    "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-duo-extreme"
+   },
+   {
+    "texto": "Liga de Carreras Por Montaña FMRM 2026 - Sprint",
+    "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-sprint"
+   },
+   {
+    "texto": "Liga de Carreras Por Montaña FMRM 2026 - Promesa",
+    "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-promesa"
+   },
+   {
+    "texto": "Liga de Carreras Por Montaña FMRM 2026 - Junior",
+    "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-junior"
    }
   ],
-  "resultados_web": "https://www.lineadesalida.net/noticias/clasificaciones-iv-carrera-solidaria-run-to-help",
+  "resultados_web": "https://www.lineadesalida.net/resultados/xiv-penarrubia-lorca-trail",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.10419,
@@ -2204,6 +2380,31 @@
    "lng": -8.67169
   },
   "url_oficial": "https://www.carreirasgalegas.com/events/xxi-carreira-pedestre-de-lestrobe/xmA28D9Z"
+ },
+ "carrera/carreira-pedestre-de-san-martino-bueu-pontevedra/": {
+  "comunidad": "Galicia",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-carreira-pedestre-de-san-martino-bueu",
+  "municipio": "Pontevedra",
+  "nombre": "Carreira Pedestre de San Martiño Bueu",
+  "provincia": "Pontevedra",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 42.42988,
+   "lng": -8.64462
+  },
+  "url_oficial": "https://ccnorte.com/evento/detalle/page/1/id/3397/xxix-carreira-pedestre-de-san-martino-bueu-2026"
  },
  "carrera/carreira-pedestre-popular-concello-de-ames-pedrouzos/": {
   "comunidad": "Galicia",
@@ -2709,6 +2910,32 @@
    "lng": -1.09934
   },
   "url_oficial": "https://dorsal1.com/producto/xii-carrera-contra-el-cancer-de-mama-ciudad-de-requena/"
+ },
+ "carrera/carrera-contra-el-cancer-de-pancreas-vigo/": {
+  "comunidad": "Galicia",
+  "distancia_km": 10.0,
+  "distancias_km": [
+   10.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-carrera-contra-el-cancer-de-pancreas-vigo",
+  "municipio": "Vigo",
+  "nombre": "Carrera Contra el Cáncer de Páncreas - Vigo",
+  "precio_desde": 5.0,
+  "provincia": "Pontevedra",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 42.2406,
+   "lng": -8.72073
+  },
+  "url_oficial": "https://carreracancerpancreas.es/carrera-vigo/"
  },
  "carrera/carrera-contra-el-suicidio-madrid/": {
   "comunidad": "Comunidad de Madrid",
@@ -5226,6 +5453,31 @@
   },
   "url_oficial": "https://carrerapasodelonso.blogspot.com/"
  },
+ "carrera/carrera-solidaria-5k-aralba-kilometros-de-libertad-albacete/": {
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-carrera-solidaria-5k-aralba-kilometros-de-libertad",
+  "municipio": "Albacete",
+  "nombre": "Carrera Solidaria 5K Aralba - Kilómetros de Libertad",
+  "provincia": "Albacete",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.99426,
+   "lng": -1.86017
+  },
+  "url_oficial": "https://www.inscripcionesweb.es/es/evento/aralba.zhtm"
+ },
  "carrera/carrera-solidaria-a-favor-de-manos-unidas-torrejon-de-ardoz/": {
   "comunidad": "Comunidad de Madrid",
   "distancia_km": 10.0,
@@ -5301,6 +5553,33 @@
    "lng": -1.85592
   },
   "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2108&arg_tipo=eventos&arg_year=2026&arg_month=10"
+ },
+ "carrera/carrera-solidaria-con-otra-mirada-sagunto/": {
+  "comunidad": "Comunidad Valenciana",
+  "distancia_km": 10.0,
+  "distancias_km": [
+   5.0,
+   10.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
+  },
+  "fuentes": [
+   "carreraspopulares.com",
+   "Running.life"
+  ],
+  "id": "cp-carrera-solidaria-con-otra-mirada",
+  "municipio": "Sagunto",
+  "nombre": "Carrera Solidaria Con Otra Mirada",
+  "provincia": "Valencia",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.68011,
+   "lng": -0.2784
+  },
+  "url_oficial": "https://carreraspopulares.com/carrera/carrera-solidaria-con-otra-mirada"
  },
  "carrera/carrera-solidaria-contra-el-cancer-villanueva-del-trabuco/": {
   "comunidad": "Andalucía",
@@ -5404,6 +5683,31 @@
   },
   "url_oficial": "https://www.global-tempo.com/carreras.php?id=3283"
  },
+ "carrera/carrera-solidaria-crecer-con-futuro-dos-hermanas/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-carrera-solidaria-banco-mediolanum",
+  "municipio": "Dos Hermanas",
+  "nombre": "Carrera Solidaria Crecer con Futuro",
+  "provincia": "Sevilla",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.28658,
+   "lng": -5.92424
+  },
+  "url_oficial": "https://www.corredorespopulares.es/inscripcion/crecer_con_futuro/index.php"
+ },
  "carrera/carrera-solidaria-de-cox/": {
   "comunidad": "Comunidad Valenciana",
   "distancia_km": 5.0,
@@ -5426,28 +5730,28 @@
   "provincia": "Alicante",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=XI%20Carrera%20Solidaria%20de%20Cox%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fxi-carrera-solidaria-de-cox"
+   },
+   {
+    "texto": "andarines",
+    "url": "https://alcanzatumeta.es/uploads/resultados/8c21dc8980994ea0fc57efde62fa8824b2419a9542d06471.pdf"
+   },
+   {
+    "texto": "Clasificaci n 5K",
+    "url": "https://alcanzatumeta.es/uploads/resultados/d34d7c8fe14831d474d24d1d6967f763240ecc7f.pdf"
+   },
+   {
+    "texto": "Reglamento ↗",
+    "url": "https://alcanzatumeta.es/uploads/Reglamento/c53545f3c809911409be3e50859d4a7d.pdf"
+   },
+   {
     "texto": "Resultados 5K",
     "url": "https://alcanzatumeta.es/uploads/resultados/258e55718ba5eedba59e20811cdb9d8e.pdf"
    },
    {
     "texto": "5k final",
     "url": "https://alcanzatumeta.es/uploads/resultados/681abdea488ce5c94c120ec969789c7c.pdf"
-   },
-   {
-    "texto": "10k final",
-    "url": "https://alcanzatumeta.es/uploads/resultados/a9db28edfb6c85d8a6ec4f3641afef3f.pdf"
-   },
-   {
-    "texto": "5k final",
-    "url": "https://alcanzatumeta.es/uploads/resultados/31663aa4bfc3970b3a1844c0bed1116d.pdf"
-   },
-   {
-    "texto": "10k final",
-    "url": "https://alcanzatumeta.es/uploads/resultados/a37217ebc19970c80d7512ae922bb8ac.pdf"
-   },
-   {
-    "texto": "5k cox",
-    "url": "https://alcanzatumeta.es/uploads/resultados/6d618afda549037e69e1c6aa84d0645a.pdf"
    }
   ],
   "resultados_web": "http://www.alcanzatumeta.es/resultados",
@@ -5547,6 +5851,33 @@
    "lng": -2.46371
   },
   "url_oficial": "https://www.global-tempo.com/carreras.php?id=3259"
+ },
+ "carrera/carrera-solidaria-guerreros-spatanos-isla-de-la-cartuja/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-carrera-solidaria-guerreros-spatanos",
+  "municipio": "Isla de la Cartuja",
+  "nombre": "Carrera Solidaria Guerreros Spatanos",
+  "precio_desde": 6.0,
+  "provincia": "Sevilla",
+  "resultados_web": "https://carrera-spatana.org/resultados/",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.39861,
+   "lng": -6.00722
+  },
+  "url_oficial": "https://carrera-spatana.org/"
  },
  "carrera/carrera-solidaria-manuel-angel-cano-alcala-de-guadaira/": {
   "comunidad": "Andalucía",
@@ -6552,6 +6883,31 @@
   },
   "url_oficial": "https://circuitsaforvalldigna.com/"
  },
+ "carrera/circuito-campo-a-traves-cuevas-del-campo/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-circuito-campo-a-traves-cuevas-del-campo",
+  "municipio": "Cuevas del Campo",
+  "nombre": "Circuito Campo a Través - Cuevas del Campo",
+  "provincia": "Granada",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.60638,
+   "lng": -2.93133
+  },
+  "url_oficial": "https://web.faalive.com/ch/2026/14575/"
+ },
  "carrera/circuito-diputacion-de-sevilla-de-campo-a-traves-mairena-del-alcor/": {
   "comunidad": "Andalucía",
   "distancia_km": 8.0,
@@ -6576,6 +6932,59 @@
    "lng": -5.74841
   },
   "url_oficial": "https://web.faalive.com/ch/2026/14547/"
+ },
+ "carrera/circuito-juan-carlos-de-la-ossa-tarancon/": {
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-circuito-juan-carlos-de-la-ossa",
+  "municipio": "Tarancón",
+  "nombre": "Circuito Juan Carlos de la Ossa",
+  "precio_desde": 8.0,
+  "provincia": "Cuenca",
+  "resultados_web": "https://sportmaniacs.com/en/results",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 40.01052,
+   "lng": -3.00745
+  },
+  "url_oficial": "https://sportmaniacs.com/en/races/ix-circuito-popular-de-cross-cuenca---circuito-ldquojuan-carlos-de-la-ossardquo-tarancon"
+ },
+ "carrera/circuito-popular-de-cross-tarancon/": {
+  "circuito": "Circuito Popular de Cross Cuenca 2026",
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Carreras CLM",
+   "url": "https://carrerasclm.es"
+  },
+  "fuentes": [
+   "Carreras CLM"
+  ],
+  "id": "clm-2764aabe",
+  "municipio": "Tarancón",
+  "nombre": "IX Circuito Popular de Cross - Tarancón",
+  "provincia": "Cuenca",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 40.00861,
+   "lng": -3.01022
+  },
+  "url_oficial": "https://sportmaniacs.com/es/races/ix-circuito-popular-de-cross-cuenca---circuito-ldquojuan-carlos-de-la-ossardquo-tarancon"
  },
  "carrera/congost-trail-challenge-aiguafreda/": {
   "comunidad": "Cataluña",
@@ -6948,6 +7357,31 @@
   },
   "url_oficial": "https://gesport.cat/circuit-maresmenc-cros/"
  },
+ "carrera/cros-ciutat-de-cerdanyola-cerdanyola-del-valles/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cros-ciutat-de-cerdanyola",
+  "municipio": "Cerdanyola del Vallès",
+  "nombre": "Cros Ciutat de Cerdanyola",
+  "provincia": "Barcelona",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.49004,
+   "lng": 2.13967
+  },
+  "url_oficial": "https://www.atcerdanyola.com/curses/crosCerdanyola/"
+ },
  "carrera/cros-de-canovelles/": {
   "comunidad": "Cataluña",
   "distancia_km": 6.4,
@@ -6999,6 +7433,31 @@
    "lng": 2.71785
   },
   "url_oficial": "https://gesport.cat/circuit-maresmenc-cros/"
+ },
+ "carrera/cros-popular-concello-de-carballo-o-anon-de-berdillo/": {
+  "comunidad": "Galicia",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cros-popular-concello-de-carballo",
+  "municipio": "O Añón de Berdillo",
+  "nombre": "Cros Popular Concello de Carballo",
+  "provincia": "A Coruña",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 43.22493,
+   "lng": -8.6407
+  },
+  "url_oficial": "https://ccnorte.com/evento/detalle/page/1/id/3393/i-cros-popular-concello-de-carballo"
  },
  "carrera/cros-popular-de-sants-barcelona/": {
   "comunidad": "Cataluña",
@@ -7253,6 +7712,29 @@
    "lng": -6.41173
   },
   "url_oficial": "https://www.321go.es/Carrera/Detail/579-xxvicrossdetineo"
+ },
+ "carrera/cross-de-villamonte-algorta/": {
+  "comunidad": "País Vasco",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "17:00",
+  "id": "rl-cross-de-villamonte",
+  "municipio": "Algorta",
+  "nombre": "Cross de Villamonte",
+  "precio_desde": 5.0,
+  "provincia": "Bizkaia",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 43.3484,
+   "lng": -3.01067
+  },
+  "url_oficial": "https://inscripcion.kirolprobak.com/inscripcion/lvi-cross-de-villamonte/"
  },
  "carrera/cross-del-juncaral-villanua/": {
   "comunidad": "Aragón",
@@ -8091,7 +8573,7 @@
   "distancias_km": [
    10.0
   ],
-  "fecha": "2026-10-18",
+  "fecha": "2026-11-07",
   "fuente": {
    "nombre": "Running.life",
    "url": "https://running.life"
@@ -8136,6 +8618,32 @@
    "lng": 2.16857
   },
   "url_oficial": "https://cursacompanys.cat/"
+ },
+ "carrera/cursa-de-alba-collbato/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 22.0,
+  "distancias_km": [
+   22.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cursa-de-lalba",
+  "municipio": "Collbató",
+  "nombre": "Cursa de l'Alba",
+  "provincia": "Barcelona",
+  "resultados_web": "https://cursalba.cat/clasificaciones/",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.56445,
+   "lng": 1.81477
+  },
+  "url_oficial": "https://cursalba.cat/"
  },
  "carrera/cursa-de-barbera-del-valles/": {
   "comunidad": "Cataluña",
@@ -8290,6 +8798,27 @@
   },
   "url_oficial": "https://carreraspopulares.com/carrera/cursa-de-les-caves"
  },
+ "carrera/cursa-de-muntanya-mtr-mura/": {
+  "comunidad": "Cataluña",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cursa-de-muntanya-mtr",
+  "municipio": "Mura",
+  "nombre": "Cursa de Muntanya MTR",
+  "provincia": "Barcelona",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.69984,
+   "lng": 1.97684
+  },
+  "url_oficial": "https://www.inscripcions.cat/mtr2026/"
+ },
  "carrera/cursa-de-muntanya-turo-de-les-guineus-sant-vicenc-de-castellet/": {
   "comunidad": "Cataluña",
   "distancia_km": 10.0,
@@ -8321,7 +8850,7 @@
   "distancias_km": [
    7.0
   ],
-  "fecha": "2026-10-31",
+  "fecha": "2026-11-07",
   "fuente": {
    "nombre": "Running.life",
    "url": "https://running.life"
@@ -8332,13 +8861,9 @@
   "id": "rl-cursa-de-sa-galleta",
   "municipio": "Inca",
   "nombre": "Cursa de Sa Galleta",
+  "plazas_max": 3000,
   "provincia": "Baleares",
-  "resultados": [
-   {
-    "texto": "Resultados",
-    "url": "https://www.elitechip.net/index.php?zwshow=results"
-   }
-  ],
+  "resultados_web": "https://www.elitechip.net/es/resultados",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.71777,
@@ -8430,6 +8955,32 @@
   },
   "url_oficial": "https://web.rockthesport.com/es/event/cursa-de-tivissa-2026"
  },
+ "carrera/cursa-del-sant-crist-de-balaguer/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cursa-del-sant-crist-de-balaguer",
+  "municipio": "Balaguer",
+  "nombre": "Cursa del Sant Crist de Balaguer",
+  "precio_desde": 12.0,
+  "provincia": "Lleida",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.79193,
+   "lng": 0.80604
+  },
+  "url_oficial": "https://www.runners.cat/institut-dental-la-noguera-cursa-del-sant-crist-balaguer-2026/"
+ },
  "carrera/cursa-del-torro-agramunt/": {
   "comunidad": "Cataluña",
   "distancia_km": 10.0,
@@ -8456,6 +9007,33 @@
    "lng": 1.09798
   },
   "url_oficial": "https://agramuntesports.cat/cursa-del-torro-2026/"
+ },
+ "carrera/cursa-des-siurell-sa-cabaneta/": {
+  "comunidad": "Baleares",
+  "distancia_km": 12.0,
+  "distancias_km": [
+   12.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cursa-des-siurell",
+  "municipio": "Sa Cabaneta",
+  "nombre": "Cursa des Siurell",
+  "plazas_max": 3000,
+  "provincia": "Baleares",
+  "resultados_web": "https://www.elitechip.net/es/resultados",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.62065,
+   "lng": 2.74958
+  },
+  "url_oficial": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7566139"
  },
  "carrera/cursa-des-teix-valldemosa/": {
   "comunidad": "Baleares",
@@ -8489,6 +9067,33 @@
    "lng": 2.62257
   },
   "url_oficial": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7380188"
+ },
+ "carrera/cursa-es-baluards-santa-gertrudis-de-fruitera/": {
+  "comunidad": "Baleares",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-cursa-es-baluards",
+  "municipio": "Santa Gertrudis de Fruitera",
+  "nombre": "Cursa Es Baluards",
+  "plazas_max": 3000,
+  "provincia": "Baleares",
+  "resultados_web": "https://www.elitechip.net/es/resultados",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.9987,
+   "lng": 1.42833
+  },
+  "url_oficial": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7566153"
  },
  "carrera/cursa-familiar-per-la-vida-girona/": {
   "comunidad": "Cataluña",
@@ -9361,6 +9966,33 @@
   },
   "url_oficial": "https://www.fdmvalencia.es/es/eventos/dogfy-run-solidaria-2026/"
  },
+ "carrera/donana-trail-marathon-sevilla/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 68.0,
+  "distancias_km": [
+   68.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "08:00",
+  "id": "rl-donana-trail-marathon",
+  "municipio": "Sevilla",
+  "nombre": "Doñana Trail Marathon",
+  "precio_desde": 82.0,
+  "provincia": "Sevilla",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 37.38909,
+   "lng": -5.98446
+  },
+  "url_oficial": "https://web.rockthesport.com/es/event/xiv-donana-trail-marathon-sevilla-el-rocio-2026"
+ },
  "carrera/dual-run-monachil-academia-puerta-real/": {
   "comunidad": "Andalucía",
   "distancia_km": 10.0,
@@ -9646,6 +10278,28 @@
   },
   "url_oficial": "https://web.rockthesport.com/es/event/en-marcha-contra-el-cancer-ibdes-2026"
  },
+ "carrera/en-marcha-contra-el-cancer-sabinan-y-paracuellos/": {
+  "comunidad": "Aragón",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "10:30",
+  "id": "rl-en-marcha-contra-el-cancer-sabinan-y-paracuellos",
+  "municipio": "Sabiñán",
+  "nombre": "En Marcha Contra el Cáncer Sabiñán y Paracuellos",
+  "provincia": "Zaragoza",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.4444,
+   "lng": -1.56567
+  },
+  "url_oficial": "https://web.rockthesport.com/es/event/en-marcha-contra-el-cancer-sabinan-y-paracuellos-2026"
+ },
  "carrera/en-marcha-contra-el-cancer-tauste/": {
   "comunidad": "Aragón",
   "fecha": "2026-10-18",
@@ -9759,6 +10413,10 @@
   "resultados": [
    {
     "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=587"
+   },
+   {
+    "texto": "Resultados",
     "url": "https://www.321go.es/Carrera/Results?idCarrera=566"
    },
    {
@@ -9768,10 +10426,6 @@
    {
     "texto": "Resultados",
     "url": "https://www.321go.es/Carrera/Results?idCarrera=582"
-   },
-   {
-    "texto": "Resultados",
-    "url": "https://www.321go.es/Carrera/Results?idCarrera=574"
    }
   ],
   "tipo": "popular",
@@ -9851,6 +10505,31 @@
    "lng": -2.64202
   },
   "url_oficial": "https://uno.es/carreras/2026-entre-vinedos"
+ },
+ "carrera/eolos-race-agoncillo/": {
+  "comunidad": "La Rioja",
+  "distancia_km": 7.0,
+  "distancias_km": [
+   7.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-eolos-race-agoncillo",
+  "municipio": "Agoncillo",
+  "nombre": "Eolos Race Agoncillo",
+  "provincia": "La Rioja",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 42.4475,
+   "lng": -2.29332
+  },
+  "url_oficial": "https://www.deporticket.com/web-evento/13277-eolos-race-agoncillo"
  },
  "carrera/escaldada-suria/": {
   "comunidad": "Cataluña",
@@ -9986,6 +10665,28 @@
    "lng": 2.79012
   },
   "url_oficial": "https://exceedrace.com/ediciones/68a221ab-6102-4852-9a76-001a648b3f98"
+ },
+ "carrera/extreme-ocr-telde/": {
+  "comunidad": "Canarias",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-extreme-ocr-telde",
+  "municipio": "Telde",
+  "nombre": "Extreme OCR - Telde",
+  "provincia": "Las Palmas",
+  "resultados_web": "https://tripasioneventos.com/eventos/",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 27.99553,
+   "lng": -15.41737
+  },
+  "url_oficial": "https://tripasioneventos.com/event/extreme/"
  },
  "carrera/fedola-family-run-costa-adeje/": {
   "comunidad": "Canarias",
@@ -10125,6 +10826,33 @@
   },
   "url_oficial": "https://www.cronofinisher.com/evento/ii-gran-premio-de-fondo-ciudad-de-cadiz-2026/"
  },
+ "carrera/gran-vuelta-valle-del-genal-benalauria/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 129.0,
+  "distancias_km": [
+   53.0,
+   129.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-gran-vuelta-valle-del-genal",
+  "municipio": "Benalauría",
+  "nombre": "Gran Vuelta Valle del Genal",
+  "provincia": "Málaga",
+  "resultados_web": "https://granvueltavalledelgenal.com/resultados-ultra-2024/",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 36.59437,
+   "lng": -5.26093
+  },
+  "url_oficial": "https://granvueltavalledelgenal.com"
+ },
  "carrera/h6-hyatlon-la-nucia-arena-polop/": {
   "comunidad": "Comunidad Valenciana",
   "distancia_km": 6.0,
@@ -10184,6 +10912,31 @@
   },
   "url_oficial": "https://inscripcion.kirolprobak.com/inscripcion/10k-halloweenrun-zorroza-bilbao/"
  },
+ "carrera/haro-wine-trail-villalba-de-rioja/": {
+  "comunidad": "La Rioja",
+  "distancia_km": 26.0,
+  "distancias_km": [
+   26.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-haro-wine-trail",
+  "municipio": "Villalba de Rioja",
+  "nombre": "Haro Wine Trail",
+  "provincia": "La Rioja",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 42.60961,
+   "lng": -2.88702
+  },
+  "url_oficial": "https://www.buscametas.com/modulos/ticket/evento.php?codigo=1366"
+ },
  "carrera/herox-challenge-formentera-del-segura/": {
   "comunidad": "Comunidad Valenciana",
   "distancia_km": 5.0,
@@ -10237,6 +10990,78 @@
    "lng": -0.74556
   },
   "url_oficial": "http://www.alcanzatumeta.es/herox-challenge-formentera-de-segura-2026"
+ },
+ "carrera/homenaje-jose-manuel-y-fernando-entrenamiento-solidario-la-pulgosa/": {
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-homenaje-jose-manuel-y-fernando-entrenamiento-solidario",
+  "municipio": "La Pulgosa",
+  "nombre": "Homenaje José Manuel y Fernando - Entrenamiento Solidario",
+  "provincia": "Albacete",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.96637,
+   "lng": -1.87457
+  },
+  "url_oficial": "https://www.timingsys.com/event/800"
+ },
+ "carrera/hypro-the-test-mostoles/": {
+  "comunidad": "Comunidad de Madrid",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-hypro-the-test",
+  "municipio": "Móstoles",
+  "nombre": "Hypro the Test",
+  "plazas_max": 30,
+  "provincia": "Madrid",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 40.32321,
+   "lng": -3.86763
+  },
+  "url_oficial": "https://hypro.es/hysprint"
+ },
+ "carrera/hyrcross-games-solares/": {
+  "comunidad": "Cantabria",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-2026-11-07",
+  "municipio": "Solares",
+  "nombre": "Hyrcross Games",
+  "provincia": "Cantabria",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 43.38438,
+   "lng": -3.73955
+  },
+  "url_oficial": "https://www.gedsports.com/race/hyrcross-games-santander-2026"
  },
  "carrera/iberika-trail-la-cabrera/": {
   "comunidad": "Comunidad de Madrid",
@@ -10368,6 +11193,31 @@
    "lng": -0.18447
   },
   "url_oficial": "https://web.rockthesport.com/es/event/ican-triathlon-2026"
+ },
+ "carrera/increible-trail-folgueroles/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 100.0,
+  "distancias_km": [
+   100.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-increible-trail-100k",
+  "municipio": "Folgueroles",
+  "nombre": "Increïble Trail",
+  "provincia": "Barcelona",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 41.9401,
+   "lng": 2.31626
+  },
+  "url_oficial": "https://increibletrail.org/"
  },
  "carrera/inforun-carrera-solidaria-ruidera/": {
   "comunidad": "Castilla-La Mancha",
@@ -10829,6 +11679,27 @@
   },
   "url_oficial": "https://www.ladragoneratrail.com/"
  },
+ "carrera/la-hibrida-andujar/": {
+  "comunidad": "Andalucía",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-la-hibrida-andujar",
+  "municipio": "Andújar",
+  "nombre": "La Híbrida Andújar",
+  "provincia": "Jaén",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.03849,
+   "lng": -4.05166
+  },
+  "url_oficial": "https://time2run.es/competicion-hibrida-andujar-2026/"
+ },
  "carrera/la-islena-trail-del-norte-arucas/": {
   "comunidad": "Canarias",
   "desnivel_positivo_m": 1200,
@@ -11034,6 +11905,66 @@
    "lng": 2.00359
   },
   "url_oficial": "https://gesport.cat/2026cursa-la-vicentina-5k-10k/"
+ },
+ "carrera/lagotlon-puerto-de-la-cruz/": {
+  "comunidad": "Canarias",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "19:00",
+  "id": "rl-lagotlon",
+  "municipio": "Puerto de la Cruz",
+  "nombre": "Lagotlon",
+  "precio_desde": 10.0,
+  "provincia": "Santa Cruz de Tenerife",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 28.41141,
+   "lng": -16.54496
+  },
+  "url_oficial": "https://web.rockthesport.com/es/event/lagotlon-2026"
+ },
+ "carrera/las-10-mil-zancadas-de-ledana/": {
+  "circuito": "Circuito Carreras Populares Cuenca 2026",
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 9.8,
+  "distancias_km": [
+   9.8
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Carreras CLM",
+   "url": "https://carrerasclm.es"
+  },
+  "fuentes": [
+   "Carreras CLM"
+  ],
+  "id": "clm-c5823811",
+  "inscritos": 561,
+  "municipio": "Ledaña",
+  "nombre": "VII Edición las 10 Mil Zancadas de Ledaña",
+  "provincia": "Cuenca",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://www.timingsys.com/resultdata/774"
+   }
+  ],
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.35619,
+   "lng": -1.71576
+  },
+  "url_oficial": "https://www.timingsys.com/event/774"
  },
  "carrera/las-murallas-pamplona-iruna/": {
   "comunidad": "Navarra",
@@ -11610,6 +12541,32 @@
    "lng": 2.05836
   },
   "url_oficial": "https://www.maratocatalunya.cat/"
+ },
+ "carrera/marato-dels-dements-eslida/": {
+  "comunidad": "Comunidad Valenciana",
+  "distancia_km": 42.5,
+  "distancias_km": [
+   42.5
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
+  },
+  "fuentes": [
+   "carreraspopulares.com",
+   "Running.life"
+  ],
+  "id": "cp-marato-dels-dements",
+  "municipio": "Eslida",
+  "nombre": "Marató Dels Dements",
+  "provincia": "Castellón",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.88129,
+   "lng": -0.30722
+  },
+  "url_oficial": "https://carreraspopulares.com/carrera/marato-dels-dements"
  },
  "carrera/marato-mitja-al-parc-de-collserola-barcelona/": {
   "comunidad": "Cataluña",
@@ -12237,6 +13194,31 @@
   },
   "url_oficial": "https://www.mediamaratonoviedo.com/"
  },
+ "carrera/media-maraton-de-teruel/": {
+  "comunidad": "Aragón",
+  "distancia_km": 21.0,
+  "distancias_km": [
+   21.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-media-maraton-de-teruel",
+  "municipio": "Teruel",
+  "nombre": "Media Maratón de Teruel",
+  "provincia": "Teruel",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 40.34569,
+   "lng": -1.10643
+  },
+  "url_oficial": "https://www.hj-crono.es/eventos/xxii-media-maraton-caja-rural-de-teruel-2026"
+ },
  "carrera/media-maraton-huelva-21k/": {
   "comunidad": "Andalucía",
   "distancia_km": 21.097,
@@ -12776,6 +13758,39 @@
   },
   "url_oficial": "https://deportes.dipualba.es/deportes/FichaPrueba/1179"
  },
+ "carrera/memorial-vidal-matarranz-valladolid/": {
+  "comunidad": "Castilla y León",
+  "distancia_km": 9.0,
+  "distancias_km": [
+   9.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "11:00",
+  "id": "rl-memorial-vidal-matarranz",
+  "municipio": "Valladolid",
+  "nombre": "Memorial Vidal-Matarranz",
+  "precio_desde": 12.0,
+  "provincia": "Valladolid",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripciones.runvasport.es/inscripcion/xxx-memorial-vidal-matarranz-2026/clasificaciones/"
+   }
+  ],
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.65225,
+   "lng": -4.72453
+  },
+  "url_oficial": "https://inscripciones.runvasport.es/inscripcion/xxx-memorial-vidal-matarranz-2026/"
+ },
  "carrera/mic-milla-internacional-del-cantabrico-viveiro/": {
   "comunidad": "Galicia",
   "distancia_km": 10.0,
@@ -12983,6 +13998,31 @@
   },
   "url_oficial": "https://inscripciones.croniussport.es/inscripcion/4o-v-millas-ilipense-de-alcala-del-rio/"
  },
+ "carrera/millennial-race-cabaces/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 8.0,
+  "distancias_km": [
+   8.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-millennial-race",
+  "municipio": "Cabacés",
+  "nombre": "Millennial Race",
+  "provincia": "Tarragona",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.24746,
+   "lng": 0.73398
+  },
+  "url_oficial": "https://millennialrace.laketab.com"
+ },
  "carrera/minze-dark-horse-las-rosas/": {
   "comunidad": "Canarias",
   "distancia_km": 5.0,
@@ -13061,6 +14101,31 @@
   },
   "url_oficial": "https://mitjavendrell.runnerselvendrell.cat/"
  },
+ "carrera/montanejos-trail/": {
+  "comunidad": "Comunidad Valenciana",
+  "distancia_km": 52.0,
+  "distancias_km": [
+   52.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-montanejos-trail",
+  "municipio": "Montanejos",
+  "nombre": "Montanejos Trail",
+  "provincia": "Castellón",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 40.06833,
+   "lng": -0.52385
+  },
+  "url_oficial": "https://atloseventos.com/montanejos-trail-2026/"
+ },
  "carrera/montjuic-tibidabo-barcelona/": {
   "comunidad": "Cataluña",
   "distancia_km": 10.0,
@@ -13106,6 +14171,31 @@
    "lng": 0.90507
   },
   "url_oficial": "https://www.montsant360.net/"
+ },
+ "carrera/muntanyes-de-prades-epic-trail/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 50.0,
+  "distancias_km": [
+   50.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-muntanyes-de-prades-epic-trail",
+  "municipio": "Prades",
+  "nombre": "Muntanyes de Prades Epic Trail",
+  "provincia": "Tarragona",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 41.30987,
+   "lng": 0.98864
+  },
+  "url_oficial": "https://www.muntanyesdepradesepictrail.com"
  },
  "carrera/mutriku-herri-krosa-motrico/": {
   "comunidad": "País Vasco",
@@ -13161,6 +14251,31 @@
    "lng": -5.8728
   },
   "url_oficial": "http://cronelec.es/calendario/mysterioux-race/"
+ },
+ "carrera/night-city-trail-quimera-infinita-torrelavega/": {
+  "comunidad": "Cantabria",
+  "distancia_km": 15.0,
+  "distancias_km": [
+   15.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-night-city-trail-quimera-infinita",
+  "municipio": "Torrelavega",
+  "nombre": "Night City Trail Quimera Infinita",
+  "provincia": "Cantabria",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 43.34885,
+   "lng": -4.05015
+  },
+  "url_oficial": "https://www.gedsports.com/race/night-city-trail-quimera-infinita-2026"
  },
  "carrera/night-run-riyadh-air-metropolitano-madrid/": {
   "comunidad": "Comunidad de Madrid",
@@ -13241,6 +14356,66 @@
    "lng": -3.26271
   },
   "url_oficial": "https://www.deporticket.com/web-evento/13265-iv-nocturna-de-azuqueca"
+ },
+ "carrera/nocturna-feria-de-mora-mora-de-rubielos/": {
+  "comunidad": "Aragón",
+  "distancia_km": 16.0,
+  "distancias_km": [
+   16.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-nocturna-feria-de-mora",
+  "municipio": "Mora de Rubielos",
+  "nombre": "Nocturna Feria de Mora",
+  "precio_desde": 15.0,
+  "provincia": "Teruel",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIONES LIVE!",
+    "url": "https://www.runatica.com/event/vii-cdm-nocturna-feria-mora-de-rubielos-2026/clas"
+   }
+  ],
+  "resultados_web": "https://www.runatica.com/clas",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 40.25152,
+   "lng": -0.75209
+  },
+  "url_oficial": "https://www.runatica.com/event/vii-cdm-nocturna-feria-mora-de-rubielos-2026"
+ },
+ "carrera/nocturna-guimarera/": {
+  "comunidad": "Canarias",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "20:00",
+  "id": "rl-nocturna-guimarera",
+  "municipio": "Güímar",
+  "nombre": "Nocturna Güimarera",
+  "provincia": "Santa Cruz de Tenerife",
+  "resultados_web": "https://www.canaryrun.com/carreras/lista/?eventDisplay=past",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 28.31061,
+   "lng": -16.41258
+  },
+  "url_oficial": "https://www.canaryrun.com/carrera/nocturna-guimarera-2026/"
  },
  "carrera/oboncross/": {
   "comunidad": "Aragón",
@@ -13396,6 +14571,31 @@
   },
   "url_oficial": "https://web.rockthesport.com/es/event/pena-roya-trail-2026"
  },
+ "carrera/periche-trail-los-villares/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 23.0,
+  "distancias_km": [
+   23.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-periche-trail",
+  "municipio": "Los Villares",
+  "nombre": "Periche Trail",
+  "provincia": "Jaén",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 37.68739,
+   "lng": -3.81847
+  },
+  "url_oficial": "https://time2run.es/periche-trail-2026/"
+ },
  "carrera/perroton-madrid-nicka-run-aniversario-hipodromo-de-la-zarzuela/": {
   "comunidad": "Comunidad de Madrid",
   "distancia_km": 5.0,
@@ -13546,11 +14746,11 @@
   "provincia": "Murcia",
   "resultados": [
    {
-    "texto": "Resultados",
+    "texto": "Clasificaciones",
     "url": "https://www.lineadesalida.net/resultados/pozo-estrecho-y-la-palma-en-marcha-contra-el-cancer-2026"
    }
   ],
-  "resultados_web": "https://www.lineadesalida.net/noticias/clasificaciones-iv-carrera-solidaria-run-to-help",
+  "resultados_web": "https://www.lineadesalida.net/resultadosLiga/ii-carthago-running-league",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.74424,
@@ -13963,7 +15163,7 @@
   "provincia": "Castellón",
   "resultados": [
    {
-    "texto": "CLASIFICACIONES LIVE!",
+    "texto": "CLASIFICACIONES",
     "url": "https://www.runatica.com/event/roca-parda-trail-cinctorres-2026/clas"
    }
   ],
@@ -14366,6 +15566,33 @@
   },
   "url_oficial": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7596064"
  },
+ "carrera/sant-carles-xtrem-santa-eulalia-del-rio/": {
+  "comunidad": "Baleares",
+  "distancia_km": 6.0,
+  "distancias_km": [
+   6.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-sant-carles-xtrem",
+  "municipio": "Santa Eulalia del Río",
+  "nombre": "Sant Carles Xtrem",
+  "precio_desde": 6.0,
+  "provincia": "Baleares",
+  "resultados_web": "https://sportmaniacs.com/en/results",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.98528,
+   "lng": 1.5351
+  },
+  "url_oficial": "https://sportmaniacs.com/en/races/xii-cursa-sant-carles-xtrem"
+ },
  "carrera/santa-cruz-extreme-santa-cruz-de-tenerife/": {
   "comunidad": "Canarias",
   "distancia_km": 42.0,
@@ -14527,6 +15754,33 @@
    "lng": -5.45483
   },
   "url_oficial": "https://runnerreg.co/race/sobrescobio-skyrace-2026"
+ },
+ "carrera/social-sunset-run-palma-puerto-de-palma/": {
+  "comunidad": "Baleares",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-social-sunset-run-palma",
+  "municipio": "Puerto de Palma",
+  "nombre": "Social Sunset Run - Palma",
+  "plazas_max": 3000,
+  "provincia": "Baleares",
+  "resultados_web": "https://www.elitechip.net/es/resultados",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 39.56138,
+   "lng": 2.63506
+  },
+  "url_oficial": "https://www.elitechip.net/index.php?zwshow=compdet&amp;idcomp=7596072"
  },
  "carrera/sokolsky-beh-republiky-cabo-roig-la-zenia/": {
   "comunidad": "Comunidad Valenciana",
@@ -14878,6 +16132,31 @@
    "lng": -16.67998
   },
   "url_oficial": "https://inscripciones.chronotrackcanarias.com/inscripcion/i-trail-arona-2026/"
+ },
+ "carrera/trail-arroniz/": {
+  "comunidad": "Navarra",
+  "distancia_km": 23.0,
+  "distancias_km": [
+   23.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-trail-arroniz",
+  "municipio": "Arróniz",
+  "nombre": "Trail Arroniz",
+  "provincia": "Navarra",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 42.5895,
+   "lng": -2.09226
+  },
+  "url_oficial": "https://www.cdarroniz.com/"
  },
  "carrera/trail-batalla-de-bailen/": {
   "comunidad": "Andalucía",
@@ -15457,6 +16736,33 @@
   },
   "url_oficial": "https://web.rockthesport.com/es/event/trail-duende-martinico-mondejar"
  },
+ "carrera/trail-el-mazucu-rebulle-el-mazuco/": {
+  "comunidad": "Asturias",
+  "distancia_km": 14.0,
+  "distancias_km": [
+   14.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "10:00",
+  "id": "rl-trail-el-mazucu-rebulle",
+  "municipio": "El Mazuco",
+  "nombre": "Trail El Mazucu Rebulle",
+  "precio_desde": 22.0,
+  "provincia": "Asturias",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 43.38206,
+   "lng": -4.85192
+  },
+  "url_oficial": "https://inscripciones.empa-t.com/inscripcion/trail-el-mazucu-rebulle-2026/"
+ },
  "carrera/trail-el-rincon-de-aliste-vinas/": {
   "comunidad": "Castilla y León",
   "distancia_km": 19.0,
@@ -15871,6 +17177,32 @@
   },
   "url_oficial": "https://sportmaniacs.com/es/races/trail-montatildea-pico-del-fraile-de-tejadillos"
  },
+ "carrera/trail-montanas-del-aranda-brea-de-aragon/": {
+  "comunidad": "Aragón",
+  "distancia_km": 21.0,
+  "distancias_km": [
+   21.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "carreraspopulares.com",
+   "url": "https://carreraspopulares.com"
+  },
+  "fuentes": [
+   "carreraspopulares.com",
+   "Running.life"
+  ],
+  "id": "cp-trail-montanas-del-aranda-brea-de-aragon",
+  "municipio": "Brea de Aragón",
+  "nombre": "II Trail Montañas del Aranda Brea de Aragón",
+  "provincia": "Zaragoza",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 41.52393,
+   "lng": -1.59961
+  },
+  "url_oficial": "https://carreraspopulares.com/carrera/trail-montanas-del-aranda-brea-de-aragon"
+ },
  "carrera/trail-no-limits-ponts/": {
   "comunidad": "Cataluña",
   "distancia_km": 23.0,
@@ -16076,13 +17408,50 @@
   "municipio": "Lanzahíta",
   "nombre": "Trail Running Boca del Lobo",
   "provincia": "Ávila",
-  "resultados_web": "https://viriatoterra.es/resultados/",
+  "resultados_web": "https://viriatoterra.es/clasificaciones/",
   "tipo": "trail",
   "ubicacion": {
    "lat": 40.20525,
    "lng": -4.93379
   },
   "url_oficial": "https://viriatoterra.es/evento/iii-trail-running-boca-del-lobo-2026/"
+ },
+ "carrera/trail-running-festival-cartagena-costa-calida-galifa/": {
+  "comunidad": "Región de Murcia",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-trail-running-festival-cartagena-costa-calida",
+  "municipio": "Galifa",
+  "nombre": "Trail Running Festival Cartagena Costa Cálida",
+  "precio_desde": 9.0,
+  "provincia": "Murcia",
+  "resultados": [
+   {
+    "texto": "RESULTADOS CTO. REGIONAL",
+    "url": "https://alcanzatumeta.es/uploads/resultados/f5e644cf43dd10112a079275ef590844.pdf"
+   },
+   {
+    "texto": "Trail Tour FAMU 2026 Classic",
+    "url": "http://www.alcanzatumeta.es/resultados-liga?l=ttf&t=2026&c=classic"
+   },
+   {
+    "texto": "Trail Tour FAMU 2026 Jóvenes",
+    "url": "http://www.alcanzatumeta.es/resultados-liga?l=ttf&t=2026&c=jovenes"
+   }
+  ],
+  "resultados_web": "http://www.alcanzatumeta.es/resultados",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 37.60613,
+   "lng": -1.07927
+  },
+  "url_oficial": "http://www.alcanzatumeta.es/ii-trail-running-festival-cartagena-costa-calida-2026"
  },
  "carrera/trail-salvamontes-pontevedra/": {
   "comunidad": "Galicia",
@@ -16189,6 +17558,63 @@
    "lng": -4.48601
   },
   "url_oficial": "https://carreraspopulares.com/carrera/trail-sierra-de-aras"
+ },
+ "carrera/trail-sierra-de-facinas/": {
+  "comunidad": "Andalucía",
+  "distancia_km": 21.0,
+  "distancias_km": [
+   21.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-trail-sierra-de-facinas",
+  "municipio": "Facinas",
+  "nombre": "Trail Sierra de Facinas",
+  "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "Clasificación y Fotos",
+    "url": "https://crono.sesca.es/carrera/carrera-clasificacion/?idCarrera=872"
+   }
+  ],
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 36.14458,
+   "lng": -5.70169
+  },
+  "url_oficial": "https://crono.sesca.es/carrera/?idCarrera=872&amp;nombre=iv-trail-sierra-de-facinas-2026"
+ },
+ "carrera/trail-torres-del-foc-calella/": {
+  "comunidad": "Cataluña",
+  "distancia_km": 60.0,
+  "distancias_km": [
+   60.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-trail-torres-del-foc",
+  "municipio": "Calella",
+  "nombre": "Trail Torres Del Foc",
+  "precio_desde": 29.0,
+  "provincia": "Barcelona",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 41.61343,
+   "lng": 2.65356
+  },
+  "url_oficial": "https://www.b3sportevents.com/es/trailtorresdelfoc"
  },
  "carrera/trail-turdetania-castilblanco-de-los-arroyos/": {
   "comunidad": "Andalucía",
@@ -16503,6 +17929,27 @@
   },
   "url_oficial": "https://segoviaorientacion.com/segovia-city-race-2026-es/"
  },
+ "carrera/trofeo-diapir-o-poza-de-la-sal/": {
+  "comunidad": "Castilla y León",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-trofeo-diapir-o-poza-de-la-sal",
+  "municipio": "Poza de la Sal",
+  "nombre": "Trofeo Diapir-O - Poza de la Sal",
+  "provincia": "Burgos",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 42.66572,
+   "lng": -3.50169
+  },
+  "url_oficial": "https://www.deporticket.com/web-evento/14095-14a-prueba-de-liga-norte-ii-trofeo-diapir-o-poza-de-la-sal"
+ },
  "carrera/tui-palma-marathon-mallorca-palma-de-mallorca/": {
   "comunidad": "Baleares",
   "distancia_km": 10.0,
@@ -16617,6 +18064,32 @@
    "lng": -6.62321
   },
   "url_oficial": "https://vueltasalacabeza.es/ultra-de-los-castillos/"
+ },
+ "carrera/ultra-heroica-mino-sil-chantada/": {
+  "comunidad": "Galicia",
+  "distancia_km": 83.0,
+  "distancias_km": [
+   83.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-ultra-heroica-mino-sil",
+  "municipio": "Chantada",
+  "nombre": "Ultra Heroica Miño & Sil",
+  "provincia": "Lugo",
+  "resultados_web": "https://ultraheroica.ccnorte.com/gl/web/resultado/",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 42.611,
+   "lng": -7.77068
+  },
+  "url_oficial": "https://ultraheroica.ccnorte.com/"
  },
  "carrera/unique-trail-lanzarote-orzola/": {
   "comunidad": "Canarias",
@@ -16825,6 +18298,27 @@
    "lng": -4.42127
   },
   "url_oficial": "https://www.deporticket.com/web-evento/13700-vektor-apex-2026-malaga"
+ },
+ "carrera/vektor-apex-murcia/": {
+  "comunidad": "Región de Murcia",
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-vektor-apex-murcia",
+  "municipio": "Murcia",
+  "nombre": "Vektor Apex - Murcia",
+  "provincia": "Murcia",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.99224,
+   "lng": -1.13065
+  },
+  "url_oficial": "https://www.deporticket.com/web-evento/13701-vektor-apex-2026-murcia"
  },
  "carrera/vektor-apex-vitoria-abetxuko/": {
   "comunidad": "País Vasco",
@@ -17273,5 +18767,36 @@
    "lng": -2.93499
   },
   "url_oficial": "https://carreraspopulares.com/carrera/wop-challenge-bilbao-bizkaia"
+ },
+ "carrera/zenagas-trail-puertollano/": {
+  "circuito": "Copa y Campeonatos CxM Castilla-La Mancha",
+  "comunidad": "Castilla-La Mancha",
+  "desnivel_positivo_m": 1300,
+  "distancia_km": 28.0,
+  "distancias_km": [
+   7.0,
+   15.0,
+   28.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Carreras CLM",
+   "url": "https://carrerasclm.es"
+  },
+  "fuentes": [
+   "Carreras CLM",
+   "Carreras de Montaña por Mayayo (calendario FDMCM)"
+  ],
+  "id": "clm-01eb29e9",
+  "inscritos": 667,
+  "municipio": "Puertollano",
+  "nombre": "Zenagas Trail 2026",
+  "provincia": "Ciudad Real",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 38.68522,
+   "lng": -4.11117
+  },
+  "url_oficial": "https://carreras.dxtchiprun.es/carrera/zenagas-trail-2026"
  }
 }
