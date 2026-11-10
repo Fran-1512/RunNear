@@ -1471,6 +1471,10 @@
   "provincia": "Murcia",
   "resultados": [
    {
+    "texto": "Clasificaciones",
+    "url": "https://www.lineadesalida.net/resultados/alhama-cxm-2026"
+   },
+   {
     "texto": "Liga de Carreras Por Montaña FMRM 2026 - Extreme",
     "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-extreme"
    },
@@ -1489,10 +1493,6 @@
    {
     "texto": "Liga de Carreras Por Montaña FMRM 2026 - Junior",
     "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-junior"
-   },
-   {
-    "texto": "Liga de Carreras Por Montaña FMRM 2026 - Juvenil",
-    "url": "https://www.lineadesalida.net/resultadosLiga/liga-de-carreras-por-montana-fmrm-2026-juvenil"
    }
   ],
   "resultados_web": "https://www.lineadesalida.net/resultados/xiv-penarrubia-lorca-trail",
@@ -2632,6 +2632,14 @@
   "precio_desde": 8.0,
   "provincia": "Segovia",
   "resultados": [
+   {
+    "texto": "CLASIFICACION PEDESTRE 12K2",
+    "url": "https://youevent.es/sport/multimedia/clasificaciones/ClasificacionXIIICarreraPedestreyMarchaSenderistaEntreViedos-4.pdf"
+   },
+   {
+    "texto": "EQUIPOS",
+    "url": "https://youevent.es/sport/multimedia/clasificaciones/ClasificacionXIIICarreraPedestreyMarchaSenderistaEntreViedos-7.pdf"
+   },
    {
     "texto": "2025 - Orden de Llegada",
     "url": "https://youevent.es/sport/multimedia/clasificaciones/ClasificacionXIICarreraPedestreyMarchaSenderistaEntreViedos-4.pdf"
@@ -12245,6 +12253,10 @@
   "resultados": [
    {
     "texto": "Resultados",
+    "url": "https://www.321go.es/Carrera/Results?idCarrera=587"
+   },
+   {
+    "texto": "Resultados",
     "url": "https://www.321go.es/Carrera/Results?idCarrera=566"
    },
    {
@@ -12254,10 +12266,6 @@
    {
     "texto": "Resultados",
     "url": "https://www.321go.es/Carrera/Results?idCarrera=582"
-   },
-   {
-    "texto": "Resultados",
-    "url": "https://www.321go.es/Carrera/Results?idCarrera=574"
    }
   ],
   "tipo": "popular",
@@ -12426,6 +12434,7 @@
   "nombre": "Erandioko Herri Krosa",
   "precio_desde": 100.0,
   "provincia": "Bizkaia",
+  "resultados_web": "https://atletaerandio.com/2026/11/10/clasificaciones-provisionales-xxxvii-erandioko-herri/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 43.3035,
@@ -21753,6 +21762,10 @@
   "provincia": "Murcia",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=X%20Vuelta%20al%20Santuario%20Virgen%20de%20la%20Esperanza%20y%20Ruta%20Senderista%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fx-vuelta-al-santuario-virgen-de-la-esperanza-y-ruta-senderista-2026"
+   },
+   {
     "texto": "equipos",
     "url": "https://alcanzatumeta.es/uploads/resultados/4248dea716eb49610d27fb54ae6e122e.pdf"
    },
@@ -21771,10 +21784,6 @@
    {
     "texto": "2-14k senderista",
     "url": "https://alcanzatumeta.es/uploads/resultados/4d8aa89a1eff9b279ab0feec57de0da1.pdf"
-   },
-   {
-    "texto": "Running Challenge 2026 Platinum",
-    "url": "http://www.alcanzatumeta.es/resultados-liga?l=rch&t=2026&c=platinum"
    }
   ],
   "resultados_web": "http://www.alcanzatumeta.es/resultados",
