@@ -950,12 +950,16 @@
   "provincia": "Murcia",
   "resultados": [
    {
-    "texto": "5k final",
-    "url": "https://alcanzatumeta.es/uploads/resultados/7cee01647b7df6f49f0d0ef27e23f1ae284c1ca15e06abec.pdf"
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=III%205%2B5%20Solidarios%20ALCANZANDO%20METAS%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fiii-5-5-solidarios-alcanzando-metas"
    },
    {
-    "texto": "10k final",
-    "url": "https://alcanzatumeta.es/uploads/resultados/050c3bb8dde1f83b0c3cf60f4694d5c025b85118c8ee8ffc.pdf"
+    "texto": "Clasificaci n 5K",
+    "url": "https://alcanzatumeta.es/uploads/resultados/ee89410f08ad6a92e741cecd3f7f716b9ac6b6df.pdf"
+   },
+   {
+    "texto": "Clasificaci n 10K",
+    "url": "https://alcanzatumeta.es/uploads/resultados/313fe9b3cecd5acc4ef680a1f0db817d261eafc2.pdf"
    },
    {
     "texto": "Reglamento ↗",
@@ -3501,6 +3505,18 @@
   "provincia": "Almería",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=IV%20Carrera%20Ben%C3%A9fica%20RANPJN%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fiv-carrera-benefica-ranpjn"
+   },
+   {
+    "texto": "Clasificaci n 3.2K CARRERA",
+    "url": "https://alcanzatumeta.es/uploads/resultados/aa1192188bffbbc7148ce48b520e601702b74673.pdf"
+   },
+   {
+    "texto": "Clasificaci n 9.4K CARRERA",
+    "url": "https://alcanzatumeta.es/uploads/resultados/d113a428b8cffd6e8e84824357fbfe7ab2600b11.pdf"
+   },
+   {
     "texto": "Reglamento ↗",
     "url": "https://alcanzatumeta.es/uploads/Reglamento/1ecc4cd5d29f8949159021fbe0dd7f58.pdf"
    },
@@ -3511,14 +3527,6 @@
    {
     "texto": "9k final",
     "url": "https://alcanzatumeta.es/uploads/resultados/b9ca2d18fc83b56e70985c5d65f20e99.pdf"
-   },
-   {
-    "texto": "Clasificación 1 (PDF)",
-    "url": "https://alcanzatumeta.es/uploads/resultados/a464b709532aa2207570a46c99c4123e.pdf"
-   },
-   {
-    "texto": "Clasificación 2 (PDF)",
-    "url": "https://alcanzatumeta.es/uploads/resultados/498a802e08c745e1153cc33946137824.pdf"
    }
   ],
   "resultados_web": "http://www.alcanzatumeta.es/resultados",
@@ -6008,6 +6016,12 @@
   "nombre": "Carrera Popular Villa de Daganzo",
   "precio_desde": 12.0,
   "provincia": "Madrid",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripcionesdeportivas.timinglap.com/inscripcion/26-carrera-popular-villa-de-daganzo/clasificaciones/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.54503,
@@ -6173,10 +6187,22 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "12:00",
   "id": "rl-carrera-popular-y-gran-caminata-por-la-paz-y-la-integracion",
   "municipio": "Jaén",
   "nombre": "Carrera Popular y Gran Caminata por la Paz y la Integración",
   "provincia": "Jaén",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIÓN GENERAL XXVI CARRERA POPULAR Y GRAN CAMINATA P",
+    "url": "https://deportime.es/wp-content/uploads/2026/10/CLASIFICACION-GENERAL-XXVI-CARRERA-POPULAR-Y-GRAN-CAMINATA-POR-LA-PAZ-Y-LA-INTEGRACION-1.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN POR CATEGORÍAS XXVI CARRERA POPULAR Y GRAN CAM",
+    "url": "https://deportime.es/wp-content/uploads/2026/10/CLASIFICACION-POR-CATEGORIAS-XXVI-CARRERA-POPULAR-Y-GRAN-CAMINATA-POR-LA-PAZ-Y-LA-INTEGRACION-1.pdf"
+   }
+  ],
+  "resultados_web": "https://deportime.es/resultados/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 37.77959,
@@ -7619,15 +7645,15 @@
   "resultados": [
    {
     "texto": "CLASIFICACIÓN GENERAL",
-    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1794134326_5XX5107L5N.pdf"
+    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1794163577_CJQ$N5W69.pdf"
    },
    {
     "texto": "CLASIFICACIÓN FEMENINA",
-    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1794134334_N87J87LJ75.pdf"
+    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1794163586_24PE6YAL4O.pdf"
    },
    {
     "texto": "CLASIFICACIÓN CATEGORIAS",
-    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1794134347_18SX5A6107.pdf"
+    "url": "https://www.chiplevante.com/files/clasificaciones/pdfs/1794163599_RH597RMQT9.pdf"
    },
    {
     "texto": "CLASIFICACIÓN GENERAL",
@@ -8199,7 +8225,9 @@
   "id": "clm-2764aabe",
   "municipio": "Tarancón",
   "nombre": "IX Circuito Popular de Cross - Tarancón",
+  "precio_desde": 8.0,
   "provincia": "Cuenca",
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.00861,
@@ -8614,7 +8642,7 @@
   "resultados": [
    {
     "texto": "Classificació provisional lliga 2026",
-    "url": "https://gesport.cat/wp-content/uploads/2026/11/Classificacio-Lliga-despres-de-Calella.pdf"
+    "url": "https://gesport.cat/wp-content/uploads/2026/11/Classificacio-Lliga-despres-dArenys-1.pdf"
    }
   ],
   "tipo": "popular",
@@ -8667,6 +8695,33 @@
   "municipio": "Sant Cugat del Vallès",
   "nombre": "Cros Ciutat de Sant Cugat",
   "provincia": "Barcelona",
+  "resultados": [
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/28e-cros-ciutat-de-sant-cugat/6af04037-e368-4cc8-b3e8-4c8fac1f2a05/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/28e-cros-ciutat-de-sant-cugat/6af04037-7e78-4126-9eb4-4863ac1f0a9c/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/28e-cros-ciutat-de-sant-cugat/6af04037-e260-4d7e-b764-42b6ac1f2a05/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/28e-cros-ciutat-de-sant-cugat/6af04037-5ea4-4cd8-8aeb-4fe6ac1f0a9c/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/28e-cros-ciutat-de-sant-cugat/6af04037-8898-49b0-8f0e-45acac1f0a9c/rankings"
+   },
+   {
+    "texto": "View results",
+    "url": "https://sportmaniacs.com/en/races/28e-cros-ciutat-de-sant-cugat/6af042b4-15bc-4a94-a88b-4926ac1f0a9c/rankings"
+   }
+  ],
+  "resultados_web": "https://sportmaniacs.com/en/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 41.47207,
@@ -8768,7 +8823,7 @@
   "resultados": [
    {
     "texto": "Classificació provisional lliga 2026",
-    "url": "https://gesport.cat/wp-content/uploads/2026/11/Classificacio-Lliga-despres-de-Calella.pdf"
+    "url": "https://gesport.cat/wp-content/uploads/2026/11/Classificacio-Lliga-despres-dArenys-1.pdf"
    }
   ],
   "tipo": "popular",
@@ -12550,7 +12605,7 @@
  },
  "carrera/exceed-race-fontcoberta/": {
   "comunidad": "Cataluña",
-  "fecha": "2026-10-11",
+  "fecha": "2026-11-10",
   "fuente": {
    "nombre": "Running.life",
    "url": "https://running.life"
@@ -12692,6 +12747,12 @@
   "municipio": "San José",
   "nombre": "Gincana Ibizapreservation",
   "provincia": "Baleares",
+  "resultados": [
+   {
+    "texto": "clasificaciones",
+    "url": "https://s3-eu-west-1.amazonaws.com/sm-fotos.sportmaniacs.com/back/6af0b880-1200-4f29-af4d-40e4ac1f2a05-clasificación final.pdf"
+   }
+  ],
   "resultados_web": "https://sportmaniacs.com/en/results",
   "tipo": "popular",
   "ubicacion": {
