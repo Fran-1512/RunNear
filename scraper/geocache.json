@@ -107,9 +107,17 @@
     "lat": 42.6033,
     "lng": -0.12184
   },
+  "Burjassot|Valencia": {
+    "lat": 39.50906,
+    "lng": -0.41086
+  },
   "Calera y Chozas|Toledo": {
     "lat": 39.88146,
     "lng": -4.97862
+  },
+  "Calp|Alicante": {
+    "lat": 38.64433,
+    "lng": 0.04601
   },
   "Campo de Criptana|Ciudad Real": {
     "lat": 39.40525,
@@ -488,6 +496,10 @@
     "lat": 39.68322,
     "lng": -3.77278
   },
+  "Motril|Granada": {
+    "lat": 36.74509,
+    "lng": -3.52077
+  },
   "Murcia|Murcia": {
     "lat": 37.93475,
     "lng": -1.1131
@@ -548,6 +560,7 @@
     "lat": 39.56958,
     "lng": 2.65007
   },
+  "Palsencia|Cáceres": null,
   "Pamplona|Navarra": {
     "lat": 42.81569,
     "lng": -1.65224
