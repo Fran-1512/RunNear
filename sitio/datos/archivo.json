@@ -5654,6 +5654,16 @@
   "plazas_max": 300,
   "precio_desde": 8.0,
   "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIÓN GENERAL XII CARRERA POPULAR PLAYAS DE ZAHARA",
+    "url": "https://deportime.es/wp-content/uploads/2026/08/CLASIFICACION-GENERAL-XII-CARRERA-POPULAR-PLAYAS-DE-ZAHARA.pdf"
+   },
+   {
+    "texto": "CLASIFICACIÓN POR CATEGORIAS XII CARRERA POPULAR PLAYAS DE Z",
+    "url": "https://deportime.es/wp-content/uploads/2026/08/CLASIFICACION-POR-CATEGORIAS-XII-CARRERA-POPULAR-PLAYAS-DE-ZAHARA.pdf"
+   }
+  ],
   "resultados_web": "https://deportime.es/resultados/",
   "tipo": "popular",
   "ubicacion": {
@@ -21824,7 +21834,7 @@
   "resultados": [
    {
     "texto": "WhatsApp",
-    "url": "https://wa.me/?text=X%20Vuelta%20al%20Santuario%20Virgen%20de%20la%20Esperanza%20y%20Ruta%20Senderista%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fx-vuelta-al-santuario-virgen-de-la-esperanza-y-ruta-senderista-2026"
+    "url": "https://wa.me/?text=X%20Vuelta%20al%20Santuario%20Virgen%20de%20la%20Esperanza%20y%20Ruta%20Senderista%202026%20%C2%B7%20resultados%20y%20fotos%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fx-vuelta-al-santuario-virgen-de-la-esperanza-y-ruta-senderista-2026"
    },
    {
     "texto": "equipos",
