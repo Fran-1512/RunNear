@@ -6205,11 +6205,11 @@
   "resultados": [
    {
     "texto": "CLASIFICACIÓN GENERAL XXVI CARRERA POPULAR Y GRAN CAMINATA P",
-    "url": "https://deportime.es/wp-content/uploads/2026/10/CLASIFICACION-GENERAL-XXVI-CARRERA-POPULAR-Y-GRAN-CAMINATA-POR-LA-PAZ-Y-LA-INTEGRACION-1.pdf"
+    "url": "https://deportime.es/wp-content/uploads/2026/10/CLASIFICACION-GENERAL-XXVI-CARRERA-POPULAR-Y-GRAN-CAMINATA-POR-LA-PAZ-Y-LA-INTEGRACION-2.pdf"
    },
    {
     "texto": "CLASIFICACIÓN POR CATEGORÍAS XXVI CARRERA POPULAR Y GRAN CAM",
-    "url": "https://deportime.es/wp-content/uploads/2026/10/CLASIFICACION-POR-CATEGORIAS-XXVI-CARRERA-POPULAR-Y-GRAN-CAMINATA-POR-LA-PAZ-Y-LA-INTEGRACION-1.pdf"
+    "url": "https://deportime.es/wp-content/uploads/2026/10/CLASIFICACION-POR-CATEGORIAS-XXVI-CARRERA-POPULAR-Y-GRAN-CAMINATA-POR-LA-PAZ-Y-LA-INTEGRACION-2.pdf"
    }
   ],
   "resultados_web": "https://deportime.es/resultados/",
@@ -6523,6 +6523,31 @@
    "lng": -1.86017
   },
   "url_oficial": "https://www.inscripcionesweb.es/es/evento/aralba.zhtm"
+ },
+ "carrera/carrera-solidaria-5k-aralba-km-de-libertad-albacete/": {
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-07",
+  "fuente": {
+   "nombre": "Carreras CLM",
+   "url": "https://carrerasclm.es"
+  },
+  "fuentes": [
+   "Carreras CLM"
+  ],
+  "id": "clm-39a4c56f",
+  "municipio": "Albacete",
+  "nombre": "I Carrera Solidaria 5K Aralba Km de Libertad",
+  "provincia": "Albacete",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.99509,
+   "lng": -1.85592
+  },
+  "url_oficial": "https://www.atletaspopulares.es/es/atletas-eventos.zhtm?arg_id=2123&arg_tipo=eventos&arg_year=2026&arg_month=11"
  },
  "carrera/carrera-solidaria-a-favor-de-manos-unidas-torrejon-de-ardoz/": {
   "comunidad": "Comunidad de Madrid",
@@ -8235,9 +8260,7 @@
   "id": "clm-2764aabe",
   "municipio": "Tarancón",
   "nombre": "IX Circuito Popular de Cross - Tarancón",
-  "precio_desde": 8.0,
   "provincia": "Cuenca",
-  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.00861,
@@ -8426,6 +8449,31 @@
    "lng": 1.76575
   },
   "url_oficial": "https://www.corriolsdeguardiola.cat/"
+ },
+ "carrera/costa-blanca-trails-finestrat/": {
+  "comunidad": "Comunidad Valenciana",
+  "distancia_km": 102.0,
+  "distancias_km": [
+   102.0
+  ],
+  "fecha": "2026-11-13",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-costa-blanca-trails",
+  "municipio": "Finestrat",
+  "nombre": "Costa Blanca Trails",
+  "provincia": "Alicante",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.56775,
+   "lng": -0.21254
+  },
+  "url_oficial": "https://www.costablancatrails.com/"
  },
  "carrera/cp-pinos-de-abdon-olmedilla-de-alarcon/": {
   "circuito": "Circuito Carreras Populares Cuenca 2026",
@@ -12760,7 +12808,7 @@
   "resultados": [
    {
     "texto": "clasificaciones",
-    "url": "https://s3-eu-west-1.amazonaws.com/sm-fotos.sportmaniacs.com/back/6af0b880-1200-4f29-af4d-40e4ac1f2a05-clasificación final.pdf"
+    "url": "https://s3-eu-west-1.amazonaws.com/sm-fotos.sportmaniacs.com/back/6af56c64-f4b4-4047-b23f-4611ac1f105b-clasificación final.pdf"
    }
   ],
   "resultados_web": "https://sportmaniacs.com/en/results",
