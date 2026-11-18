@@ -762,12 +762,12 @@
   "provincia": "Toledo",
   "resultados": [
    {
-    "texto": "RESULTADOS 5K",
-    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/3c28ab5c7cc3536e5d347afd223ea484"
+    "texto": "RESULTADOS 10K",
+    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/cd6f6a3e3fd77cf49b9ae8a74d2842a9"
    },
    {
-    "texto": "RESULTADOS 10K",
-    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/f5b444952517f8f317b263fd20aa4b2d"
+    "texto": "RESULTADOS 5K",
+    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/84751c2ab47a170c1e59e0e5de713543"
    }
   ],
   "tipo": "popular",
@@ -8475,9 +8475,7 @@
   "id": "clm-b05aedd0",
   "municipio": "Olías del Rey",
   "nombre": "V Carrera Solidaria Kilómetros Que Dan Vida",
-  "precio_desde": 10.0,
   "provincia": "Toledo",
-  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.94474,
@@ -15881,6 +15879,12 @@
   "municipio": "Las Palmas de Gran Canaria",
   "nombre": "H6 Hyatlón Gran Canaria",
   "provincia": "Las Palmas",
+  "resultados": [
+   {
+    "texto": "Resultados Gran Canaria H6 Gran Canaria arrow_forward",
+    "url": "https://hyatlon.org/event/gran-canaria/resultados"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 28.12355,
@@ -17526,6 +17530,12 @@
   "municipio": "Puertollano",
   "nombre": "Legua los Patos 2026",
   "provincia": "Ciudad Real",
+  "resultados": [
+   {
+    "texto": "RESULTADOS OFICIALES",
+    "url": "https://carreras.dxtchiprun.es/Web/descargar_adjunto/4e6ccf8009354085941d93c50edc7632"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.68522,
@@ -17603,6 +17613,7 @@
   "municipio": "Yuncos",
   "nombre": "II Legua Urbana de Yuncos",
   "provincia": "Toledo",
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.08719,
@@ -17894,6 +17905,10 @@
   "provincia": "Murcia",
   "resultados": [
    {
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=3%C2%BA%20Jornada%20de%20la%20Liga%20Regional%20de%20Campo%20a%20Trav%C3%A9s%202026.%20Lorca%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2F3o-jornada-de-la-liga-regional-de-campo-a-traves-2026-lorca"
+   },
+   {
     "texto": "CARRERA1",
     "url": "https://alcanzatumeta.es/uploads/resultados/02146541bf29c5a329c08ebb16deb182a7336ea22ad72c6a.pdf"
    },
@@ -17912,10 +17927,6 @@
    {
     "texto": "CARRERA5",
     "url": "https://alcanzatumeta.es/uploads/resultados/09b40b8e42a02543e6595c1355957b5b98adcebbbcda3bbb.pdf"
-   },
-   {
-    "texto": "CARRERA6",
-    "url": "https://alcanzatumeta.es/uploads/resultados/e35a2956643834dcc8f4c5ed504cadc9765318975eaa49c3.pdf"
    }
   ],
   "resultados_web": "https://www.alcanzatumeta.es/resultados",
@@ -26791,6 +26802,16 @@
   "municipio": "Casco Viejo",
   "nombre": "Vitoria Night Run",
   "provincia": "Álava",
+  "resultados": [
+   {
+    "texto": "CLASIFICACIONES 5K",
+    "url": "https://vitorianightrun.com/wp-content/uploads/2026/11/5k.pdf"
+   },
+   {
+    "texto": "CLASIFICACIONES 10K",
+    "url": "https://vitorianightrun.com/wp-content/uploads/2026/11/10k-1.pdf"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 42.84967,
