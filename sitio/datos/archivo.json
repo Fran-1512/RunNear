@@ -20300,6 +20300,47 @@
   },
   "url_oficial": "https://www.lynzeparla.com/"
  },
+ "carrera/milla-popular-bienvenida-universitaria-guadalupe/": {
+  "comunidad": "Región de Murcia",
+  "distancia_km": 1.609,
+  "distancias_km": [
+   1.609
+  ],
+  "fecha": "2026-11-18",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "13:30",
+  "id": "rl-milla-popular-bienvenida-universitaria",
+  "municipio": "Guadalupe",
+  "nombre": "Milla Popular Bienvenida Universitaria",
+  "provincia": "Murcia",
+  "resultados": [
+   {
+    "texto": "Clasificaci n MILLA POPULAR",
+    "url": "https://alcanzatumeta.es/uploads/resultados/e42d7ab33c2ee7043bbebf6675e4a4717def0084.pdf"
+   },
+   {
+    "texto": "milla",
+    "url": "https://alcanzatumeta.es/uploads/resultados/8a763345f78e29420debe0754aacd0b2.pdf"
+   },
+   {
+    "texto": "milla2023",
+    "url": "https://alcanzatumeta.es/uploads/resultados/4bd2d2a016e450650d1d3f7b9ac91f44.pdf"
+   }
+  ],
+  "resultados_web": "https://www.alcanzatumeta.es/resultados",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 38.0004,
+   "lng": -1.17306
+  },
+  "url_oficial": "https://www.alcanzatumeta.es/vii-milla-popular-bienvenida-universitaria-2026"
+ },
  "carrera/milla-solidaria-puertollano/": {
   "comunidad": "Castilla-La Mancha",
   "distancia_km": 1.6,
@@ -23259,6 +23300,18 @@
   "provincia": "Cáceres",
   "resultados": [
    {
+    "texto": "TODAS LAS CLASIFICACIONES DE SUBIDA Y MINI SUBIDA",
+    "url": "https://drive.google.com/file/d/11R5fkYPbR6wV3wC_oYh2xDGTaZVxNSax/view?usp=sharing"
+   },
+   {
+    "texto": "FOTOS DE ÓSKAR FOTOCAURIA",
+    "url": "https://drive.google.com/drive/folders/1BVGHQC19EGBdM2w2y-eyix11N19WaeAS"
+   },
+   {
+    "texto": "FOTOS DE HUGO FREIXO",
+    "url": "https://drive.google.com/drive/folders/16u0-uBbNPNItacvkVH3iKll3qqOHf38P"
+   },
+   {
     "texto": "ALEVINES",
     "url": "https://drive.google.com/file/d/1rCBj3pJQJlqsKKMOr4yVAXrrSu5s-Pxp/view?usp=sharing"
    },
@@ -23269,18 +23322,6 @@
    {
     "texto": "MINI SUBIDA GENERAL Y CATEGORÍAS",
     "url": "https://drive.google.com/file/d/1-d_8IBqVBd0Kg_e5sUpFsnvxOKjFtegr/view?usp=sharing"
-   },
-   {
-    "texto": "SUBIDA",
-    "url": "https://drive.google.com/file/d/1GC-_q5yZACmH4s0zcfOAc76xDO7fJ33G/view?usp=sharing"
-   },
-   {
-    "texto": "SUBIDA PAREJAS",
-    "url": "https://drive.google.com/file/d/1DyjGfagDmBjOQDo5gLIzGCXRH1C9LUPQ/view?usp=sharing"
-   },
-   {
-    "texto": "MINI SUBIDA",
-    "url": "https://drive.google.com/file/d/1TFxyQ6OlWflCTRTE2A40R6E6WpHfyNj5/view?usp=sharing"
    }
   ],
   "tipo": "trail",
