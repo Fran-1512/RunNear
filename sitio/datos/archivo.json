@@ -269,11 +269,11 @@
     "url": "https://wa.me/?text=III%2010K%20Caravaca%20de%20la%20Cruz%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fiii-10k-caravaca-de-la-cruz"
    },
    {
-    "texto": "Clasificaci n 10K",
+    "texto": "Clasificación 10K",
     "url": "https://alcanzatumeta.es/uploads/resultados/5948adbf4c940d651f253fc1c40b0095e58c95a6.pdf"
    },
    {
-    "texto": "Clasificaci n 5K",
+    "texto": "Clasificación 5K",
     "url": "https://alcanzatumeta.es/uploads/resultados/e5e2f800a14074422b1ff87536ee05dce373468a.pdf"
    },
    {
@@ -281,11 +281,11 @@
     "url": "https://alcanzatumeta.es/uploads/Reglamento/f40d11d7975d52ac986bd45905d5e8fd.pdf"
    },
    {
-    "texto": "10k final",
+    "texto": "10K",
     "url": "https://alcanzatumeta.es/uploads/resultados/e6706411b163c1e6e3d8166b93f398ac.pdf"
    },
    {
-    "texto": "5k final",
+    "texto": "5K",
     "url": "https://alcanzatumeta.es/uploads/resultados/d81b37c2467128edbc0494b19b69809b.pdf"
    }
   ],
@@ -1155,11 +1155,11 @@
     "url": "https://wa.me/?text=III%205%2B5%20Solidarios%20ALCANZANDO%20METAS%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fiii-5-5-solidarios-alcanzando-metas"
    },
    {
-    "texto": "Clasificaci n 5K",
+    "texto": "Clasificación 5K",
     "url": "https://alcanzatumeta.es/uploads/resultados/ee89410f08ad6a92e741cecd3f7f716b9ac6b6df.pdf"
    },
    {
-    "texto": "Clasificaci n 10K",
+    "texto": "Clasificación 10K",
     "url": "https://alcanzatumeta.es/uploads/resultados/313fe9b3cecd5acc4ef680a1f0db817d261eafc2.pdf"
    },
    {
@@ -1167,11 +1167,11 @@
     "url": "https://alcanzatumeta.es/uploads/Reglamento/36a706a37b6ac7192ebbf4dc7c2352f2.pdf"
    },
    {
-    "texto": "5+5 cieza 10k",
+    "texto": "10K",
     "url": "https://alcanzatumeta.es/uploads/resultados/47a3c41d887fc797de8fec8c0b08ef65.pdf"
    },
    {
-    "texto": "5+5 cieza 5k",
+    "texto": "5K",
     "url": "https://alcanzatumeta.es/uploads/resultados/15ae773f8eb5a7565d8c3e74b1f78a2e.pdf"
    }
   ],
@@ -3171,10 +3171,13 @@
   "fuentes": [
    "Running.life"
   ],
+  "hora": "10:30",
   "id": "rl-caminata-carrera-dia-mundial-de-la-diabetes-alicante",
   "municipio": "Playa de San Juan",
   "nombre": "Caminata Carrera Día Mundial de la Diabetes Alicante",
+  "precio_desde": 13.0,
   "provincia": "Alicante",
+  "resultados_web": "https://grupobrotons.com/clasificaciones/",
   "tipo": "popular",
   "ubicacion": {
    "lat": 38.37627,
@@ -4205,11 +4208,11 @@
     "url": "https://wa.me/?text=IV%20Carrera%20Ben%C3%A9fica%20RANPJN%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fiv-carrera-benefica-ranpjn"
    },
    {
-    "texto": "Clasificaci n 3.2K CARRERA",
+    "texto": "Clasificación 3.2K CARRERA",
     "url": "https://alcanzatumeta.es/uploads/resultados/aa1192188bffbbc7148ce48b520e601702b74673.pdf"
    },
    {
-    "texto": "Clasificaci n 9.4K CARRERA",
+    "texto": "Clasificación 9.4K CARRERA",
     "url": "https://alcanzatumeta.es/uploads/resultados/d113a428b8cffd6e8e84824357fbfe7ab2600b11.pdf"
    },
    {
@@ -4217,11 +4220,11 @@
     "url": "https://alcanzatumeta.es/uploads/Reglamento/1ecc4cd5d29f8949159021fbe0dd7f58.pdf"
    },
    {
-    "texto": "3k final",
+    "texto": "3K",
     "url": "https://alcanzatumeta.es/uploads/resultados/711d10357a78b6dd17518155dcbe3e29.pdf"
    },
    {
-    "texto": "9k final",
+    "texto": "9K",
     "url": "https://alcanzatumeta.es/uploads/resultados/b9ca2d18fc83b56e70985c5d65f20e99.pdf"
    }
   ],
@@ -4569,23 +4572,23 @@
     "url": "https://wa.me/?text=Carrera%20de%20Empresas%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fcarrera-de-empresas-2026"
    },
    {
-    "texto": "Clasificaci n 5K Individual",
+    "texto": "Clasificación 5K Individual",
     "url": "https://alcanzatumeta.es/uploads/resultados/e374e5a08dc86a41c19b06b1087293d9e057ef5d.pdf"
    },
    {
-    "texto": "Clasificaci n 10K Individual",
+    "texto": "Clasificación 10K Individual",
     "url": "https://alcanzatumeta.es/uploads/resultados/8d237976881ecbc23ccdb3fb3ca2716804664ba0.pdf"
    },
    {
-    "texto": "Clasificaci n equipos 5K Masculino",
+    "texto": "Clasificación equipos 5K · Masculino",
     "url": "https://alcanzatumeta.es/uploads/resultados/06ac5e99520af5d1dcfa1fa589c783a88f55f557.pdf"
    },
    {
-    "texto": "Clasificaci n equipos 5K Femenino",
+    "texto": "Clasificación equipos 5K · Femenino",
     "url": "https://alcanzatumeta.es/uploads/resultados/14fd1c57af1eb6bbf3679733d17181362a45d098.pdf"
    },
    {
-    "texto": "Clasificaci n equipos 5K Mixto",
+    "texto": "Clasificación equipos 5K · Mixto",
     "url": "https://alcanzatumeta.es/uploads/resultados/16adcb3da3d8493bac0732cbc222b00fa2ce078e.pdf"
    }
   ],
@@ -16971,23 +16974,23 @@
     "url": "https://wa.me/?text=La%20Hoya%20Trail%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fla-hoya-trail-2026"
    },
    {
-    "texto": "Clasificaci n D O 26K EXTREME PAREJAS MIXTAS",
+    "texto": "Clasificación DÚO 26K EXTREME (PAREJAS MIXTAS)",
     "url": "https://alcanzatumeta.es/uploads/resultados/169c5d8d3aaf97c77e86158f7199df554ab990f1.pdf"
    },
    {
-    "texto": "Clasificaci n TRAIL 26K EXTREME",
+    "texto": "Clasificación TRAIL 26K EXTREME",
     "url": "https://alcanzatumeta.es/uploads/resultados/cbfcccc55218ff6f19c19d719e606f25efb96eac.pdf"
    },
    {
-    "texto": "Clasificaci n D O 14K SPRINT PAREJAS MIXTAS",
+    "texto": "Clasificación DÚO 14K SPRINT (PAREJAS MIXTAS)",
     "url": "https://alcanzatumeta.es/uploads/resultados/be2a5d62cf67927eba92c5a6f6a86ab9fd3907fd.pdf"
    },
    {
-    "texto": "Clasificaci n OPEN TRAIL 11K",
+    "texto": "Clasificación OPEN TRAIL 11K",
     "url": "https://alcanzatumeta.es/uploads/resultados/16eaec46f9f45957a7698465071350f95e785bad.pdf"
    },
    {
-    "texto": "Clasificaci n TRAIL 14K SPRINT",
+    "texto": "Clasificación TRAIL 14K SPRINT",
     "url": "https://alcanzatumeta.es/uploads/resultados/94bb73204df3579c38ba14cdafecab185ef673de.pdf"
    }
   ],
@@ -17838,7 +17841,7 @@
   "id": "rl-liga-de-cross-avs",
   "municipio": "Cabrerizos",
   "nombre": "Liga de Cross AVS",
-  "precio_desde": 10.0,
+  "precio_desde": 5.0,
   "provincia": "Salamanca",
   "resultados_web": "https://www.orycronsport.com/competiciones/42114/resultados",
   "tipo": "popular",
@@ -17988,6 +17991,29 @@
    "lng": -5.69606
   },
   "url_oficial": "https://web.rockthesport.com/es/event/llangreu-natural-2026"
+ },
+ "carrera/lliga-cronoescalada-nocturna-cims-de-girona-gerona/": {
+  "comunidad": "Cataluña",
+  "fecha": "2026-11-19",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "id": "rl-lliga-cronoescalada-nocturna-cims-de-girona",
+  "municipio": "Gerona",
+  "nombre": "Lliga Cronoescalada Nocturna Cims de Girona",
+  "precio_desde": 21.0,
+  "provincia": "Girona",
+  "resultados_web": "https://trailrunninggirona.com/cims-de-girona/classificacio",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 41.9794,
+   "lng": 2.82143
+  },
+  "url_oficial": "https://trailrunninggirona.com/cims-de-girona/presentacio"
  },
  "carrera/lliga-t-a-la-vida-trail-els-pallaresos/": {
   "comunidad": "Cataluña",
@@ -25277,7 +25303,15 @@
   "provincia": "Murcia",
   "resultados": [
    {
-    "texto": "RESULTADOS CTO. REGIONAL",
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=II%20Trail%20Running%20Festival%20Cartagena%20Costa%20C%C3%A1lida%202026%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fii-trail-running-festival-cartagena-costa-calida-2026"
+   },
+   {
+    "texto": "Reglamento ↗",
+    "url": "https://alcanzatumeta.es/uploads/Reglamento/25328c58706cede44d9b2e6ffab0663c17d703f507be818a.pdf"
+   },
+   {
+    "texto": "RESULTADOS CTO. REGIONAL SPEED TRAIL",
     "url": "https://alcanzatumeta.es/uploads/resultados/f5e644cf43dd10112a079275ef590844.pdf"
    },
    {
@@ -25363,6 +25397,7 @@
   "distancias_km": [
    26.0
   ],
+  "estado": "aplazada",
   "fecha": "2026-11-08",
   "fuente": {
    "nombre": "Running.life",
@@ -25471,7 +25506,7 @@
     "url": "https://wa.me/?text=I%20Trail%20Sendero%20Azul%20Alamillo%20%C2%B7%20resultados%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fi-trail-sendero-azul-alamillo"
    },
    {
-    "texto": "Clasificaci n 15K TRAIL",
+    "texto": "Clasificación 15K TRAIL",
     "url": "https://alcanzatumeta.es/uploads/resultados/85509139ee0087ba6108c7b0ebd4064065e3cc9a.pdf"
    },
    {
