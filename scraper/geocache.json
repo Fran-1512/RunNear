@@ -340,6 +340,10 @@
     "lat": 39.59827,
     "lng": -3.11861
   },
+  "La Puebla de Montalbán|Toledo": {
+    "lat": 39.86445,
+    "lng": -4.35928
+  },
   "La Pueblanueva|Toledo": {
     "lat": 39.91242,
     "lng": -4.67727
@@ -690,6 +694,14 @@
     "lat": 39.98086,
     "lng": -4.28423
   },
+  "Tous|Valencia": {
+    "lat": 39.13975,
+    "lng": -0.58818
+  },
+  "Turleque|Toledo": {
+    "lat": 39.60115,
+    "lng": -3.61391
+  },
   "Uña|Cuenca": {
     "lat": 40.22311,
     "lng": -1.97756
@@ -742,9 +754,17 @@
     "lat": 38.45989,
     "lng": -2.50976
   },
+  "Villaviciosa de Odón|Madrid": {
+    "lat": 40.35738,
+    "lng": -3.90023
+  },
   "Xixona|Alicante": {
     "lat": 38.53927,
     "lng": -0.50759
+  },
+  "Yebes|Guadalajara": {
+    "lat": 40.53314,
+    "lng": -3.1104
   },
   "Yepes|Toledo": {
     "lat": 39.91774,
