@@ -8478,7 +8478,9 @@
   "id": "clm-b05aedd0",
   "municipio": "Olías del Rey",
   "nombre": "V Carrera Solidaria Kilómetros Que Dan Vida",
+  "precio_desde": 10.0,
   "provincia": "Toledo",
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.94474,
@@ -11238,6 +11240,59 @@
   },
   "url_oficial": "https://www.corredorespopulares.es/inscripcion/circuito_cross_miguel_rios/index.php"
  },
+ "carrera/cross-de-los-dolores-los-gabatos/": {
+  "comunidad": "Región de Murcia",
+  "distancia_km": 5.0,
+  "distancias_km": [
+   5.0
+  ],
+  "fecha": "2026-11-20",
+  "fuente": {
+   "nombre": "Running.life",
+   "url": "https://running.life"
+  },
+  "fuentes": [
+   "Running.life"
+  ],
+  "hora": "10:30",
+  "id": "rl-cross-de-los-dolores",
+  "municipio": "Los Gabatos",
+  "nombre": "Cross de los Dolores",
+  "provincia": "Murcia",
+  "resultados": [
+   {
+    "texto": "Clasificación equipos ALEVIN MASCULINO · Masculino",
+    "url": "https://alcanzatumeta.es/uploads/resultados/b07fd7b1a15d9633264d4a5e727f6c54346ac77e.pdf"
+   },
+   {
+    "texto": "Clasificación equipos INFANTILES · Masculino",
+    "url": "https://alcanzatumeta.es/uploads/resultados/566b4c38024ff48466c7cc710355f476e57f30c4.pdf"
+   },
+   {
+    "texto": "Clasificación INFANTILES",
+    "url": "https://alcanzatumeta.es/uploads/resultados/ed8191d8c9e377d52f0f769ceb480151d88dcbe8.pdf"
+   },
+   {
+    "texto": "Clasificación CADETES",
+    "url": "https://alcanzatumeta.es/uploads/resultados/db653bb2bc6e8de892611a564be81bf2eb109529.pdf"
+   },
+   {
+    "texto": "Clasificación equipos CADETES · Masculino",
+    "url": "https://alcanzatumeta.es/uploads/resultados/4a9f67fdea933a5797cd2b840646bd131f8b3b98.pdf"
+   },
+   {
+    "texto": "Clasificación equipos CADETES · Femenino",
+    "url": "https://alcanzatumeta.es/uploads/resultados/2db7e12255361a0a9f2b49ffaa521ea9a8402e4b.pdf"
+   }
+  ],
+  "resultados_web": "https://www.alcanzatumeta.es/resultados",
+  "tipo": "popular",
+  "ubicacion": {
+   "lat": 37.63986,
+   "lng": -1.00751
+  },
+  "url_oficial": "https://www.alcanzatumeta.es/ix-cross-de-los-dolores"
+ },
  "carrera/cross-de-tineo/": {
   "comunidad": "Asturias",
   "distancia_km": 5.0,
@@ -11502,23 +11557,23 @@
     "url": "https://wa.me/?text=Liga%20Regional%20de%20Campo%20a%20Trav%C3%A9s%202026.%20Yecla.%20%C2%B7%20resultados%20y%20fotos%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fliga-regional-de-campo-a-traves-2026-yecla"
    },
    {
-    "texto": "Clasificaci n POPULARES MASCULINO",
+    "texto": "Clasificación POPULARES MASCULINO",
     "url": "https://alcanzatumeta.es/uploads/resultados/d1bb5d4c005bc5203361fecabfa15857b3e03e09.pdf"
    },
    {
-    "texto": "Clasificaci n SUB 20 Y MASTER MASCULINO",
+    "texto": "Clasificación SUB 20 Y MASTER MASCULINO",
     "url": "https://alcanzatumeta.es/uploads/resultados/470018f4f61448a54be30a434afa6ad7b0161147.pdf"
    },
    {
-    "texto": "Clasificaci n POPULARES FEMENINAS",
+    "texto": "Clasificación POPULARES FEMENINAS",
     "url": "https://alcanzatumeta.es/uploads/resultados/c452179503d0689d6a612051c804e7794e752fed.pdf"
    },
    {
-    "texto": "Clasificaci n SUB 18 Y MASTER FEMENINO",
+    "texto": "Clasificación SUB 18 Y MASTER FEMENINO",
     "url": "https://alcanzatumeta.es/uploads/resultados/d4a5b8338103faf15594dbaea510e687f7beb8c4.pdf"
    },
    {
-    "texto": "Clasificaci n SUB 23 Y SENIOR MASCULINO Y FEMENINA",
+    "texto": "Clasificación SUB 23 Y SENIOR MASCULINO Y FEMENINA",
     "url": "https://alcanzatumeta.es/uploads/resultados/964d1430d6f08c0de421465bff6860e0a5fff824.pdf"
    }
   ],
@@ -14848,6 +14903,35 @@
    "lng": -3.77588
   },
   "url_oficial": "https://www.derbidelasaficiones.com/"
+ },
+ "carrera/el-privilegio-100-millas-ciudad-real/": {
+  "comunidad": "Castilla-La Mancha",
+  "distancia_km": 166.0,
+  "distancias_km": [
+   29.0,
+   86.0,
+   166.0
+  ],
+  "fecha": "2026-11-20",
+  "fuente": {
+   "nombre": "Carreras CLM",
+   "url": "https://carrerasclm.es"
+  },
+  "fuentes": [
+   "Carreras CLM"
+  ],
+  "id": "clm-3070dc10",
+  "municipio": "Ciudad Real",
+  "nombre": "El Privilegio 100 Millas 2026",
+  "precio_desde": 35.0,
+  "provincia": "Ciudad Real",
+  "resultados_web": "https://sportmaniacs.com/es/results",
+  "tipo": "trail",
+  "ubicacion": {
+   "lat": 38.98542,
+   "lng": -3.92851
+  },
+  "url_oficial": "https://sportmaniacs.com/es/races/el-privilegio-100-millas-2026"
  },
  "carrera/el-tast-de-la-mitja-la-garriga/": {
   "comunidad": "Cataluña",
@@ -20347,15 +20431,19 @@
   "provincia": "Murcia",
   "resultados": [
    {
-    "texto": "Clasificaci n MILLA POPULAR",
-    "url": "https://alcanzatumeta.es/uploads/resultados/e42d7ab33c2ee7043bbebf6675e4a4717def0084.pdf"
+    "texto": "WhatsApp",
+    "url": "https://wa.me/?text=VII%20Milla%20Popular%20Bienvenida%20Universitaria%202026%20%C2%B7%20resultados%20y%20fotos%20https%3A%2F%2Fwww.alcanzatumeta.es%2Fvii-milla-popular-bienvenida-universitaria-2026"
    },
    {
-    "texto": "milla",
+    "texto": "Clasificación MILLA POPULAR",
+    "url": "https://alcanzatumeta.es/uploads/resultados/4911446fe9fa786c6337218b56c5de554ff32ea1.pdf"
+   },
+   {
+    "texto": "VI Milla Popular Bienvenida Universitaria",
     "url": "https://alcanzatumeta.es/uploads/resultados/8a763345f78e29420debe0754aacd0b2.pdf"
    },
    {
-    "texto": "milla2023",
+    "texto": "Milla Bienvenida 2023",
     "url": "https://alcanzatumeta.es/uploads/resultados/4bd2d2a016e450650d1d3f7b9ac91f44.pdf"
    }
   ],
