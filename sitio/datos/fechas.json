@@ -1,91 +1,91 @@
 {
  "calendario/": [
-  "34c21a6ba33a",
-  "2026-11-23"
+  "7621c1bc9b92",
+  "2026-11-24"
  ],
  "calendario/abril-2027/": [
-  "8da68abc1566",
-  "2026-11-22"
+  "dd60f33a8a57",
+  "2026-11-24"
  ],
  "calendario/agosto-2027/": [
   "97c83fa9a133",
   "2026-11-19"
  ],
  "calendario/andalucia/": [
-  "9af9f92d5786",
-  "2026-11-23"
+  "d6d3ca944583",
+  "2026-11-24"
  ],
  "calendario/andalucia/almeria/": [
-  "29dca7286d02",
-  "2026-11-23"
+  "39888773d44e",
+  "2026-11-24"
  ],
  "calendario/andalucia/cadiz/": [
-  "a2fe041e8a6d",
-  "2026-11-23"
+  "e40a89b473b5",
+  "2026-11-24"
  ],
  "calendario/andalucia/cordoba/": [
   "f2707985d231",
   "2026-11-23"
  ],
  "calendario/andalucia/granada/": [
-  "72181994378c",
-  "2026-11-23"
+  "0502b1b2638b",
+  "2026-11-24"
  ],
  "calendario/andalucia/huelva/": [
-  "607e57a6c673",
-  "2026-11-23"
+  "54ffd2772e5e",
+  "2026-11-24"
  ],
  "calendario/andalucia/jaen/": [
-  "b6fba7428720",
-  "2026-11-23"
+  "b845ba91dbef",
+  "2026-11-24"
  ],
  "calendario/andalucia/malaga/": [
-  "c54e971f315c",
-  "2026-11-23"
+  "43bb813d0e7b",
+  "2026-11-24"
  ],
  "calendario/andalucia/sevilla/": [
-  "d5a803ec1006",
-  "2026-11-23"
+  "eaca2efb43ab",
+  "2026-11-24"
  ],
  "calendario/aragon/": [
-  "02c1f0bf832b",
-  "2026-11-23"
+  "a1acfb1ccc51",
+  "2026-11-24"
  ],
  "calendario/aragon/huesca/": [
-  "1105f2500727",
-  "2026-11-23"
+  "37b0fe548075",
+  "2026-11-24"
  ],
  "calendario/aragon/teruel/": [
-  "f616d211eefd",
-  "2026-11-23"
+  "c7e982a1c72b",
+  "2026-11-24"
  ],
  "calendario/aragon/zaragoza/": [
-  "e89a1998858f",
-  "2026-11-23"
+  "4d6a20c02466",
+  "2026-11-24"
  ],
  "calendario/asturias/": [
-  "294f2601228a",
-  "2026-11-23"
+  "8bf5d53d5e1f",
+  "2026-11-24"
  ],
  "calendario/baleares/": [
-  "686c7eeeb581",
-  "2026-11-23"
+  "4e60d9359020",
+  "2026-11-24"
  ],
  "calendario/canarias/": [
-  "e7479d86c3cc",
-  "2026-11-23"
+  "2f90fed6949e",
+  "2026-11-24"
  ],
  "calendario/canarias/las-palmas/": [
-  "37ccf2a15e5a",
-  "2026-11-23"
+  "a181bedc0988",
+  "2026-11-24"
  ],
  "calendario/canarias/santa-cruz-de-tenerife/": [
-  "c91c90a208f3",
-  "2026-11-23"
+  "de6456befb69",
+  "2026-11-24"
  ],
  "calendario/cantabria/": [
-  "34ff3e32b190",
-  "2026-11-23"
+  "118d67d33564",
+  "2026-11-24"
  ],
  "calendario/castilla-la-mancha/": [
   "0cd678b72259",
@@ -112,20 +112,20 @@
   "2026-11-23"
  ],
  "calendario/castilla-y-leon/": [
-  "bbbbc194d60a",
-  "2026-11-23"
+  "e19ef2c90e15",
+  "2026-11-24"
  ],
  "calendario/castilla-y-leon/avila/": [
   "72f7bb4da7d6",
   "2026-11-22"
  ],
  "calendario/castilla-y-leon/burgos/": [
-  "da60dc49db99",
-  "2026-11-23"
+  "e23c93edc020",
+  "2026-11-24"
  ],
  "calendario/castilla-y-leon/leon/": [
-  "dacfc3596c4f",
-  "2026-11-23"
+  "1009eb0bab16",
+  "2026-11-24"
  ],
  "calendario/castilla-y-leon/palencia/": [
   "517ec46e2158",
@@ -136,8 +136,8 @@
   "2026-11-23"
  ],
  "calendario/castilla-y-leon/segovia/": [
-  "3a81d9fd437b",
-  "2026-11-23"
+  "f8f4d03ea976",
+  "2026-11-24"
  ],
  "calendario/castilla-y-leon/soria/": [
   "3d087fc8e9d4",
@@ -152,64 +152,64 @@
   "2026-11-22"
  ],
  "calendario/cataluna/": [
-  "82a8eaa21a9e",
-  "2026-11-23"
+  "31b4531a2fb1",
+  "2026-11-24"
  ],
  "calendario/cataluna/barcelona/": [
-  "eb88e360604f",
-  "2026-11-23"
+  "c57ff9af9fb6",
+  "2026-11-24"
  ],
  "calendario/cataluna/girona/": [
-  "963bd21dbe32",
-  "2026-11-23"
+  "97c8df1d7ce3",
+  "2026-11-24"
  ],
  "calendario/cataluna/lleida/": [
-  "aafceb6c6ca2",
-  "2026-11-23"
+  "fe1897df3b1a",
+  "2026-11-24"
  ],
  "calendario/cataluna/tarragona/": [
-  "a935c91fc168",
-  "2026-11-23"
+  "38a5da45769b",
+  "2026-11-24"
  ],
  "calendario/ceuta/": [
   "66ef473b78f4",
   "2026-11-23"
  ],
  "calendario/comunidad-de-madrid/": [
-  "6b439e7bf93e",
-  "2026-11-23"
+  "daede6650e9b",
+  "2026-11-24"
  ],
  "calendario/comunidad-valenciana/": [
-  "1f8ee5574ce4",
-  "2026-11-23"
+  "bdc582e510af",
+  "2026-11-24"
  ],
  "calendario/comunidad-valenciana/alicante/": [
-  "deff9ffb3f2a",
-  "2026-11-23"
+  "8a7243f70cc4",
+  "2026-11-24"
  ],
  "calendario/comunidad-valenciana/castellon/": [
-  "5a34738ae0c4",
-  "2026-11-23"
+  "07c7057682f5",
+  "2026-11-24"
  ],
  "calendario/comunidad-valenciana/valencia/": [
-  "c5902c065164",
-  "2026-11-23"
+  "3b0f0a6a273a",
+  "2026-11-24"
  ],
  "calendario/diciembre-2026/": [
-  "7896cd5315e8",
-  "2026-11-23"
+  "1812f44abfeb",
+  "2026-11-24"
  ],
  "calendario/enero-2027/": [
-  "630aca832ced",
-  "2026-11-23"
+  "43ea5796c79f",
+  "2026-11-24"
  ],
  "calendario/extremadura/": [
-  "0bcf54c25cad",
-  "2026-11-23"
+  "153afdedc13d",
+  "2026-11-24"
  ],
  "calendario/extremadura/badajoz/": [
-  "9b5f2b3600a6",
-  "2026-11-23"
+  "3c968c412308",
+  "2026-11-24"
  ],
  "calendario/extremadura/caceres/": [
   "696c8245c59b",
@@ -220,16 +220,16 @@
   "2026-11-23"
  ],
  "calendario/fin-de-semana/": [
-  "197d18a61a67",
-  "2026-11-23"
+  "21fe9e25308f",
+  "2026-11-24"
  ],
  "calendario/galicia/": [
-  "ed4f9d44ec03",
-  "2026-11-23"
+  "ec61ceb463ed",
+  "2026-11-24"
  ],
  "calendario/galicia/a-coruna/": [
-  "041de55f06af",
-  "2026-11-23"
+  "ac6fd63953a7",
+  "2026-11-24"
  ],
  "calendario/galicia/lugo/": [
   "53d5f7b1e7da",
@@ -240,68 +240,68 @@
   "2026-11-23"
  ],
  "calendario/galicia/pontevedra/": [
-  "f278751f173f",
-  "2026-11-23"
+  "0ac1fe1ba3ce",
+  "2026-11-24"
  ],
  "calendario/julio-2027/": [
-  "6cafb30c00b9",
-  "2026-11-22"
+  "acbf07af5c11",
+  "2026-11-24"
  ],
  "calendario/junio-2027/": [
-  "6657c655cda9",
-  "2026-11-22"
+  "73a941f13926",
+  "2026-11-24"
  ],
  "calendario/la-rioja/": [
-  "c652566863af",
-  "2026-11-23"
+  "778184a75768",
+  "2026-11-24"
  ],
  "calendario/marzo-2027/": [
-  "1373094cf454",
-  "2026-11-23"
+  "25ec8637e48a",
+  "2026-11-24"
  ],
  "calendario/mayo-2027/": [
-  "f66ecd4a326a",
-  "2026-11-23"
+  "3a88d2b4f18c",
+  "2026-11-24"
  ],
  "calendario/melilla/": [
   "cabf574ec3ce",
   "2026-11-16"
  ],
  "calendario/navarra/": [
-  "d5cc478516de",
-  "2026-11-23"
+  "7f77c459fc94",
+  "2026-11-24"
  ],
  "calendario/noviembre-2026/": [
-  "7149324d3eb2",
-  "2026-11-23"
+  "3f31b415a76e",
+  "2026-11-24"
  ],
  "calendario/noviembre-2027/": [
-  "1f42012e0478",
-  "2026-11-23"
+  "5d9757c0fc6c",
+  "2026-11-24"
  ],
  "calendario/octubre-2027/": [
-  "378ada5e29a0",
-  "2026-11-22"
+  "b107259f6e56",
+  "2026-11-24"
  ],
  "calendario/pais-vasco/": [
-  "56886da4cb9a",
-  "2026-11-23"
+  "5661f45359ce",
+  "2026-11-24"
  ],
  "calendario/pais-vasco/alava/": [
   "9cf6e812bf8c",
   "2026-11-22"
  ],
  "calendario/pais-vasco/bizkaia/": [
-  "17814e4363f7",
-  "2026-11-23"
+  "c5fd73284c3f",
+  "2026-11-24"
  ],
  "calendario/pais-vasco/gipuzkoa/": [
-  "42f17378e722",
-  "2026-11-23"
+  "f11d4910ad12",
+  "2026-11-24"
  ],
  "calendario/region-de-murcia/": [
-  "77b2cc4ed954",
-  "2026-11-23"
+  "23c7df4e6007",
+  "2026-11-24"
  ],
  "calendario/septiembre-2027/": [
   "ce127d5f7b9f",
@@ -326,6 +326,10 @@
  "carrera/100-kilometros-en-24-horas-buitrago-del-lozoya/": [
   "ce9648f61577",
   "2026-11-20"
+ ],
+ "carrera/100x100half-berga/": [
+  "bacf23750ce8",
+  "2026-11-24"
  ],
  "carrera/100x100half-empuriabrava/": [
   "65923f7c2aa7",
@@ -435,6 +439,10 @@
   "be25c8a5e9ce",
   "2026-11-18"
  ],
+ "carrera/10k-fraga/": [
+  "b01829bc0ae5",
+  "2026-11-24"
+ ],
  "carrera/10k-fundacio-caixa-ontinyent/": [
   "e51eac3124cb",
   "2026-11-01"
@@ -488,8 +496,8 @@
   "2026-11-13"
  ],
  "carrera/10k-valencia/": [
-  "cf671a09b044",
-  "2026-11-23"
+  "8dc20b4f152a",
+  "2026-11-24"
  ],
  "carrera/10k-valladolid/": [
   "2e519b47a7e9",
@@ -552,8 +560,8 @@
   "2026-11-03"
  ],
  "carrera/43-carrera-del-pavo-cuenca/": [
-  "36813ce7bca8",
-  "2026-11-21"
+  "2904e5b73c65",
+  "2026-11-24"
  ],
  "carrera/5-5-solidarios-alcanzando-metas-cieza/": [
   "57a736cd7183",
@@ -599,6 +607,10 @@
   "9409d7b0702a",
   "2026-10-24"
  ],
+ "carrera/5k-ibiza-platja-en-bossa-san-jorge-de-ses-salines/": [
+  "d70d0f4992a0",
+  "2026-11-24"
+ ],
  "carrera/5k-miguel-rubio-bonrepos-y-mirambell/": [
   "a484f4a015e6",
   "2026-11-03"
@@ -635,6 +647,10 @@
   "c9b1508ed290",
   "2026-11-20"
  ],
+ "carrera/6k-y-medio-maraton-santander/": [
+  "e8c77ef06e39",
+  "2026-11-24"
+ ],
  "carrera/7k-rotary-portsaplaya-alboraya/": [
   "42cd19d407a4",
   "2026-11-11"
@@ -642,6 +658,10 @@
  "carrera/8-km-sant-ferran-la-savina/": [
   "ac0152477788",
   "2026-11-21"
+ ],
+ "carrera/8-mendiak-ugao-miraballes/": [
+  "31e63d6a0aeb",
+  "2026-11-24"
  ],
  "carrera/8k-burjassot-burjasot/": [
   "868ca7035037",
@@ -660,12 +680,16 @@
   "2026-11-19"
  ],
  "carrera/adobe-sant-carles-trail-santa-eulalia-del-rio/": [
-  "c187852dc8f2",
-  "2026-11-15"
+  "bdfbb71aedad",
+  "2026-11-24"
  ],
  "carrera/advtrail-alcudia-de-veo/": [
   "b92c2e38167b",
   "2026-11-19"
+ ],
+ "carrera/ahuntzen-mendi-lasterketa-elgueta/": [
+  "925f53d2c51d",
+  "2026-11-24"
  ],
  "carrera/al-andalus-ultimate-trail-loja/": [
   "9eba7c2821b3",
@@ -827,10 +851,6 @@
   "3d93333c3d16",
   "2026-10-29"
  ],
- "carrera/azpeitiko-sansilbestrie-azpeitia/": [
-  "fa974a829a3e",
-  "2026-11-20"
- ],
  "carrera/b100-cursa-dels-nassos-barcelona/": [
   "559e7aa836ae",
   "2026-11-15"
@@ -910,10 +930,6 @@
  "carrera/basauriko-herri-krosa/": [
   "17957bfce2bd",
   "2026-11-11"
- ],
- "carrera/behobia-san-sebastian/": [
-  "728e97b2c5ff",
-  "2026-11-18"
  ],
  "carrera/bell-race-sallent/": [
   "13d71a7fb142",
@@ -1180,8 +1196,8 @@
   "2026-11-02"
  ],
  "carrera/carrera-amafi-run-de-yepes/": [
-  "5b0212c5b03b",
-  "2026-11-21"
+  "8c42aac5f1ad",
+  "2026-11-24"
  ],
  "carrera/carrera-ambar-hibervida-la-cartuja-movera-camino-natural-la-alfranca-6k-11k-21/": [
   "298e6b87ec01",
@@ -1372,8 +1388,8 @@
   "2026-11-02"
  ],
  "carrera/carrera-de-navidad-de-manzanares/": [
-  "c197f16cd8b4",
-  "2026-11-15"
+  "5ed66d8cf7c7",
+  "2026-11-24"
  ],
  "carrera/carrera-de-navidad-de-olula-del-rio/": [
   "2de1efc8c2b0",
@@ -1422,6 +1438,10 @@
  "carrera/carrera-de-reyes-de-san-fulgencio/": [
   "e6d4b5a8e913",
   "2026-11-03"
+ ],
+ "carrera/carrera-de-reyes-el-campello/": [
+  "04b37ff61102",
+  "2026-11-24"
  ],
  "carrera/carrera-de-reyes-trasmulas/": [
   "1be12b73bbe5",
@@ -1583,6 +1603,10 @@
   "6e6343cc7f18",
   "2026-10-24"
  ],
+ "carrera/carrera-navidena-cortesina-hernan-cortes/": [
+  "9201fb588f7e",
+  "2026-11-24"
+ ],
  "carrera/carrera-navidena-de-bellavista-fuente-del-rey/": [
   "d939fb27292e",
   "2026-10-24"
@@ -1598,6 +1622,10 @@
  "carrera/carrera-nocturna-ciudad-de-camas/": [
   "860aef803d5e",
   "2026-11-01"
+ ],
+ "carrera/carrera-nocturna-ciudad-de-las-gabias/": [
+  "9ddfc141f145",
+  "2026-11-24"
  ],
  "carrera/carrera-nocturna-popular-de-albudeite/": [
   "b99d70bd658e",
@@ -1703,6 +1731,10 @@
   "21472429d1d8",
   "2026-11-23"
  ],
+ "carrera/carrera-popular-clasica-de-castilblanco-castilblanco-de-los-arroyos/": [
+  "d60ec915706a",
+  "2026-11-24"
+ ],
  "carrera/carrera-popular-contra-la-droga-navalmoral-de-la-mata/": [
   "d84f7dbcb3aa",
   "2026-11-22"
@@ -1778,6 +1810,10 @@
  "carrera/carrera-popular-de-navidad-villa-de-rota/": [
   "204d495b9123",
   "2026-10-27"
+ ],
+ "carrera/carrera-popular-de-nochebuena-playa-de-san-lorenzo/": [
+  "bf4561163d54",
+  "2026-11-24"
  ],
  "carrera/carrera-popular-dia-de-andalucia-sevilla/": [
   "e3f6d048a7fb",
@@ -1892,8 +1928,8 @@
   "2026-11-23"
  ],
  "carrera/carrera-popular-productos-de-lobon/": [
-  "8fbf7a0ab9b9",
-  "2026-11-21"
+  "ac378a67b328",
+  "2026-11-24"
  ],
  "carrera/carrera-popular-puerto-menesteo-el-puerto-de-santa-maria/": [
   "720b92696d68",
@@ -1960,8 +1996,8 @@
   "2026-11-20"
  ],
  "carrera/carrera-popular-solidaria-por-la-diabetes-toledo/": [
-  "3a98a5b23584",
-  "2026-11-23"
+  "b84027f3b7c3",
+  "2026-11-24"
  ],
  "carrera/carrera-popular-solidaria-sesena/": [
   "1c906dc8cc9f",
@@ -2019,6 +2055,10 @@
   "b5d7fcd74a28",
   "2026-11-22"
  ],
+ "carrera/carrera-popular-villa-de-muel/": [
+  "cf6a2b1fc179",
+  "2026-11-24"
+ ],
  "carrera/carrera-popular-villa-de-oliva-oliva-de-la-frontera/": [
   "a704eeed0963",
   "2026-11-02"
@@ -2056,8 +2096,8 @@
   "2026-11-16"
  ],
  "carrera/carrera-por-la-eliminacion-de-la-violencia-contra-las-mujeres-cadiz/": [
-  "70d4ffca80b6",
-  "2026-11-21"
+  "7b61a291b814",
+  "2026-11-24"
  ],
  "carrera/carrera-por-la-esclerosis-multiple-lago-de-la-casa-de-campo/": [
   "be369863f8a5",
@@ -2126,6 +2166,10 @@
  "carrera/carrera-san-silvestre-de-ecija/": [
   "e8e722ab4263",
   "2026-11-23"
+ ],
+ "carrera/carrera-san-silvestre-huesa/": [
+  "5aea049ed6b0",
+  "2026-11-24"
  ],
  "carrera/carrera-san-silvestre-mentesana-la-guardia-de-jaen/": [
   "0224d19baa89",
@@ -2295,9 +2339,9 @@
   "0f0aba535876",
   "2026-11-23"
  ],
- "carrera/carrera-solidaria-yo-dono-vida-novelda/": [
-  "cf19218a6d2c",
-  "2026-11-17"
+ "carrera/carrera-solidaria-virgen-de-los-dolores-ricote/": [
+  "60801f7c0b13",
+  "2026-11-24"
  ],
  "carrera/carrera-solidaria-zancadas-de-esperanza-avila/": [
   "e2d36ecc82ed",
@@ -2467,6 +2511,10 @@
   "3dd44172097d",
   "2026-11-15"
  ],
+ "carrera/challenge-salou-costa-daurada/": [
+  "132313bb8e20",
+  "2026-11-24"
+ ],
  "carrera/chimaque-trail-santa-ursula/": [
   "0c77e5e6c654",
   "2026-10-24"
@@ -2474,6 +2522,10 @@
  "carrera/chinte-trail-ojos/": [
   "1c694d2d8ba2",
   "2026-11-09"
+ ],
+ "carrera/cinc-cims-corbera-de-llobregat/": [
+  "c19f63216dfd",
+  "2026-11-24"
  ],
  "carrera/circuit-de-carreres-a-peu-monover-elda/": [
   "388ee5a2715e",
@@ -2680,8 +2732,8 @@
   "2026-11-02"
  ],
  "carrera/cross-challenge-los-fresnos-torrejon-de-ardoz/": [
-  "bb686efb77f7",
-  "2026-11-15"
+  "157f5e133804",
+  "2026-11-24"
  ],
  "carrera/cross-citutat-de-vinaros/": [
   "ce990bbdf524",
@@ -2764,8 +2816,8 @@
   "2026-10-24"
  ],
  "carrera/cross-del-amanecer-el-campello/": [
-  "a6203dfdb78b",
-  "2026-11-21"
+  "0c6dd24badc2",
+  "2026-11-24"
  ],
  "carrera/cross-del-cordel-de-las-merinas-nuno-gomez/": [
   "ae85977c66e5",
@@ -2778,10 +2830,6 @@
  "carrera/cross-del-pilar-martutene/": [
   "8c34ab852d8b",
   "2026-10-27"
- ],
- "carrera/cross-del-roscon-de-san-fernando-de-henares/": [
-  "8b6ca21eecb1",
-  "2026-11-18"
  ],
  "carrera/cross-descubrimiento-palos-de-la-frontera/": [
   "778c8bef5daf",
@@ -2850,6 +2898,14 @@
  "carrera/cross-nocturno-10k-ciudad-de-coria/": [
   "a2b39725eece",
   "2026-11-01"
+ ],
+ "carrera/cross-nocturno-ciudad-de-orihuela-redovan/": [
+  "f9015bf4c76e",
+  "2026-11-24"
+ ],
+ "carrera/cross-nocturno-el-escobonal/": [
+  "df41c6acb572",
+  "2026-11-24"
  ],
  "carrera/cross-patron-de-los-bomberos-caceres/": [
   "dbd4b777c019",
@@ -2959,10 +3015,6 @@
   "b1edc5ee83ce",
   "2026-11-20"
  ],
- "carrera/cross-trail-villa-de-teba/": [
-  "bb68afe63a79",
-  "2026-11-17"
- ],
  "carrera/cross-trofeo-rectora-nebrija-embajadores/": [
   "953897f96062",
   "2026-11-04"
@@ -3008,8 +3060,8 @@
   "2026-11-17"
  ],
  "carrera/cursa-atletica-run-run-la-vall-del-terri-cornella-del-terri/": [
-  "7137cb854c95",
-  "2026-11-21"
+  "c7414812f991",
+  "2026-11-24"
  ],
  "carrera/cursa-balafia-lerida/": [
   "fd9dcedb8ec4",
@@ -3130,6 +3182,10 @@
  "carrera/cursa-de-nadal-bigues-riells-del-fai-bigues-i-riells/": [
   "e89311b04d53",
   "2026-11-21"
+ ],
+ "carrera/cursa-de-nadal-de-torrelavit-el-pla-del-penedes/": [
+  "1b02cebadc5e",
+  "2026-11-24"
  ],
  "carrera/cursa-de-nadal-sant-sadurni-anoia-sant-sadurni-d-anoia/": [
   "1b0878109b91",
@@ -3298,6 +3354,10 @@
  "carrera/cursa-la-torronada-calldetenes/": [
   "074a4c6637f7",
   "2026-10-29"
+ ],
+ "carrera/cursa-mar-murtra-blanes/": [
+  "842061032d7d",
+  "2026-11-24"
  ],
  "carrera/cursa-marxa-contra-el-cancer-arboc-l-arboc/": [
   "f2d753eb9e08",
@@ -3491,6 +3551,10 @@
   "b1f5305f655f",
   "2026-11-22"
  ],
+ "carrera/cxm-cumbres-crucenas-villanueva-de-las-cruces/": [
+  "464442f799c2",
+  "2026-11-24"
+ ],
  "carrera/cxm-de-la-rosquilla-alhama-de-almeria/": [
   "af5522b7d5ff",
   "2026-11-23"
@@ -3531,6 +3595,10 @@
   "f235de1aa852",
   "2026-11-03"
  ],
+ "carrera/cxm-mancor-xtrem-mancor-xtrem-xs-mancor-de-la-vall/": [
+  "360c26b1cdaf",
+  "2026-11-24"
+ ],
  "carrera/cxm-nico-molina-sierra-de-durcal/": [
   "45845d968957",
   "2026-10-24"
@@ -3555,6 +3623,14 @@
   "b32fd69e8e82",
   "2026-10-24"
  ],
+ "carrera/cxm-sierro/": [
+  "639b4e72fe45",
+  "2026-11-24"
+ ],
+ "carrera/cxm-trail-alhaurin-de-la-torre/": [
+  "cbe69fe105a7",
+  "2026-11-24"
+ ],
  "carrera/cxm-trail-manilva/": [
   "dd75c7dc6ccc",
   "2026-11-15"
@@ -3578,10 +3654,6 @@
  "carrera/de-marcha-a-marcha-a-paso-de-trilobite-murero/": [
   "572f6291b6f8",
   "2026-11-02"
- ],
- "carrera/deadly-dozen-malaga-cartama/": [
-  "5e6bed397ff4",
-  "2026-11-15"
  ],
  "carrera/desafio-barcelona-pineda-de-mar/": [
   "cda631ed4f05",
@@ -3652,8 +3724,8 @@
   "2026-11-23"
  ],
  "carrera/descoberta-run-fontcoberta/": [
-  "826e33055fde",
-  "2026-11-21"
+  "182dc71a9bd4",
+  "2026-11-24"
  ],
  "carrera/desde-santurce-a-bilbao-carrera-internacional-santurtzi/": [
   "a9c59fbb0ef8",
@@ -3662,6 +3734,10 @@
  "carrera/dinosauris-moncada-10k/": [
   "e777581d13df",
   "2026-11-11"
+ ],
+ "carrera/domusa-teknik-40-mlk-azpeitia/": [
+  "4b2f70f1c17c",
+  "2026-11-24"
  ],
  "carrera/dragoman-villafranca-del-bierzo/": [
   "94a01e83dc20",
@@ -3674,6 +3750,10 @@
  "carrera/duathlon-cross-villa-de-alpedrete/": [
   "a00679df6281",
   "2026-11-17"
+ ],
+ "carrera/ebrox-ocr-race-logrono/": [
+  "5665e45e706c",
+  "2026-11-24"
  ],
  "carrera/echo-hy-race-santa-cruz-santa-cruz-de-tenerife/": [
   "c36d226dea0d",
@@ -3696,8 +3776,8 @@
   "2026-11-09"
  ],
  "carrera/el-privilegio-100-millas-ciudad-real/": [
-  "5d6f8100a76f",
-  "2026-11-21"
+  "612afb1de7a5",
+  "2026-11-24"
  ],
  "carrera/elche-night-race/": [
   "8283f85a042d",
@@ -3770,6 +3850,10 @@
  "carrera/equitrail-toledo/": [
   "594ef025a17d",
   "2026-10-24"
+ ],
+ "carrera/era-san-silvestre-vielha/": [
+  "adc1ae095806",
+  "2026-11-24"
  ],
  "carrera/erandioko-herri-krosa-altzaga/": [
   "fc309b724517",
@@ -3855,6 +3939,10 @@
   "47e2c8434dea",
   "2026-11-11"
  ],
+ "carrera/gatza-trail-salinas-de-leniz/": [
+  "aacd415fa47f",
+  "2026-11-24"
+ ],
  "carrera/gaucin-backyard-ultra/": [
   "e57c5aa05118",
   "2026-10-27"
@@ -3868,8 +3956,8 @@
   "2026-10-24"
  ],
  "carrera/gladiatorsday-artajona/": [
-  "2ca59ea353c0",
-  "2026-11-15"
+  "437cb83acbb4",
+  "2026-11-24"
  ],
  "carrera/good-loop-backyard-ultra-el-pla-de-santa-maria/": [
   "439c835b02bc",
@@ -3887,9 +3975,13 @@
   "acaa4a298d20",
   "2026-11-07"
  ],
+ "carrera/gran-fondo-de-la-trufa-el-toro/": [
+  "ccebfd349c80",
+  "2026-11-24"
+ ],
  "carrera/gran-fondo-del-guadiamar-sanlucar-la-mayor/": [
-  "f4921b0a25fc",
-  "2026-11-18"
+  "d2553c5d8559",
+  "2026-11-24"
  ],
  "carrera/gran-fondo-pontevedra/": [
   "80746d51fb6b",
@@ -3911,6 +4003,10 @@
   "d2738fe466c0",
   "2026-10-26"
  ],
+ "carrera/gran-premio-ruta-molins-llucena-lucena-del-cid/": [
+  "05322f2f4310",
+  "2026-11-24"
+ ],
  "carrera/gran-trail-sierra-del-aramo-morcin/": [
   "9fc900a01e87",
   "2026-11-06"
@@ -3930,6 +4026,10 @@
  "carrera/gravel-trail-challenge-costa-brava-santa-cristina-d-aro/": [
   "64428ba4b207",
   "2026-11-19"
+ ],
+ "carrera/grazalema-trail-nature/": [
+  "2a8e613c3332",
+  "2026-11-24"
  ],
  "carrera/green-urban-badalona-5k/": [
   "37fccf2adef9",
@@ -4036,8 +4136,8 @@
   "2026-11-21"
  ],
  "carrera/iberika-trail-mataelpino/": [
-  "e9a52c93dccc",
-  "2026-11-03"
+  "2faf64611e65",
+  "2026-11-24"
  ],
  "carrera/iberika-trail-san-agustin-del-guadalix/": [
   "ce3b2731fe23",
@@ -4131,6 +4231,10 @@
   "b5da1163f80a",
   "2026-11-17"
  ],
+ "carrera/jamon-trail-calamocha/": [
+  "d4383442f923",
+  "2026-11-24"
+ ],
  "carrera/jarama-maria-de-villota-san-sebastian-de-los-reyes/": [
   "f117f720036a",
   "2026-10-27"
@@ -4150,6 +4254,10 @@
  "carrera/junts-la-marato-de-3cat-sant-boi-sant-boi-de-llobregat/": [
   "b7121f83e229",
   "2026-11-17"
+ ],
+ "carrera/jurramendi-360-ayegui/": [
+  "90bd09a2c6ba",
+  "2026-11-24"
  ],
  "carrera/k42-canarias-anaga-marathon-la-laguna/": [
   "e514ef6a7247",
@@ -4212,8 +4320,8 @@
   "2026-11-20"
  ],
  "carrera/la-infernal-trail-ciudad-real/": [
-  "a6c92b51a854",
-  "2026-11-21"
+  "1926e8c60d15",
+  "2026-11-24"
  ],
  "carrera/la-llanera-trail-sentmenat/": [
   "ca1226cd1d63",
@@ -4340,8 +4448,8 @@
   "2026-10-24"
  ],
  "carrera/legua-socuellamina-socuellamos/": [
-  "c86ef2613aff",
-  "2026-11-21"
+  "fa2d3c1132a0",
+  "2026-11-24"
  ],
  "carrera/legua-solidaria-carranque-toledo/": [
   "849d2250a48a",
@@ -4436,8 +4544,8 @@
   "2026-10-31"
  ],
  "carrera/los-102-de-la-comarca-soliss-trail-lagartera/": [
-  "6b96e773eb53",
-  "2026-11-23"
+  "494ca6b70bef",
+  "2026-11-24"
  ],
  "carrera/los-callos-5km-norena/": [
   "a1e820c27097",
@@ -4455,6 +4563,10 @@
   "5cec7c5e84b1",
   "2026-10-26"
  ],
+ "carrera/madrid-medio-maraton/": [
+  "52b9575dc144",
+  "2026-11-24"
+ ],
  "carrera/malagon-trail-bisabor-energy/": [
   "fa92f8f6a4dd",
   "2026-11-18"
@@ -4462,6 +4574,10 @@
  "carrera/mallorca-en-marcha-contra-el-cancer-palma/": [
   "f99d0aaea783",
   "2026-11-09"
+ ],
+ "carrera/mallorca-mitja-marato-ciutat-de-palma-parque-del-mar/": [
+  "95148a75af96",
+  "2026-11-24"
  ],
  "carrera/mar-menor-backyard-ultra-playa-paraiso/": [
   "0345de0cd915",
@@ -4663,9 +4779,13 @@
   "7ac7049ae06c",
   "2026-10-24"
  ],
+ "carrera/media-maraton-cajaviva-segovia/": [
+  "832d190d6e5f",
+  "2026-11-24"
+ ],
  "carrera/media-maraton-camino-mozarabe-ciudad-de-hinojosa-alcaracejos/": [
-  "7e870763e80d",
-  "2026-11-15"
+  "bd9e7dd6e1e9",
+  "2026-11-24"
  ],
  "carrera/media-maraton-castellon/": [
   "df837c304ef0",
@@ -4686,10 +4806,6 @@
  "carrera/media-maraton-ciudad-de-cieza/": [
   "301dbf37e6e7",
   "2026-11-20"
- ],
- "carrera/media-maraton-ciudad-de-granada/": [
-  "a0adf334a8b1",
-  "2026-11-16"
  ],
  "carrera/media-maraton-ciudad-de-huesca/": [
   "ae21c7f9d1c1",
@@ -4811,6 +4927,10 @@
   "194e1bbfcb54",
   "2026-11-11"
  ],
+ "carrera/media-maraton-internacional-azkoitiazpeitia-azcoitia/": [
+  "b3ba81f79c4f",
+  "2026-11-24"
+ ],
  "carrera/media-maraton-internacional-de-torremolinos/": [
   "143e1648ee30",
   "2026-10-24"
@@ -4879,10 +4999,6 @@
   "a11e06742120",
   "2026-11-02"
  ],
- "carrera/media-maraton-paraiso-salado-lo-pagan/": [
-  "0af4f41721db",
-  "2026-11-22"
- ],
  "carrera/media-maraton-pilar-de-la-horadada/": [
   "1653dc64719e",
   "2026-11-23"
@@ -4892,8 +5008,12 @@
   "2026-11-23"
  ],
  "carrera/media-maraton-san-sebastian/": [
-  "ee949a744614",
-  "2026-11-19"
+  "b35c101850f0",
+  "2026-11-24"
+ ],
+ "carrera/media-maraton-santiago-de-compostela/": [
+  "f8a2ded2c840",
+  "2026-11-24"
  ],
  "carrera/media-maraton-sevilla-los-palacios/": [
   "94b819339bff",
@@ -4972,8 +5092,8 @@
   "2026-11-11"
  ],
  "carrera/medio-maraton-madrid/": [
-  "03a19d5fe9fb",
-  "2026-11-13"
+  "d1f7c15818e9",
+  "2026-11-24"
  ],
  "carrera/medio-maraton-navalmoral-de-la-mata-y-diez-mil-de-navalmoral-de-la-mata/": [
   "7c68d06fef77",
@@ -4990,6 +5110,10 @@
  "carrera/medio-maraton-valencia/": [
   "6ce45aaa0d34",
   "2026-11-15"
+ ],
+ "carrera/medio-maraton-vega-del-guadalquivir-alcala-del-rio/": [
+  "9112b6d31263",
+  "2026-11-24"
  ],
  "carrera/medio-maraton-villa-de-puente-genil/": [
   "8dccc7b6d718",
@@ -5020,8 +5144,8 @@
   "2026-11-17"
  ],
  "carrera/memorial-miguel-angel-gomez-campuzano-mairena-del-alcor/": [
-  "9fef68b1e5f1",
-  "2026-11-20"
+  "3bc4fac76e6d",
+  "2026-11-24"
  ],
  "carrera/memorial-vidal-matarranz-valladolid/": [
   "87e5e6212bfb",
@@ -5131,6 +5255,10 @@
   "062b7c184147",
   "2026-11-11"
  ],
+ "carrera/mitja-marato-de-sitges-garraf/": [
+  "2844ae0f1bc9",
+  "2026-11-24"
+ ],
  "carrera/mitja-marato-de-terrassa/": [
   "38d527607755",
   "2026-11-11"
@@ -5180,8 +5308,8 @@
   "2026-11-18"
  ],
  "carrera/monster-race-sant-miquel-de-campmajor/": [
-  "fcd66eb183a5",
-  "2026-11-23"
+  "e89a6bdc4105",
+  "2026-11-24"
  ],
  "carrera/montesierra-trail-la-teja-jerez-de-la-frontera/": [
   "1b41621c961d",
@@ -5247,9 +5375,9 @@
   "f69adb1ee273",
   "2026-11-03"
  ],
- "carrera/nafarroa-xtrem-zubiri/": [
-  "acb44de2b430",
-  "2026-11-08"
+ "carrera/najera-xtrem/": [
+  "48448c24c27c",
+  "2026-11-24"
  ],
  "carrera/neblina-tres-valles-valleseco/": [
   "76826021e1e5",
@@ -5364,8 +5492,8 @@
   "2026-11-18"
  ],
  "carrera/paisajes-por-la-provincia-montealegre-de-campos/": [
-  "9afaeb266850",
-  "2026-10-24"
+  "548fbc162d2d",
+  "2026-11-24"
  ],
  "carrera/paisajes-por-la-provincia-pinel-de-abajo/": [
   "205261be250b",
@@ -5410,6 +5538,14 @@
  "carrera/pedraforca-xtrail-saldes/": [
   "f9e4292b73ff",
   "2026-11-15"
+ ],
+ "carrera/pego-trail/": [
+  "4b146355c53d",
+  "2026-11-24"
+ ],
+ "carrera/penazuela-trail-ainzon/": [
+  "ae7e1d541fe8",
+  "2026-11-24"
  ],
  "carrera/penyagolosa-trails-castellon/": [
   "c888250df79a",
@@ -5470,6 +5606,10 @@
  "carrera/poseidon-sea-torrenueva/": [
   "3a060a3184e0",
   "2026-10-24"
+ ],
+ "carrera/poxta-trail-urnieta/": [
+  "971c1956100d",
+  "2026-11-24"
  ],
  "carrera/pozo-estrecho-y-la-palma-en-marcha-contra-el-cancer-torre-pacheco/": [
   "ea9816b13927",
@@ -5639,6 +5779,10 @@
   "514978713267",
   "2026-11-18"
  ],
+ "carrera/san-anton-escanuela/": [
+  "b9c0b3adfd23",
+  "2026-11-24"
+ ],
  "carrera/san-antontxuko-herri-krosa-mungia/": [
   "cfa731d94d36",
   "2026-11-18"
@@ -5679,9 +5823,17 @@
   "f53276389565",
   "2026-10-24"
  ],
+ "carrera/san-silvestre-alboraya/": [
+  "f350e926e7c5",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-algetena/": [
   "8dd81e7445b3",
   "2026-11-17"
+ ],
+ "carrera/san-silvestre-alicante-casco-antiguo-santa-cruz/": [
+  "adf3803afc99",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-almendralejense-almendralejo/": [
   "f128cbcb221a",
@@ -5722,6 +5874,10 @@
  "carrera/san-silvestre-benidorm/": [
   "9c5f9e9e89aa",
   "2026-11-20"
+ ],
+ "carrera/san-silvestre-berciana-ponferrada/": [
+  "83100b82e512",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-betanceira-betanzos/": [
   "8e4882147a55",
@@ -5775,6 +5931,10 @@
   "f39ab268f5a2",
   "2026-11-21"
  ],
+ "carrera/san-silvestre-ciudad-de-oviedo/": [
+  "d643b9ccb94b",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-club-fluvial-lugo/": [
   "d3f540797c0a",
   "2026-11-21"
@@ -5798,6 +5958,10 @@
  "carrera/san-silvestre-cordobesa-parque-figueroa/": [
   "124f6b846169",
   "2026-11-21"
+ ],
+ "carrera/san-silvestre-corredors-polinya/": [
+  "0999a1d1bc93",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-cosladena-coslada/": [
   "24474ac12da0",
@@ -5892,8 +6056,12 @@
   "2026-11-10"
  ],
  "carrera/san-silvestre-de-valdepenas/": [
-  "1b670d89762a",
-  "2026-11-23"
+  "8935df0fc57a",
+  "2026-11-24"
+ ],
+ "carrera/san-silvestre-del-masnou/": [
+  "86c94434bb07",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-del-rebollar-san-juan-del-rebollar/": [
   "de41adde4e0f",
@@ -5907,6 +6075,10 @@
   "6d5cdf8e8ab9",
   "2026-11-17"
  ],
+ "carrera/san-silvestre-ejeana-solidaria-ejea-de-los-caballeros/": [
+  "f15a6f44ceb8",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-el-campello/": [
   "8064f194e466",
   "2026-11-22"
@@ -5919,6 +6091,10 @@
   "77562204a630",
   "2026-11-09"
  ],
+ "carrera/san-silvestre-etxebarri-doneztebe/": [
+  "47f39a59b028",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-fuentes-de-andalucia/": [
   "d65b8b42df92",
   "2026-10-29"
@@ -5930,6 +6106,10 @@
  "carrera/san-silvestre-garachico/": [
   "e7aa36c45f0e",
   "2026-11-18"
+ ],
+ "carrera/san-silvestre-gijon-playa-de-san-lorenzo/": [
+  "1f1888bd89d2",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-golden-mile-playa-de-las-americas-playa-de-la-americas/": [
   "51c920b3c87a",
@@ -5971,6 +6151,10 @@
   "fea720e266d1",
   "2026-11-18"
  ],
+ "carrera/san-silvestre-lantejuela/": [
+  "8bc47f8b3bf4",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-lasarte-oria/": [
   "a474419e711f",
   "2026-11-21"
@@ -5982,6 +6166,10 @@
  "carrera/san-silvestre-les-alqueries-alquerias-del-nino-perdido/": [
   "e3e2453d3a25",
   "2026-10-27"
+ ],
+ "carrera/san-silvestre-lugones/": [
+  "912f82543a65",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-manzanares-el-real/": [
   "0a67f77d41c2",
@@ -6003,6 +6191,10 @@
   "a1e717475d43",
   "2026-11-22"
  ],
+ "carrera/san-silvestre-muradana-a-alivia/": [
+  "589910b5dd3c",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-navacerrada/": [
   "aeb0f0f5d86f",
   "2026-11-23"
@@ -6011,9 +6203,9 @@
   "0d0e992c4a8d",
   "2026-11-20"
  ],
- "carrera/san-silvestre-nerjena-playa-de-burriana/": [
-  "a94bbc19a287",
-  "2026-11-22"
+ "carrera/san-silvestre-nerjena-nerja/": [
+  "d63b270f21da",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-pacense-badajoz/": [
   "6fda319f662d",
@@ -6035,9 +6227,17 @@
   "662976c1df92",
   "2026-11-23"
  ],
+ "carrera/san-silvestre-popular-ceheginera/": [
+  "24484f9156e4",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-praviana/": [
   "7e6d434138b1",
   "2026-10-24"
+ ],
+ "carrera/san-silvestre-real-club-mediterraneo-malaga/": [
+  "0c8a41541daa",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-realejera-los-realejos/": [
   "bc7a1a8a211f",
@@ -6058,6 +6258,10 @@
  "carrera/san-silvestre-santander/": [
   "35c7880a06e2",
   "2026-10-24"
+ ],
+ "carrera/san-silvestre-senenchallenge-vega-de-gordon/": [
+  "08dacd0dcc7d",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-sevillana/": [
   "a108f4e68b24",
@@ -6131,6 +6335,10 @@
   "a448ac0f9ba4",
   "2026-11-11"
  ],
+ "carrera/san-silvestre-trail-de-pliego-desafio-trail/": [
+  "cbf80c33b5ef",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-trail-mieres-del-camino/": [
   "d8864dcb08a2",
   "2026-11-20"
@@ -6139,9 +6347,25 @@
   "cd726c5396df",
   "2026-11-20"
  ],
+ "carrera/san-silvestre-valdetorres-de-jarama/": [
+  "fca5974b36e8",
+  "2026-11-24"
+ ],
+ "carrera/san-silvestre-valencia-sant-francesc/": [
+  "6a84fca744b1",
+  "2026-11-24"
+ ],
  "carrera/san-silvestre-vallecana-embajadores/": [
   "6df62bafe31b",
   "2026-10-24"
+ ],
+ "carrera/san-silvestre-vegas-del-genil-belicena/": [
+  "b914da9898bb",
+  "2026-11-24"
+ ],
+ "carrera/san-silvestre-velez-malaga/": [
+  "9adffbb107b8",
+  "2026-11-24"
  ],
  "carrera/san-silvestre-vicalvarena-hellin/": [
   "f2efb5de0752",
@@ -6199,9 +6423,17 @@
   "93dcac412d14",
   "2026-11-23"
  ],
+ "carrera/sant-carles-trail-santa-eulalia-del-rio/": [
+  "33b425943f2a",
+  "2026-11-24"
+ ],
  "carrera/sant-carles-xtrem-santa-eulalia-del-rio/": [
   "24fef4572a34",
   "2026-11-22"
+ ],
+ "carrera/sant-mateu-xtrail-premia-de-dalt/": [
+  "c13b57dddcb4",
+  "2026-11-24"
  ],
  "carrera/sant-miquel-360-bigues-i-riells/": [
   "6c8b031badc1",
@@ -6222,6 +6454,14 @@
  "carrera/sant-silvestre-cerverina-cervera/": [
   "171d20358fb7",
   "2026-11-22"
+ ],
+ "carrera/sant-silvestre-ciutat-inca/": [
+  "4821f52d36e0",
+  "2026-11-24"
+ ],
+ "carrera/sant-silvestre-cncatalunya-barcelona-el-coll/": [
+  "ce9337931872",
+  "2026-11-24"
  ],
  "carrera/sant-silvestre-de-berga/": [
   "5b73e2fe02b0",
@@ -6271,6 +6511,10 @@
   "fd14ae126e1c",
   "2026-11-11"
  ],
+ "carrera/segura-xtreme-triathlon-tranco/": [
+  "9c7402e0e677",
+  "2026-11-24"
+ ],
  "carrera/senderismo-y-carrera-solidaria-todos-con-martin-albox/": [
   "ad40a5b38e54",
   "2026-11-19"
@@ -6312,8 +6556,8 @@
   "2026-11-11"
  ],
  "carrera/simat-trail-simat-de-valldigna/": [
-  "5739dda96a2c",
-  "2026-11-10"
+  "63514e444d3e",
+  "2026-11-24"
  ],
  "carrera/sin-son-10k-porto-do-son/": [
   "c6b2917946c0",
@@ -6326,6 +6570,10 @@
  "carrera/skull-minihollywood-tabernas/": [
   "60072a71e543",
   "2026-11-02"
+ ],
+ "carrera/skyrace-pic-de-orri-vilamur/": [
+  "0d8cab774acf",
+  "2026-11-24"
  ],
  "carrera/snow-running-sierra-nevada-monachil/": [
   "fc9566932944",
@@ -6366,6 +6614,10 @@
  "carrera/sprint-trail-eco-marcha-colegio-santa-ana-sr-alcoy/": [
   "36ec87840dab",
   "2026-11-21"
+ ],
+ "carrera/st-esteve-run-l-escala/": [
+  "2b8a8a20c87e",
+  "2026-11-24"
  ],
  "carrera/subida-a-la-cruz-de-la-atalaya-padul/": [
   "f923f561446c",
@@ -6431,10 +6683,6 @@
   "00555bba2c8c",
   "2026-11-01"
  ],
- "carrera/survival-trail-cervera-del-maestre/": [
-  "a597cb2dc8d4",
-  "2026-11-11"
- ],
  "carrera/survivor-alicante-villafranqueza/": [
   "143857d66f2b",
   "2026-11-18"
@@ -6467,9 +6715,13 @@
   "90686d99ce7f",
   "2026-11-03"
  ],
+ "carrera/tenerguera-trail-el-molledo/": [
+  "4e8e02f05342",
+  "2026-11-24"
+ ],
  "carrera/tenerife-bluetrail-by-utmb/": [
-  "db3e00f6da08",
-  "2026-10-24"
+  "b1e4e120a148",
+  "2026-11-24"
  ],
  "carrera/tenerife-spartan-trifecta-weekend-puerto-de-la-cruz/": [
   "1687df998df5",
@@ -6498,6 +6750,14 @@
  "carrera/tomaca-trail-alginet/": [
   "318b11cf9d70",
   "2026-11-09"
+ ],
+ "carrera/torunos-running-series-el-puerto-de-santa-maria/": [
+  "2df566448b9e",
+  "2026-11-24"
+ ],
+ "carrera/total-tri-mallorca-capdepera/": [
+  "10ccede65634",
+  "2026-11-24"
  ],
  "carrera/toxiza-gran-trail-mondonedo/": [
   "5d3bac725b15",
@@ -6647,10 +6907,6 @@
   "3c8441b9ec25",
   "2026-11-11"
  ],
- "carrera/trail-de-los-alcornocales-jimena-de-la-frontera/": [
-  "b1995f1770f5",
-  "2026-11-15"
- ],
  "carrera/trail-de-los-cerros-y-las-trincheras-ciempozuelos/": [
   "f45a8b82464d",
   "2026-10-24"
@@ -6671,9 +6927,17 @@
   "e0176412813b",
   "2026-11-16"
  ],
+ "carrera/trail-de-primavera-confrides/": [
+  "503af670ae64",
+  "2026-11-24"
+ ],
  "carrera/trail-de-valdesanz-caspuenas/": [
   "7cb8a7b44364",
   "2026-11-11"
+ ],
+ "carrera/trail-de-vilatuxe/": [
+  "9d3d61049b99",
+  "2026-11-24"
  ],
  "carrera/trail-del-bisaura-sant-quirze-de-besora/": [
   "542ec78dd0d3",
@@ -6694,6 +6958,14 @@
  "carrera/trail-del-senglar-llavaneres-sant-andreu-de-llavaneres/": [
   "41b5a43199f2",
   "2026-10-24"
+ ],
+ "carrera/trail-del-serrucho-alalpardo/": [
+  "5145ce35c8f4",
+  "2026-11-24"
+ ],
+ "carrera/trail-del-tamburiello-setienes/": [
+  "6a9aa765f232",
+  "2026-11-24"
  ],
  "carrera/trail-dels-fars-mao-mahon/": [
   "97edb2cd53d7",
@@ -6768,8 +7040,8 @@
   "2026-11-22"
  ],
  "carrera/trail-guzman-el-bueno-cordoba/": [
-  "9c09fed90323",
-  "2026-11-11"
+  "2e496bd2864a",
+  "2026-11-24"
  ],
  "carrera/trail-hiru-herri-huarte/": [
   "cf9be76bbf4f",
@@ -6787,13 +7059,25 @@
   "5a8aa2bdf969",
   "2026-11-17"
  ],
+ "carrera/trail-la-cuesta-llanes/": [
+  "19a71ff44d66",
+  "2026-11-24"
+ ],
  "carrera/trail-la-degollada-candamo/": [
   "4ead9af8ebae",
   "2026-10-24"
  ],
+ "carrera/trail-la-foguera-canals/": [
+  "3c99c4977f03",
+  "2026-11-24"
+ ],
  "carrera/trail-la-raya-alcanices/": [
   "f7b0552cc7b2",
   "2026-11-09"
+ ],
+ "carrera/trail-la-riera-de-gaia/": [
+  "2a01f45c185b",
+  "2026-11-24"
  ],
  "carrera/trail-la-robliga-moreda/": [
   "19a56bc0a990",
@@ -6855,6 +7139,10 @@
   "df26580f1a12",
   "2026-11-06"
  ],
+ "carrera/trail-monte-ponoig-polop/": [
+  "c7cca65c7ac0",
+  "2026-11-24"
+ ],
  "carrera/trail-montes-de-malaga/": [
   "912c114b0758",
   "2026-11-11"
@@ -6908,8 +7196,8 @@
   "2026-11-16"
  ],
  "carrera/trail-piedra-del-yunque-villalba-de-la-sierra/": [
-  "b4eaa1107f06",
-  "2026-11-23"
+  "8bffb9f5b954",
+  "2026-11-24"
  ],
  "carrera/trail-pino-santo-santa-brigida/": [
   "8b412b57ca96",
@@ -7002,10 +7290,6 @@
  "carrera/trail-serralavella-ullastrell/": [
   "dba6f93fafbe",
   "2026-11-15"
- ],
- "carrera/trail-siero-pola-de-siero/": [
-  "9ea8d455fc78",
-  "2026-11-18"
  ],
  "carrera/trail-sierra-de-aznalcollar/": [
   "3c05c78eb78e",
@@ -7216,8 +7500,8 @@
   "2026-11-13"
  ],
  "carrera/ultra-trail-barcelona-sant-fruitos-de-bages/": [
-  "a6c7068596fe",
-  "2026-11-03"
+  "79e523437fe7",
+  "2026-11-24"
  ],
  "carrera/ultra-trail-bosques-del-sur-cazorla/": [
   "ede8b76919e7",
@@ -7471,6 +7755,10 @@
   "0104fb7c0c4a",
   "2026-11-20"
  ],
+ "carrera/xtremelagos-covadonga/": [
+  "b797810a6f44",
+  "2026-11-24"
+ ],
  "carrera/yuri-trail-por-las-sendas-de-isabel-medina-del-campo/": [
   "90fc09b9178d",
   "2026-11-06"
@@ -7494,6 +7782,10 @@
  "carrera/zizurkil-gau/": [
   "5de69bbe21bf",
   "2026-11-11"
+ ],
+ "carrera/zubiri-pamplona-iruna/": [
+  "3586ecc02195",
+  "2026-11-24"
  ],
  "carrera/zuia-backyard-murguia/": [
   "349faa3a93ab",

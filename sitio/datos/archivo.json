@@ -4923,11 +4923,19 @@
   "resultados": [
    {
     "texto": "Clasificación General 10 Km",
-    "url": "https://carreracancerpancreas.es/wp-content/uploads/2025/11/CLASIFICACION10KM.pdf"
+    "url": "https://carreracancerpancreas.es/wp-content/uploads/2026/11/10KGRAL-PANCREAS-2026-FEMENINO.pdf"
+   },
+   {
+    "texto": "Clasificación General 10 Km",
+    "url": "https://carreracancerpancreas.es/wp-content/uploads/2026/11/10KGRAL-PANCREAS-2026-MASCULINO.pdf"
    },
    {
     "texto": "Clasificación General 5km",
-    "url": "https://carreracancerpancreas.es/wp-content/uploads/2025/11/CLASIFICACION5KM.pdf"
+    "url": "https://carreracancerpancreas.es/wp-content/uploads/2026/11/5KGRAL-PANCREAS-2026-FEMENINO.pdf"
+   },
+   {
+    "texto": "Clasificación General 5 Km",
+    "url": "https://carreracancerpancreas.es/wp-content/uploads/2026/11/5KGRAL-PANCREAS-2026-MASCULINO.pdf"
    }
   ],
   "tipo": "popular",
@@ -8551,7 +8559,6 @@
    "Carreras CLM"
   ],
   "id": "clm-334f2b02",
-  "inscritos": 615,
   "municipio": "Toledo",
   "nombre": "X Carrera Popular Solidaria Por la Diabetes",
   "precio_desde": 10.0,
@@ -9198,6 +9205,16 @@
   "plazas_max": 443,
   "precio_desde": 26.0,
   "provincia": "Cádiz",
+  "resultados": [
+   {
+    "texto": "PODIUM",
+    "url": "https://www.cronofinisher.com/images/biblioteca_eventos/756/podium-competitiva.pdf"
+   },
+   {
+    "texto": "CLASIFICACION GENERAL CON INTERMEDIOS",
+    "url": "https://www.cronofinisher.com/images/biblioteca_eventos/756/general-con-intermedios.pdf"
+   }
+  ],
   "resultados_web": "https://www.cronofinisher.com/resultados/",
   "tipo": "popular",
   "ubicacion": {
@@ -13024,6 +13041,12 @@
   "nombre": "Cross Challenge los Fresnos Torrejón de Ardoz",
   "precio_desde": 6.0,
   "provincia": "Madrid",
+  "resultados": [
+   {
+    "texto": "Resultados",
+    "url": "https://inscripcionesdeportivas.timinglap.com/inscripcion/i-cross-challenge-los-fresnos-torrejon-de-ardoz/clasificaciones/"
+   }
+  ],
   "tipo": "popular",
   "ubicacion": {
    "lat": 40.45676,
@@ -17823,9 +17846,7 @@
   "id": "clm-3070dc10",
   "municipio": "Ciudad Real",
   "nombre": "El Privilegio 100 Millas 2026",
-  "precio_desde": 35.0,
   "provincia": "Ciudad Real",
-  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "trail",
   "ubicacion": {
    "lat": 38.98542,
@@ -19048,7 +19069,7 @@
   "provincia": "Las Palmas",
   "resultados": [
    {
-    "texto": "Resultados Gran Canaria H6 Gran Canaria arrow_forward",
+    "texto": "Ver resultados arrow_forward",
     "url": "https://hyatlon.org/event/gran-canaria/resultados"
    }
   ],
