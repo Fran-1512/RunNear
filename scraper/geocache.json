@@ -582,6 +582,10 @@
     "lng": -2.34585
   },
   "Peñarroya de Tastavins|Zaragoza": null,
+  "Peñas de San Pedro|Albacete": {
+    "lat": 38.72662,
+    "lng": -2.00196
+  },
   "Piedrabuena|Ciudad Real": {
     "lat": 39.03446,
     "lng": -4.17533
@@ -630,6 +634,10 @@
     "lat": 39.8284,
     "lng": -4.71871
   },
+  "San Pablo de los Montes|Toledo": {
+    "lat": 39.54038,
+    "lng": -4.32984
+  },
   "San Sebastian|Gipuzkoa": {
     "lat": 43.32242,
     "lng": -1.98389
@@ -645,6 +653,10 @@
   "Sierra|Albacete": {
     "lat": 38.56087,
     "lng": -1.6593
+  },
+  "Sigüenza|Guadalajara": {
+    "lat": 41.06803,
+    "lng": -2.64057
   },
   "Socovos|Albacete": {
     "lat": 38.33364,
