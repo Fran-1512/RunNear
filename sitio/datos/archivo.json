@@ -8561,9 +8561,7 @@
   "id": "clm-334f2b02",
   "municipio": "Toledo",
   "nombre": "X Carrera Popular Solidaria Por la Diabetes",
-  "precio_desde": 10.0,
   "provincia": "Toledo",
-  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "popular",
   "ubicacion": {
    "lat": 39.85589,
@@ -17854,7 +17852,9 @@
   "id": "clm-3070dc10",
   "municipio": "Ciudad Real",
   "nombre": "El Privilegio 100 Millas 2026",
+  "precio_desde": 35.0,
   "provincia": "Ciudad Real",
+  "resultados_web": "https://sportmaniacs.com/es/results",
   "tipo": "trail",
   "ubicacion": {
    "lat": 38.98542,
